@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APEX INNOVATE LLC | AI Company Based in UAE</title>
+    <title>APEX INNOVATE LLC | AI COMPANY</title>
     <!-- Dependencies -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -26,11 +26,13 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
+        /* Custom selection color */
         ::selection {
             background: #10b981;
             color: #000;
         }
 
+        /* Grainy noise texture overlay */
         .noise-overlay {
             position: fixed;
             inset: 0;
@@ -64,9 +66,11 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
         
+        // Fix for Global references
         const motion = window.Motion ? window.Motion.motion : { div: (props) => <div {...props} /> };
         const AnimatePresence = window.Motion ? window.Motion.AnimatePresence : ({children}) => <>{children}</>;
 
+        // Configuration
         const APEX_CONFIG = {
             name: "Joseph Ribal Nasr",
             company: "APEX INNOVATE LLC",
@@ -85,11 +89,18 @@
             }
         };
 
+        /**
+         * Enhanced Icon Helper
+         * Fixes the "removeChild" error by using a stable span container.
+         * React manages the span, Lucide manages the internal HTML.
+         */
         const Icon = ({ name, className }) => {
             const containerRef = useRef(null);
             useEffect(() => {
                 if (containerRef.current && window.lucide) {
+                    // Set internal placeholder
                     containerRef.current.innerHTML = `<i data-lucide="${name}" class="${className || ''}"></i>`;
+                    // Let Lucide transform the internal placeholder
                     window.lucide.createIcons({
                         root: containerRef.current
                     });
@@ -372,7 +383,9 @@
             if (!isBooted) {
                 return (
                     <div className="min-h-screen bg-black flex flex-col items-center justify-center font-mono text-emerald-500 px-6">
-                        <Icon name="ShieldCheck" className="w-12 h-12 mb-6 animate-pulse mx-auto" />
+                        <div className="w-12 h-12 mb-6 border border-emerald-500/30 flex items-center justify-center bg-emerald-500/5 animate-pulse mx-auto">
+                            <span className="text-emerald-500 font-mono font-black text-xl tracking-tighter">AI</span>
+                        </div>
                         <p className="text-[10px] tracking-[0.4em] uppercase">Booting APEX INNOVATE LLC // {time}</p>
                     </div>
                 );
@@ -383,7 +396,7 @@
                     <header className="border-b border-white/5 p-4 bg-black/90 backdrop-blur-xl sticky top-0 z-40 flex justify-between items-center">
                         <div className="flex items-center gap-4">
                             <div className="w-8 h-8 border border-emerald-500/30 flex items-center justify-center bg-emerald-500/5">
-                                <Icon name="Rocket" className="text-emerald-500 w-4 h-4" />
+                                <span className="text-emerald-500 font-mono font-black text-xs tracking-tighter">AI</span>
                             </div>
                             <div>
                                 <h1 className="text-xs font-mono font-black text-white tracking-[0.3em] uppercase">APEX INNOVATE LLC</h1>
