@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX INNOVATE LLC | AI Company Based in UAE</title>
+    <!-- Dependencies -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+        
+        body {
+            background-color: #080808;
+            color: #d1d5db;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        ::selection {
+            background: #10b981;
+            color: #000;
+        }
+
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.04;
+            z-index: 50;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+        }
+
+        /* Responsive and Interactive Pro Images */
+        .pro-img {
+            filter: grayscale(100%) brightness(0.7) contrast(1.2);
+            transition: filter 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), brightness 0.8s ease;
+            cursor: crosshair;
+        }
+
+        .pro-img-container:hover .pro-img {
+            filter: grayscale(0%) brightness(1) contrast(1);
+            transform: scale(1.05);
+        }
+
+        .no-pointer {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <div class="noise-overlay"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+        
+        const motion = window.Motion ? window.Motion.motion : { div: (props) => <div {...props} /> };
+        const AnimatePresence = window.Motion ? window.Motion.AnimatePresence : ({children}) => <>{children}</>;
+
+        const APEX_CONFIG = {
+            name: "Joseph Ribal Nasr",
+            company: "APEX INNOVATE LLC",
+            role: "Creative Director | CEO Robomarket.ae",
+            location: "Dubai, UAE",
+            links: {
+                linkedin: "https://linkedin.com/in/joenasr",
+                github: "https://github.com/joenasr",
+                email: "joe@robomarket.ae",
+                whatsapp: "https://wa.me/971586749577",
+                robomarket: "https://robomarket.ae",
+                apex: "https://linktr.ee/joenasr",
+                questRequest: "https://linktr.ee/questrequestvr",
+                tiktok: "https://www.tiktok.com/@joenasr",
+                youtube: "https://youtube.com/@joenasr"
+            }
+        };
+
+        const Icon = ({ name, className }) => {
+            const containerRef = useRef(null);
+            useEffect(() => {
+                if (containerRef.current && window.lucide) {
+                    containerRef.current.innerHTML = `<i data-lucide="${name}" class="${className || ''}"></i>`;
+                    window.lucide.createIcons({
+                        root: containerRef.current
+                    });
+                }
+            }, [name, className]);
+            return <span ref={containerRef} className="inline-flex items-center justify-center pointer-events-none" />;
+        };
+
+        const SECTIONS = [
+            {
+                id: 'core',
+                title: 'Identity',
+                icon: 'ShieldCheck',
+                description: 'Corporate credentials and mission statement.',
+                content: (
+                    <div className="space-y-6">
+                        <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
+                            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Dubai Identity" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
+                        </div>
+                        <div className="border-l-2 border-emerald-500 pl-4 py-2 bg-emerald-500/5">
+                            <p className="text-emerald-400 font-mono text-[10px] mb-1 uppercase tracking-widest">Entity: APEX INNOVATE LLC</p>
+                            <h2 className="text-3xl font-bold text-white uppercase tracking-tighter">UAE-Based AI Systems for Enterprise Transformation and Creative Operations.</h2>
+                            <p className="text-gray-400 mt-2 leading-relaxed text-sm">
+                                APEX INNOVATE LLC is an AI-native consultancy headquartered in the United Arab Emirates, specializing in the deployment of advanced automation, spatial computing, and digital transformation frameworks. We serve as an execution partner for Tier-1 enterprises and government entities, focusing on the convergence of creative technology and operational efficiency.
+                            </p>
+                        </div>
+
+                        <div className="space-y-4">
+                            <p className="text-[9px] font-mono text-emerald-500/50 uppercase tracking-widest px-1">Engagement Models ———</p>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                {[
+                                    { name: "Advisory / Strategy", scope: "Digital roadmaps and AI audits.", use: "Readiness assessment." },
+                                    { name: "Delivery / Production", scope: "Execution of apps and media.", use: "System deployment." },
+                                    { name: "Enablement / Training", scope: "Workforce upskilling and governance.", use: "Team alignment." },
+                                    { name: "Retainer / Ongoing Ops", scope: "Continuous system optimization.", use: "Scaling assets." }
+                                ].map((model, i) => (
+                                    <div key={i} className="p-3 border border-white/10 bg-white/5">
+                                        <h4 className="text-[10px] font-bold text-white uppercase mb-1">{model.name}</h4>
+                                        <p className="text-[10px] text-gray-400 leading-tight">Scope: {model.scope}</p>
+                                        <p className="text-[9px] text-emerald-500 font-mono mt-1 uppercase">Case: {model.use}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="space-y-4">
+                            <p className="text-[9px] font-mono text-emerald-500/50 uppercase tracking-widest px-1">Operational Principles ———</p>
+                            <div className="p-4 border border-white/10 bg-black/40 space-y-3">
+                                {[
+                                    "Human-Led Intelligence: Human direction governs every autonomous layer to maintain brand integrity.",
+                                    "Vendor-Agnostic Infrastructure: Systems architected using optimal tools, avoiding ecosystem lock-in.",
+                                    "GCC Cultural Calibration: Outputs reviewed for regional sensitivity and UAE market alignment.",
+                                    "Reliability Over Hype: Priority on deployment-ready frameworks that deliver measurable ROI.",
+                                    "Governance-First Integration: Risk-mitigation protocols embedded in every institutional workflow."
+                                ].map((principle, i) => (
+                                    <div key={i} className="flex gap-3 items-start">
+                                        <div className="w-1 h-1 bg-emerald-500 mt-1.5 shrink-0" />
+                                        <p className="text-[10px] text-gray-400 uppercase leading-tight tracking-tight">{principle}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                )
+            },
+            {
+                id: 'studio',
+                title: 'Studio',
+                icon: 'Video',
+                description: 'End-to-end AI-assisted cinematography and high-fidelity media production.',
+                content: (
+                    <div className="space-y-6">
+                        <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
+                            <img src="https://images.unsplash.com/photo-1492691523567-6170f0275df1?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="AI Video Studio" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
+                        </div>
+                        <div className="p-4 border border-emerald-500/20 bg-emerald-500/5">
+                            <p className="text-xs text-gray-400 leading-relaxed uppercase tracking-tighter">AI is an acceleration layer. High-quality output depends on human direction, continuity control, and tool-selection to ensure brand safety.</p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            {[
+                                { tier: "Tier 01: Rapid Visualization", use: "Internal mood boards and social-first assets.", metric: "Baseline Readiness" },
+                                { tier: "Tier 02: Supervised Production", use: "Commercial deployment with character and environment continuity.", metric: "Brand Verified" },
+                                { tier: "Tier 03: Full-Pipeline Synthesis", use: "Cinematic hero assets with manual VFX and cultural calibration.", metric: "Deployment Ready" }
+                            ].map((item, i) => (
+                                <div key={i} className="p-3 border border-white/10 bg-black/40 text-center flex flex-col items-center">
+                                    <p className="text-[9px] font-mono text-emerald-500 uppercase mb-1">{item.tier}</p>
+                                    <p className="text-[9px] text-gray-500 mb-2 leading-tight">{item.use}</p>
+                                    <p className="text-[10px] text-emerald-400 font-mono font-bold uppercase tracking-tighter">{item.metric}</p>
+                                </div>
+                            ))}
+                        </div>
+                        <button 
+                            onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')}
+                            className="w-full py-4 bg-emerald-500 text-black text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-emerald-400 transition-colors flex items-center justify-center gap-2"
+                        >
+                            <Icon name="Waves" className="w-4 h-4" /> Request Production Brief
+                        </button>
+                    </div>
+                )
+            },
+            {
+                id: 'transformation',
+                title: 'Engineering',
+                icon: 'Code2',
+                description: 'Architecture of custom AI-native applications and hyper-automation service layers.',
+                content: (
+                    <div className="space-y-5">
+                        <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Software Engineering" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
+                        </div>
+                        <div className="p-4 border border-emerald-500/20 bg-emerald-500/5">
+                            <p className="text-xs text-gray-400 leading-relaxed uppercase tracking-tighter">Drives operational efficiency by automating high-latency legacy business processes.</p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="p-4 border border-white/10 bg-white/5 flex flex-col gap-2">
+                                <Icon name="Cpu" className="text-emerald-500 w-4 h-4" />
+                                <h4 className="text-[10px] font-mono text-emerald-500 uppercase">Cognitive Apps</h4>
+                                <p className="text-xs text-gray-300">Development of custom AI-native applications for regional firms.</p>
+                            </div>
+                            <div className="p-4 border border-white/10 bg-white/5 flex flex-col gap-2">
+                                <Icon name="Zap" className="text-emerald-500 w-4 h-4" />
+                                <h4 className="text-[10px] font-mono text-emerald-500 uppercase">Hyper-automation</h4>
+                                <p className="text-xs text-gray-300">Service-layer automation protocols reducing operational latency.</p>
+                            </div>
+                        </div>
+                        <button onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')} className="w-full py-3 border border-emerald-500/30 text-[10px] font-mono uppercase tracking-widest hover:bg-emerald-500/10 transition-colors flex items-center justify-center gap-2">
+                            <Icon name="Terminal" className="text-emerald-500 w-4 h-4" /> Schedule Technical Diagnostic
+                        </button>
+                    </div>
+                )
+            },
+            {
+                id: 'robomarket',
+                title: 'Robomarket',
+                icon: 'ShoppingCart',
+                description: 'Centralized Middle East marketplace for curated enterprise robotics and humanoid systems.',
+                content: (
+                    <div className="space-y-6">
+                        <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
+                            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Robomarket Robotics" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
+                        </div>
+                        <div className="p-4 border border-emerald-500/20 bg-emerald-500/5">
+                            <h3 className="text-white font-bold uppercase text-xs mb-2 text-center">Simplifies procurement for verified, high-performance automated hardware.</h3>
+                            <p className="text-xs text-gray-400 text-center">Connecting high-end manufacturers with the Middle East market through curated technical listings and humanoid systems.</p>
+                        </div>
+                        <a href={APEX_CONFIG.links.robomarket} target="_blank" rel="noopener noreferrer" className="w-full py-3 flex justify-center items-center gap-2 border border-emerald-500 text-[10px] font-mono uppercase tracking-widest hover:bg-emerald-500 hover:text-black transition-all">
+                            <Icon name="ExternalLink" className="w-4 h-4" /> Visit Robomarket.ae
+                        </a>
+                    </div>
+                )
+            },
+            {
+                id: 'questvr',
+                title: 'QuestRequestXR',
+                icon: 'Eye',
+                description: 'Hardware calibration and spatial software optimization for professional VR environments.',
+                content: (
+                    <div className="space-y-5">
+                        <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
+                            <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Quest XR" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
+                        </div>
+                        <div className="p-4 border border-emerald-500/20 bg-emerald-500/5">
+                            <h3 className="text-white font-bold uppercase text-xs mb-2 text-center">Guarantees deployment readiness for immersive enterprise simulation platforms.</h3>
+                            <p className="text-xs text-gray-400 leading-relaxed uppercase tracking-tighter text-center">Specialized Meta Quest 3 and Pro hardware calibration for luxury regional activations.</p>
+                        </div>
+                    </div>
+                )
+            },
+            {
+                id: 'academy',
+                title: 'AI Academy',
+                icon: 'BookOpen',
+                description: 'Workforce readiness, institutional governance, and technical standardization.',
+                content: (
+                    <div className="space-y-6">
+                        <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Academy Learning" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
+                        </div>
+                        <div className="p-4 border border-emerald-500/20 bg-emerald-500/5">
+                            <h3 className="text-white font-bold uppercase text-xs mb-2 text-center">Reduces organizational transition risk by establishing standardized expert capabilities.</h3>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {[
+                                { title: "Cinematic Post-Production Standardization", price: "2,500 AED" },
+                                { title: "Generative Media Engineering & Deployment", price: "3,200 AED" },
+                                { title: "Spatial Interface Governance & Prototyping", price: "2,800 AED" },
+                                { title: "Market Sensitivity & Attention Logic", price: "1,500 AED" }
+                            ].map((course, i) => (
+                                <div key={i} onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')} className="p-4 border border-white/10 bg-white/5 hover:border-emerald-500/50 transition-all cursor-pointer group">
+                                    <h4 className="text-xs font-bold text-white uppercase mb-2 group-hover:text-emerald-400 transition-colors leading-tight">{course.title}</h4>
+                                    <div className="flex justify-between items-center text-[10px] font-mono">
+                                        <span className="text-gray-400 uppercase">Verify Availability</span>
+                                        <span className="font-bold text-white">{course.price}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        <button 
+                            onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')}
+                            className="w-full py-3 border border-emerald-500/30 text-[10px] font-mono uppercase tracking-widest hover:bg-emerald-500/10 transition-colors flex items-center justify-center gap-2"
+                        >
+                            <Icon name="BookOpen" className="text-emerald-500 w-4 h-4" /> Request Institutional Access
+                        </button>
+                    </div>
+                )
+            },
+            {
+                id: 'about',
+                title: 'About & Contact',
+                icon: 'Info',
+                description: 'System documentation and secure communication lines.',
+                content: (
+                    <div className="space-y-6">
+                        <div className="p-4 border border-emerald-500/20 bg-emerald-500/5 space-y-3">
+                           <h3 className="text-white font-bold uppercase text-[10px] tracking-widest">Agency & Partner Positioning ———</h3>
+                           <p className="text-[10px] text-gray-400 uppercase leading-relaxed tracking-tight">
+                              APEX INNOVATE LLC operates as a technical execution layer designed to support, not compete with, creative and digital agencies. We function as a systems partner, providing AI-native infrastructure, specialized production, and automation capabilities that integrate directly into agency workflows. Our role is to handle technical complexity and scale, allowing partners to maintain primary client relationships while delivering high-fidelity AI and spatial solutions.
+                           </p>
+                        </div>
+                        <div className="p-5 border border-white/10 bg-white/5">
+                           <h3 className="text-white font-bold uppercase text-xs mb-4">Functional Divisions</h3>
+                           <div className="space-y-4">
+                              {[
+                                { icon: "Video", title: "Studio" },
+                                { icon: "Code2", title: "Engineering" },
+                                { icon: "ShoppingCart", title: "Robomarket" },
+                                { icon: "Eye", title: "QuestRequestXR" },
+                                { icon: "BookOpen", title: "AI Academy" }
+                              ].map((div, i) => (
+                                <div key={i} className="flex items-center gap-4">
+                                  <Icon name={div.icon} className="text-emerald-500 w-4 h-4 shrink-0" />
+                                  <p className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">{div.title}</p>
+                                </div>
+                              ))}
+                           </div>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                           <a href={APEX_CONFIG.links.whatsapp} target="_blank" rel="noopener noreferrer" className="p-5 border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 transition-all flex flex-col items-center gap-3">
+                              <Icon name="MessageSquare" className="text-emerald-500 w-6 h-6" />
+                              <div className="text-center">
+                                <p className="text-xs font-bold text-white uppercase">Secure Chat</p>
+                                <p className="text-[9px] font-mono text-gray-500 tracking-widest">+971 58 674 9577</p>
+                              </div>
+                           </a>
+                           <a href={APEX_CONFIG.links.linkedin} target="_blank" rel="noopener noreferrer" className="p-5 border border-white/10 bg-white/5 hover:bg-white/10 transition-all flex flex-col items-center gap-3">
+                              <Icon name="Linkedin" className="text-white w-6 h-6" />
+                              <div className="text-center">
+                                <p className="text-xs font-bold text-white uppercase">LinkedIn</p>
+                                <p className="text-[9px] font-mono text-gray-500 tracking-widest">Joseph Ribal Nasr</p>
+                              </div>
+                           </a>
+                        </div>
+                    </div>
+                )
+            }
+        ];
+
+        const App = () => {
+            const [activeNode, setActiveNode] = useState('core');
+            const [isBooted, setIsBooted] = useState(false);
+            const [time, setTime] = useState('');
+
+            useEffect(() => {
+                const timer = setInterval(() => {
+                    const now = new Date();
+                    setTime(now.toLocaleTimeString('en-US', { hour12: false }));
+                }, 1000);
+                setTimeout(() => setIsBooted(true), 1200);
+                return () => clearInterval(timer);
+            }, []);
+
+            const currentNode = SECTIONS.find(s => s.id === activeNode);
+
+            if (!isBooted) {
+                return (
+                    <div className="min-h-screen bg-black flex flex-col items-center justify-center font-mono text-emerald-500 px-6">
+                        <Icon name="ShieldCheck" className="w-12 h-12 mb-6 animate-pulse mx-auto" />
+                        <p className="text-[10px] tracking-[0.4em] uppercase">Booting APEX INNOVATE LLC // {time}</p>
+                    </div>
+                );
+            }
+
+            return (
+                <div className="min-h-screen relative overflow-y-auto">
+                    <header className="border-b border-white/5 p-4 bg-black/90 backdrop-blur-xl sticky top-0 z-40 flex justify-between items-center">
+                        <div className="flex items-center gap-4">
+                            <div className="w-8 h-8 border border-emerald-500/30 flex items-center justify-center bg-emerald-500/5">
+                                <Icon name="Rocket" className="text-emerald-500 w-4 h-4" />
+                            </div>
+                            <div>
+                                <h1 className="text-xs font-mono font-black text-white tracking-[0.3em] uppercase">APEX INNOVATE LLC</h1>
+                                <p className="text-[9px] text-gray-500 font-mono tracking-tighter uppercase">{time} // AI COMPANY BASED IN UAE</p>
+                            </div>
+                        </div>
+                    </header>
+
+                    <main className="max-w-6xl mx-auto p-4 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 pb-24">
+                        <nav className="lg:col-span-4 space-y-2">
+                            <p className="text-[9px] font-mono text-emerald-500 uppercase tracking-[0.4em] mb-4 px-4">Index_Map</p>
+                            {SECTIONS.map((section) => (
+                                <button
+                                    key={section.id}
+                                    onClick={() => setActiveNode(section.id)}
+                                    className={`w-full text-left p-4 transition-all relative overflow-hidden group border rounded-sm ${
+                                        activeNode === section.id 
+                                        ? 'bg-emerald-500/10 border-emerald-500/40' 
+                                        : 'bg-white/5 border-transparent hover:border-white/10'
+                                    }`}
+                                >
+                                    <div className="flex items-center gap-4 relative z-10">
+                                        <Icon name={section.icon} className={`w-5 h-5 ${activeNode === section.id ? 'text-emerald-500' : 'text-gray-600'}`} />
+                                        <h3 className={`text-[10px] font-bold uppercase tracking-widest ${activeNode === section.id ? 'text-white' : 'text-gray-500'}`}>
+                                            {section.title}
+                                        </h3>
+                                    </div>
+                                    {activeNode === section.id && <motion.div layoutId="indicator" className="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500" />}
+                                </button>
+                            ))}
+                        </nav>
+
+                        <section className="lg:col-span-8">
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={activeNode}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -20 }}
+                                    className="bg-black/60 border border-white/10 rounded-sm overflow-hidden min-h-[500px]"
+                                >
+                                    <div className="border-b border-white/5 px-4 py-2 flex justify-between items-center bg-white/5">
+                                        <div className="flex gap-1">
+                                            <div className="w-2 h-2 rounded-full bg-red-500/20"></div>
+                                            <div className="w-2 h-2 rounded-full bg-yellow-500/20"></div>
+                                            <div className="w-2 h-2 rounded-full bg-emerald-500/20"></div>
+                                        </div>
+                                        <p className="text-[9px] font-mono text-gray-500 uppercase tracking-widest">Archive://{activeNode}.dat</p>
+                                    </div>
+                                    <div className="p-6 md:p-10">
+                                        <p className="text-emerald-500 text-[9px] font-mono mb-1 uppercase tracking-widest">Processing Node ———</p>
+                                        <h1 className="text-2xl font-black text-white uppercase italic tracking-tighter mb-8">{currentNode.title}</h1>
+                                        <div>{currentNode.content}</div>
+                                    </div>
+                                </motion.div>
+                            </AnimatePresence>
+                        </section>
+                    </main>
+
+                    <div className="fixed bottom-6 right-6 z-50 md:bottom-10 md:right-10">
+                        <button 
+                            onClick={() => setActiveNode('about')}
+                            className="bg-emerald-500 hover:bg-emerald-400 text-black px-6 py-3 rounded-sm font-bold text-[10px] uppercase tracking-[0.2em] shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all flex items-center gap-3 active:scale-95 group"
+                        >
+                            <div className="flex items-center gap-2">
+                                <Icon name="Info" className="w-4 h-4 group-hover:rotate-12 transition-transform"/> 
+                                <span>Inquire for Strategic Engagement</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
