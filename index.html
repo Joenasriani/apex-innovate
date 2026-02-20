@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APEX INNOVATE LLC | AI COMPANY</title>
-    <!-- Dependencies -->
+    <title>APEX INNOVATE LLC | AI ACADEMY & STUDIO</title>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -14,6 +13,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
         
+        * {
+            cursor: none !important;
+        }
+
         body {
             background-color: #080808;
             color: #d1d5db;
@@ -26,13 +29,11 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Custom selection color */
         ::selection {
             background: #10b981;
             color: #000;
         }
 
-        /* Grainy noise texture overlay */
         .noise-overlay {
             position: fixed;
             inset: 0;
@@ -42,11 +43,9 @@
             background-image: url('https://grainy-gradients.vercel.app/noise.svg');
         }
 
-        /* Responsive and Interactive Pro Images */
         .pro-img {
             filter: grayscale(100%) brightness(0.7) contrast(1.2);
             transition: filter 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), brightness 0.8s ease;
-            cursor: crosshair;
         }
 
         .pro-img-container:hover .pro-img {
@@ -57,6 +56,47 @@
         .no-pointer {
             pointer-events: none;
         }
+
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+        }
+
+        .custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            pointer-events: none;
+            z-index: 9999;
+            transform-origin: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.15s ease-out;
+        }
+
+        .cursor-arrow-svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            filter: drop-shadow(0 0 2px rgba(16, 185, 129, 0.5));
+            transform: translate(-30%, -30%);
+        }
+
+        .cursor-active {
+            transform: scale(1.4);
+        }
+
+        .cursor-active .cursor-arrow-svg {
+            stroke: #34d399;
+        }
     </style>
 </head>
 <body>
@@ -66,41 +106,62 @@
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
         
-        // Fix for Global references
-        const motion = window.Motion ? window.Motion.motion : { div: (props) => <div {...props} /> };
+        const motion = window.Motion ? window.Motion.motion : { div: (props) => <div {...props} />, span: (props) => <span {...props} /> };
         const AnimatePresence = window.Motion ? window.Motion.AnimatePresence : ({children}) => <>{children}</>;
 
-        // Configuration
+        const CustomCursor = () => {
+            const [position, setPosition] = useState({ x: 0, y: 0 });
+            const [isPointer, setIsPointer] = useState(false);
+
+            useEffect(() => {
+                const handleMouseMove = (e) => {
+                    setPosition({ x: e.clientX, y: e.clientY });
+                    const target = e.target;
+                    const isClickable = target.closest('button') || target.closest('a') || window.getComputedStyle(target).cursor === 'pointer';
+                    setIsPointer(!!isClickable);
+                };
+                window.addEventListener('mousemove', handleMouseMove);
+                return () => window.removeEventListener('mousemove', handleMouseMove);
+            }, []);
+
+            return (
+                <div 
+                    className={`custom-cursor ${isPointer ? 'cursor-active' : ''}`}
+                    style={{ left: `${position.x}px`, top: `${position.y}px` }}
+                >
+                    <svg className="cursor-arrow-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.5,3.5 L18.5,12 L11,13 L10,20.5 L5.5,3.5 Z" stroke="#10b981" strokeWidth="0.5" fill="none" />
+                    </svg>
+                </div>
+            );
+        };
+
         const APEX_CONFIG = {
             name: "Joseph Ribal Nasr",
             company: "APEX INNOVATE LLC",
             role: "Creative Director | CEO Robomarket.ae",
             location: "Dubai, UAE",
             links: {
-                linkedin: "https://linkedin.com/in/joenasr",
+                linkedin: "https://www.linkedin.com/in/joenasrprofile/",
                 github: "https://github.com/joenasr",
                 email: "joe@robomarket.ae",
                 whatsapp: "https://wa.me/971586749577",
                 robomarket: "https://robomarket.ae",
+                robomarketLinkedin: "https://www.linkedin.com/company/robomarket-uae/",
+                robomarketX: "https://x.com/robomarketAE",
                 apex: "https://linktr.ee/joenasr",
                 questRequest: "https://linktr.ee/questrequestvr",
+                questLinkedinGroup: "https://www.linkedin.com/groups/9802744/",
                 tiktok: "https://www.tiktok.com/@joenasr",
                 youtube: "https://youtube.com/@joenasr"
             }
         };
 
-        /**
-         * Enhanced Icon Helper
-         * Fixes the "removeChild" error by using a stable span container.
-         * React manages the span, Lucide manages the internal HTML.
-         */
         const Icon = ({ name, className }) => {
             const containerRef = useRef(null);
             useEffect(() => {
                 if (containerRef.current && window.lucide) {
-                    // Set internal placeholder
                     containerRef.current.innerHTML = `<i data-lucide="${name}" class="${className || ''}"></i>`;
-                    // Let Lucide transform the internal placeholder
                     window.lucide.createIcons({
                         root: containerRef.current
                     });
@@ -112,7 +173,7 @@
         const SECTIONS = [
             {
                 id: 'core',
-                title: 'Identity',
+                title: 'IDENTITY',
                 icon: 'ShieldCheck',
                 description: 'Corporate credentials and mission statement.',
                 content: (
@@ -125,75 +186,73 @@
                             <p className="text-emerald-400 font-mono text-[10px] mb-1 uppercase tracking-widest">Entity: APEX INNOVATE LLC</p>
                             <h2 className="text-3xl font-bold text-white uppercase tracking-tighter">UAE-Based AI Systems for Enterprise Transformation and Creative Operations.</h2>
                             <p className="text-gray-400 mt-2 leading-relaxed text-sm">
-                                APEX INNOVATE LLC is an AI-native consultancy headquartered in the United Arab Emirates, specializing in the deployment of advanced automation, spatial computing, and digital transformation frameworks. We serve as an execution partner for Tier-1 enterprises and government entities, focusing on the convergence of creative technology and operational efficiency.
+                                APEX INNOVATE LLC is an AI innovation company headquartered in the United Arab Emirates, developing intelligent automation systems, spatial computing experiences, and advanced software platforms that enable enterprises, production studios, and creative teams to operate with greater speed, scalability, and experimentation. The company focuses on building AI-driven infrastructure that enhances operational workflows, expands immersive storytelling capabilities, and supports next-generation digital transformation initiatives across business and creative ecosystems.
                             </p>
-                        </div>
-
-                        <div className="space-y-4">
-                            <p className="text-[9px] font-mono text-emerald-500/50 uppercase tracking-widest px-1">Engagement Models ———</p>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                {[
-                                    { name: "Advisory / Strategy", scope: "Digital roadmaps and AI audits.", use: "Readiness assessment." },
-                                    { name: "Delivery / Production", scope: "Execution of apps and media.", use: "System deployment." },
-                                    { name: "Enablement / Training", scope: "Workforce upskilling and governance.", use: "Team alignment." },
-                                    { name: "Retainer / Ongoing Ops", scope: "Continuous system optimization.", use: "Scaling assets." }
-                                ].map((model, i) => (
-                                    <div key={i} className="p-3 border border-white/10 bg-white/5">
-                                        <h4 className="text-[10px] font-bold text-white uppercase mb-1">{model.name}</h4>
-                                        <p className="text-[10px] text-gray-400 leading-tight">Scope: {model.scope}</p>
-                                        <p className="text-[9px] text-emerald-500 font-mono mt-1 uppercase">Case: {model.use}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="space-y-4">
-                            <p className="text-[9px] font-mono text-emerald-500/50 uppercase tracking-widest px-1">Operational Principles ———</p>
-                            <div className="p-4 border border-white/10 bg-black/40 space-y-3">
-                                {[
-                                    "Human-Led Intelligence: Human direction governs every autonomous layer to maintain brand integrity.",
-                                    "Vendor-Agnostic Infrastructure: Systems architected using optimal tools, avoiding ecosystem lock-in.",
-                                    "GCC Cultural Calibration: Outputs reviewed for regional sensitivity and UAE market alignment.",
-                                    "Reliability Over Hype: Priority on deployment-ready frameworks that deliver measurable ROI.",
-                                    "Governance-First Integration: Risk-mitigation protocols embedded in every institutional workflow."
-                                ].map((principle, i) => (
-                                    <div key={i} className="flex gap-3 items-start">
-                                        <div className="w-1 h-1 bg-emerald-500 mt-1.5 shrink-0" />
-                                        <p className="text-[10px] text-gray-400 uppercase leading-tight tracking-tight">{principle}</p>
-                                    </div>
-                                ))}
-                            </div>
                         </div>
                     </div>
                 )
             },
             {
                 id: 'studio',
-                title: 'Studio',
+                title: 'AI MEDIA PRODUCTION',
                 icon: 'Video',
-                description: 'End-to-end AI-assisted cinematography and high-fidelity media production.',
+                description: 'End-to-end AI-assisted cinematography.',
                 content: (
                     <div className="space-y-6">
-                        <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="https://images.unsplash.com/photo-1492691523567-6170f0275df1?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="AI Video Studio" />
+                        <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
+                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="DaVinci Resolve Node Logic" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
-                        <div className="p-4 border border-emerald-500/20 bg-emerald-500/5">
-                            <p className="text-xs text-gray-400 leading-relaxed uppercase tracking-tighter">AI is an acceleration layer. High-quality output depends on human direction, continuity control, and tool-selection to ensure brand safety.</p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {[
-                                { tier: "Tier 01: Rapid Visualization", use: "Internal mood boards and social-first assets.", metric: "Baseline Readiness" },
-                                { tier: "Tier 02: Supervised Production", use: "Commercial deployment with character and environment continuity.", metric: "Brand Verified" },
-                                { tier: "Tier 03: Full-Pipeline Synthesis", use: "Cinematic hero assets with manual VFX and cultural calibration.", metric: "Deployment Ready" }
-                            ].map((item, i) => (
-                                <div key={i} className="p-3 border border-white/10 bg-black/40 text-center flex flex-col items-center">
-                                    <p className="text-[9px] font-mono text-emerald-500 uppercase mb-1">{item.tier}</p>
-                                    <p className="text-[9px] text-gray-500 mb-2 leading-tight">{item.use}</p>
-                                    <p className="text-[10px] text-emerald-400 font-mono font-bold uppercase tracking-tighter">{item.metric}</p>
+                                {
+                                    type: "Vertical Short-Form",
+                                    subtitle: "Viral Retention Logic",
+                                    desc: "Optimization for TikTok, Reels, and YouTube Shorts. Focus on high-retention hooks and viral algorithm logic.",
+                                    rate: "AED Upon Project Detail"
+                                },
+                                {
+                                    type: "Enterprise Brand Ads",
+                                    subtitle: "High-Fidelity Narrative",
+                                    desc: "Cinematic quality commercials with consistent brand identity, high-end grading, and AI-enhanced visual effects.",
+                                    rate: "AED Upon Project Detail"
+                                },
+                                {
+                                    type: "AI Animation",
+                                    subtitle: "Temporal Neural Synthesis",
+                                    desc: "Deployment of neural character rigging and Stable Diffusion workflows for cinematic music videos and animated narratives.",
+                                    rate: "AED Upon Project Detail"
+                                },
+                                {
+                                    type: "UGC Ad Frameworks",
+                                    subtitle: "Performance Marketing",
+                                    desc: "Authentic-feel user generated content driven by AI scripts and neural lip-syncing for e-commerce conversion.",
+                                    rate: "AED Upon Project Detail"
+                                },
+                                {
+                                    type: "3D Product Commercials",
+                                    subtitle: "Spatial Visualization",
+                                    desc: "Spatial 3D rendering and generative environments for luxury products and high-tech hardware showcases.",
+                                    rate: "AED Upon Project Detail"
+                                }
+                            ].map((service, i) => (
+                                <div key={i} className="p-4 border border-white/10 bg-white/5 hover:bg-emerald-500/5 transition-all group">
+                                    <h4 className="text-[10px] font-mono text-emerald-500 uppercase mb-1 tracking-widest">{service.type}</h4>
+                                    <p className="text-xs text-white font-bold mb-2 uppercase leading-tight">{service.subtitle}</p>
+                                    <p className="text-[10px] text-gray-400 leading-relaxed mb-3">{service.desc}</p>
+                                    <div className="text-[9px] font-mono text-gray-500 uppercase flex items-center justify-between pt-2 border-t border-white/5">
+                                        <span>Investment:</span>
+                                        <span className="text-white">{service.rate}</span>
+                                    </div>
                                 </div>
                             ))}
                         </div>
+
+                        <div className="p-4 border border-emerald-500/20 bg-emerald-500/5">
+                            <p className="text-[10px] text-gray-400 leading-relaxed uppercase tracking-tighter text-center">Production rates are calculated based on duration, technical complexity, and AI resource allocation (AED).</p>
+                        </div>
+                        
                         <button 
                             onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')}
                             className="w-full py-4 bg-emerald-500 text-black text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-emerald-400 transition-colors flex items-center justify-center gap-2"
@@ -205,157 +264,275 @@
             },
             {
                 id: 'transformation',
-                title: 'Engineering',
+                title: 'AI SOFT ENGINEERING',
                 icon: 'Code2',
-                description: 'Architecture of custom AI-native applications and hyper-automation service layers.',
+                description: 'Architecture of custom AI-native applications.',
                 content: (
-                    <div className="space-y-5">
-                        <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
+                    <div className="space-y-6">
+                        <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
                             <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Software Engineering" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
-                        <div className="p-4 border border-emerald-500/20 bg-emerald-500/5">
-                            <p className="text-xs text-gray-400 leading-relaxed uppercase tracking-tighter">Drives operational efficiency by automating high-latency legacy business processes.</p>
-                        </div>
+                        
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="p-4 border border-white/10 bg-white/5 flex flex-col gap-2">
-                                <Icon name="Cpu" className="text-emerald-500 w-4 h-4" />
-                                <h4 className="text-[10px] font-mono text-emerald-500 uppercase">Cognitive Apps</h4>
-                                <p className="text-xs text-gray-300">Development of custom AI-native applications for regional firms.</p>
-                            </div>
-                            <div className="p-4 border border-white/10 bg-white/5 flex flex-col gap-2">
-                                <Icon name="Zap" className="text-emerald-500 w-4 h-4" />
-                                <h4 className="text-[10px] font-mono text-emerald-500 uppercase">Hyper-automation</h4>
-                                <p className="text-xs text-gray-300">Service-layer automation protocols reducing operational latency.</p>
-                            </div>
+                            {[
+                                {
+                                    type: "Gamified Experiences",
+                                    subtitle: "Event Activations",
+                                    desc: "Interactive AI games and gamified experiences tailored for regional events and high-end brand activations.",
+                                    rate: "AED Upon Project Detail"
+                                },
+                                {
+                                    type: "Workflow Automation",
+                                    subtitle: "Operational Efficiency",
+                                    desc: "Custom business workflow automation apps and document processing systems for institutional knowledge automation.",
+                                    rate: "AED Upon Project Detail"
+                                },
+                                {
+                                    type: "Conversational Systems",
+                                    subtitle: "Natural Language UI",
+                                    desc: "AI chatbots and voice assistants for customer support, plus AI copilots and productivity assistants for teams.",
+                                    rate: "AED Upon Project Detail"
+                                },
+                                {
+                                    type: "Enterprise Integration",
+                                    subtitle: "System Harmonization",
+                                    desc: "AI integration with CRM, ERP, and legacy enterprise systems, alongside personalization and recommendation engines.",
+                                    rate: "AED Upon Project Detail"
+                                },
+                                {
+                                    type: "Robotics Interaction",
+                                    subtitle: "Simulation & Robotics",
+                                    desc: "Robotics and AI interaction applications for demo, simulation, and high-fidelity telepresence environments.",
+                                    rate: "AED Upon Project Detail"
+                                }
+                            ].map((service, i) => (
+                                <div key={i} className="p-4 border border-white/10 bg-white/5 hover:bg-emerald-500/5 transition-all group">
+                                    <h4 className="text-[10px] font-mono text-emerald-500 uppercase mb-1 tracking-widest">{service.type}</h4>
+                                    <p className="text-xs text-white font-bold mb-2 uppercase leading-tight">{service.subtitle}</p>
+                                    <p className="text-[10px] text-gray-400 leading-relaxed mb-3">{service.desc}</p>
+                                    <div className="text-[9px] font-mono text-gray-500 uppercase flex items-center justify-between pt-2 border-t border-white/5">
+                                        <span>Investment:</span>
+                                        <span className="text-white">{service.rate}</span>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                        <button onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')} className="w-full py-3 border border-emerald-500/30 text-[10px] font-mono uppercase tracking-widest hover:bg-emerald-500/10 transition-colors flex items-center justify-center gap-2">
-                            <Icon name="Terminal" className="text-emerald-500 w-4 h-4" /> Schedule Technical Diagnostic
+                        
+                        <button onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')} className="w-full py-4 border border-emerald-500/30 text-[10px] font-mono uppercase tracking-widest hover:bg-emerald-500/10 transition-colors flex items-center justify-center gap-2">
+                            <Icon name="Terminal" className="text-emerald-500 w-4 h-4" /> Initialize Technical Diagnostic
+                        </button>
+                    </div>
+                )
+            },
+            {
+                id: 'academy',
+                title: 'AI ACADEMY',
+                icon: 'BookOpen',
+                description: 'Workforce readiness and technical standardization.',
+                content: (
+                    <div className="space-y-6">
+                        <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Academy" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {[
+                                { 
+                                    title: "Cinematic Post-Production", 
+                                    price: "2,500 AED",
+                                    syllabus: ["Neural Color Grading", "Temporal Upscaling", "AI Object Removal", "Generative Inpainting"]
+                                },
+                                { 
+                                    title: "Generative Media Engineering", 
+                                    price: "3,200 AED",
+                                    syllabus: ["Custom GPT Architecture", "API Integration Nodes", "Prompt Chain Logic", "Token Optimization"]
+                                },
+                                { 
+                                    title: "Spatial Interface Governance", 
+                                    price: "2,800 AED",
+                                    syllabus: ["XR UI Frameworks", "Hand-Tracking Logic", "Spatial Audio Depth", "Unity Integration"]
+                                },
+                                { 
+                                    title: "Market Attention Logic", 
+                                    price: "1,500 AED",
+                                    syllabus: ["Algorithmic Viral Hooks", "AI-Driven SEO Maps", "Sentiment Data Mining", "Predictive Analytics"]
+                                },
+                                { 
+                                    title: "RunwayML Mastery", 
+                                    price: "2,200 AED",
+                                    syllabus: ["Gen-3 Alpha Workflows", "Motion Brush Precision", "Director Mode Control", "Frame Interpolation"]
+                                },
+                                { 
+                                    title: "AI Animation Frameworks", 
+                                    price: "3,500 AED",
+                                    syllabus: ["Stable Diffusion / ComfyUI", "AnimateDiff Temporal", "Rigged Character AI", "Lip-Sync Automation"]
+                                },
+                                { 
+                                    title: "AI Native Design", 
+                                    price: "2,000 AED",
+                                    syllabus: ["Flux.1 Latent Logic", "Vectorization Engines", "UI Components Gen", "Brand Identity Scaling"]
+                                },
+                                { 
+                                    title: "AI Video Production", 
+                                    price: "4,000 AED",
+                                    syllabus: ["Sora Simulation Logic", "Luma Dream Workflows", "Kling AI Cinematic", "Voice Cloning / Dubbing"]
+                                }
+                            ].map((course, i) => (
+                                <div key={i} className="p-4 border border-white/10 bg-white/5 hover:border-emerald-500/50 transition-all group relative overflow-hidden">
+                                    <div className="flex justify-between items-start mb-3">
+                                        <h4 className="text-[11px] font-bold text-white uppercase group-hover:text-emerald-400 leading-tight w-2/3">{course.title}</h4>
+                                        <span className="text-[10px] font-mono font-bold text-emerald-500 whitespace-nowrap">{course.price}</span>
+                                    </div>
+                                    <div className="space-y-1 border-t border-white/5 pt-3">
+                                        <p className="text-[8px] font-mono text-emerald-500/60 uppercase mb-1 tracking-tighter">Syllabus_Modules:</p>
+                                        {course.syllabus.map((item, idx) => (
+                                            <div key={idx} className="flex items-center gap-2">
+                                                <div className="w-1 h-1 bg-emerald-500/40 rounded-full" />
+                                                <span className="text-[9px] text-gray-400 font-mono tracking-tighter">{item}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )
+            },
+            {
+                id: 'questvr',
+                title: 'QUEST REQUEST XR',
+                icon: 'Eye',
+                description: 'Spatial software optimization for Meta Quest.',
+                content: (
+                    <div className="space-y-6">
+                        <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
+                            <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Meta Quest 3 Integration" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-3">
+                            <a href={APEX_CONFIG.links.questLinkedinGroup} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 py-4 border border-white/10 bg-white/5 hover:bg-emerald-500/10 hover:border-emerald-500/30 text-[10px] uppercase font-mono transition-all text-white group">
+                                <Icon name="Linkedin" className="w-4 h-4 text-emerald-500 group-hover:scale-110 transition-transform" /> Join XR Ecosystem LinkedIn Group
+                            </a>
+                        </div>
+
+                        <div className="border-l-2 border-emerald-500 pl-4 py-2 bg-emerald-500/5 mb-6">
+                            <h3 className="text-white font-bold uppercase text-xs mb-1">CORE VR / XR SERVICES</h3>
+                            <p className="text-[10px] text-gray-400 font-mono tracking-tighter uppercase">Comprehensive Spatial Solutions for Enterprise & Retail</p>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {[
+                                {
+                                    type: "Enterprise Simulation",
+                                    subtitle: "Workforce Readiness",
+                                    desc: "VR corporate training & simulation with XR onboarding and specific learning environments for industrial and corporate safety.",
+                                    rate: "AED Upon Project Detail"
+                                },
+                                {
+                                    type: "Digital Twins",
+                                    subtitle: "Spatial Visualization",
+                                    desc: "High-fidelity digital twin visualization for facilities, real estate, and factories alongside virtual product showrooms.",
+                                    rate: "AED Upon Project Detail"
+                                },
+                                {
+                                    type: "Immersive Production",
+                                    subtitle: "XR Stage & 360",
+                                    desc: "360° video storytelling and virtual production on XR stage environments. Includes AI-generated immersive environments.",
+                                    rate: "AED Upon Project Detail"
+                                },
+                                {
+                                    type: "Branded Activation",
+                                    subtitle: "Marketing & Retail",
+                                    desc: "XR advertising, branded experiences, and VR product launches. AR mobile applications for retail engagement and gamified XR.",
+                                    rate: "AED Upon Project Detail"
+                                },
+                                {
+                                    type: "Events & Culture",
+                                    subtitle: "Virtual Exhibitions",
+                                    desc: "Virtual exhibitions, hybrid event environments, and immersive museum or cultural experiences powered by spatial storytelling.",
+                                    rate: "AED Upon Project Detail"
+                                },
+                                {
+                                    type: "Platform Development",
+                                    subtitle: "Unity / Unreal / WebXR",
+                                    desc: "Custom Unity and Unreal Engine development. WebXR browser-based experiences with Spatial UI / UX and Avatar integration.",
+                                    rate: "AED Upon Project Detail"
+                                },
+                                {
+                                    type: "Operations",
+                                    subtitle: "Hardware & Analytics",
+                                    desc: "Full XR hardware deployment and setup. Integration of XR analytics for user engagement tracking and performance monitoring.",
+                                    rate: "AED Upon Project Detail"
+                                }
+                            ].map((service, i) => (
+                                <div key={i} className="p-4 border border-white/10 bg-white/5 hover:bg-emerald-500/5 transition-all group">
+                                    <h4 className="text-[10px] font-mono text-emerald-500 uppercase mb-1 tracking-widest">{service.type}</h4>
+                                    <p className="text-xs text-white font-bold mb-2 uppercase leading-tight">{service.subtitle}</p>
+                                    <p className="text-[10px] text-gray-400 leading-relaxed mb-3">{service.desc}</p>
+                                    <div className="text-[9px] font-mono text-gray-500 uppercase flex items-center justify-end pt-2 border-t border-white/5">
+                                        <span className="text-white">{service.rate}</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <button 
+                            onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')}
+                            className="w-full py-4 border border-emerald-500/30 bg-emerald-500/5 text-emerald-500 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-black transition-all flex items-center justify-center gap-2"
+                        >
+                            <Icon name="Eye" className="w-4 h-4" /> Configure Spatial Workflow
                         </button>
                     </div>
                 )
             },
             {
                 id: 'robomarket',
-                title: 'Robomarket',
+                title: 'ROBOMARKET.AE',
                 icon: 'ShoppingCart',
-                description: 'Centralized Middle East marketplace for curated enterprise robotics and humanoid systems.',
+                description: 'B2B marketplace for high-end robotics in the GCC.',
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Robomarket Robotics" />
+                            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Robomarket" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
-                        <div className="p-4 border border-emerald-500/20 bg-emerald-500/5">
-                            <h3 className="text-white font-bold uppercase text-xs mb-2 text-center">Simplifies procurement for verified, high-performance automated hardware.</h3>
-                            <p className="text-xs text-gray-400 text-center">Connecting high-end manufacturers with the Middle East market through curated technical listings and humanoid systems.</p>
+                        <div className="grid grid-cols-2 gap-3">
+                            <a href={APEX_CONFIG.links.robomarketLinkedin} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 py-3 border border-white/10 bg-white/5 hover:bg-white/10 text-[9px] uppercase font-mono transition-all">
+                                <Icon name="Linkedin" className="w-4 h-4 text-emerald-500" /> LinkedIn
+                            </a>
+                            <a href={APEX_CONFIG.links.robomarketX} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 py-3 border border-white/10 bg-white/5 hover:bg-white/10 text-[9px] uppercase font-mono transition-all">
+                                <Icon name="Twitter" className="w-4 h-4 text-emerald-500" /> X / Twitter
+                            </a>
                         </div>
-                        <a href={APEX_CONFIG.links.robomarket} target="_blank" rel="noopener noreferrer" className="w-full py-3 flex justify-center items-center gap-2 border border-emerald-500 text-[10px] font-mono uppercase tracking-widest hover:bg-emerald-500 hover:text-black transition-all">
-                            <Icon name="ExternalLink" className="w-4 h-4" /> Visit Robomarket.ae
+                        <a href={APEX_CONFIG.links.robomarket} target="_blank" rel="noopener noreferrer" className="w-full py-4 flex justify-center items-center gap-2 border border-emerald-500 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-black transition-all">
+                            <Icon name="ExternalLink" className="w-4 h-4" /> Access Marketplace
                         </a>
                     </div>
                 )
             },
             {
-                id: 'questvr',
-                title: 'QuestRequestXR',
-                icon: 'Eye',
-                description: 'Hardware calibration and spatial software optimization for professional VR environments.',
-                content: (
-                    <div className="space-y-5">
-                        <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Quest XR" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
-                        </div>
-                        <div className="p-4 border border-emerald-500/20 bg-emerald-500/5">
-                            <h3 className="text-white font-bold uppercase text-xs mb-2 text-center">Guarantees deployment readiness for immersive enterprise simulation platforms.</h3>
-                            <p className="text-xs text-gray-400 leading-relaxed uppercase tracking-tighter text-center">Specialized Meta Quest 3 and Pro hardware calibration for luxury regional activations.</p>
-                        </div>
-                    </div>
-                )
-            },
-            {
-                id: 'academy',
-                title: 'AI Academy',
-                icon: 'BookOpen',
-                description: 'Workforce readiness, institutional governance, and technical standardization.',
-                content: (
-                    <div className="space-y-6">
-                        <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Academy Learning" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
-                        </div>
-                        <div className="p-4 border border-emerald-500/20 bg-emerald-500/5">
-                            <h3 className="text-white font-bold uppercase text-xs mb-2 text-center">Reduces organizational transition risk by establishing standardized expert capabilities.</h3>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {[
-                                { title: "Cinematic Post-Production Standardization", price: "2,500 AED" },
-                                { title: "Generative Media Engineering & Deployment", price: "3,200 AED" },
-                                { title: "Spatial Interface Governance & Prototyping", price: "2,800 AED" },
-                                { title: "Market Sensitivity & Attention Logic", price: "1,500 AED" }
-                            ].map((course, i) => (
-                                <div key={i} onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')} className="p-4 border border-white/10 bg-white/5 hover:border-emerald-500/50 transition-all cursor-pointer group">
-                                    <h4 className="text-xs font-bold text-white uppercase mb-2 group-hover:text-emerald-400 transition-colors leading-tight">{course.title}</h4>
-                                    <div className="flex justify-between items-center text-[10px] font-mono">
-                                        <span className="text-gray-400 uppercase">Verify Availability</span>
-                                        <span className="font-bold text-white">{course.price}</span>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        <button 
-                            onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')}
-                            className="w-full py-3 border border-emerald-500/30 text-[10px] font-mono uppercase tracking-widest hover:bg-emerald-500/10 transition-colors flex items-center justify-center gap-2"
-                        >
-                            <Icon name="BookOpen" className="text-emerald-500 w-4 h-4" /> Request Institutional Access
-                        </button>
-                    </div>
-                )
-            },
-            {
                 id: 'about',
-                title: 'About & Contact',
+                title: 'CONTACT',
                 icon: 'Info',
-                description: 'System documentation and secure communication lines.',
+                description: 'Direct communication channels.',
                 content: (
                     <div className="space-y-6">
-                        <div className="p-4 border border-emerald-500/20 bg-emerald-500/5 space-y-3">
-                           <h3 className="text-white font-bold uppercase text-[10px] tracking-widest">Agency & Partner Positioning ———</h3>
-                           <p className="text-[10px] text-gray-400 uppercase leading-relaxed tracking-tight">
-                              APEX INNOVATE LLC operates as a technical execution layer designed to support, not compete with, creative and digital agencies. We function as a systems partner, providing AI-native infrastructure, specialized production, and automation capabilities that integrate directly into agency workflows. Our role is to handle technical complexity and scale, allowing partners to maintain primary client relationships while delivering high-fidelity AI and spatial solutions.
-                           </p>
-                        </div>
-                        <div className="p-5 border border-white/10 bg-white/5">
-                           <h3 className="text-white font-bold uppercase text-xs mb-4">Functional Divisions</h3>
-                           <div className="space-y-4">
-                              {[
-                                { icon: "Video", title: "Studio" },
-                                { icon: "Code2", title: "Engineering" },
-                                { icon: "ShoppingCart", title: "Robomarket" },
-                                { icon: "Eye", title: "QuestRequestXR" },
-                                { icon: "BookOpen", title: "AI Academy" }
-                              ].map((div, i) => (
-                                <div key={i} className="flex items-center gap-4">
-                                  <Icon name={div.icon} className="text-emerald-500 w-4 h-4 shrink-0" />
-                                  <p className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">{div.title}</p>
-                                </div>
-                              ))}
-                           </div>
-                        </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                           <a href={APEX_CONFIG.links.whatsapp} target="_blank" rel="noopener noreferrer" className="p-5 border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 transition-all flex flex-col items-center gap-3">
+                           <a href={APEX_CONFIG.links.whatsapp} target="_blank" className="p-5 border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 transition-all flex flex-col items-center gap-3">
                               <Icon name="MessageSquare" className="text-emerald-500 w-6 h-6" />
                               <div className="text-center">
-                                <p className="text-xs font-bold text-white uppercase">Secure Chat</p>
+                                <p className="text-xs font-bold text-white uppercase">Whatsapp Chat</p>
                                 <p className="text-[9px] font-mono text-gray-500 tracking-widest">+971 58 674 9577</p>
                               </div>
                            </a>
-                           <a href={APEX_CONFIG.links.linkedin} target="_blank" rel="noopener noreferrer" className="p-5 border border-white/10 bg-white/5 hover:bg-white/10 transition-all flex flex-col items-center gap-3">
+                           <a href={APEX_CONFIG.links.linkedin} target="_blank" className="p-5 border border-white/10 bg-white/5 hover:bg-white/10 transition-all flex flex-col items-center gap-3">
                               <Icon name="Linkedin" className="text-white w-6 h-6" />
                               <div className="text-center">
                                 <p className="text-xs font-bold text-white uppercase">LinkedIn</p>
-                                <p className="text-[9px] font-mono text-gray-500 tracking-widest">Joseph Ribal Nasr</p>
+                                <p className="text-[9px] font-mono text-gray-500 tracking-widest">Managing Director</p>
                               </div>
                            </a>
                         </div>
@@ -393,6 +570,7 @@
 
             return (
                 <div className="min-h-screen relative overflow-y-auto">
+                    <CustomCursor />
                     <header className="border-b border-white/5 p-4 bg-black/90 backdrop-blur-xl sticky top-0 z-40 flex justify-between items-center">
                         <div className="flex items-center gap-4">
                             <div className="w-8 h-8 border border-emerald-500/30 flex items-center justify-center bg-emerald-500/5">
@@ -400,7 +578,7 @@
                             </div>
                             <div>
                                 <h1 className="text-xs font-mono font-black text-white tracking-[0.3em] uppercase">APEX INNOVATE LLC</h1>
-                                <p className="text-[9px] text-gray-500 font-mono tracking-tighter uppercase">{time} // AI COMPANY BASED IN UAE</p>
+                                <p className="text-[9px] text-gray-500 font-mono tracking-tighter uppercase">{time} // AI Innovation Company</p>
                             </div>
                         </div>
                     </header>
@@ -421,7 +599,7 @@
                                     <div className="flex items-center gap-4 relative z-10">
                                         <Icon name={section.icon} className={`w-5 h-5 ${activeNode === section.id ? 'text-emerald-500' : 'text-gray-600'}`} />
                                         <h3 className={`text-[10px] font-bold uppercase tracking-widest ${activeNode === section.id ? 'text-white' : 'text-gray-500'}`}>
-                                            {section.title}
+                                            {section.id === 'questvr' ? 'VR / AR Solutions' : section.title}
                                         </h3>
                                     </div>
                                     {activeNode === section.id && <motion.div layoutId="indicator" className="absolute left-0 top-0 bottom-0 w-1 bg-emerald-500" />}
