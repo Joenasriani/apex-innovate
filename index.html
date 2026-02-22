@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APEX INNOVATE LLC | AI ACADEMY & STUDIO</title>
+    <title>APEX INNOVATE LLC | AI STUDIO & ACADEMY</title>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -69,6 +69,9 @@
     <div class="noise-overlay"></div>
 
     <script type="text/babel">
+        // Disable global right-click context menu
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
         const { useState, useEffect, useRef } = React;
         
         const motion = window.Motion ? window.Motion.motion : { div: (props) => <div {...props} />, span: (props) => <span {...props} /> };
@@ -242,7 +245,7 @@
                                 category: "AI ENGINEERING & AGENTS",
                                 courses: [
                                     { title: "AI Agents & Automation Systems", price: "4,500 AED", syllabus: ["Autonomous Agent Logic", "Multi-Agent Swarms", "Tool-Use Frameworks"] },
-                                    { title: "Conversational AI Engineering", price: "3,800 AED", syllabus: ["NLP Context Windows", "Voice Synthesis", "Persona Consistency"] },
+                                    { title: "Conversational AI Engineering", price: "3,800 AED", syllabus: ["NLP & Context Windows", "Voice Synthesis", "Persona Consistency"] },
                                     { title: "Custom AI Engineering", price: "3,200 AED", syllabus: ["Building Your Own GPT", "Using AI APIs", "Prompt Engineering"] }
                                 ]
                             },
@@ -256,7 +259,7 @@
                             {
                                 category: "STRATEGIC AI & PRODUCT",
                                 courses: [
-                                    { title: "AI Business Transformation", price: "5,500 AED", syllabus: ["Enterprise ROI Modeling", "AI Ethics & Governance", "Operational Upscaling"] },
+                                    { title: "AI Business Transformation", price: "5,500 AED", syllabus: ["Enterprise ROI Modeling", "AI Ethics & Governance", "Change Management"] },
                                     { title: "AI Product Design", price: "3,500 AED", syllabus: ["Human-AI UX Patterns", "Dynamic Interface Logic", "Prototype Generation"] }
                                 ]
                             },
