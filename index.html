@@ -84,9 +84,6 @@
                 github: "https://github.com/joenasr",
                 email: "joe@robomarket.ae",
                 whatsapp: "https://wa.me/971586749577",
-                waAcademy: "https://wa.me/971586749577?text=Hi%20I%E2%80%99m%20interested%20in%20AI%20Academy%20courses.%20Can%20you%20share%20details%2C%20formats%2C%20and%20pricing%20options%3F",
-                waProduction: "https://wa.me/971586749577?text=Hi%20I%E2%80%99m%20interested%20in%20AI%20media%20production.%20Can%20you%20share%20details%20about%20workflow%2C%20timeline%2C%20and%20pricing%3F",
-                waSoftware: "https://wa.me/971586749577?text=Hi%20I%E2%80%99m%20interested%20in%20AI%20software%20apps%20and%20automation.%20Can%20you%20share%20capabilities%2C%20use%20cases%2C%20and%20project%20requirements%3F",
                 robomarket: "https://robomarket.ae",
                 robomarketLinkedin: "https://www.linkedin.com/company/robomarket-uae/",
                 robomarketX: "https://x.com/robomarketAE",
@@ -120,7 +117,7 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="AI Neural Abstract" />
+                            <img src="identity.avif" className="pro-img w-full h-full object-cover" alt="UAE Identity" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         <div className="border-l-2 border-emerald-500 pl-4 py-2 bg-emerald-500/5">
@@ -141,42 +138,12 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="AI Production" />
+                            <img src="aimedia.jpg" className="pro-img w-full h-full object-cover" alt="AI Production" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {[
-                                {
-                                    type: "AI Video Localization",
-                                    subtitle: "Global Cultural Reach",
-                                    desc: "Multilingual lip-syncing and cultural adaptation using neural voice cloning to scale your content globally.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "AI Post-Production Automation",
-                                    subtitle: "Rapid Workflow Scaling",
-                                    desc: "Automated color grading, object removal, and noise reduction systems that cut production time by 80%.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "Virtual Production Previs",
-                                    subtitle: "Blueprint for Reality",
-                                    desc: "Real-time AI environment blocking and camera path planning to visualize cinematic results before the shoot.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "Digital Human & Avatar Video",
-                                    subtitle: "Synthetic Actor Scale",
-                                    desc: "Photorealistic AI actors and personalized synthetic avatars for consistent brand messaging and training.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "Video Analytics & Optimization",
-                                    subtitle: "Performance Driven Results",
-                                    desc: "Neural heatmaps and data-driven engagement tracking to optimize frame-by-frame impact and ROI.",
-                                    rate: "Contact for Pricing"
-                                },
                                 {
                                     type: "Short-Form Content",
                                     subtitle: "Built for Virality",
@@ -225,10 +192,10 @@
                         </div>
                         
                         <button 
-                            onClick={() => window.open(APEX_CONFIG.links.waProduction, '_blank')}
+                            onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')}
                             className="w-full py-4 bg-emerald-500 text-black text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-emerald-400 transition-colors flex items-center justify-center gap-2"
                         >
-                            <Icon name="Waves" className="w-4 h-4" /> REQUEST PROJECT CONSULTATION
+                            <Icon name="Waves" className="w-4 h-4" /> Start Your Production
                         </button>
                     </div>
                 )
@@ -241,7 +208,7 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Software Engineering" />
+                            <img src="aisoft.avif" className="pro-img w-full h-full object-cover" alt="Software Engineering" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         
@@ -290,7 +257,7 @@
                             ))}
                         </div>
                         
-                        <button onClick={() => window.open(APEX_CONFIG.links.waSoftware, '_blank')} className="w-full py-4 border border-emerald-500/30 text-[10px] font-mono uppercase tracking-widest hover:bg-emerald-500/10 transition-colors flex items-center justify-center gap-2">
+                        <button onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')} className="w-full py-4 border border-emerald-500/30 text-[10px] font-mono uppercase tracking-widest hover:bg-emerald-500/10 transition-colors flex items-center justify-center gap-2">
                             <Icon name="Terminal" className="text-emerald-500 w-4 h-4" /> Get a Technical Quote
                         </button>
                     </div>
@@ -304,53 +271,12 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Academy" />
+                            <img src="aiacademy.avif" className="pro-img w-full h-full object-cover" alt="Academy" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
-                        </div>
-
-                        <div className="border-l-2 border-emerald-500 pl-4 py-2 bg-emerald-500/5">
-                            <p className="text-gray-400 leading-relaxed text-sm">
-                                The Apex AI Academy provides hands-on training programs designed to help professionals, creative teams, and enterprises adopt AI as a practical capability rather than a theoretical concept. Our courses focus on real production workflows, automation systems, immersive technologies, and intelligent media pipelines—equipping participants with the skills required to build, deploy, and scale AI-driven solutions.
-                            </p>
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {[
-                                { 
-                                    title: "AI Agents & Automation Systems", 
-                                    price: "4,500 AED",
-                                    syllabus: ["Autonomous Agent Logic", "Multi-Agent Swarms", "Tool-Use Frameworks", "Automation Orchestration"]
-                                },
-                                { 
-                                    title: "Conversational AI Engineering", 
-                                    price: "3,800 AED",
-                                    syllabus: ["NLP & Context Windows", "Voice Synthesis Pipelines", "Real-time Translation", "Persona Consistency"]
-                                },
-                                { 
-                                    title: "AI Business Transformation", 
-                                    price: "5,500 AED",
-                                    syllabus: ["Enterprise ROI Modeling", "AI Ethics & Governance", "Change Management", "Operational Upscaling"]
-                                },
-                                { 
-                                    title: "XR Development Engineering", 
-                                    price: "4,200 AED",
-                                    syllabus: ["Unity Spatial Logic", "Unreal Mixed Reality", "Hand-Tracking Interaction", "AR Anchor Systems"]
-                                },
-                                { 
-                                    title: "AI Product Design", 
-                                    price: "3,500 AED",
-                                    syllabus: ["Human-AI UX Patterns", "Dynamic Interface Logic", "Prototype Generation", "Feedback Loop Design"]
-                                },
-                                { 
-                                    title: "AI Content Automation Systems", 
-                                    price: "4,800 AED",
-                                    syllabus: ["Batch Content Pipelines", "Social Scaling Engines", "Brand Guardrails", "Automated Post-Production"]
-                                },
-                                { 
-                                    title: "Generative 3D & Spatial Content", 
-                                    price: "4,600 AED",
-                                    syllabus: ["Text-to-3D Workflows", "NeRF Scene Reconstruction", "Gaussian Splatting", "Virtual Set Design"]
-                                },
                                 { 
                                     title: "AI Video Post-Production", 
                                     price: "2,500 AED",
@@ -409,13 +335,6 @@
                                 </div>
                             ))}
                         </div>
-
-                        <button 
-                            onClick={() => window.open(APEX_CONFIG.links.waAcademy, '_blank')}
-                            className="w-full py-4 mt-6 bg-emerald-500 text-black text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-emerald-400 transition-colors flex items-center justify-center gap-2"
-                        >
-                            <Icon name="ExternalLink" className="w-4 h-4" /> EXPLORE TRAINING OPTIONS
-                        </button>
                     </div>
                 )
             },
@@ -427,7 +346,7 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Meta Quest 3 Integration" />
+                            <img src="vr.webp" className="pro-img w-full h-full object-cover" alt="Meta Quest 3 Integration" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
 
@@ -519,25 +438,11 @@
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         <div className="border-l-2 border-emerald-500 pl-4 py-2 bg-emerald-500/5">
-                            <p className="text-emerald-400 font-mono text-[10px] mb-1 uppercase tracking-widest">Enterprise Ecosystem</p>
-                            <p className="text-gray-300 leading-relaxed text-sm">
-                                RoboMarket.ae is a GCC-focused B2B robotics marketplace designed to help organizations evaluate and source service and humanoid robots through curated categories, vendor discovery, and deployment-oriented information.
+                            <p className="text-emerald-400 font-mono text-[10px] mb-1 uppercase tracking-widest">B2B Robotics Marketplace</p>
+                            <p className="text-gray-400 leading-relaxed text-sm">
+                                RoboMarket.ae is a GCC-focused B2B robotics marketplace helping enterprises discover and evaluate service and humanoid robots for real-world deployment. We curate vendors, map robots to use-cases, and support decision-makers with practical deployment guidance and ROI-focused insights.
                             </p>
                         </div>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                            {[
-                                "Curated listings and vendor discovery",
-                                "Use-case-driven browsing (hospitality, logistics, retail, events, facilities)",
-                                "Practical decision support for procurement and pilots"
-                            ].map((feature, i) => (
-                                <div key={i} className="p-3 border border-white/5 bg-white/5 flex gap-3 items-start">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
-                                    <p className="text-[10px] text-gray-400 font-mono leading-tight tracking-tighter uppercase">{feature}</p>
-                                </div>
-                            ))}
-                        </div>
-
                         <div className="grid grid-cols-2 gap-3">
                             <a href={APEX_CONFIG.links.robomarketLinkedin} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 py-3 border border-white/10 bg-white/5 hover:bg-white/10 text-[9px] uppercase font-mono transition-all">
                                 <Icon name="Linkedin" className="w-4 h-4 text-emerald-500" /> LinkedIn
@@ -616,7 +521,7 @@
                             </div>
                             <div>
                                 <h1 className="text-xs font-mono font-black text-white tracking-[0.3em] uppercase">APEX INNOVATE LLC</h1>
-                                <p className="text-[9px] text-gray-500 font-mono tracking-tighter uppercase">{time} // AI Innovation Company</p>
+                                <p className="text-[9px] text-gray-500 font-mono tracking-tighter uppercase">{time} // INNOVATION STUDIO</p>
                             </div>
                         </div>
                     </header>
