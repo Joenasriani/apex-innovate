@@ -221,47 +221,91 @@
                 icon: 'BookOpen',
                 description: 'Master AI with our expert-led courses.',
                 content: (
-                    <div className="space-y-6">
+                    <div className="space-y-8">
                         <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
                             <img src="images/aiacademy.avif" className="pro-img w-full h-full object-cover" alt="AI Academy" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            {[
-                                { title: "AI Agents & Automation Systems", price: "4,500 AED", syllabus: ["Autonomous Agent Logic", "Multi-Agent Swarms", "Tool-Use Frameworks"] },
-                                { title: "Conversational AI Engineering", price: "3,800 AED", syllabus: ["NLP & Context Windows", "Voice Synthesis Pipelines", "Real-time Translation"] },
-                                { title: "AI Business Transformation", price: "5,500 AED", syllabus: ["Enterprise ROI Modeling", "AI Ethics & Governance", "Change Management"] },
-                                { title: "XR Development Engineering", price: "4,200 AED", syllabus: ["Unity Spatial Logic", "Unreal Mixed Reality", "Hand-Tracking Interaction"] },
-                                { title: "AI Product Design", price: "3,500 AED", syllabus: ["Human-AI UX Patterns", "Dynamic Interface Logic", "Prototype Generation"] },
-                                { title: "AI Content Automation Systems", price: "4,800 AED", syllabus: ["Batch Content Pipelines", "Social Scaling Engines", "Brand Guardrails"] },
-                                { title: "Generative 3D & Spatial Content", price: "4,600 AED", syllabus: ["Text-to-3D Workflows", "NeRF Scene Reconstruction", "Gaussian Splatting"] },
-                                { title: "AI Video Post-Production", price: "2,500 AED", syllabus: ["Coloring with AI", "Remove Objects", "Upscaling Resolution"] },
-                                { title: "Custom AI Engineering", price: "3,200 AED", syllabus: ["Building Your Own GPT", "Using AI APIs", "Prompt Engineering"] },
-                                { title: "VR / AR Design", price: "2,800 AED", syllabus: ["Spatial UI Design", "Hand-Tracking Tools", "Unity for XR"] },
-                                { title: "AI Growth & Marketing", price: "1,500 AED", syllabus: ["Viral Content Hooks", "AI-Powered SEO", "Predictive Sales"] },
-                                { title: "RunwayML Mastery", price: "2,200 AED", syllabus: ["Gen-3 Video Workflows", "Motion Brush Control", "Director Mode"] },
-                                { title: "AI Animation Frameworks", price: "3,500 AED", syllabus: ["Stable Diffusion Mastery", "Character Rigs", "AI Video-to-Video"] },
-                                { title: "AI Design & Branding", price: "2,000 AED", syllabus: ["Flux.1 Image Logic", "Vector Graphic AI", "Scalable Branding"] },
-                                { title: "Advanced AI Video", price: "4,000 AED", syllabus: ["Sora & Luma Workflows", "Kling AI Cinematic", "Voice Cloning"] }
-                            ].map((course, i) => (
-                                <div key={i} className="p-4 border border-white/10 bg-white/5 hover:border-emerald-500/50 transition-all group relative overflow-hidden">
-                                    <div className="flex justify-between items-start mb-3">
-                                        <h4 className="text-[11px] font-bold text-white uppercase group-hover:text-emerald-400 leading-tight w-2/3">{course.title}</h4>
-                                        <span className="text-[10px] font-mono font-bold text-emerald-500 whitespace-nowrap">{course.price}</span>
-                                    </div>
-                                    <div className="space-y-1 border-t border-white/5 pt-3">
-                                        <p className="text-[8px] font-mono text-emerald-500/60 uppercase mb-1 tracking-tighter">What You'll Learn:</p>
-                                        {course.syllabus.map((item, idx) => (
-                                            <div key={idx} className="flex items-center gap-2">
-                                                <div className="w-1 h-1 bg-emerald-500/40 rounded-full" />
-                                                <span className="text-[9px] text-gray-400 font-mono tracking-tighter">{item}</span>
-                                            </div>
-                                        ))}
-                                    </div>
+                        {[
+                            {
+                                category: "CREATIVE SUITE & UI DESIGN",
+                                courses: [
+                                    { title: "Adobe Premiere Pro", price: "2,500 AED", syllabus: ["Timeline Orchestration", "Cinematic Cut Logic", "Audio Dynamic Linking"] },
+                                    { title: "Adobe After Effects", price: "3,000 AED", syllabus: ["Motion Graphics", "Visual Effects (VFX)", "Compositing Logic"] },
+                                    { title: "Adobe Photoshop", price: "1,800 AED", syllabus: ["Generative Fill", "Layer Masking", "Neural Retouching"] },
+                                    { title: "Adobe Illustrator", price: "1,800 AED", syllabus: ["Vector Architecture", "Brand Identity", "Iconography Systems"] },
+                                    { title: "Design with Figma", price: "2,200 AED", syllabus: ["Component Systems", "Auto-layout", "Prototyping"] }
+                                ]
+                            },
+                            {
+                                category: "AI ENGINEERING & AGENTS",
+                                courses: [
+                                    { title: "AI Agents & Automation Systems", price: "4,500 AED", syllabus: ["Autonomous Agent Logic", "Multi-Agent Swarms", "Tool-Use Frameworks"] },
+                                    { title: "Conversational AI Engineering", price: "3,800 AED", syllabus: ["NLP Context Windows", "Voice Synthesis", "Persona Consistency"] },
+                                    { title: "Custom AI Engineering", price: "3,200 AED", syllabus: ["Building Your Own GPT", "Using AI APIs", "Prompt Engineering"] }
+                                ]
+                            },
+                            {
+                                category: "SPATIAL COMPUTING & 3D",
+                                courses: [
+                                    { title: "XR Development Engineering", price: "4,200 AED", syllabus: ["Unity Spatial Logic", "Unreal Mixed Reality", "Hand-Tracking"] },
+                                    { title: "Generative 3D & Spatial Content", price: "4,600 AED", syllabus: ["Text-to-3D Workflows", "NeRF Scene Reconstruction", "Virtual Set Design"] }
+                                ]
+                            },
+                            {
+                                category: "STRATEGIC AI & PRODUCT",
+                                courses: [
+                                    { title: "AI Business Transformation", price: "5,500 AED", syllabus: ["Enterprise ROI Modeling", "AI Ethics & Governance", "Operational Upscaling"] },
+                                    { title: "AI Product Design", price: "3,500 AED", syllabus: ["Human-AI UX Patterns", "Dynamic Interface Logic", "Prototype Generation"] }
+                                ]
+                            },
+                            {
+                                category: "AUTOMATED MEDIA & GROWTH",
+                                courses: [
+                                    { title: "AI Content Automation Systems", price: "4,800 AED", syllabus: ["Batch Content Pipelines", "Social Scaling Engines", "Brand Guardrails"] },
+                                    { title: "AI Video Post-Production", price: "2,500 AED", syllabus: ["Coloring with AI", "Remove Objects", "Upscaling Resolution"] },
+                                    { title: "RunwayML Mastery", price: "2,200 AED", syllabus: ["Gen-3 Video Workflows", "Motion Brush Control", "Director Mode"] },
+                                    { title: "AI Animation Frameworks", price: "3,500 AED", syllabus: ["Stable Diffusion Mastery", "Character Rigs", "AI Video-to-Video"] },
+                                    { title: "AI Growth & Marketing", price: "1,500 AED", syllabus: ["Viral Content Hooks", "AI-Powered SEO", "Predictive Sales"] },
+                                    { title: "Advanced AI Video", price: "4,000 AED", syllabus: ["Sora & Luma Workflows", "Kling AI Cinematic", "Voice Cloning"] }
+                                ]
+                            }
+                        ].map((cat, idx) => (
+                            <div key={idx} className="space-y-4">
+                                <div className="flex items-center gap-3">
+                                    <div className="h-[1px] flex-grow bg-white/10" />
+                                    <h3 className="text-[10px] font-mono font-bold text-emerald-500 uppercase tracking-[0.2em] whitespace-nowrap">{cat.category}</h3>
+                                    <div className="h-[1px] flex-grow bg-white/10" />
                                 </div>
-                            ))}
-                        </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {cat.courses.map((course, i) => (
+                                        <div key={i} className="p-4 border border-white/10 bg-white/5 hover:border-emerald-500/50 transition-all group relative overflow-hidden">
+                                            <div className="flex justify-between items-start mb-3">
+                                                <h4 className="text-[11px] font-bold text-white uppercase group-hover:text-emerald-400 leading-tight w-2/3">{course.title}</h4>
+                                                <span className="text-[10px] font-mono font-bold text-emerald-500 whitespace-nowrap">{course.price}</span>
+                                            </div>
+                                            <div className="space-y-1 border-t border-white/5 pt-3">
+                                                <p className="text-[8px] font-mono text-emerald-500/60 uppercase mb-1 tracking-tighter">Focus Areas:</p>
+                                                {course.syllabus.map((item, idx) => (
+                                                    <div key={idx} className="flex items-center gap-2">
+                                                        <div className="w-1 h-1 bg-emerald-500/40 rounded-full" />
+                                                        <span className="text-[9px] text-gray-400 font-mono tracking-tighter uppercase">{item}</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+
+                        <button 
+                            onClick={() => window.open(`${APEX_CONFIG.links.whatsapp}?text=I%20am%20interested%20in%20enrolling%20in%20the%20AI%20Academy%20courses.`, '_blank')}
+                            className="w-full py-4 bg-emerald-500 text-black text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-emerald-400 transition-colors flex items-center justify-center gap-2"
+                        >
+                            <Icon name="GraduationCap" className="w-4 h-4" /> Enroll in the Academy
+                        </button>
                     </div>
                 )
             },
