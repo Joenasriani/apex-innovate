@@ -117,7 +117,7 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="identity.avif" className="pro-img w-full h-full object-cover" alt="UAE Identity" />
+                            <img src="images/identity.avif" className="pro-img w-full h-full object-cover" alt="Identity" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         <div className="border-l-2 border-emerald-500 pl-4 py-2 bg-emerald-500/5">
@@ -138,42 +138,22 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="aimedia.jpg" className="pro-img w-full h-full object-cover" alt="AI Production" />
+                            <img src="images/aimedia.jpg" className="pro-img w-full h-full object-cover" alt="AI Media" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {[
-                                {
-                                    type: "Short-Form Content",
-                                    subtitle: "Built for Virality",
-                                    desc: "Optimized videos for TikTok, Reels, and Shorts designed to grab attention and keep viewers watching.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "Enterprise Ads",
-                                    subtitle: "Premium Brand Quality",
-                                    desc: "Cinematic commercials with high-end visuals and AI effects that keep your brand consistent and modern.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "AI Animation",
-                                    subtitle: "The Future of Storytelling",
-                                    desc: "Unique animated videos and music videos using the latest neural networks and AI character tools.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "UGC Ad Frameworks",
-                                    subtitle: "Ads that Sell",
-                                    desc: "Authentic-looking customer content powered by AI scripts and realistic lip-syncing for better sales.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "3D Product Videos",
-                                    subtitle: "Luxury Visualization",
-                                    desc: "Stunning 3D environments and product showcases for luxury brands and tech hardware.",
-                                    rate: "Contact for Pricing"
-                                }
+                                { type: "AI Video Localization", subtitle: "Global Cultural Reach", desc: "Multilingual lip-syncing and cultural adaptation using neural voice cloning.", rate: "Contact for Pricing" },
+                                { type: "AI Post-Production Automation", subtitle: "Rapid Workflow Scaling", desc: "Automated color grading, object removal, and noise reduction systems.", rate: "Contact for Pricing" },
+                                { type: "Virtual Production Previs", subtitle: "Blueprint for Reality", desc: "Real-time AI environment blocking and camera path planning.", rate: "Contact for Pricing" },
+                                { type: "Digital Human & Avatar Video", subtitle: "Synthetic Actor Scale", desc: "Photorealistic AI actors and personalized synthetic avatars.", rate: "Contact for Pricing" },
+                                { type: "Video Analytics & Optimization", subtitle: "Performance Driven Results", desc: "Neural heatmaps and data-driven engagement tracking.", rate: "Contact for Pricing" },
+                                { type: "Short-Form Content", subtitle: "Built for Virality", desc: "Optimized videos for TikTok, Reels, and Shorts designed to grab attention.", rate: "Contact for Pricing" },
+                                { type: "Enterprise Ads", subtitle: "Premium Brand Quality", desc: "Cinematic commercials with high-end visuals and AI effects.", rate: "Contact for Pricing" },
+                                { type: "AI Animation", subtitle: "The Future of Storytelling", desc: "Unique animated videos using neural networks and AI character tools.", rate: "Contact for Pricing" },
+                                { type: "UGC Ad Frameworks", subtitle: "Ads that Sell", desc: "Authentic-looking customer content powered by AI scripts.", rate: "Contact for Pricing" },
+                                { type: "3D Product Videos", subtitle: "Luxury Visualization", desc: "Stunning 3D environments and product showcases.", rate: "Contact for Pricing" }
                             ].map((service, i) => (
                                 <div key={i} className="p-4 border border-white/10 bg-white/5 hover:bg-emerald-500/5 transition-all group">
                                     <h4 className="text-[10px] font-mono text-emerald-500 uppercase mb-1 tracking-widest">{service.type}</h4>
@@ -191,10 +171,7 @@
                             <p className="text-[10px] text-gray-400 leading-relaxed uppercase tracking-tighter text-center">Pricing depends on video length, complexity, and the AI computing power required.</p>
                         </div>
                         
-                        <button 
-                            onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')}
-                            className="w-full py-4 bg-emerald-500 text-black text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-emerald-400 transition-colors flex items-center justify-center gap-2"
-                        >
+                        <button onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')} className="w-full py-4 bg-emerald-500 text-black text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-emerald-400 transition-colors flex items-center justify-center gap-2">
                             <Icon name="Waves" className="w-4 h-4" /> Start Your Production
                         </button>
                     </div>
@@ -208,42 +185,17 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="aisoft.avif" className="pro-img w-full h-full object-cover" alt="Software Engineering" />
+                            <img src="images/aisoft.avif" className="pro-img w-full h-full object-cover" alt="AI Software" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {[
-                                {
-                                    type: "Interactive Games",
-                                    subtitle: "Event Activations",
-                                    desc: "Fun AI-powered games and experiences created for events and high-end brand launches.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "Workflow Automation",
-                                    subtitle: "Work Faster",
-                                    desc: "Custom business apps that handle repetitive operations and data automatically so your team can focus on what matters.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "Smart Chat Systems",
-                                    subtitle: "AI Support & Copilots",
-                                    desc: "Advanced AI chatbots and voice assistants that talk naturally to your customers or help your staff.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "Enterprise Integration",
-                                    subtitle: "Upgrade Your Tech",
-                                    desc: "Connecting AI to your existing business software (CRM/ERP) to make your current systems smarter.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "Robotics Interaction",
-                                    subtitle: "Human-Robot Interaction",
-                                    desc: "Apps that allow people to interact with robots through simulations and smart control interfaces.",
-                                    rate: "Contact for Pricing"
-                                }
+                                { type: "Interactive Games", subtitle: "Event Activations", desc: "Fun AI-powered games and experiences created for events.", rate: "Contact for Pricing" },
+                                { type: "Workflow Automation", subtitle: "Work Faster", desc: "Custom business apps that handle repetitive operations automatically.", rate: "Contact for Pricing" },
+                                { type: "Smart Chat Systems", subtitle: "AI Support & Copilots", desc: "Advanced AI chatbots and voice assistants that talk naturally.", rate: "Contact for Pricing" },
+                                { type: "Enterprise Integration", subtitle: "Upgrade Your Tech", desc: "Connecting AI to your existing business software (CRM/ERP).", rate: "Contact for Pricing" },
+                                { type: "Robotics Interaction", subtitle: "Human-Robot Interaction", desc: "Apps that allow people to interact with robots through simulations.", rate: "Contact for Pricing" }
                             ].map((service, i) => (
                                 <div key={i} className="p-4 border border-white/10 bg-white/5 hover:bg-emerald-500/5 transition-all group">
                                     <h4 className="text-[10px] font-mono text-emerald-500 uppercase mb-1 tracking-widest">{service.type}</h4>
@@ -271,52 +223,27 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="aiacademy.avif" className="pro-img w-full h-full object-cover" alt="Academy" />
+                            <img src="images/aiacademy.avif" className="pro-img w-full h-full object-cover" alt="AI Academy" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {[
-                                { 
-                                    title: "AI Video Post-Production", 
-                                    price: "2,500 AED",
-                                    syllabus: ["Coloring with AI", "Undelete & Remove Objects", "Upscaling Resolution", "AI Fill & Lighting"]
-                                },
-                                { 
-                                    title: "Custom AI Engineering", 
-                                    price: "3,200 AED",
-                                    syllabus: ["Building Your Own GPT", "Using AI APIs", "Prompt Engineering", "Cost Optimization"]
-                                },
-                                { 
-                                    title: "VR / AR Design", 
-                                    price: "2,800 AED",
-                                    syllabus: ["Spatial UI Design", "Hand-Tracking Tools", "3D Audio Depth", "Unity for XR"]
-                                },
-                                { 
-                                    title: "AI Growth & Marketing", 
-                                    price: "1,500 AED",
-                                    syllabus: ["Viral Content Hooks", "AI-Powered SEO", "Customer Data Mining", "Predictive Sales"]
-                                },
-                                { 
-                                    title: "RunwayML Mastery", 
-                                    price: "2,200 AED",
-                                    syllabus: ["Gen-3 Video Workflows", "Motion Brush Control", "Director Mode Techniques", "Frame Editing"]
-                                },
-                                { 
-                                    title: "AI Animation Frameworks", 
-                                    price: "3,500 AED",
-                                    syllabus: ["Stable Diffusion Mastery", "Animated Character Rigs", "Realistic Lip-Syncing", "AI Video-to-Video"]
-                                },
-                                { 
-                                    title: "AI Design & Branding", 
-                                    price: "2,000 AED",
-                                    syllabus: ["Flux.1 Image Logic", "Vector Graphic AI", "UI Component Generation", "Scalable Branding"]
-                                },
-                                { 
-                                    title: "Advanced AI Video", 
-                                    price: "4,000 AED",
-                                    syllabus: ["Sora & Luma Workflows", "Kling AI Cinematic", "Voice Cloning", "AI Dubbing Systems"]
-                                }
+                                { title: "AI Agents & Automation Systems", price: "4,500 AED", syllabus: ["Autonomous Agent Logic", "Multi-Agent Swarms", "Tool-Use Frameworks"] },
+                                { title: "Conversational AI Engineering", price: "3,800 AED", syllabus: ["NLP & Context Windows", "Voice Synthesis Pipelines", "Real-time Translation"] },
+                                { title: "AI Business Transformation", price: "5,500 AED", syllabus: ["Enterprise ROI Modeling", "AI Ethics & Governance", "Change Management"] },
+                                { title: "XR Development Engineering", price: "4,200 AED", syllabus: ["Unity Spatial Logic", "Unreal Mixed Reality", "Hand-Tracking Interaction"] },
+                                { title: "AI Product Design", price: "3,500 AED", syllabus: ["Human-AI UX Patterns", "Dynamic Interface Logic", "Prototype Generation"] },
+                                { title: "AI Content Automation Systems", price: "4,800 AED", syllabus: ["Batch Content Pipelines", "Social Scaling Engines", "Brand Guardrails"] },
+                                { title: "Generative 3D & Spatial Content", price: "4,600 AED", syllabus: ["Text-to-3D Workflows", "NeRF Scene Reconstruction", "Gaussian Splatting"] },
+                                { title: "AI Video Post-Production", price: "2,500 AED", syllabus: ["Coloring with AI", "Remove Objects", "Upscaling Resolution"] },
+                                { title: "Custom AI Engineering", price: "3,200 AED", syllabus: ["Building Your Own GPT", "Using AI APIs", "Prompt Engineering"] },
+                                { title: "VR / AR Design", price: "2,800 AED", syllabus: ["Spatial UI Design", "Hand-Tracking Tools", "Unity for XR"] },
+                                { title: "AI Growth & Marketing", price: "1,500 AED", syllabus: ["Viral Content Hooks", "AI-Powered SEO", "Predictive Sales"] },
+                                { title: "RunwayML Mastery", price: "2,200 AED", syllabus: ["Gen-3 Video Workflows", "Motion Brush Control", "Director Mode"] },
+                                { title: "AI Animation Frameworks", price: "3,500 AED", syllabus: ["Stable Diffusion Mastery", "Character Rigs", "AI Video-to-Video"] },
+                                { title: "AI Design & Branding", price: "2,000 AED", syllabus: ["Flux.1 Image Logic", "Vector Graphic AI", "Scalable Branding"] },
+                                { title: "Advanced AI Video", price: "4,000 AED", syllabus: ["Sora & Luma Workflows", "Kling AI Cinematic", "Voice Cloning"] }
                             ].map((course, i) => (
                                 <div key={i} className="p-4 border border-white/10 bg-white/5 hover:border-emerald-500/50 transition-all group relative overflow-hidden">
                                     <div className="flex justify-between items-start mb-3">
@@ -346,7 +273,7 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="vr.webp" className="pro-img w-full h-full object-cover" alt="Meta Quest 3 Integration" />
+                            <img src="images/vr.webp" className="pro-img w-full h-full object-cover" alt="VR Solutions" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
 
@@ -357,48 +284,13 @@
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             {[
-                                {
-                                    type: "Corporate Training",
-                                    subtitle: "Learn by Doing",
-                                    desc: "Safe, interactive VR environments for industrial training, employee onboarding, and safety drills.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "Digital Twins",
-                                    subtitle: "Virtual Tours",
-                                    desc: "High-quality 3D models of real-world buildings, real estate, and factories for virtual walkthroughs.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "360 Video Production",
-                                    subtitle: "Immersive Storytelling",
-                                    desc: "Virtual production using 360° video and AI-generated environments to tell your brand story.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "Branded Experiences",
-                                    subtitle: "Retail Engagement",
-                                    desc: "AR mobile apps and VR product launches that let customers interact with your products in 3D.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "Events & Culture",
-                                    subtitle: "Virtual Museums",
-                                    desc: "Digital exhibitions and hybrid events that allow anyone to visit your space from anywhere in the world.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "Custom Platforms",
-                                    subtitle: "Unreal & WebXR",
-                                    desc: "Browser-based XR experiences and custom 3D applications built on Unity and Unreal Engine.",
-                                    rate: "Contact for Pricing"
-                                },
-                                {
-                                    type: "Hardware Setup",
-                                    subtitle: "Full Deployment",
-                                    desc: "We help you choose, set up, and manage your VR headsets and hardware for your office or event.",
-                                    rate: "Contact for Pricing"
-                                }
+                                { type: "Corporate Training", subtitle: "Learn by Doing", desc: "Safe, interactive VR environments for industrial training and onboarding.", rate: "Contact for Pricing" },
+                                { type: "Digital Twins", subtitle: "Virtual Tours", desc: "High-quality 3D models of real-world buildings and factories.", rate: "Contact for Pricing" },
+                                { type: "360 Video Production", subtitle: "Immersive Storytelling", desc: "Virtual production using AI-generated environments.", rate: "Contact for Pricing" },
+                                { type: "Branded Experiences", subtitle: "Retail Engagement", desc: "AR mobile apps and VR product launches.", rate: "Contact for Pricing" },
+                                { type: "Events & Culture", subtitle: "Virtual Museums", desc: "Digital exhibitions and hybrid events.", rate: "Contact for Pricing" },
+                                { type: "Custom Platforms", subtitle: "Unreal & WebXR", desc: "Browser-based XR experiences and custom 3D applications.", rate: "Contact for Pricing" },
+                                { type: "Hardware Setup", subtitle: "Full Deployment", desc: "Managing VR headsets and hardware for offices or events.", rate: "Contact for Pricing" }
                             ].map((service, i) => (
                                 <div key={i} className="p-4 border border-white/10 bg-white/5 hover:bg-emerald-500/5 transition-all group">
                                     <h4 className="text-[10px] font-mono text-emerald-500 uppercase mb-1 tracking-widest">{service.type}</h4>
@@ -417,10 +309,7 @@
                             </a>
                         </div>
 
-                        <button 
-                            onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')}
-                            className="w-full py-4 border border-emerald-500/30 bg-emerald-500/5 text-emerald-500 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-black transition-all flex items-center justify-center gap-2"
-                        >
+                        <button onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')} className="w-full py-4 border border-emerald-500/30 bg-emerald-500/5 text-emerald-500 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-black transition-all flex items-center justify-center gap-2">
                             <Icon name="Eye" className="w-4 h-4" /> Design Your VR Experience
                         </button>
                     </div>
@@ -434,15 +323,29 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200" className="pro-img w-full h-full object-cover" alt="Robomarket" />
+                            <img src="images/robomarket.jpg" className="pro-img w-full h-full object-cover" alt="Robomarket" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         <div className="border-l-2 border-emerald-500 pl-4 py-2 bg-emerald-500/5">
-                            <p className="text-emerald-400 font-mono text-[10px] mb-1 uppercase tracking-widest">B2B Robotics Marketplace</p>
-                            <p className="text-gray-400 leading-relaxed text-sm">
-                                RoboMarket.ae is a GCC-focused B2B robotics marketplace helping enterprises discover and evaluate service and humanoid robots for real-world deployment. We curate vendors, map robots to use-cases, and support decision-makers with practical deployment guidance and ROI-focused insights.
+                            <p className="text-emerald-400 font-mono text-[10px] mb-1 uppercase tracking-widest">Enterprise Ecosystem</p>
+                            <p className="text-gray-300 leading-relaxed text-sm">
+                                RoboMarket.ae is a GCC-focused B2B robotics marketplace designed to help organizations evaluate and source service and humanoid robots through curated categories and deployment-oriented information.
                             </p>
                         </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                            {[
+                                "Curated listings and vendor discovery",
+                                "Use-case-driven browsing (hospitality, logistics, retail, events, facilities)",
+                                "Practical decision support for procurement and pilots"
+                            ].map((feature, i) => (
+                                <div key={i} className="p-3 border border-white/5 bg-white/5 flex gap-3 items-start">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0" />
+                                    <p className="text-[10px] text-gray-400 font-mono leading-tight tracking-tighter uppercase">{feature}</p>
+                                </div>
+                            ))}
+                        </div>
+
                         <div className="grid grid-cols-2 gap-3">
                             <a href={APEX_CONFIG.links.robomarketLinkedin} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 py-3 border border-white/10 bg-white/5 hover:bg-white/10 text-[9px] uppercase font-mono transition-all">
                                 <Icon name="Linkedin" className="w-4 h-4 text-emerald-500" /> LinkedIn
@@ -521,7 +424,7 @@
                             </div>
                             <div>
                                 <h1 className="text-xs font-mono font-black text-white tracking-[0.3em] uppercase">APEX INNOVATE LLC</h1>
-                                <p className="text-[9px] text-gray-500 font-mono tracking-tighter uppercase">{time} // INNOVATION STUDIO</p>
+                                <p className="text-[9px] text-gray-500 font-mono tracking-tighter uppercase">{time} // AI Innovation Company</p>
                             </div>
                         </div>
                     </header>
@@ -568,7 +471,6 @@
                                         <p className="text-[9px] font-mono text-gray-500 uppercase tracking-widest">Section://{activeNode}.dat</p>
                                     </div>
                                     <div className="p-6 md:p-10">
-                                        <p className="text-emerald-500 text-[9px] font-mono mb-1 uppercase tracking-widest">Active View ———</p>
                                         <h1 className="text-2xl font-black text-white uppercase italic tracking-tighter mb-8">{currentNode.title}</h1>
                                         <div>{currentNode.content}</div>
                                     </div>
