@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APEX INNOVATE LLC | AI STUDIO & ACADEMY</title>
+    <title>APEX INNOVATE LLC | AI ACADEMY & STUDIO</title>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -40,12 +40,11 @@
         }
 
         .pro-img {
-            filter: grayscale(100%) brightness(0.7) contrast(1.2);
-            transition: filter 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), brightness 0.8s ease;
+            filter: grayscale(0%) brightness(1) contrast(1);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .pro-img-container:hover .pro-img {
-            filter: grayscale(0%) brightness(1) contrast(1);
             transform: scale(1.05);
         }
 
@@ -62,6 +61,17 @@
         ::-webkit-scrollbar-thumb {
             background: #10b981;
         }
+        
+        .img-fallback {
+            background: linear-gradient(45deg, #111, #222);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
     </style>
 </head>
 <body>
@@ -69,7 +79,6 @@
     <div class="noise-overlay"></div>
 
     <script type="text/babel">
-        // Disable global right-click context menu
         document.addEventListener('contextmenu', event => event.preventDefault());
 
         const { useState, useEffect, useRef } = React;
@@ -93,6 +102,9 @@
                 apex: "https://linktr.ee/joenasr",
                 questRequest: "https://linktr.ee/questrequestvr",
                 questLinkedinGroup: "https://www.linkedin.com/groups/9802744/",
+                questYoutube: "https://www.youtube.com/@questrequestvr",
+                questTiktok: "https://www.tiktok.com/@questrequestvr",
+                questBlog: "https://questrequestvr.blogspot.com",
                 tiktok: "https://www.tiktok.com/@joenasr",
                 youtube: "https://youtube.com/@joenasr"
             }
@@ -111,6 +123,25 @@
             return <span ref={containerRef} className="inline-flex items-center justify-center pointer-events-none" />;
         };
 
+        const ImageWithFallback = ({ src, alt, className }) => {
+            const [error, setError] = useState(false);
+            if (error) {
+                return (
+                    <div className={`${className} img-fallback font-mono`}>
+                        [Asset: {alt}]
+                    </div>
+                );
+            }
+            return (
+                <img 
+                    src={src} 
+                    alt={alt} 
+                    className={className} 
+                    onError={() => setError(true)}
+                />
+            );
+        };
+
         const SECTIONS = [
             {
                 id: 'core',
@@ -120,7 +151,7 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="images/identity.avif" className="pro-img w-full h-full object-cover" alt="Identity" />
+                            <ImageWithFallback src="images/identity.avif" className="pro-img w-full h-full object-cover" alt="Identity" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         <div className="border-l-2 border-emerald-500 pl-4 py-2 bg-emerald-500/5">
@@ -141,7 +172,7 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="images/aimedia.jpg" className="pro-img w-full h-full object-cover" alt="AI Media" />
+                            <ImageWithFallback src="images/aimedia.jpg" className="pro-img w-full h-full object-cover" alt="AI Media" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         
@@ -188,7 +219,7 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="images/aisoft.avif" className="pro-img w-full h-full object-cover" alt="AI Software" />
+                            <ImageWithFallback src="images/aisoft.avif" className="pro-img w-full h-full object-cover" alt="AI Software" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         
@@ -226,7 +257,7 @@
                 content: (
                     <div className="space-y-8">
                         <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="images/aiacademy.avif" className="pro-img w-full h-full object-cover" alt="AI Academy" />
+                            <ImageWithFallback src="images/aiacademy.avif" className="pro-img w-full h-full object-cover" alt="AI Academy" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         
@@ -320,7 +351,7 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-48 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="images/vr.webp" className="pro-img w-full h-full object-cover" alt="VR Solutions" />
+                            <ImageWithFallback src="images/vr.webp" className="pro-img w-full h-full object-cover" alt="VR Solutions" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
 
@@ -350,10 +381,38 @@
                             ))}
                         </div>
 
-                        <div className="grid grid-cols-1 gap-3 pt-4">
-                            <a href={APEX_CONFIG.links.questLinkedinGroup} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 py-4 border border-white/10 bg-white/5 hover:bg-emerald-500/10 hover:border-emerald-500/30 text-[10px] uppercase font-mono transition-all text-white group">
-                                <Icon name="Linkedin" className="w-4 h-4 text-emerald-500 group-hover:scale-110 transition-transform" /> Join Our XR Community
-                            </a>
+                        <div className="pt-6 space-y-3">
+                            <p className="text-[9px] font-mono text-emerald-500 uppercase tracking-[0.3em]">Quest Request Ecosystem</p>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <a href={APEX_CONFIG.links.questLinkedinGroup} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 border border-white/10 bg-white/5 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all text-white group">
+                                    <Icon name="Linkedin" className="w-5 h-5 text-emerald-500 group-hover:scale-110 transition-transform" />
+                                    <div className="flex flex-col">
+                                        <span className="text-[10px] font-bold uppercase">LinkedIn Community</span>
+                                        <span className="text-[8px] font-mono text-gray-500">Connect with XR Pros</span>
+                                    </div>
+                                </a>
+                                <a href={APEX_CONFIG.links.questYoutube} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 border border-white/10 bg-white/5 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all text-white group">
+                                    <Icon name="Youtube" className="w-5 h-5 text-emerald-500 group-hover:scale-110 transition-transform" />
+                                    <div className="flex flex-col">
+                                        <span className="text-[10px] font-bold uppercase">YouTube Channel</span>
+                                        <span className="text-[8px] font-mono text-gray-500">XR Reviews & Guides</span>
+                                    </div>
+                                </a>
+                                <a href={APEX_CONFIG.links.questTiktok} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 border border-white/10 bg-white/5 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all text-white group">
+                                    <Icon name="Music2" className="w-5 h-5 text-emerald-500 group-hover:scale-110 transition-transform" />
+                                    <div className="flex flex-col">
+                                        <span className="text-[10px] font-bold uppercase">TikTok Feed</span>
+                                        <span className="text-[8px] font-mono text-gray-500">Short-form XR Content</span>
+                                    </div>
+                                </a>
+                                <a href={APEX_CONFIG.links.questBlog} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 border border-white/10 bg-white/5 hover:bg-emerald-500/10 hover:border-emerald-500/30 transition-all text-white group">
+                                    <Icon name="FileText" className="w-5 h-5 text-emerald-500 group-hover:scale-110 transition-transform" />
+                                    <div className="flex flex-col">
+                                        <span className="text-[10px] font-bold uppercase">Technical Blog</span>
+                                        <span className="text-[8px] font-mono text-gray-500">Deep Dives & Insights</span>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
 
                         <button onClick={() => window.open(APEX_CONFIG.links.whatsapp, '_blank')} className="w-full py-4 border border-emerald-500/30 bg-emerald-500/5 text-emerald-500 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-black transition-all flex items-center justify-center gap-2">
@@ -370,7 +429,7 @@
                 content: (
                     <div className="space-y-6">
                         <div className="pro-img-container relative h-64 overflow-hidden border border-white/10 rounded-sm bg-black">
-                            <img src="images/robomarket.jpg" className="pro-img w-full h-full object-cover" alt="Robomarket" />
+                            <ImageWithFallback src="images/robomarket.jpg" className="pro-img w-full h-full object-cover" alt="Robomarket" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent no-pointer" />
                         </div>
                         <div className="border-l-2 border-emerald-500 pl-4 py-2 bg-emerald-500/5">
