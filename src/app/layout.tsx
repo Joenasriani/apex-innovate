@@ -42,6 +42,14 @@ export const metadata: Metadata = {
     "Robotics",
     "Machine Learning",
   ],
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/apple-icon.svg", type: "image/svg+xml" },
+    ],
+  },
   openGraph: {
     title: "APEX INNOVATE LLC | AI ACADEMY & STUDIO",
     description:
