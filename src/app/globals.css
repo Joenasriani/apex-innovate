@@ -147,6 +147,15 @@
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+/* Hide scrollbar for bottom tab bar */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Mobile tap targets - ensure minimum 44px touch targets */
 @media (max-width: 1024px) {
   .touch-target {
