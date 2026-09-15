@@ -6,7 +6,7 @@ import { HeroImage } from "@/components/hero-image";
 export const metadata: Metadata = {
   title: "Identity",
   description:
-    "APEX INNOVATE LLC — UAE-Based AI Systems for Enterprise Transformation and Creative Operations.",
+    "Apex Innovate is a UAE-based creative-technology company founded by Joe Nasr, working across XR, AI-assisted creative workflows, interactive products, ecommerce interfaces, media production and technical education.",
 };
 
 export default function IdentityPage() {
@@ -15,14 +15,23 @@ export default function IdentityPage() {
       <div className="space-y-6">
         <HeroImage
           src="/images/identity.avif"
-          alt="Identity"
+          alt="Apex Innovate creative technology and immersive systems"
           height="h-64"
         />
         <SectionHeader
-          label="Enterprise Operations"
-          title="UAE-Based AI Systems for Enterprise Transformation and Creative Operations."
-          description="Based in the United Arab Emirates, APEX INNOVATE LLC develops AI automation systems, immersive XR experiences, and intelligent software platforms that enable enterprises and production studios to scale through data-driven operations and AI-augmented creative workflows. We design technology infrastructure that transforms manual processes into automated, measurable assets—unlocking faster execution, greater experimentation, and sustained operational advantage."
+          label="Creative Technology / UAE"
+          title="XR, AI-Assisted Workflows and Interactive Digital Experiences."
+          description="Apex Innovate FZE LLC is a UAE-based creative-technology company founded by Joe Nasr. The studio develops and prototypes immersive XR experiences, interactive web and ecommerce interfaces, AI-assisted creative and marketing workflows, media-production systems, and technical learning experiences. Public work is described according to its actual status—production work, prototype, research concept, or experiment—rather than treating every concept as a deployed enterprise system."
         />
+        <p className="font-mono text-xs leading-relaxed text-white/55">
+          Founder: Joe Nasr · Creative Technologist · XR, AI & Interactive Systems ·{" "}
+          <a
+            href="https://joe-nasr-signals.vercel.app/v2/"
+            className="underline underline-offset-4 hover:text-white"
+          >
+            canonical identity
+          </a>
+        </p>
       </div>
     </ContentPanel>
   );
