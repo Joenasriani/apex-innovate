@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Apex Innovate FZE LLC
 
-## Getting Started
+A UAE-based creative-technology company working across **AI-assisted marketing operations, immersive XR experiences, interactive digital products, ecommerce interfaces, media production and technical education/workshops**.
 
-First, run the development server:
+**Founder:** Joe Nasr  
+**Joe Nasr canonical identity:** https://joe-nasr-signals.vercel.app/v2/  
+**Website:** https://apexinnovate.ae/  
+**GitHub owner:** https://github.com/Joenasriani
+
+## Reputation / identity relationship
+
+Apex Innovate is a company associated with Joe Nasr. It is **not** used as a `sameAs` identity for Joe; Joe's canonical Person record is maintained separately. The company site should corroborate the founder relationship while the technical work is evidenced through Joe's GitHub, portfolio and research registry.
+
+## Focus
+
+- AI-assisted creative and marketing workflows
+- Interactive web and ecommerce experiences
+- XR / spatial-computing concepts and prototypes
+- Visual communication and media production
+- Technical workshops and educational experiences
+- Experimental digital products
+
+## Technology
+
+This repository is a Next.js application deployed through Vercel. Public claims on the site should describe services and capabilities accurately and should not imply independently validated performance, proprietary research or enterprise-scale deployments unless supporting evidence is available.
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Then open `http://localhost:3000`.
