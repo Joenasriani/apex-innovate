@@ -25,37 +25,85 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://apexinnovate.ae"),
   title: {
-    default: "APEX INNOVATE LLC | AI ACADEMY & STUDIO",
-    template: "%s | APEX INNOVATE LLC",
+    default: "Apex Innovate | Creative Technology, XR & AI-Assisted Workflows",
+    template: "%s | Apex Innovate",
   },
   description:
-    "UAE-Based AI Systems for Enterprise Transformation, Creative Operations, and Immersive Experiences.",
+    "A UAE-based creative-technology company working across AI-assisted marketing operations, immersive XR experiences, interactive digital products, ecommerce interfaces, media production and technical education.",
   keywords: [
-    "AI",
-    "Dubai",
-    "UAE",
-    "AI Academy",
-    "AI Studio",
-    "VR",
-    "AR",
-    "Robotics",
-    "Machine Learning",
+    "creative technology UAE",
+    "XR Dubai",
+    "spatial computing",
+    "interactive digital products",
+    "AI-assisted creative workflows",
+    "ecommerce interfaces",
+    "technical workshops",
+    "Joe Nasr",
   ],
+  authors: [{ name: "Apex Innovate" }],
+  creator: "Apex Innovate",
+  publisher: "Apex Innovate FZE LLC",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-    ],
-    apple: [
-      { url: "/apple-icon.svg", type: "image/svg+xml" },
-    ],
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    apple: [{ url: "/apple-icon.svg" }],
   },
   openGraph: {
-    title: "APEX INNOVATE LLC | AI ACADEMY & STUDIO",
+    title: "Apex Innovate | Creative Technology, XR & AI-Assisted Workflows",
     description:
-      "UAE-Based AI Systems for Enterprise Transformation, Creative Operations, and Immersive Experiences.",
+      "Creative technology, immersive XR, interactive products, ecommerce interfaces, media production and technical education in the UAE.",
+    url: "https://apexinnovate.ae/",
+    siteName: "Apex Innovate",
     type: "website",
   },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://apexinnovate.ae/#organization",
+      name: "Apex Innovate FZE LLC",
+      alternateName: "Apex Innovate",
+      url: "https://apexinnovate.ae/",
+      description:
+        "UAE-based creative-technology company working across AI-assisted marketing operations, XR, interactive digital products, ecommerce interfaces, media production and technical education.",
+      founder: {
+        "@id": "https://joe-nasr-signals.vercel.app/v2/#joe-nasr",
+      },
+    },
+    {
+      "@type": "Person",
+      "@id": "https://joe-nasr-signals.vercel.app/v2/#joe-nasr",
+      name: "Joe Nasr",
+      alternateName: ["Joe Ribal Nasr", "Joseph Ribal Nasr"],
+      url: "https://joe-nasr-signals.vercel.app/v2/",
+      jobTitle: "Creative Technologist",
+      founder: {
+        "@id": "https://apexinnovate.ae/#organization",
+      },
+      sameAs: [
+        "https://github.com/Joenasriani",
+        "https://ae.linkedin.com/in/joenasrprofile",
+      ],
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -68,6 +116,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         <BootScreen />
         {children}
         <NoiseOverlay />
