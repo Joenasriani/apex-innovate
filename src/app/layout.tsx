@@ -100,7 +100,7 @@ const organizationSchema = {
       },
       sameAs: [
         "https://github.com/Joenasriani",
-        "https://ae.linkedin.com/in/joenasrprofile",
+        "https://www.linkedin.com/in/joenasrprofile",
       ],
     },
   ],
