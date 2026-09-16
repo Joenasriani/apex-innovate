@@ -95,7 +95,7 @@ const organizationSchema = {
       alternateName: ["Joe Ribal Nasr", "Joseph Ribal Nasr"],
       url: "https://joe-nasr-signals.vercel.app/v2/",
       jobTitle: "Creative Technologist",
-      founder: {
+      affiliation: {
         "@id": "https://apexinnovate.ae/#organization",
       },
       sameAs: [
