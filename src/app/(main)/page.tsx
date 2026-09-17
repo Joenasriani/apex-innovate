@@ -29,7 +29,7 @@ export default function IdentityPage() {
             href="https://joe-nasr-signals.vercel.app/v2/"
             className="underline underline-offset-4 hover:text-white"
           >
-            canonical identity
+            identity
           </a>
         </p>
       </div>
