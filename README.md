@@ -3,13 +3,13 @@
 A UAE-based creative-technology company working across **AI-assisted marketing operations, immersive XR experiences, interactive digital products, ecommerce interfaces, media production and technical education/workshops**.
 
 **Founder:** Joe Nasr  
-**Joe Nasr canonical identity:** https://joe-nasr-signals.vercel.app/v2/  
+**Joe Nasr identity:** https://joe-nasr-signals.vercel.app/v2/  
 **Website:** https://apexinnovate.ae/  
 **GitHub owner:** https://github.com/Joenasriani
 
 ## Reputation / identity relationship
 
-Apex Innovate is a company associated with Joe Nasr. It is **not** used as a `sameAs` identity for Joe; Joe's canonical Person record is maintained separately. The company site should corroborate the founder relationship while the technical work is evidenced through Joe's GitHub, portfolio and research registry.
+Apex Innovate is a company associated with Joe Nasr. It is **not** used as a `sameAs` identity for Joe; Joe's Person record is maintained separately. The company site should corroborate the founder relationship while the technical work is evidenced through Joe's GitHub, portfolio and research registry.
 
 ## Focus
 
