@@ -3,7 +3,7 @@
 A UAE-based creative-technology company working across **AI-assisted marketing operations, immersive XR experiences, interactive digital products, ecommerce interfaces, media production and technical education/workshops**.
 
 **Founder:** Joe Nasr  
-**Joe Nasr identity:** https://joe-nasr-signals.vercel.app/v2/  
+**Joe Nasr identity:** https://joe-nasr-signals.vercel.app/  
 **Website:** https://apexinnovate.ae/  
 **GitHub owner:** https://github.com/Joenasriani
 
