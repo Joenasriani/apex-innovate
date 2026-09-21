@@ -85,15 +85,15 @@ const organizationSchema = {
       description:
         "UAE-based creative-technology company working across AI-assisted marketing operations, XR, interactive digital products, ecommerce interfaces, media production and technical education.",
       founder: {
-        "@id": "https://joe-nasr-signals.vercel.app/v2/#joe-nasr",
+        "@id": "https://joe-nasr-signals.vercel.app/#joe-nasr",
       },
     },
     {
       "@type": "Person",
-      "@id": "https://joe-nasr-signals.vercel.app/v2/#joe-nasr",
+      "@id": "https://joe-nasr-signals.vercel.app/#joe-nasr",
       name: "Joe Nasr",
       alternateName: ["Joe Ribal Nasr", "Joseph Ribal Nasr"],
-      url: "https://joe-nasr-signals.vercel.app/v2/",
+      url: "https://joe-nasr-signals.vercel.app/",
       jobTitle: "Creative Technologist",
       affiliation: {
         "@id": "https://apexinnovate.ae/#organization",
