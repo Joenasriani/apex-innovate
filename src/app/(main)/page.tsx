@@ -26,7 +26,7 @@ export default function IdentityPage() {
         <p className="font-mono text-xs leading-relaxed text-white/55">
           Founder: Joe Nasr · Creative Technologist · XR, AI & Interactive Systems ·{" "}
           <a
-            href="https://joe-nasr-signals.vercel.app/v2/"
+            href="https://joe-nasr-signals.vercel.app/"
             className="underline underline-offset-4 hover:text-white"
           >
             identity
