@@ -9,12 +9,12 @@ import { companyConfig } from "@/data/config";
 export const metadata: Metadata = {
   title: "AI Media Production",
   description:
-    "Infrastructure for AI-augmented cinematography — video localization, post-production automation, digital humans, and more.",
+    "Commercial media production with AI-assisted localization, post-production, animation, 3D visualization and digital production workflows.",
   alternates: { canonical: "/studio" },
   openGraph: {
     title: "AI Media Production | Apex Innovate",
     description:
-      "AI-assisted media production, localization, post-production automation and digital production workflows.",
+      "Commercial media production with AI-assisted localization, post-production, animation, 3D visualization and digital production workflows.",
     url: "https://apexinnovate.ae/studio",
     type: "website",
   },
@@ -24,17 +24,11 @@ export default function StudioPage() {
   return (
     <ContentPanel sectionId="studio" title="AI MEDIA PRODUCTION">
       <div className="space-y-6">
-        <HeroImage src="/images/aimedia.jpg" alt="AI Media" />
+        <HeroImage src="/images/aimedia.jpg" alt="AI media production" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {mediaServices.map((service) => (
             <ServiceCard key={service.type} service={service} />
           ))}
-        </div>
-        <div className="p-4 border border-emerald-500/20 bg-emerald-500/5">
-          <p className="text-[10px] text-gray-400 leading-relaxed uppercase tracking-tighter text-center">
-            Pricing depends on video length, complexity, and the AI computing
-            power required.
-          </p>
         </div>
         <CtaButton
           href={companyConfig.links.whatsapp}
