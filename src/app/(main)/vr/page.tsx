@@ -12,6 +12,14 @@ export const metadata: Metadata = {
   title: "VR & AR Solutions",
   description:
     "Immersive experiences for Meta Quest and beyond — corporate training, digital twins, 360 video, branded experiences.",
+  alternates: { canonical: "/vr" },
+  openGraph: {
+    title: "VR & AR Solutions | Apex Innovate",
+    description:
+      "Immersive XR experiences, training, 360 media, branded experiences and interactive prototypes.",
+    url: "https://apexinnovate.ae/vr",
+    type: "website",
+  },
 };
 
 export default function VrPage() {
@@ -19,7 +27,6 @@ export default function VrPage() {
     <ContentPanel sectionId="questvr" title="VR & AR SOLUTIONS">
       <div className="space-y-6">
         <HeroImage src="/images/vr.webp" alt="VR Solutions" />
-
         <div className="border-l-2 border-emerald-500 pl-4 py-2 bg-emerald-500/5 mb-6">
           <h3 className="text-white font-bold uppercase text-xs mb-1">
             CORE VR / XR SERVICES
@@ -28,13 +35,11 @@ export default function VrPage() {
             Immersive Solutions for Training and Marketing
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {vrServices.map((service) => (
             <ServiceCard key={service.type} service={service} />
           ))}
         </div>
-
         <div className="pt-6 space-y-3">
           <p className="text-[9px] font-mono text-emerald-500 uppercase tracking-[0.3em]">
             Quest Request Ecosystem
@@ -45,7 +50,6 @@ export default function VrPage() {
             ))}
           </div>
         </div>
-
         <CtaButton
           href={companyConfig.links.whatsapp}
           icon="Eye"
