@@ -8,14 +8,14 @@ import { courseCategories } from "@/data/courses";
 import { companyConfig } from "@/data/config";
 
 export const metadata: Metadata = {
-  title: "AI Academy",
+  title: "Professional Training & AI Academy",
   description:
-    "Master AI with expert-led courses — Creative Suite, AI Engineering, Spatial Computing, Strategic AI, and Automated Media.",
+    "Apex Innovate's professional training division for AI, creative technology, spatial computing, media production, and digital workflows.",
   alternates: { canonical: "/academy" },
   openGraph: {
-    title: "AI Academy | Apex Innovate",
+    title: "Professional Training & AI Academy | Apex Innovate",
     description:
-      "Practical AI, creative technology, spatial computing and automation training.",
+      "Professional training in AI, creative technology, spatial computing, media production, and digital workflows.",
     url: "https://apexinnovate.ae/academy",
     type: "website",
   },
@@ -29,7 +29,10 @@ export default function AcademyPage() {
   return (
     <ContentPanel sectionId="academy" title="AI ACADEMY">
       <div className="space-y-8">
-        <HeroImage src="/images/aiacademy.avif" alt="AI Academy" />
+        <HeroImage src="/images/aiacademy.avif" alt="Apex Innovate professional AI and creative technology training" />
+        <p className="text-xs text-gray-400 leading-relaxed">
+          The AI Academy is the professional training division of Apex Innovate, covering practical AI, creative technology, spatial computing, media production, and digital workflows.
+        </p>
         {courseCategories.map((cat) => (
           <div key={cat.category} className="space-y-4">
             <CategoryDivider label={cat.category} />
