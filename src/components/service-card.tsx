@@ -13,13 +13,9 @@ export function ServiceCard({ service }: ServiceCardProps) {
       <p className="text-xs text-white font-bold mb-2 uppercase leading-tight">
         {service.subtitle}
       </p>
-      <p className="text-[10px] text-gray-400 leading-relaxed mb-3">
+      <p className="text-[10px] text-gray-400 leading-relaxed">
         {service.desc}
       </p>
-      <div className="text-[9px] font-mono text-gray-500 uppercase flex items-center justify-between pt-2 border-t border-white/5">
-        <span>Investment:</span>
-        <span className="text-white">{service.rate}</span>
-      </div>
     </div>
   );
 }
