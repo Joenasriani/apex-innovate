@@ -5,8 +5,8 @@ export function Header() {
     <header className="border-b border-white/5 px-3 py-3 md:p-4 bg-black/90 backdrop-blur-xl sticky top-0 z-40 flex justify-between items-center">
       <div className="flex items-center gap-3 md:gap-4">
         <div className="w-7 h-7 md:w-8 md:h-8 border border-emerald-500/30 flex items-center justify-center bg-emerald-500/5 shrink-0">
-          <span className="text-emerald-500 font-mono font-black text-[10px] md:text-xs tracking-tighter">
-            AI
+          <span className="text-emerald-500 font-mono font-black text-[9px] md:text-[10px] tracking-tighter">
+            APX
           </span>
         </div>
         <div className="min-w-0">
