@@ -14,7 +14,7 @@ export function Header() {
             Apex Innovate FZE LLC
           </h1>
           <p className="text-[8px] md:text-[9px] text-gray-500 font-mono tracking-tighter uppercase">
-            <LiveClock /> // AI Innovation
+            <LiveClock /> // Creative Technology
           </p>
         </div>
       </div>
