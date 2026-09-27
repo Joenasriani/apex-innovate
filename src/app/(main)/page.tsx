@@ -4,25 +4,25 @@ import { SectionHeader } from "@/components/section-header";
 import { HeroImage } from "@/components/hero-image";
 
 const description =
-  "Apex Innovate FZE LLC is a UAE-based creative-technology company focused on interactive digital experiences, XR, AI-assisted creative workflows, rapid prototyping, media production and professional training.";
+  "Apex Innovate FZE LLC is a UAE creative-technology company delivering interactive digital experiences, XR solutions, AI-assisted creative workflows, software development, media production and professional training.";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Apex Innovate FZE LLC | Creative Technology & XR",
+    absolute: "Apex Innovate FZE LLC | Creative Technology Company UAE",
   },
   description,
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Apex Innovate FZE LLC | Creative Technology & XR",
+    title: "Apex Innovate FZE LLC | Creative Technology Company UAE",
     description,
     url: "https://apexinnovate.ae/",
     type: "website",
   },
 };
 
-export default function IdentityPage() {
+export default function CompanyPage() {
   return (
-    <ContentPanel sectionId="core" title="IDENTITY">
+    <ContentPanel sectionId="company" title="COMPANY">
       <div className="space-y-6">
         <HeroImage
           src="/images/identity.avif"
@@ -31,8 +31,8 @@ export default function IdentityPage() {
         />
         <SectionHeader
           label="Creative Technology / UAE"
-          title="XR, AI-Assisted Workflows and Interactive Digital Experiences."
-          description="Apex Innovate FZE LLC is a UAE-based creative-technology company focused on interactive digital experiences, immersive XR, AI-assisted creative and marketing workflows, rapid software prototyping, media production, and professional training. Public work is described according to its actual status—production work, prototype, research concept, or experiment—rather than treating every concept as a deployed enterprise system."
+          title="Interactive Experiences, XR, AI Workflows and Digital Production."
+          description="Apex Innovate FZE LLC is a UAE creative-technology company delivering interactive digital experiences, immersive XR solutions, AI-assisted creative and marketing workflows, custom software, media production, and professional training for organizations, brands, and institutions."
         />
         <p className="font-mono text-xs leading-relaxed text-white/55">
           Founder: Joe Nasr · Creative Director · Digital Experiences · Interactive Prototyping ·{" "}
@@ -40,7 +40,7 @@ export default function IdentityPage() {
             href="https://joe-nasr-signals.vercel.app/"
             className="underline underline-offset-4 hover:text-white"
           >
-            identity
+            profile
           </a>
         </p>
       </div>
