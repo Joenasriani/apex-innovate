@@ -6,14 +6,14 @@ import { SectionHeader } from "@/components/section-header";
 import { companyConfig } from "@/data/config";
 
 export const metadata: Metadata = {
-  title: "Robomarket.ae",
+  title: "RoboMarket.ae",
   description:
-    "Related venture: a GCC-focused B2B robotics marketplace for curated listings, use-case-driven browsing, and procurement support.",
+    "RoboMarket.ae is a related GCC-focused B2B robotics venture for vendor discovery, use-case evaluation and procurement support.",
   alternates: { canonical: "/robomarket" },
   openGraph: {
-    title: "RoboMarket.ae | Related Venture",
+    title: "RoboMarket.ae | Apex Innovate",
     description:
-      "A separate GCC-focused B2B robotics marketplace presented as a related venture.",
+      "A related GCC-focused B2B robotics venture for vendor discovery, use-case evaluation and procurement support.",
     url: "https://apexinnovate.ae/robomarket",
     type: "website",
   },
@@ -21,19 +21,19 @@ export const metadata: Metadata = {
 
 const features = [
   "Curated listings and vendor discovery",
-  "Use-case-driven browsing (hospitality, logistics, retail, events, facilities)",
-  "Practical decision support for procurement and pilots",
+  "Use-case-led browsing across key commercial sectors",
+  "Procurement and pilot decision support",
 ];
 
 export default function RobomarketPage() {
   return (
-    <ContentPanel sectionId="robomarket" title="RELATED VENTURE // ROBOMARKET.AE">
+    <ContentPanel sectionId="robomarket" title="ROBOMARKET.AE">
       <div className="space-y-6">
-        <HeroImage src="/images/robomarket.jpg" alt="Robomarket" height="h-64" />
+        <HeroImage src="/images/robomarket.jpg" alt="RoboMarket.ae robotics marketplace" height="h-64" />
         <SectionHeader
-          label="Related Venture / Robotics Marketplace"
-          title=""
-          description="RoboMarket.ae is a separate GCC-focused B2B robotics marketplace associated with the APEX founder. It helps organizations evaluate and source service and humanoid robots through curated categories and deployment-oriented information. It is presented here as a related venture, not as an APEX service line."
+          label="Related Robotics Venture"
+          title="GCC-Focused B2B Robotics Marketplace"
+          description="RoboMarket.ae supports organizations exploring service and humanoid robotics through curated vendor discovery, use-case-led categories and deployment-oriented information."
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {features.map((feature) => (
@@ -52,7 +52,7 @@ export default function RobomarketPage() {
           </a>
         </div>
         <a href={companyConfig.links.robomarket} target="_blank" rel="noopener noreferrer" className="w-full py-4 flex justify-center items-center gap-2 border border-emerald-500 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-black transition-all">
-          <ExternalLink className="w-4 h-4" /> Visit Robomarket.ae
+          <ExternalLink className="w-4 h-4" /> Visit RoboMarket.ae
         </a>
       </div>
     </ContentPanel>
