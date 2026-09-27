@@ -1,12 +1,21 @@
 import type { MetadataRoute } from "next";
 
+const baseUrl = "https://apexinnovate.ae";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: "https://apexinnovate.ae/",
-      lastModified: new Date("2026-09-16"),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
+  const routes = [
+    { path: "/", priority: 1 },
+    { path: "/studio", priority: 0.9 },
+    { path: "/software", priority: 0.9 },
+    { path: "/academy", priority: 0.9 },
+    { path: "/vr", priority: 0.9 },
+    { path: "/robomarket", priority: 0.7 },
+    { path: "/contact", priority: 0.8 },
   ];
+
+  return routes.map(({ path, priority }) => ({
+    url: `${baseUrl}${path}`,
+    changeFrequency: "monthly" as const,
+    priority,
+  }));
 }
