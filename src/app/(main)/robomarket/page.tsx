@@ -8,7 +8,7 @@ import { companyConfig } from "@/data/config";
 export const metadata: Metadata = {
   title: "Robomarket.ae",
   description:
-    "The Region's Leading B2B Robotics Marketplace — curated listings, use-case-driven browsing, and procurement support.",
+    "Related venture: a GCC-focused B2B robotics marketplace for curated listings, use-case-driven browsing, and procurement support.",
 };
 
 const features = [
@@ -19,7 +19,7 @@ const features = [
 
 export default function RobomarketPage() {
   return (
-    <ContentPanel sectionId="robomarket" title="ROBOMARKET.AE">
+    <ContentPanel sectionId="robomarket" title="RELATED VENTURE // ROBOMARKET.AE">
       <div className="space-y-6">
         <HeroImage
           src="/images/robomarket.jpg"
@@ -28,9 +28,9 @@ export default function RobomarketPage() {
         />
 
         <SectionHeader
-          label="Enterprise Ecosystem"
+          label="Related Venture / Robotics Marketplace"
           title=""
-          description="RoboMarket.ae is a GCC-focused B2B robotics marketplace designed to help organizations evaluate and source service and humanoid robots through curated categories and deployment-oriented information."
+          description="RoboMarket.ae is a separate GCC-focused B2B robotics marketplace associated with the APEX founder. It helps organizations evaluate and source service and humanoid robots through curated categories and deployment-oriented information. It is presented here as a related venture, not as an APEX service line."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
