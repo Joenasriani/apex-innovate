@@ -8,7 +8,6 @@ export function BootScreen() {
   const [time, setTime] = useState("");
 
   useEffect(() => {
-    // Only show boot screen once per session
     const hasBooted = sessionStorage.getItem("apex-booted");
     if (hasBooted) {
       setDismissed(true);
@@ -40,12 +39,12 @@ export function BootScreen() {
       }`}
     >
       <div className="w-12 h-12 mb-6 border border-emerald-500/30 flex items-center justify-center bg-emerald-500/5 animate-pulse mx-auto">
-        <span className="text-emerald-500 font-mono font-black text-xl tracking-tighter">
-          AI
+        <span className="text-emerald-500 font-mono font-black text-sm tracking-tighter">
+          APX
         </span>
       </div>
       <p className="text-[10px] tracking-[0.4em] uppercase">
-        SYSTEM ONLINE // {time}
+        APEX ONLINE // {time}
       </p>
     </div>
   );
