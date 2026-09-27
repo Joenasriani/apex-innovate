@@ -7,6 +7,14 @@ export const metadata: Metadata = {
   title: "Identity",
   description:
     "Apex Innovate is a UAE-based creative-technology company founded by Joe Nasr, working across XR, AI-assisted creative workflows, interactive products, ecommerce interfaces, media production and technical education.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Apex Innovate | Creative Technology, XR & AI-Assisted Workflows",
+    description:
+      "UAE-based creative technology across XR, AI-assisted workflows, interactive products, media production and technical education.",
+    url: "https://apexinnovate.ae/",
+    type: "website",
+  },
 };
 
 export default function IdentityPage() {
