@@ -10,7 +10,6 @@ export interface Service {
   type: string;
   subtitle: string;
   desc: string;
-  rate: string;
 }
 
 export interface Course {
