@@ -7,14 +7,14 @@ import { softwareServices } from "@/data/services";
 import { companyConfig } from "@/data/config";
 
 export const metadata: Metadata = {
-  title: "AI Software & Interactive Prototypes",
+  title: "Software & Automation",
   description:
-    "Interactive software, workflow automation, AI assistant prototypes, games, and project-dependent business-system integrations.",
+    "Custom applications, workflow automation, AI assistants, interactive systems, business integrations and digital experiences from Apex Innovate.",
   alternates: { canonical: "/software" },
   openGraph: {
-    title: "AI Software & Interactive Prototypes | Apex Innovate",
+    title: "Software & Automation | Apex Innovate",
     description:
-      "Interactive software, workflow automation, AI assistant prototypes, games, and project-dependent integrations.",
+      "Custom applications, workflow automation, AI assistants, interactive systems and business integrations.",
     url: "https://apexinnovate.ae/software",
     type: "website",
   },
@@ -22,9 +22,9 @@ export const metadata: Metadata = {
 
 export default function SoftwarePage() {
   return (
-    <ContentPanel sectionId="transformation" title="AI SOFTWARE APPS">
+    <ContentPanel sectionId="software" title="SOFTWARE & AUTOMATION">
       <div className="space-y-6">
-        <HeroImage src="/images/aisoft.avif" alt="AI Software and interactive prototypes" />
+        <HeroImage src="/images/aisoft.avif" alt="Software and automation services" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {softwareServices.map((service) => (
             <ServiceCard key={service.type} service={service} />
@@ -33,7 +33,7 @@ export default function SoftwarePage() {
         <CtaButton
           href={companyConfig.links.whatsapp}
           icon="Terminal"
-          label="Get a Technical Quote"
+          label="Request a Technical Consultation"
           variant="outline"
         />
       </div>
