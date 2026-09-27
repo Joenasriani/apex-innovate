@@ -11,6 +11,14 @@ export const metadata: Metadata = {
   title: "AI Academy",
   description:
     "Master AI with expert-led courses — Creative Suite, AI Engineering, Spatial Computing, Strategic AI, and Automated Media.",
+  alternates: { canonical: "/academy" },
+  openGraph: {
+    title: "AI Academy | Apex Innovate",
+    description:
+      "Practical AI, creative technology, spatial computing and automation training.",
+    url: "https://apexinnovate.ae/academy",
+    type: "website",
+  },
 };
 
 export default function AcademyPage() {
@@ -22,7 +30,6 @@ export default function AcademyPage() {
     <ContentPanel sectionId="academy" title="AI ACADEMY">
       <div className="space-y-8">
         <HeroImage src="/images/aiacademy.avif" alt="AI Academy" />
-
         {courseCategories.map((cat) => (
           <div key={cat.category} className="space-y-4">
             <CategoryDivider label={cat.category} />
@@ -33,7 +40,6 @@ export default function AcademyPage() {
             </div>
           </div>
         ))}
-
         <CtaButton
           href={enrollUrl}
           icon="GraduationCap"
