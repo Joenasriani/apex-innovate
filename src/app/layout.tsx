@@ -25,12 +25,12 @@ export const viewport: Viewport = {
 };
 
 const companyDescription =
-  "A UAE-based creative-technology company focused on interactive digital experiences, XR, AI-assisted creative workflows, rapid prototyping, media production and professional training.";
+  "Apex Innovate FZE LLC is a UAE creative-technology company delivering interactive digital experiences, XR solutions, AI-assisted creative workflows, software development, media production and professional training.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://apexinnovate.ae"),
   title: {
-    default: "Apex Innovate FZE LLC | Creative Technology & XR",
+    default: "Apex Innovate FZE LLC | Creative Technology Company UAE",
     template: "%s | Apex Innovate",
   },
   description: companyDescription,
@@ -38,13 +38,14 @@ export const metadata: Metadata = {
     "Apex Innovate FZE LLC",
     "Apex Innovate UAE",
     "creative technology UAE",
+    "digital experiences UAE",
     "interactive prototyping UAE",
     "XR UAE",
     "VR AR UAE",
     "AI-assisted creative workflows",
-    "interactive digital experiences",
+    "software development UAE",
     "media production UAE",
-    "creative technology training",
+    "professional training UAE",
   ],
   authors: [{ name: "Apex Innovate" }],
   creator: "Apex Innovate",
@@ -68,7 +69,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.svg" }],
   },
   openGraph: {
-    title: "Apex Innovate FZE LLC | Creative Technology & XR",
+    title: "Apex Innovate FZE LLC | Creative Technology Company UAE",
     description: companyDescription,
     url: "https://apexinnovate.ae/",
     siteName: "Apex Innovate",
@@ -93,12 +94,13 @@ const organizationSchema = {
       ],
       knowsAbout: [
         "Creative technology",
+        "Digital experiences",
         "Interactive prototyping",
         "XR",
         "VR",
         "AR",
         "AI-assisted creative workflows",
-        "Interactive digital experiences",
+        "Software development",
         "Media production",
         "Professional training",
       ],
