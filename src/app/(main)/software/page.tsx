@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   title: "AI Software Apps",
   description:
     "Custom AI applications and automation tools — interactive games, workflow automation, smart chat systems, and enterprise integration.",
+  alternates: { canonical: "/software" },
+  openGraph: {
+    title: "AI Software Apps | Apex Innovate",
+    description:
+      "Custom AI applications, automation tools, interactive software and workflow prototypes.",
+    url: "https://apexinnovate.ae/software",
+    type: "website",
+  },
 };
 
 export default function SoftwarePage() {
@@ -17,13 +25,11 @@ export default function SoftwarePage() {
     <ContentPanel sectionId="transformation" title="AI SOFTWARE APPS">
       <div className="space-y-6">
         <HeroImage src="/images/aisoft.avif" alt="AI Software" />
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {softwareServices.map((service) => (
             <ServiceCard key={service.type} service={service} />
           ))}
         </div>
-
         <CtaButton
           href={companyConfig.links.whatsapp}
           icon="Terminal"
