@@ -3,15 +3,18 @@ import { ContentPanel } from "@/components/layout/content-panel";
 import { SectionHeader } from "@/components/section-header";
 import { HeroImage } from "@/components/hero-image";
 
+const description =
+  "Apex Innovate FZE LLC is a UAE-based creative-technology company focused on interactive digital experiences, XR, AI-assisted creative workflows, rapid prototyping, media production and professional training.";
+
 export const metadata: Metadata = {
-  title: "Identity",
-  description:
-    "Apex Innovate is a UAE-based creative-technology company founded by Joe Nasr, working across XR, AI-assisted creative workflows, interactive products, ecommerce interfaces, media production and technical education.",
+  title: {
+    absolute: "Apex Innovate FZE LLC | Creative Technology & XR",
+  },
+  description,
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Apex Innovate | Creative Technology, XR & AI-Assisted Workflows",
-    description:
-      "UAE-based creative technology across XR, AI-assisted workflows, interactive products, media production and technical education.",
+    title: "Apex Innovate FZE LLC | Creative Technology & XR",
+    description,
     url: "https://apexinnovate.ae/",
     type: "website",
   },
@@ -29,10 +32,10 @@ export default function IdentityPage() {
         <SectionHeader
           label="Creative Technology / UAE"
           title="XR, AI-Assisted Workflows and Interactive Digital Experiences."
-          description="Apex Innovate FZE LLC is a UAE-based creative-technology company founded by Joe Nasr. The studio develops and prototypes immersive XR experiences, interactive web and ecommerce interfaces, AI-assisted creative and marketing workflows, media-production systems, and technical learning experiences. Public work is described according to its actual status—production work, prototype, research concept, or experiment—rather than treating every concept as a deployed enterprise system."
+          description="Apex Innovate FZE LLC is a UAE-based creative-technology company focused on interactive digital experiences, immersive XR, AI-assisted creative and marketing workflows, rapid software prototyping, media production, and professional training. Public work is described according to its actual status—production work, prototype, research concept, or experiment—rather than treating every concept as a deployed enterprise system."
         />
         <p className="font-mono text-xs leading-relaxed text-white/55">
-          Founder: Joe Nasr · Creative Technologist · XR, AI & Interactive Systems ·{" "}
+          Founder: Joe Nasr · Creative Director · Digital Experiences · Interactive Prototyping ·{" "}
           <a
             href="https://joe-nasr-signals.vercel.app/"
             className="underline underline-offset-4 hover:text-white"
