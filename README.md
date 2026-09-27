@@ -1,28 +1,32 @@
 # Apex Innovate FZE LLC
 
-A UAE-based creative-technology company working across **AI-assisted marketing operations, immersive XR experiences, interactive digital products, ecommerce interfaces, media production and technical education/workshops**.
+A UAE-based creative-technology company focused on **interactive digital experiences, XR, AI-assisted creative workflows, rapid prototyping, media production and professional training**.
 
 **Founder:** Joe Nasr  
 **Joe Nasr identity:** https://joe-nasr-signals.vercel.app/  
 **Website:** https://apexinnovate.ae/  
 **GitHub owner:** https://github.com/Joenasriani
 
-## Reputation / identity relationship
+## Entity relationship
 
-Apex Innovate is a company associated with Joe Nasr. It is **not** used as a `sameAs` identity for Joe; Joe's Person record is maintained separately. The company site should corroborate the founder relationship while the technical work is evidenced through Joe's GitHub, portfolio and research registry.
+Apex Innovate is a company associated with Joe Nasr. It is **not** used as a `sameAs` identity for Joe; Joe's Person record is maintained separately. RoboMarket.ae is a related venture and is not an Apex Innovate service line.
 
 ## Focus
 
+- Interactive digital experiences and rapid prototyping
+- XR / VR / AR experiences and spatial visualization
 - AI-assisted creative and marketing workflows
-- Interactive web and ecommerce experiences
-- XR / spatial-computing concepts and prototypes
-- Visual communication and media production
-- Technical workshops and educational experiences
-- Experimental digital products
+- Interactive software and workflow prototypes
+- Media production, motion, 3D and post-production
+- Professional training and workshops
+
+## Claim discipline
+
+Public work should be described according to its actual status: **production work, prototype, research concept, experiment, training, or project-dependent service**. The site should not imply independently validated performance, proprietary research, or enterprise-scale deployment unless supporting evidence is available.
 
 ## Technology
 
-This repository is a Next.js application deployed through Vercel. Public claims on the site should describe services and capabilities accurately and should not imply independently validated performance, proprietary research or enterprise-scale deployments unless supporting evidence is available.
+This repository is a Next.js application deployed through Vercel.
 
 ## Development
 
