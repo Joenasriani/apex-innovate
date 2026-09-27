@@ -4,9 +4,17 @@ import { ContentPanel } from "@/components/layout/content-panel";
 import { companyConfig } from "@/data/config";
 
 export const metadata: Metadata = {
-  title: "Let\u2019s Talk",
+  title: "Let’s Talk",
   description:
     "Get in touch with APEX INNOVATE LLC for partnerships, projects, and inquiries.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact | Apex Innovate",
+    description:
+      "Contact Apex Innovate about projects, partnerships and creative-technology work.",
+    url: "https://apexinnovate.ae/contact",
+    type: "website",
+  },
 };
 
 export default function ContactPage() {
