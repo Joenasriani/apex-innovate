@@ -1,8 +1,8 @@
 import type { CompanyConfig } from "@/types";
 
 export const siteConfig = {
-  title: "APEX INNOVATE LLC",
-  titleTemplate: "%s | APEX INNOVATE LLC",
+  title: "Apex Innovate FZE LLC",
+  titleTemplate: "%s | Apex Innovate FZE LLC",
   description:
     "UAE-Based AI Systems for Enterprise Transformation, Creative Operations, and Immersive Experiences.",
   url: "https://apexinnovate.ae",
@@ -10,7 +10,7 @@ export const siteConfig = {
 
 export const companyConfig: CompanyConfig = {
   name: "Joseph Ribal Nasr",
-  company: "APEX INNOVATE LLC",
+  company: "Apex Innovate FZE LLC",
   role: "Creative Director | CEO Robomarket.ae",
   location: "Dubai, UAE",
   links: {
