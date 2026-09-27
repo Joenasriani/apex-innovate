@@ -7,14 +7,14 @@ import { softwareServices } from "@/data/services";
 import { companyConfig } from "@/data/config";
 
 export const metadata: Metadata = {
-  title: "AI Software Apps",
+  title: "AI Software & Interactive Prototypes",
   description:
-    "Custom AI applications and automation tools — interactive games, workflow automation, smart chat systems, and enterprise integration.",
+    "Interactive software, workflow automation, AI assistant prototypes, games, and project-dependent business-system integrations.",
   alternates: { canonical: "/software" },
   openGraph: {
-    title: "AI Software Apps | Apex Innovate",
+    title: "AI Software & Interactive Prototypes | Apex Innovate",
     description:
-      "Custom AI applications, automation tools, interactive software and workflow prototypes.",
+      "Interactive software, workflow automation, AI assistant prototypes, games, and project-dependent integrations.",
     url: "https://apexinnovate.ae/software",
     type: "website",
   },
@@ -24,7 +24,7 @@ export default function SoftwarePage() {
   return (
     <ContentPanel sectionId="transformation" title="AI SOFTWARE APPS">
       <div className="space-y-6">
-        <HeroImage src="/images/aisoft.avif" alt="AI Software" />
+        <HeroImage src="/images/aisoft.avif" alt="AI Software and interactive prototypes" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {softwareServices.map((service) => (
             <ServiceCard key={service.type} service={service} />
