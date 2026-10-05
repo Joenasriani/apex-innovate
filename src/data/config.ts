@@ -1,7 +1,7 @@
 import type { CompanyConfig } from "@/types";
 
 export const siteConfig = {
-  title: "Apex Innovate FZE LLC",
+  title: "Apex Innovate",
   titleTemplate: "%s | Apex Innovate",
   description:
     "A UAE creative technology company focused on interactive digital experiences, XR, AI assisted creative workflows, rapid prototyping, media production and professional training.",
