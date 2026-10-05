@@ -31,7 +31,7 @@ const courseSchema = {
       provider: {
         "@type": "Organization",
         "@id": "https://apexinnovate.ae/#organization",
-        name: "Apex Innovate FZE LLC",
+        name: "Apex Innovate",
         url: "https://apexinnovate.ae/",
       },
       url: "https://apexinnovate.ae/academy",
