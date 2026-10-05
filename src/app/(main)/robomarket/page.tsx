@@ -8,12 +8,12 @@ import { companyConfig } from "@/data/config";
 export const metadata: Metadata = {
   title: "RoboMarket.ae",
   description:
-    "RoboMarket.ae is a related GCC-focused B2B robotics venture for vendor discovery, use-case evaluation and procurement support.",
+    "RoboMarket.ae is a GCC focused B2B robotics marketplace operated through Apex Innovate FZE LLC for vendor discovery, use case evaluation and procurement support.",
   alternates: { canonical: "/robomarket" },
   openGraph: {
     title: "RoboMarket.ae | Apex Innovate",
     description:
-      "A related GCC-focused B2B robotics venture for vendor discovery, use-case evaluation and procurement support.",
+      "A GCC focused B2B robotics marketplace operated through Apex Innovate FZE LLC for vendor discovery, use case evaluation and procurement support.",
     url: "https://apexinnovate.ae/robomarket",
     type: "website",
   },
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 const features = [
   "Curated listings and vendor discovery",
-  "Use-case-led browsing across key commercial sectors",
+  "Use case led browsing across key commercial sectors",
   "Procurement and pilot decision support",
 ];
 
@@ -31,9 +31,9 @@ export default function RobomarketPage() {
       <div className="space-y-6">
         <HeroImage src="/images/robomarket.jpg" alt="RoboMarket.ae robotics marketplace" height="h-64" />
         <SectionHeader
-          label="Related Robotics Venture"
-          title="GCC-Focused B2B Robotics Marketplace"
-          description="RoboMarket.ae supports organizations exploring service and humanoid robotics through curated vendor discovery, use-case-led categories and deployment-oriented information."
+          label="Apex Innovate Venture"
+          title="GCC Focused B2B Robotics Marketplace"
+          description="RoboMarket.ae is operated through Apex Innovate FZE LLC and supports organizations exploring service and humanoid robotics through curated vendor discovery, use case led categories and deployment oriented information."
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {features.map((feature) => (
