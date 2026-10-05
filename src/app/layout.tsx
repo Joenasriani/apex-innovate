@@ -25,7 +25,7 @@ export const viewport: Viewport = {
 };
 
 const companyDescription =
-  "Apex Innovate FZE LLC is a UAE creative-technology company delivering interactive digital experiences, XR solutions, AI-assisted creative workflows, software development, media production and professional training.";
+  "Apex Innovate FZE LLC is a UAE creative technology company delivering interactive digital experiences, XR solutions, AI assisted creative workflows, software development, media production and professional training.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://apexinnovate.ae"),
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     "interactive prototyping UAE",
     "XR UAE",
     "VR AR UAE",
-    "AI-assisted creative workflows",
+    "AI assisted creative workflows",
     "software development UAE",
     "media production UAE",
     "professional training UAE",
@@ -88,6 +88,11 @@ const organizationSchema = {
       alternateName: "Apex Innovate FZE LLC",
       url: "https://apexinnovate.ae/",
       description: companyDescription,
+      foundingDate: "2025-12-03",
+      foundingLocation: {
+        "@type": "Place",
+        name: "Ajman, United Arab Emirates",
+      },
       areaServed: [
         { "@type": "Country", name: "United Arab Emirates" },
         { "@type": "Place", name: "Gulf Cooperation Council" },
@@ -99,7 +104,7 @@ const organizationSchema = {
         "XR",
         "VR",
         "AR",
-        "AI-assisted creative workflows",
+        "AI assisted creative workflows",
         "Software development",
         "Media production",
         "Professional training",
