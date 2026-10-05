@@ -74,6 +74,18 @@ export const metadata: Metadata = {
     url: "https://apexinnovate.ae/",
     siteName: "Apex Innovate",
     type: "website",
+    images: [
+      {
+        url: "/images/identity.avif",
+        alt: "Apex Innovate",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Apex Innovate FZE LLC | Creative Technology Company UAE",
+    description: companyDescription,
+    images: ["/images/identity.avif"],
   },
 };
 
