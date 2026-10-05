@@ -4,7 +4,7 @@ export const siteConfig = {
   title: "Apex Innovate FZE LLC",
   titleTemplate: "%s | Apex Innovate",
   description:
-    "A UAE-based creative-technology company focused on interactive digital experiences, XR, AI-assisted creative workflows, rapid prototyping, media production and professional training.",
+    "A UAE creative technology company focused on interactive digital experiences, XR, AI assisted creative workflows, rapid prototyping, media production and professional training.",
   url: "https://apexinnovate.ae",
 } as const;
 
@@ -12,7 +12,7 @@ export const companyConfig: CompanyConfig = {
   name: "Joseph Ribal Nasr",
   company: "Apex Innovate FZE LLC",
   role: "Creative Director | Digital Experiences | Interactive Prototyping",
-  location: "Dubai, UAE",
+  location: "Ajman, UAE",
   links: {
     linkedin: "https://www.linkedin.com/in/joenasrprofile/",
     github: "https://github.com/Joenasriani",
