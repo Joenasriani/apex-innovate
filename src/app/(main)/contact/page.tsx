@@ -6,7 +6,7 @@ import { companyConfig } from "@/data/config";
 export const metadata: Metadata = {
   title: "Let’s Talk",
   description:
-    "Get in touch with Apex Innovate FZE LLC for partnerships, projects, and inquiries.",
+    "Get in touch with Apex Innovate for partnerships, projects, and inquiries.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact | Apex Innovate",
