@@ -4,16 +4,16 @@ import { SectionHeader } from "@/components/section-header";
 import { HeroImage } from "@/components/hero-image";
 
 const description =
-  "Apex Innovate FZE LLC is a UAE creative technology company delivering interactive digital experiences, XR solutions, AI assisted creative workflows, software development, media production and professional training.";
+  "Apex Innovate is a UAE creative technology company delivering interactive digital experiences, XR solutions, AI assisted creative workflows, software development, media production and professional training.";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Apex Innovate FZE LLC | Creative Technology Company UAE",
+    absolute: "Apex Innovate | Creative Technology Company UAE",
   },
   description,
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Apex Innovate FZE LLC | Creative Technology Company UAE",
+    title: "Apex Innovate | Creative Technology Company UAE",
     description,
     url: "https://apexinnovate.ae/",
     type: "website",
@@ -32,10 +32,10 @@ export default function CompanyPage() {
         <SectionHeader
           label="Creative Technology / UAE"
           title="Interactive Experiences, XR, AI Workflows and Digital Production."
-          description="Apex Innovate FZE LLC is a UAE creative technology company delivering interactive digital experiences, immersive XR solutions, AI assisted creative and marketing workflows, custom software, media production, and professional training for organizations, brands, and institutions."
+          description="Apex Innovate is a UAE creative technology company delivering interactive digital experiences, immersive XR solutions, AI assisted creative and marketing workflows, custom software, media production, and professional training for organizations, brands, and institutions."
         />
         <p className="font-mono text-xs leading-relaxed text-white/55">
-          Registered in Ajman, United Arab Emirates · Incorporated 3 December 2025
+          Legal entity: Apex Innovate FZE LLC · Registered in Ajman, United Arab Emirates · Incorporated 3 December 2025
         </p>
         <p className="font-mono text-xs leading-relaxed text-white/55">
           Founder: Joe Nasr · Creative Director · Digital Experiences · Interactive Prototyping ·{" "}
