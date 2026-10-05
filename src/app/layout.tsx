@@ -74,18 +74,11 @@ export const metadata: Metadata = {
     url: "https://apexinnovate.ae/",
     siteName: "Apex Innovate",
     type: "website",
-    images: [
-      {
-        url: "/images/identity.avif",
-        alt: "Apex Innovate",
-      },
-    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Apex Innovate FZE LLC | Creative Technology Company UAE",
     description: companyDescription,
-    images: ["/images/identity.avif"],
   },
 };
 
@@ -101,10 +94,6 @@ const organizationSchema = {
       url: "https://apexinnovate.ae/",
       description: companyDescription,
       foundingDate: "2025-12-03",
-      foundingLocation: {
-        "@type": "Place",
-        name: "Ajman, United Arab Emirates",
-      },
       areaServed: [
         { "@type": "Country", name: "United Arab Emirates" },
         { "@type": "Place", name: "Gulf Cooperation Council" },
