@@ -12,7 +12,6 @@ export const companyConfig: CompanyConfig = {
   name: "Joseph Ribal Nasr",
   company: "Apex Innovate FZE LLC",
   role: "Creative Director | Digital Experiences | Interactive Prototyping",
-  location: "Ajman, UAE",
   links: {
     linkedin: "https://www.linkedin.com/in/joenasrprofile/",
     github: "https://github.com/Joenasriani",
