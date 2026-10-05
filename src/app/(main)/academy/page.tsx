@@ -21,6 +21,24 @@ export const metadata: Metadata = {
   },
 };
 
+const courseSchema = {
+  "@context": "https://schema.org",
+  "@graph": courseCategories.flatMap((category) =>
+    category.courses.map((course) => ({
+      "@type": "Course",
+      name: course.title,
+      description: course.syllabus.join(", "),
+      provider: {
+        "@type": "Organization",
+        "@id": "https://apexinnovate.ae/#organization",
+        name: "Apex Innovate FZE LLC",
+        url: "https://apexinnovate.ae/",
+      },
+      url: "https://apexinnovate.ae/academy",
+    }))
+  ),
+};
+
 export default function AcademyPage() {
   const enrollUrl = `${companyConfig.links.whatsapp}?text=${encodeURIComponent(
     "I am interested in Apex Innovate professional training."
@@ -28,6 +46,10 @@ export default function AcademyPage() {
 
   return (
     <ContentPanel sectionId="academy" title="PROFESSIONAL TRAINING">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseSchema) }}
+      />
       <div className="space-y-8">
         <HeroImage
           src="/images/aiacademy.avif"
