@@ -25,12 +25,12 @@ export const viewport: Viewport = {
 };
 
 const companyDescription =
-  "Apex Innovate FZE LLC is a UAE creative technology company delivering interactive digital experiences, XR solutions, AI assisted creative workflows, software development, media production and professional training.";
+  "Apex Innovate is a UAE creative technology company delivering interactive digital experiences, XR solutions, AI assisted creative workflows, software development, media production and professional training.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://apexinnovate.ae"),
   title: {
-    default: "Apex Innovate FZE LLC | Creative Technology Company UAE",
+    default: "Apex Innovate | Creative Technology Company UAE",
     template: "%s | Apex Innovate",
   },
   description: companyDescription,
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.svg" }],
   },
   openGraph: {
-    title: "Apex Innovate FZE LLC | Creative Technology Company UAE",
+    title: "Apex Innovate | Creative Technology Company UAE",
     description: companyDescription,
     url: "https://apexinnovate.ae/",
     siteName: "Apex Innovate",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Apex Innovate FZE LLC | Creative Technology Company UAE",
+    title: "Apex Innovate | Creative Technology Company UAE",
     description: companyDescription,
   },
 };
