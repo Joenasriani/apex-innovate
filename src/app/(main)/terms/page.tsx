@@ -15,65 +15,57 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <ContentPanel sectionId="terms" title="WEBSITE TERMS">
-      <div className="space-y-6 text-sm leading-relaxed text-white/70">
-        <div className="space-y-2">
-          <p className="font-semibold text-white">Apex Innovate FZE LLC</p>
+    <ContentPanel sectionId="terms" title="Website Terms">
+      <div className="space-y-8 text-sm leading-7 text-[var(--muted-ink)]">
+        <div>
+          <p className="font-semibold text-[var(--ink)]">Apex Innovate FZE LLC</p>
           <p>Registered in Ajman, United Arab Emirates.</p>
         </div>
 
-        <section className="space-y-2">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-white">
-            Website purpose
-          </h2>
-          <p>
-            This website presents Apex Innovate, its current services, professional training
-            and related initiatives.
+        <section>
+          <h2 className="legal-heading">Website purpose</h2>
+          <p className="mt-2">
+            This website presents Apex Innovate FZE LLC and selected products,
+            projects and company initiatives.
           </p>
         </section>
 
-        <section className="space-y-2">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-white">
-            Information on this website
-          </h2>
-          <p>
-            Website content may be updated as services, training and company activities
-            change. A description on this website does not by itself create a contract,
-            final project scope, delivery commitment or technical specification.
+        <section>
+          <h2 className="legal-heading">Information on this website</h2>
+          <p className="mt-2">
+            Website content may be updated as company activities and projects
+            change. A description on this website does not by itself create a
+            contract, final project scope, delivery commitment or technical
+            specification.
           </p>
         </section>
 
-        <section className="space-y-2">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-white">
-            Training prices
-          </h2>
-          <p>
-            Prices shown on the website are the listed prices for the described training
-            offerings. Availability, scheduling, delivery format and any specific
-            requirements are confirmed before engagement.
+        <section>
+          <h2 className="legal-heading">Project information</h2>
+          <p className="mt-2">
+            Project descriptions are provided for general information. Product,
+            platform and project availability, ownership, commercial terms and
+            scope are determined by the relevant project documentation and
+            agreements.
           </p>
         </section>
 
-        <section className="space-y-2">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-white">
-            Intellectual property
-          </h2>
-          <p>
-            Apex Innovate branding and original company material remain subject to the rights
-            of Apex Innovate FZE LLC. Third party software, trademarks, media, platforms and
-            linked material remain subject to the rights and terms of their respective
-            owners.
+        <section>
+          <h2 className="legal-heading">Intellectual property</h2>
+          <p className="mt-2">
+            Apex Innovate branding and original company material remain subject
+            to the rights of Apex Innovate FZE LLC. Third-party software,
+            trademarks, media, platforms and linked material remain subject to
+            the rights and terms of their respective owners.
           </p>
         </section>
 
-        <section className="space-y-2">
-          <h2 className="text-xs font-bold uppercase tracking-widest text-white">
-            External links
-          </h2>
-          <p>
-            Links to external websites or platforms do not make those services part of Apex
-            Innovate and do not transfer responsibility for their content, availability or
-            policies to Apex Innovate.
+        <section>
+          <h2 className="legal-heading">External links</h2>
+          <p className="mt-2">
+            Links to external websites or platforms do not transfer
+            responsibility for their content, availability or policies to Apex
+            Innovate.
           </p>
         </section>
       </div>

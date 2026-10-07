@@ -1,34 +1,34 @@
 # Apex Innovate FZE LLC
 
-A UAE creative technology company focused on **interactive digital experiences, XR, AI assisted creative workflows, rapid prototyping, media production and professional training**.
+A UAE innovation company developing focused **digital products, immersive technology projects and creative direction across emerging media**.
 
 **Registered jurisdiction:** Ajman, United Arab Emirates  
 **Incorporated:** 3 December 2025  
-**Founder:** Joseph Ribal Nasr  
-**Joe Nasr identity:** https://joe-nasr-signals.vercel.app/  
-**Website:** https://apexinnovate.ae/  
-**GitHub owner:** https://github.com/Joenasriani
+**Website:** https://apexinnovate.ae/
 
-## Entity relationship
+## Company structure
 
-Apex Innovate FZE LLC was founded by Joseph Ribal Nasr. Apex Innovate is **not** used as a `sameAs` identity for Joe; Joe's Person record is maintained separately. RoboMarket.ae is a related venture and is not presented here as an Apex Innovate service line.
+The public website is intentionally concise. Apex Innovate is presented as the company behind selected products, projects and creative-technology initiatives rather than as a catalogue of unrelated service departments.
 
-## Focus
+Current public areas:
 
-- Interactive digital experiences and rapid prototyping
-- XR / VR / AR experiences and spatial visualization
-- AI assisted creative and marketing workflows
-- Interactive software and workflow prototypes
-- Media production, motion, 3D and post production
-- Professional training and workshops
+- Products & Projects
+- Immersive & AI
+- Creative Direction & Emerging Media
+
+Selected public projects include RoboMarket.ae and QuestRequest VR.
 
 ## Claim discipline
 
-Public work should be described according to its actual status: **production work, prototype, research concept, experiment, training, or project dependent service**. The site should not imply independently validated performance, proprietary research, or enterprise scale deployment unless supporting evidence is available.
+Public work should be described according to its actual status: production work, prototype, research concept, experiment or project. The site should not imply independently validated performance, proprietary research or enterprise-scale deployment unless supporting evidence is available.
 
-## Technology
+## Website
 
-This repository is a Next.js application deployed through Vercel.
+The website is a light, editorial corporate-presence page built with Next.js and deployed through Vercel.
+
+The previous dark, service-oriented site is preserved on the branch:
+
+`backup-dark-site-2026-10-07`
 
 ## Development
 

@@ -4,7 +4,7 @@ export const siteConfig = {
   title: "Apex Innovate",
   titleTemplate: "%s | Apex Innovate",
   description:
-    "A UAE creative technology company focused on interactive digital experiences, XR, AI assisted creative workflows, rapid prototyping, media production and professional training.",
+    "A UAE innovation company developing focused digital products, immersive technology projects and creative direction across emerging media.",
   url: "https://apexinnovate.ae",
 } as const;
 

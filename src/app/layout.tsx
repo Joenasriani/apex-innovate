@@ -1,13 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { NoiseOverlay } from "@/components/noise-overlay";
-import { BootScreen } from "@/components/boot-screen";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "700", "900"],
+  weight: ["400", "500", "600", "700", "900"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -21,31 +19,27 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   viewportFit: "cover",
-  themeColor: "#080808",
+  themeColor: "#f4f1ea",
 };
 
 const companyDescription =
-  "Apex Innovate is a UAE creative technology company delivering interactive digital experiences, XR solutions, AI assisted creative workflows, software development, media production and professional training.";
+  "Apex Innovate FZE LLC is a UAE innovation company developing focused digital products, immersive technology projects and creative direction across emerging media.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://apexinnovate.ae"),
   title: {
-    default: "Apex Innovate | Creative Technology Company UAE",
+    default: "Apex Innovate FZE LLC | UAE Innovation Company",
     template: "%s | Apex Innovate",
   },
   description: companyDescription,
   keywords: [
     "Apex Innovate FZE LLC",
     "Apex Innovate UAE",
-    "creative technology UAE",
-    "digital experiences UAE",
-    "interactive prototyping UAE",
-    "XR UAE",
-    "VR AR UAE",
-    "AI assisted creative workflows",
-    "software development UAE",
-    "media production UAE",
-    "professional training UAE",
+    "UAE innovation company",
+    "RoboMarket",
+    "QuestRequest VR",
+    "immersive technology UAE",
+    "emerging media UAE",
   ],
   authors: [{ name: "Apex Innovate" }],
   creator: "Apex Innovate",
@@ -69,7 +63,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.svg" }],
   },
   openGraph: {
-    title: "Apex Innovate | Creative Technology Company UAE",
+    title: "Apex Innovate FZE LLC | UAE Innovation Company",
     description: companyDescription,
     url: "https://apexinnovate.ae/",
     siteName: "Apex Innovate",
@@ -77,7 +71,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Apex Innovate | Creative Technology Company UAE",
+    title: "Apex Innovate FZE LLC | UAE Innovation Company",
     description: companyDescription,
   },
 };
@@ -99,16 +93,12 @@ const organizationSchema = {
         { "@type": "Place", name: "Gulf Cooperation Council" },
       ],
       knowsAbout: [
-        "Creative technology",
-        "Digital experiences",
-        "Interactive prototyping",
-        "XR",
-        "VR",
-        "AR",
-        "AI assisted creative workflows",
-        "Software development",
-        "Media production",
-        "Professional training",
+        "Digital products",
+        "Immersive technology",
+        "Virtual reality",
+        "Artificial intelligence",
+        "Creative direction",
+        "Emerging media",
       ],
       founder: {
         "@id": "https://joe-nasr-signals.vercel.app/#joe-nasr",
@@ -146,9 +136,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
-        <BootScreen />
         {children}
-        <NoiseOverlay />
       </body>
     </html>
   );
