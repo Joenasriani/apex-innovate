@@ -28,7 +28,7 @@ const companyDescription =
 export const metadata: Metadata = {
   metadataBase: new URL("https://apexinnovate.ae"),
   title: {
-    default: "Apex Innovate FZE LLC | UAE Innovation Company",
+    default: "Apex Innovate | AI Automation, Software & VR Solutions UAE",
     template: "%s | Apex Innovate",
   },
   description: companyDescription,
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.svg" }],
   },
   openGraph: {
-    title: "Apex Innovate FZE LLC | UAE Innovation Company",
+    title: "Apex Innovate | AI Automation, Software & VR Solutions UAE",
     description: companyDescription,
     url: "https://apexinnovate.ae/",
     siteName: "Apex Innovate",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Apex Innovate FZE LLC | UAE Innovation Company",
+    title: "Apex Innovate | AI Automation, Software & VR Solutions UAE",
     description: companyDescription,
   },
 };
