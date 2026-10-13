@@ -7,12 +7,12 @@ const description =
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Apex Innovate FZE LLC | UAE Innovation Company",
+    absolute: "Apex Innovate | AI Automation, Software & VR Solutions UAE",
   },
   description,
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Apex Innovate FZE LLC | UAE Innovation Company",
+    title: "Apex Innovate | AI Automation, Software & VR Solutions UAE",
     description,
     url: "https://apexinnovate.ae/",
     type: "website",
