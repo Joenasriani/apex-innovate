@@ -1,16 +1,87 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ApexThreeMark } from "@/components/apex-three-mark";
 import { companyConfig } from "@/data/config";
-const description="Apex Innovate FZE LLC is a UAE company working on digital products, robotics-related ventures, immersive media and creative technology.";
-export const metadata:Metadata={title:{absolute:"Apex Innovate FZE LLC | UAE"},description,alternates:{canonical:"/"},openGraph:{title:"Apex Innovate FZE LLC",description,url:"https://apexinnovate.ae/",type:"website"}};
-const projects=[
- {name:"RoboMarket",type:"Robotics marketplace",desc:"A robotics marketplace venture under Apex Innovate FZE LLC.",href:companyConfig.links.robomarket,img:"/images/robomarket.jpg"},
- {name:"QuestRequest VR",type:"Related media project",desc:"Video coverage and exploration of virtual reality experiences. Shown as a related project.",href:companyConfig.links.questRequest,img:"/images/vr.webp"}
+
+const description = "Apex Innovate FZE LLC is a UAE company associated with RoboMarket and work in digital products, immersive technology and creative media.";
+export const metadata: Metadata = {
+  title: { absolute: "Apex Innovate FZE LLC | Company & Projects" },
+  description,
+  alternates: { canonical: "/" },
+  openGraph: { title: "Apex Innovate FZE LLC | Company & Projects", description, url: "https://apexinnovate.ae/", type: "website" },
+};
+
+const projects = [
+  { id: "01", name: "RoboMarket", type: "Robotics marketplace", relation: "A venture under Apex Innovate FZE LLC", image: "/images/robomarket.jpg", href: companyConfig.links.robomarket, detail: "Robotics marketplace for the UAE and regional market." },
+  { id: "02", name: "QuestRequest VR", type: "VR media", relation: "Related project", image: "/images/vr.webp", href: companyConfig.links.questRequest, detail: "Videos and first impressions covering virtual reality experiences." },
 ];
-export default function CompanyPage(){return <main>
-<section id="company" className="bg-white"><div className="mx-auto grid max-w-6xl items-center gap-14 px-5 pb-24 pt-20 sm:px-8 md:grid-cols-[1.1fr_.9fr] md:pb-28 md:pt-28"><div><p className="eyebrow">UAE COMPANY</p><h1 className="mt-7 text-[clamp(2.8rem,5.2vw,4.5rem)] font-semibold leading-[1.09] tracking-[-.055em] text-[#202729]">Apex Innovate FZE LLC</h1><p className="mt-8 max-w-xl text-xl leading-8 text-[#465054]">Digital products, immersive technology and creative media.</p><p className="mt-5 max-w-xl text-base leading-8 text-[#616a6e]">The company develops and supports selected projects, including the RoboMarket robotics marketplace.</p><div className="mt-9 flex flex-wrap items-center gap-5"><a href="#projects" className="rounded bg-[#283135] px-6 py-3 text-sm font-semibold text-white hover:bg-[#465257]">View projects</a><a href="#contact" className="text-sm font-medium text-[#343e42] underline underline-offset-4">Business enquiries</a></div></div><ApexThreeMark /></div></section>
-<section id="projects" className="scroll-mt-32 border-t border-[#e6e8e6] bg-[#f8f9f7]"><div className="mx-auto max-w-6xl px-5 py-20 sm:px-8"><div className="mb-9"><p className="eyebrow">PROJECTS</p><h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#232b2e]">Selected projects</h2></div><div className="grid gap-6 md:grid-cols-2">{projects.map(p=><article key={p.name} className="overflow-hidden border border-[#e1e5e3] bg-white"><a href={p.href} target="_blank" rel="noopener noreferrer" className="block hover:bg-[#fcfcfb]"><div className="relative aspect-[16/9] bg-[#e7ebea]"><Image src={p.img} alt={p.name+" project image"} fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover"/></div><div className="p-6"><p className="text-xs font-medium text-[#687276]">{p.type}</p><div className="mt-2 flex items-center justify-between gap-5"><h3 className="text-2xl font-semibold text-[#222a2d]">{p.name}</h3><span aria-hidden="true" className="text-lg text-[#4e5a5e]">↗</span></div><p className="mt-4 text-sm leading-7 text-[#596467]">{p.desc}</p><p className="mt-5 text-sm font-medium text-[#283135] underline underline-offset-4">Visit project</p></div></a></article>)}</div></div></section>
-<section id="work" className="scroll-mt-32 bg-white"><div className="mx-auto grid max-w-6xl gap-8 px-5 py-20 sm:px-8 md:grid-cols-[1fr_1.5fr]"><div><p className="eyebrow">WORK</p><h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#242b2e]">Areas of work</h2></div><div className="grid gap-7 sm:grid-cols-2"><div><h3 className="font-semibold text-[#263034]">Digital products</h3><p className="mt-2 text-sm leading-7 text-[#626b6e]">Digital platforms and product development.</p></div><div><h3 className="font-semibold text-[#263034]">Immersive technology</h3><p className="mt-2 text-sm leading-7 text-[#626b6e]">Virtual reality and interactive experiences.</p></div><div><h3 className="font-semibold text-[#263034]">Creative media</h3><p className="mt-2 text-sm leading-7 text-[#626b6e]">Creative direction and digital production.</p></div></div></div></section>
-<section id="contact" className="scroll-mt-32 border-t border-[#e6e8e6] bg-[#f8f9f7]"><div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-20 sm:px-8 md:flex-row md:items-end md:justify-between"><div><p className="eyebrow">CONTACT</p><h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#222a2d]">Business enquiries</h2><p className="mt-4 max-w-lg text-base text-[#616b6e]">For project and partnership enquiries, contact Apex Innovate FZE LLC.</p></div><a href={companyConfig.links.whatsapp} target="_blank" rel="noopener noreferrer" className="w-fit rounded bg-[#283135] px-6 py-3 text-sm font-semibold text-white hover:bg-[#465257]">Contact via WhatsApp ↗</a></div></section>
-</main>}
+
+const disciplines = ["Digital products", "Immersive technology", "Creative direction & media"];
+
+export default function CompanyPage() {
+  return <main className="bg-[#f5f4f0] text-[#212722]">
+    <section id="company" className="border-b border-[#aaa99f]">
+      <div className="mx-auto grid max-w-[1440px] grid-cols-1 lg:grid-cols-[190px_minmax(0,1fr)]">
+        <aside className="hidden border-r border-[#aaa99f] px-7 py-12 lg:block">
+          <p className="apex-code">ENTITY / 001</p>
+          <p className="mt-4 text-sm leading-6 text-[#595d54]">Company record</p>
+        </aside>
+        <div className="px-5 pb-20 pt-14 sm:px-10 md:pb-28 md:pt-20 lg:px-16">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <span className="apex-code">AJMAN · UNITED ARAB EMIRATES</span>
+            <span className="apex-code">FZE LLC</span>
+          </div>
+          <h1 className="mt-14 max-w-5xl font-semibold leading-[.9] tracking-[-.085em] text-[clamp(3.7rem,10vw,9.6rem)]">Apex<br/>Innovate<span className="text-[#8c9086]">.</span></h1>
+          <div className="mt-14 grid gap-7 border-t border-[#aaa99f] pt-7 md:grid-cols-[1fr_1fr]">
+            <p className="text-xl font-medium leading-8 sm:text-2xl">Apex Innovate FZE LLC</p>
+            <p className="max-w-lg text-base leading-7 text-[#54594f]">A UAE company developing and supporting selected digital products and creative-technology projects. The projects below provide direct examples.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" className="scroll-mt-24">
+      <div className="mx-auto max-w-[1440px]">
+        <div className="grid border-b border-[#aaa99f] lg:grid-cols-[190px_minmax(0,1fr)]">
+          <div className="hidden border-r border-[#aaa99f] px-7 py-9 lg:block"><span className="apex-code">INDEX / 002</span></div>
+          <div className="flex flex-wrap items-baseline justify-between gap-4 px-5 py-9 sm:px-10 lg:px-16">
+            <h2 className="text-3xl font-semibold tracking-[-.05em] sm:text-4xl">Projects</h2>
+            <span className="apex-code">SELECTED / 02</span>
+          </div>
+        </div>
+        {projects.map((p) => <article key={p.id} className="grid border-b border-[#aaa99f] transition-colors hover:bg-[#eeeee8] lg:grid-cols-[190px_minmax(0,1fr)]">
+          <div className="hidden border-r border-[#aaa99f] px-7 py-10 lg:block"><span className="apex-code">REF / {p.id}</span></div>
+          <a href={p.href} target="_blank" rel="noopener noreferrer" className="grid gap-8 px-5 py-10 sm:px-10 md:grid-cols-[minmax(0,1fr)_minmax(220px,40%)] md:items-center lg:px-16">
+            <div>
+              <div className="flex items-center gap-4"><span className="apex-code">{p.id} / {p.type}</span><span aria-hidden="true" className="text-xl">↗</span></div>
+              <h3 className="mt-7 text-[clamp(2.5rem,5.5vw,5.5rem)] font-semibold leading-[1.02] tracking-[-.07em]">{p.name}</h3>
+              <p className="mt-6 max-w-lg text-base leading-7 text-[#555b51]">{p.detail}</p>
+              <p className="mt-6 text-xs font-semibold uppercase tracking-[.08em] text-[#555b51]">{p.relation}</p>
+              <p className="mt-8 text-sm font-semibold underline underline-offset-4">Open project ↗</p>
+            </div>
+            <div className="relative aspect-[5/3] overflow-hidden border border-[#c5c6bc] bg-[#e4e3da]"><Image src={p.image} alt={p.name + " project image"} fill sizes="(max-width:768px) 100vw, 40vw" className="object-cover" /></div>
+          </a>
+        </article>)}
+      </div>
+    </section>
+
+    <section id="work" className="scroll-mt-24 border-b border-[#aaa99f]">
+      <div className="mx-auto grid max-w-[1440px] lg:grid-cols-[190px_minmax(0,1fr)]">
+        <div className="hidden border-r border-[#aaa99f] px-7 py-10 lg:block"><span className="apex-code">SCOPE / 003</span></div>
+        <div className="grid gap-8 px-5 py-14 sm:px-10 md:grid-cols-[1fr_1.5fr] lg:px-16">
+          <h2 className="text-3xl font-semibold tracking-[-.05em]">Areas of work</h2>
+          <ol className="divide-y divide-[#b5b6ac] border-y border-[#b5b6ac]">{disciplines.map((d,i)=><li key={d} className="flex items-baseline gap-7 py-5"><span className="apex-code">0{i+1}</span><span className="text-lg font-medium">{d}</span></li>)}</ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" className="scroll-mt-24 bg-[#dcded6]">
+      <div className="mx-auto grid max-w-[1440px] lg:grid-cols-[190px_minmax(0,1fr)]">
+        <div className="hidden border-r border-[#aaafa5] px-7 py-12 lg:block"><span className="apex-code">CONTACT / 004</span></div>
+        <div className="flex flex-wrap items-end justify-between gap-10 px-5 py-16 sm:px-10 lg:px-16">
+          <div><p className="apex-code">BUSINESS ENQUIRIES</p><h2 className="mt-5 text-[clamp(2.1rem,5vw,4.8rem)] font-semibold tracking-[-.07em] leading-tight">Discuss a project.</h2></div>
+          <a href={companyConfig.links.whatsapp} target="_blank" rel="noopener noreferrer" className="border-b-2 border-[#212722] pb-2 text-lg font-semibold">Contact Apex Innovate ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>;
+}
