@@ -28,7 +28,7 @@ const companyDescription =
 export const metadata: Metadata = {
   metadataBase: new URL("https://apexinnovate.ae"),
   title: {
-    default: "Apex Innovate | AI Automation, Software & VR Solutions UAE",
+    default: "Apex Innovate FZE LLC | Digital Products & Immersive Technology",
     template: "%s | Apex Innovate",
   },
   description: companyDescription,
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.svg" }],
   },
   openGraph: {
-    title: "Apex Innovate | AI Automation, Software & VR Solutions UAE",
+    title: "Apex Innovate FZE LLC | Digital Products & Immersive Technology",
     description: companyDescription,
     url: "https://apexinnovate.ae/",
     siteName: "Apex Innovate",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Apex Innovate | AI Automation, Software & VR Solutions UAE",
+    title: "Apex Innovate FZE LLC | Digital Products & Immersive Technology",
     description: companyDescription,
   },
 };
@@ -87,7 +87,6 @@ const organizationSchema = {
       alternateName: "Apex Innovate FZE LLC",
       url: "https://apexinnovate.ae/",
       description: companyDescription,
-      foundingDate: "2025-12-03",
       areaServed: [
         { "@type": "Country", name: "United Arab Emirates" },
         { "@type": "Place", name: "Gulf Cooperation Council" },
@@ -100,9 +99,6 @@ const organizationSchema = {
         "Creative direction",
         "Emerging media",
       ],
-      founder: {
-        "@id": "https://joe-nasr-signals.vercel.app/#joe-nasr",
-      },
     },
     {
       "@type": "Person",
@@ -111,9 +107,6 @@ const organizationSchema = {
       alternateName: ["Joe Ribal Nasr", "Joseph Ribal Nasr"],
       url: "https://joe-nasr-signals.vercel.app/",
       jobTitle: "Creative Director",
-      affiliation: {
-        "@id": "https://apexinnovate.ae/#organization",
-      },
       sameAs: [
         "https://github.com/Joenasriani",
         "https://www.linkedin.com/in/joenasrprofile",
