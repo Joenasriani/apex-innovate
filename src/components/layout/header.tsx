@@ -14,9 +14,9 @@ export function Header() {
         <Link
           href="/"
           className="text-sm font-black uppercase tracking-[-0.025em] text-[var(--ink)]"
-          aria-label="Apex Innovate home"
+          aria-label="Apex Innovate FZE LLC home"
         >
-          APEX INNOVATE
+          APEX INNOVATE FZE LLC
         </Link>
         <nav
           aria-label="Primary navigation"
