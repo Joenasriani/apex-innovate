@@ -6,7 +6,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-[1500px] grid-cols-1 gap-10 px-5 py-10 sm:px-8 md:grid-cols-2 lg:px-12 xl:px-16">
         <div>
           <p className="text-sm font-black uppercase tracking-[-0.02em]">
-            APEX INNOVATE
+            APEX INNOVATE FZE LLC
           </p>
           <p className="mt-2 text-xs text-white/55">
             Apex Innovate FZE LLC · United Arab Emirates
