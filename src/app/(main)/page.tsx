@@ -1,52 +1,15 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { companyConfig } from "@/data/config";
-
-const description = "Apex Innovate FZE LLC is a UAE company working across digital products, immersive technology and creative media.";
-export const metadata: Metadata = {
-  title: { absolute: "Apex Innovate FZE LLC | Digital Products & Immersive Technology" },
-  description,
-  alternates: { canonical: "/" },
-  openGraph: { title: "Apex Innovate FZE LLC | Digital Products & Immersive Technology", description, url: "https://apexinnovate.ae/", type: "website" }
-};
-const ventures = [
- { name:"RoboMarket", category:"Robotics marketplace", image:"/images/robomarket.jpg", href:companyConfig.links.robomarket, summary:"A UAE robotics marketplace venture associated with Apex Innovate. Explore the project's current offering directly.", label:"Explore RoboMarket" },
- { name:"QuestRequest VR", category:"Related immersive-media project", image:"/images/vr.webp", href:companyConfig.links.questRequest, summary:"VR media, discovery and experimentation. Listed as a related project; no corporate ownership claim is implied.", label:"View project" }
+const description="Apex Innovate FZE LLC is a UAE company working on digital products, robotics-related ventures, immersive media and creative technology.";
+export const metadata:Metadata={title:{absolute:"Apex Innovate FZE LLC | UAE"},description,alternates:{canonical:"/"},openGraph:{title:"Apex Innovate FZE LLC",description,url:"https://apexinnovate.ae/",type:"website"}};
+const projects=[
+ {name:"RoboMarket",type:"Robotics marketplace",desc:"A robotics marketplace venture under Apex Innovate FZE LLC.",href:companyConfig.links.robomarket,img:"/images/robomarket.jpg"},
+ {name:"QuestRequest VR",type:"Related media project",desc:"Video coverage and exploration of virtual reality experiences. Shown as a related project.",href:companyConfig.links.questRequest,img:"/images/vr.webp"}
 ];
-const capabilities = [
- { no:"01", name:"Digital Products", detail:"Focused platforms and interactive product concepts." },
- { no:"02", name:"Immersive Technology", detail:"VR, spatial experiences and experimental interactive work." },
- { no:"03", name:"Creative Technology", detail:"Creative direction and emerging-media production." }
-];
-export default function CompanyPage(){
-return <main>
- <section id="company" className="bg-[#f7f7f5] border-b border-[#d8dbd9]">
-
-  <div className="relative mx-auto grid max-w-7xl gap-12 px-5 pb-24 pt-20 sm:px-8 md:pb-32 md:pt-28 lg:grid-cols-[1.15fr_.85fr] lg:items-center lg:px-12">
-   <div><p className="eyebrow">United Arab Emirates · Innovation company</p>
-    <h1 className="mt-7 max-w-3xl text-[clamp(2.8rem,6.4vw,5.6rem)] font-bold leading-[1.03] tracking-[-.055em] text-[#17191a]">Digital ventures. <span className="text-[#555b5e]">Immersive experiences.</span> Creative technology.</h1>
-    <p className="mt-7 max-w-xl text-lg leading-8 text-[#51595d]">Apex Innovate FZE LLC develops and supports selected digital products, immersive experiences and creative-technology initiatives.</p>
-    <div className="mt-9 flex flex-wrap gap-3"><a href="#ventures" className="rounded-md bg-[#202628] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white">Explore our work ↗</a><a href="#contact" className="rounded-md border border-[#b4bbbc] px-6 py-3.5 text-sm font-semibold text-[#202628] hover:border-[#202628]">Business enquiries</a></div>
-   </div>
-   <div className="relative mx-auto flex min-h-[360px] w-full max-w-[490px] items-center justify-center overflow-hidden rounded-lg border border-[#d4d8d7] bg-[#e9ecea] p-8">
-    <div className="relative w-full"><div className="mb-7 h-1 w-14 bg-[#33383a]"/><p className="text-xs font-semibold uppercase tracking-[.22em] text-[#6b7376]">Apex Innovate</p><p className="mt-5 text-[clamp(3rem,7vw,5.4rem)] font-bold leading-[.98] tracking-[-.065em] text-[#202527]">Applied<br/>Ideas.</p><div className="mt-10 border-t border-[#bdc5c6] pt-5 text-sm font-medium text-[#515b5e]">Digital products / Immersive technology / Creative media</div></div>
-   </div>
-  </div>
- </section>
- <section className="bg-white px-5 py-20 text-[#17191a] sm:px-8 lg:px-12" aria-labelledby="company-heading">
-  <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[.36fr_1fr]"><p className="text-xs font-bold uppercase tracking-[.2em] text-[#565e61]">01 / Company</p><div><h2 id="company-heading" className="max-w-3xl text-3xl font-semibold leading-tight tracking-tight sm:text-5xl">A company defined by the work it can show.</h2><p className="mt-6 max-w-2xl text-base leading-8 text-[#535b5e]">Apex Innovate FZE LLC provides a company structure for selected digital ventures and creative-technology initiatives. Each project is linked to its own source, with relationships presented according to the evidence available.</p></div></div>
- </section>
- <section id="ventures" className="mx-auto max-w-7xl scroll-mt-32 px-5 py-24 sm:px-8 lg:px-12">
-  <div className="mb-10 flex flex-wrap items-end justify-between gap-5"><div><p className="eyebrow">02 / Selected work</p><h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-5xl">Ventures & projects</h2></div><p className="max-w-xs text-sm leading-6 text-[#586165]">Explore each initiative at its own public destination.</p></div>
-  <div className="grid gap-6 md:grid-cols-2">{ventures.map(v=><article key={v.name} className="overflow-hidden rounded-lg border border-[#d8dcda] bg-white">
-   <a href={v.href} target="_blank" rel="noopener noreferrer" className="group block">
-    <div className="relative aspect-[16/10] overflow-hidden bg-[#e5e8e7]"><Image src={v.image} alt={v.name+" project preview"} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-105"/><span className="absolute left-5 top-5 rounded-full bg-white/95 px-4 py-2 text-xs font-semibold text-[#30383b]">{v.category}</span></div>
-    <div className="p-7"><div className="flex items-center justify-between gap-4"><h3 className="text-2xl font-semibold text-[#151a1c]">{v.name}</h3><span aria-hidden="true" className="text-2xl text-[#30383b]">↗</span></div><p className="mt-3 min-h-18 text-sm leading-7 text-[#596266]">{v.summary}</p><span className="mt-5 inline-block text-sm font-semibold text-[#30383b]">{v.label} →</span></div>
-   </a></article>)}</div>
- </section>
- <section id="capabilities" className="scroll-mt-32 bg-[#ecefed] px-5 py-24 sm:px-8 lg:px-12">
-  <div className="mx-auto max-w-7xl"><p className="eyebrow">03 / Focus areas</p><h2 className="mt-3 max-w-3xl text-3xl font-semibold tracking-tight sm:text-5xl">Where ideas become tangible experiences.</h2><div className="mt-10 grid gap-4 md:grid-cols-3">{capabilities.map(c=><div key={c.no} className="rounded-lg border border-[#d1d7d5] bg-white p-7"><p className="font-mono text-sm text-[#30383b]">{c.no}</p><h3 className="mt-10 text-xl font-semibold">{c.name}</h3><p className="mt-4 text-sm leading-7 text-[#566064]">{c.detail}</p></div>)}</div></div>
- </section>
- <section id="contact" className="scroll-mt-32 px-5 py-24 sm:px-8 lg:px-12"><div className="mx-auto flex max-w-7xl flex-col gap-8 rounded-lg bg-[#202628] p-8 text-white md:flex-row md:items-end md:justify-between md:p-14"><div><p className="text-xs font-bold uppercase tracking-[.2em]">04 / Contact</p><h2 className="mt-5 max-w-xl text-3xl font-bold tracking-tight sm:text-5xl">Have a project or partnership in mind?</h2><p className="mt-5 max-w-lg text-sm leading-7">For business enquiries and project conversations with Apex Innovate FZE LLC.</p></div><a href={companyConfig.links.whatsapp} target="_blank" rel="noopener noreferrer" className="w-fit shrink-0 rounded-full bg-[#08131c] px-7 py-4 text-sm font-bold text-white hover:bg-[#3d484b]">Start a conversation ↗</a></div></section>
- </main>;
-}
+export default function CompanyPage(){return <main>
+<section id="company" className="bg-white"><div className="mx-auto max-w-6xl px-5 pb-24 pt-20 sm:px-8 md:pb-28 md:pt-28"><div className="max-w-3xl"><p className="eyebrow">UAE COMPANY</p><h1 className="mt-7 text-[clamp(2.8rem,6vw,5rem)] font-semibold leading-[1.09] tracking-[-.055em] text-[#202729]">Apex Innovate FZE LLC</h1><p className="mt-8 max-w-2xl text-xl leading-8 text-[#465054]">Digital products, immersive technology and creative media.</p><p className="mt-5 max-w-2xl text-base leading-8 text-[#616a6e]">The company develops and supports selected projects, including the RoboMarket robotics marketplace.</p><div className="mt-9 flex flex-wrap items-center gap-5"><a href="#projects" className="rounded bg-[#283135] px-6 py-3 text-sm font-semibold text-white hover:bg-[#465257]">View projects</a><a href="#contact" className="text-sm font-medium text-[#343e42] underline underline-offset-4">Business enquiries</a></div></div></div></section>
+<section id="projects" className="scroll-mt-32 border-t border-[#e6e8e6] bg-[#f8f9f7]"><div className="mx-auto max-w-6xl px-5 py-20 sm:px-8"><div className="mb-9"><p className="eyebrow">PROJECTS</p><h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#232b2e]">Selected projects</h2></div><div className="grid gap-6 md:grid-cols-2">{projects.map(p=><article key={p.name} className="overflow-hidden border border-[#e1e5e3] bg-white"><a href={p.href} target="_blank" rel="noopener noreferrer" className="block hover:bg-[#fcfcfb]"><div className="relative aspect-[16/9] bg-[#e7ebea]"><Image src={p.img} alt={p.name+" project image"} fill sizes="(max-width:768px) 100vw, 50vw" className="object-cover"/></div><div className="p-6"><p className="text-xs font-medium text-[#687276]">{p.type}</p><div className="mt-2 flex items-center justify-between gap-5"><h3 className="text-2xl font-semibold text-[#222a2d]">{p.name}</h3><span aria-hidden="true" className="text-lg text-[#4e5a5e]">↗</span></div><p className="mt-4 text-sm leading-7 text-[#596467]">{p.desc}</p><p className="mt-5 text-sm font-medium text-[#283135] underline underline-offset-4">Visit project</p></div></a></article>)}</div></div></section>
+<section id="work" className="scroll-mt-32 bg-white"><div className="mx-auto grid max-w-6xl gap-8 px-5 py-20 sm:px-8 md:grid-cols-[1fr_1.5fr]"><div><p className="eyebrow">WORK</p><h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#242b2e]">Areas of work</h2></div><div className="grid gap-7 sm:grid-cols-2"><div><h3 className="font-semibold text-[#263034]">Digital products</h3><p className="mt-2 text-sm leading-7 text-[#626b6e]">Digital platforms and product development.</p></div><div><h3 className="font-semibold text-[#263034]">Immersive technology</h3><p className="mt-2 text-sm leading-7 text-[#626b6e]">Virtual reality and interactive experiences.</p></div><div><h3 className="font-semibold text-[#263034]">Creative media</h3><p className="mt-2 text-sm leading-7 text-[#626b6e]">Creative direction and digital production.</p></div></div></div></section>
+<section id="contact" className="scroll-mt-32 border-t border-[#e6e8e6] bg-[#f8f9f7]"><div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-20 sm:px-8 md:flex-row md:items-end md:justify-between"><div><p className="eyebrow">CONTACT</p><h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#222a2d]">Business enquiries</h2><p className="mt-4 max-w-lg text-base text-[#616b6e]">For project and partnership enquiries, contact Apex Innovate FZE LLC.</p></div><a href={companyConfig.links.whatsapp} target="_blank" rel="noopener noreferrer" className="w-fit rounded bg-[#283135] px-6 py-3 text-sm font-semibold text-white hover:bg-[#465257]">Contact via WhatsApp ↗</a></div></section>
+</main>}
