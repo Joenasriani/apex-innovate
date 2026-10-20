@@ -8,13 +8,13 @@
   --font-mono: var(--font-jetbrains-mono);
 }
 :root {
-  --paper: #08131c;
-  --paper-2: #10222e;
-  --ink: #eff8fa;
-  --muted-ink: #adc1ca;
-  --line: #284251;
-  --accent: #6de3df;
-  --accent-soft: #163f48;
+  --paper: #f7f7f5;
+  --paper-2: #eeeeeb;
+  --ink: #17191a;
+  --muted-ink: #5f6668;
+  --line: #d8dbd9;
+  --accent: #30383b;
+  --accent-soft: #e6e9e7;
 }
 @layer base {
   * { box-sizing: border-box; }
@@ -22,11 +22,9 @@
   body { margin: 0; overflow-x: hidden; background: var(--paper); color: var(--ink); text-rendering: optimizeLegibility; }
   a { text-decoration: none; }
 }
-::selection { background: var(--accent); color: #08131c; }
+::selection { background: var(--accent); color: #fff; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .eyebrow { font-family: var(--font-jetbrains-mono), monospace; font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
 .text-link { color: var(--accent); text-decoration: underline; text-underline-offset: 5px; }
 .legal-heading { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.apex-orbit { background: radial-gradient(ellipse at 62% 35%,rgba(109,227,223,.28),transparent 37%),radial-gradient(ellipse at 84% 95%,rgba(74,104,190,.24),transparent 42%),linear-gradient(135deg,#132b38,#08131c 64%); }
-.apex-grid { background-image: linear-gradient(rgba(150,220,230,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(150,220,230,.07) 1px,transparent 1px); background-size: 40px 40px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *,*::before,*::after { animation-duration: .01ms!important; transition-duration: .01ms!important; } }
