@@ -24,13 +24,13 @@ const areas = [
     number: "01",
     title: "Products & Projects",
     description:
-      "Focused digital products and platforms developed through APEX, including RoboMarket.ae.",
+      "Selected digital products and initiatives, including the RoboMarket.ae robotics marketplace.",
   },
   {
     number: "02",
     title: "Immersive & AI",
     description:
-      "VR, spatial computing and AI-enabled experimentation, including QuestRequest VR.",
+      "Immersive media, VR and spatial-computing experiments. QuestRequest VR is presented as a related project, not automatically as a company-owned product.",
   },
   {
     number: "03",
@@ -45,7 +45,7 @@ const projects = [
     name: "RoboMarket.ae",
     category: "Robotics / Digital Product",
     description:
-      "A GCC-focused B2B robotics marketplace supporting vendor discovery, use-case evaluation and procurement research.",
+      "A robotics marketplace associated with Apex Innovate FZE LLC. Visit the project for its current catalogue and capabilities.",
     href: companyConfig.links.robomarket,
     image: "/images/robomarket.jpg",
     alt: "RoboMarket robotics marketplace",
@@ -54,7 +54,7 @@ const projects = [
     name: "QuestRequest VR",
     category: "VR / Immersive Media",
     description:
-      "An immersive-media project focused on VR, spatial experiences and new production workflows across emerging technology.",
+      "A related VR media and discovery project. Its appearance here does not imply legal ownership or corporate delivery by Apex Innovate FZE LLC.",
     href: companyConfig.links.questRequest,
     image: "/images/vr.webp",
     alt: "QuestRequest VR immersive media",
@@ -74,6 +74,7 @@ export default function CompanyPage() {
             Apex
             <br />
             Innovate
+            <span className="mt-4 block text-[clamp(0.9rem,2vw,1.3rem)] font-semibold tracking-[0.05em] leading-normal">FZE LLC</span>
           </h1>
         </div>
 
@@ -224,8 +225,7 @@ export default function CompanyPage() {
               </a>
             </div>
             <p className="mt-14 font-mono text-[10px] uppercase leading-5 tracking-[0.16em] text-[var(--muted-ink)]">
-              Apex Innovate FZE LLC · Registered in Ajman, United Arab Emirates
-              · Incorporated 3 December 2025
+              Apex Innovate FZE LLC · Ajman, United Arab Emirates
             </p>
           </div>
         </div>
