@@ -1,30 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-
-@theme inline {
-  --color-background: var(--paper);
-  --color-foreground: var(--ink);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
-}
-:root {
-  --paper: #f7f7f5;
-  --paper-2: #eeeeeb;
-  --ink: #17191a;
-  --muted-ink: #5f6668;
-  --line: #d8dbd9;
-  --accent: #30383b;
-  --accent-soft: #e6e9e7;
-}
-@layer base {
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; background: var(--paper); }
-  body { margin: 0; overflow-x: hidden; background: var(--paper); color: var(--ink); text-rendering: optimizeLegibility; }
-  a { text-decoration: none; }
-}
-::selection { background: var(--accent); color: #fff; }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-.eyebrow { font-family: var(--font-jetbrains-mono), monospace; font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
-.text-link { color: var(--accent); text-decoration: underline; text-underline-offset: 5px; }
-.legal-heading { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *,*::before,*::after { animation-duration: .01ms!important; transition-duration: .01ms!important; } }
+@theme inline { --color-background: var(--paper); --color-foreground: var(--ink); --font-sans: var(--font-inter); --font-mono: var(--font-jetbrains-mono); }
+:root { --paper:#fff; --paper-2:#f6f6f4; --ink:#222628; --muted-ink:#626b6e; --line:#dfe3e2; --accent:#323b3f; --accent-soft:#f0f1ef; }
+@layer base { * { box-sizing:border-box; } html { scroll-behavior:smooth; background:var(--paper); } body { margin:0; overflow-x:hidden; background:var(--paper); color:var(--ink); text-rendering:optimizeLegibility; } a { text-decoration:none; } }
+::selection { background:#30393c; color:#fff; }
+:focus-visible { outline:2px solid #30393c; outline-offset:3px; }
+.eyebrow { font-size:.75rem; font-weight:700; letter-spacing:.075em; color:#5d676a; }
+.legal-heading { font-size:.8rem; font-weight:700; letter-spacing:.06em; }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; } }
