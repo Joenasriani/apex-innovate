@@ -5,9 +5,9 @@ export const dynamic = "force-dynamic";
 
 type Banner = { cls: string; src: string; href: string; alt: string };
 const descriptions: Record<string, { name: string; detail: string }> = {
-  "robot-venture": { name: "RoboMarket", detail: "A UAE-focused online marketplace for robotics and related technologies." },
-  "event-venture": { name: "IdeaVent", detail: "A digital platform for developing and organizing event ideas and experiences." },
-  "framework-venture": { name: "Visual Framework", detail: "An approach to organizing ideas and complex information through visual structures." },
+  "robot-venture": { name: "RoboMarket", detail: "An online marketplace connecting buyers with robots, robotics products, and suppliers." },
+  "event-venture": { name: "IdeaVent", detail: "A digital platform for developing event concepts, planning requirements, and exploring production possibilities." },
+  "framework-venture": { name: "Visual Framework", detail: "A visual framework for structuring ideas, mapping relationships, and communicating complex information." },
 };
 
 /**
@@ -65,7 +65,7 @@ export async function GET() {
         "legalName": "Apex Innovate FZE LLC",
         "url": "https://apexinnovate.ae/",
         "address": {"@type": "PostalAddress", "addressLocality": "Ajman", "addressCountry": "AE"},
-        "description": "Ajman free-zone company presenting selected digital ventures and projects."
+        "description": "A UAE-based company developing and managing digital projects across robotics, event planning, and visual technologies."
       },
       {
         "@type": "WebSite",
