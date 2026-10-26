@@ -58,14 +58,13 @@ export async function GET() {
     'Apex Innovate supports selected digital ventures and creative technology initiatives. Our projects explore robotics, event creation and visual thinking.',
     'Apex Innovate develops and manages its own digital projects, bringing together applications in robotics, event planning, and visual communication.'
   );
-  // Reuse the approved single logo asset on the company site without changing project artwork.
+  // Typeface trial: render the logo with the same actual font as header and hero. Original vector assets remain unchanged.
   html = html.replace(
     '<span class="apex-symbol" aria-hidden="true">A<span>i</span></span>',
-    '<picture class="apex-logo-mark" aria-hidden="true"><img class="apex-logo-light" src="/apex-logo.svg" alt="" width="918" height="345"/><img class="apex-logo-dark" src="/apex-logo-dark.svg" alt="" width="918" height="345"/></picture>'
+    '<span class="apx-type-logo" aria-hidden="true"><span class="apx-code">&lt;/</span><span class="apx-ai">ai</span><span class="apx-code">&gt;</span></span>'
   );
-  // The approved logo is custom artwork, not a distributable typeface.
-  // Outfit is a geometrically related text font for the hero only.
-  html = html.replace("</head>", '<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&display=swap" rel="stylesheet"/></head>');
+  // Load one real typeface for the monogram, header wordmark and hero.
+  html = html.replace("</head>", '<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700;800&display=swap" rel="stylesheet"/></head>');
   // Header-only wordmark treatment. Preserve legal name, metadata and hero.
   html = html.replace(
     /(<header[\s\S]*?<\/header>)/i,
@@ -122,7 +121,7 @@ export async function GET() {
   );
   // One layout scale and one surface system, shared by both appearances.
   const css = `<style id="apex-reviewed-layout">
-    @import url('https://fonts.googleapis.com/css2?family=Jost:wght@600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700;800&display=swap');
     :root{--apx-bg:#121412;--apx-surface:#1e231e;--apx-fg:#eeeae1;--apx-muted:#b6b9b1;--apx-accent:#d6a17a;--apx-line:rgba(238,234,225,.17);--apx-content:1180px;--apx-gutter:clamp(20px,4vw,56px);--apx-space:clamp(64px,8vw,110px);color-scheme:dark}
     *,*::before,*::after{box-sizing:border-box}
     html{background:var(--apx-bg)}
@@ -131,8 +130,12 @@ export async function GET() {
     .site-header{height:clamp(82px,9vw,108px);background:transparent!important;color:var(--apx-fg);position:relative;z-index:4}
     .site-header nav{align-items:center;gap:clamp(12px,2vw,30px)}
     .site-header a{color:inherit}
-    .site-header .brand-name,.site-header .brand-text,.site-header .wordmark{font-family:"Jost",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
-    .site-header a:has(.apex-logo-mark){font-family:"Jost",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
+    .apx-type-logo{display:inline-flex;align-items:baseline;white-space:nowrap;font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-size:clamp(29px,3.3vw,43px);font-weight:800;letter-spacing:-.12em;line-height:1;color:var(--apx-fg)}
+    .apx-type-logo .apx-ai{color:#d6a17a;letter-spacing:-.075em}
+    .apx-type-logo .apx-code{color:var(--apx-fg)}
+    .site-header .brand-name,.site-header .brand-text,.site-header .wordmark,.site-header a:has(.apx-type-logo){font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
+    .site-header .brand-name,.site-header .brand-text,.site-header .wordmark{font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
+    .site-header a:has(.apx-type-logo){font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
     .apex-logo-mark{display:inline-flex;align-items:center;width:clamp(62px,8vw,90px);height:auto;flex:none}
     .apex-logo-mark img{display:block;width:100%;height:auto}
     .apex-logo-mark .apex-logo-light{display:none}
@@ -143,7 +146,7 @@ export async function GET() {
     .hero-art{object-fit:cover;object-position:60% center}
     .hero-shade{background:linear-gradient(90deg,rgba(8,10,9,.70),rgba(8,10,9,.04) 85%),linear-gradient(0deg,rgba(8,10,9,.54),transparent 56%);position:absolute;inset:0}
     .hero-content{padding-top:clamp(36px,6vw,70px)}
-    .hero #hero-title{text-transform:none!important;font-family:"Jost",Inter,system-ui,sans-serif!important;max-width:1100px;font-size:clamp(3.4rem,10vw,9rem);font-weight:700;letter-spacing:-.045em;line-height:1.01;color:var(--apx-fg)}
+    .hero #hero-title{text-transform:none!important;font-family:"Oxanium",Inter,system-ui,sans-serif!important;max-width:1100px;font-size:clamp(3.4rem,10vw,9rem);font-weight:700;letter-spacing:-.045em;line-height:1.01;color:var(--apx-fg)}
     .hero #hero-title span{color:#d6a17a}
     .hero .reviewed-hero-line{font-size:clamp(1rem,1.6vw,1.3rem);line-height:1.5;color:var(--apx-fg);margin:20px 0 0;font-weight:400}
     .hero .eyebrow,.hero .hero-bottom,.hero .hero-bottom p,.hero .hero-caption{color:#e4e1d8}
