@@ -122,6 +122,7 @@ export async function GET() {
   );
   // One layout scale and one surface system, shared by both appearances.
   const css = `<style id="apex-reviewed-layout">
+    @import url('https://fonts.googleapis.com/css2?family=Jost:wght@600;700&display=swap');
     :root{--apx-bg:#121412;--apx-surface:#1e231e;--apx-fg:#eeeae1;--apx-muted:#b6b9b1;--apx-accent:#d6a17a;--apx-line:rgba(238,234,225,.17);--apx-content:1180px;--apx-gutter:clamp(20px,4vw,56px);--apx-space:clamp(64px,8vw,110px);color-scheme:dark}
     *,*::before,*::after{box-sizing:border-box}
     html{background:var(--apx-bg)}
@@ -130,8 +131,8 @@ export async function GET() {
     .site-header{height:clamp(82px,9vw,108px);background:transparent!important;color:var(--apx-fg);position:relative;z-index:4}
     .site-header nav{align-items:center;gap:clamp(12px,2vw,30px)}
     .site-header a{color:inherit}
-    .site-header .brand-name,.site-header .brand-text,.site-header .wordmark{font-family:"Arial Rounded MT Bold","Nunito Sans",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
-    .site-header a:has(.apex-logo-mark){font-family:"Arial Rounded MT Bold","Nunito Sans",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
+    .site-header .brand-name,.site-header .brand-text,.site-header .wordmark{font-family:"Jost",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
+    .site-header a:has(.apex-logo-mark){font-family:"Jost",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
     .apex-logo-mark{display:inline-flex;align-items:center;width:clamp(62px,8vw,90px);height:auto;flex:none}
     .apex-logo-mark img{display:block;width:100%;height:auto}
     .apex-logo-mark .apex-logo-light{display:none}
@@ -142,7 +143,7 @@ export async function GET() {
     .hero-art{object-fit:cover;object-position:60% center}
     .hero-shade{background:linear-gradient(90deg,rgba(8,10,9,.70),rgba(8,10,9,.04) 85%),linear-gradient(0deg,rgba(8,10,9,.54),transparent 56%);position:absolute;inset:0}
     .hero-content{padding-top:clamp(36px,6vw,70px)}
-    .hero #hero-title{text-transform:none!important;font-family:"Outfit",Inter,system-ui,sans-serif;font-optical-sizing:auto;max-width:900px;font-size:clamp(3.4rem,9vw,8rem);font-weight:650;letter-spacing:-.055em;line-height:.99;color:var(--apx-fg)}
+    .hero #hero-title{text-transform:none!important;font-family:"Jost",Inter,system-ui,sans-serif!important;max-width:1100px;font-size:clamp(3.4rem,10vw,9rem);font-weight:700;letter-spacing:-.045em;line-height:1.01;color:var(--apx-fg)}
     .hero #hero-title span{color:#d6a17a}
     .hero .reviewed-hero-line{font-size:clamp(1rem,1.6vw,1.3rem);line-height:1.5;color:var(--apx-fg);margin:20px 0 0;font-weight:400}
     .hero .eyebrow,.hero .hero-bottom,.hero .hero-bottom p,.hero .hero-caption{color:#e4e1d8}
