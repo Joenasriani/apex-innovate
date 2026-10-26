@@ -23,23 +23,25 @@ export const viewport: Viewport = {
 };
 
 const companyDescription =
-  "Apex Innovate FZE LLC is a UAE innovation company developing focused digital products, immersive technology projects and creative direction across emerging media.";
+  "Apex Innovate FZE LLC is a UAE-based company developing and managing digital projects across robotics, event planning, and visual technologies.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://apexinnovate.ae"),
   title: {
-    default: "Apex Innovate FZE LLC | Digital Products & Immersive Technology",
+    default: "Apex Innovate FZE LLC | Projects & Digital Ventures",
     template: "%s | Apex Innovate",
   },
   description: companyDescription,
   keywords: [
     "Apex Innovate FZE LLC",
     "Apex Innovate UAE",
-    "UAE innovation company",
+    "Ajman NuVentures Centre Free Zone",
     "RoboMarket",
-    "QuestRequest VR",
-    "immersive technology UAE",
-    "emerging media UAE",
+    "IdeaVent",
+    "Visual Framework",
+    "robotics marketplace",
+    "digital event ideation",
+    "visual thinking",
   ],
   authors: [{ name: "Apex Innovate" }],
   creator: "Apex Innovate",
@@ -63,7 +65,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.svg" }],
   },
   openGraph: {
-    title: "Apex Innovate FZE LLC | Digital Products & Immersive Technology",
+    title: "Apex Innovate FZE LLC | Projects & Digital Ventures",
     description: companyDescription,
     url: "https://apexinnovate.ae/",
     siteName: "Apex Innovate",
@@ -71,7 +73,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Apex Innovate FZE LLC | Digital Products & Immersive Technology",
+    title: "Apex Innovate FZE LLC | Projects & Digital Ventures",
     description: companyDescription,
   },
 };
@@ -87,18 +89,13 @@ const organizationSchema = {
       alternateName: "Apex Innovate FZE LLC",
       url: "https://apexinnovate.ae/",
       description: companyDescription,
+      address: { "@type": "PostalAddress", addressLocality: "Ajman", addressCountry: "AE" },
       areaServed: [
         { "@type": "Country", name: "United Arab Emirates" },
         { "@type": "Place", name: "Gulf Cooperation Council" },
       ],
-      knowsAbout: [
-        "Digital products",
-        "Immersive technology",
-        "Virtual reality",
-        "Artificial intelligence",
-        "Creative direction",
-        "Emerging media",
-      ],
+      knowsAbout: ["E-commerce", "Digital ventures", "Robotics marketplaces", "Event ideation", "Visual thinking"],
+
     },
     {
       "@type": "Person",
