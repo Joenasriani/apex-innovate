@@ -53,6 +53,43 @@ export async function GET() {
     .replace(/href="https:\/\/apexinnovate\.ae\/privacy"/g, 'href="/privacy"')
     .replace(/href="https:\/\/apexinnovate\.ae\/terms"/g, 'href="/terms"')
     .replace('Apex Innovate <small>FZE LLC</small><span>United Arab Emirates</span>', 'Apex Innovate <small>FZE LLC</small><span>Ajman NuVentures Centre Free Zone · United Arab Emirates</span>');
+  // Server-rendered entity relationships; project links are references,
+  // not claims of separate legal incorporation or launch status.
+  const linkedData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://apexinnovate.ae/#organization",
+        "name": "Apex Innovate",
+        "legalName": "Apex Innovate FZE LLC",
+        "url": "https://apexinnovate.ae/",
+        "address": {"@type": "PostalAddress", "addressLocality": "Ajman", "addressCountry": "AE"},
+        "description": "Ajman free-zone company presenting selected digital ventures and projects."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://apexinnovate.ae/#website",
+        "url": "https://apexinnovate.ae/",
+        "name": "Apex Innovate",
+        "publisher": {"@id": "https://apexinnovate.ae/#organization"}
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://apexinnovate.ae/#projects",
+        "name": "Selected projects",
+        "itemListElement": banners.map((b, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": descriptions[b.cls].name,
+          "description": descriptions[b.cls].detail,
+          "url": b.href
+        }))
+      }
+    ]
+  };
+  html = html.replace("</head>",
+    '<script type="application/ld+json">' + JSON.stringify(linkedData).replace(/</g, "\\u003c") + '</script></head>');
   // A private review preview must not compete with the public company site.
   html = html
     .replace(/<meta name="robots"[^>]*>/gi, "")
