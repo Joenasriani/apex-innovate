@@ -1,34 +1,29 @@
 # Apex Innovate FZE LLC
 
-A UAE innovation company developing focused **digital products, immersive technology projects and creative direction across emerging media**.
+Apex Innovate is a UAE-based company developing and managing digital projects across robotics, event planning, and visual technologies.
 
-**Registered jurisdiction:** Ajman, United Arab Emirates  
+**Legal name:** Apex Innovate FZE LLC  
+**Registered jurisdiction:** Ajman NuVentures Centre Free Zone, Ajman, United Arab Emirates  
 **Incorporated:** 3 December 2025  
 **Website:** https://apexinnovate.ae/
 
-## Company structure
+## Selected projects
 
-The public website is intentionally concise. Apex Innovate is presented as the company behind selected products, projects and creative-technology initiatives rather than as a catalogue of unrelated service departments.
+- **RoboMarket** — An online marketplace connecting buyers with robots, robotics products, and suppliers.
+- **IdeaVent** — A digital platform for developing event concepts, planning requirements, and exploring production possibilities.
+- **Visual Framework** — A visual framework for structuring ideas, mapping relationships, and communicating complex information.
 
-Current public areas:
-
-- Products & Projects
-- Immersive & AI
-- Creative Direction & Emerging Media
-
-Selected public projects include RoboMarket.ae and QuestRequest VR.
-
-## Claim discipline
-
-Public work should be described according to its actual status: production work, prototype, research concept, experiment or project. The site should not imply independently validated performance, proprietary research or enterprise-scale deployment unless supporting evidence is available.
+These descriptions identify the purpose of each project; they do not represent that every planned function is publicly available, independently incorporated, or separately licensed. Applicable commercial terms and project-specific disclosures are maintained by the respective platforms.
 
 ## Website
 
-The website is a light, editorial corporate-presence page built with Next.js and deployed through Vercel.
+The corporate website is a concise company presence built with Next.js and deployed through Vercel. The approved Astra design and three project banners are under review on `JoBranch`. The production branch (`main`) is not modified by review changes.
 
-The previous dark, service-oriented site is preserved on the branch:
+Previous design backups are preserved in the repository.
 
-`backup-dark-site-2026-10-07`
+## Editorial standards
+
+Describe the company and each project in direct, verifiable language. Distinguish concepts and planned features from released functionality; avoid unsupported performance, market-leadership, licensing, and client-delivery claims.
 
 ## Development
 
@@ -37,4 +32,4 @@ npm install
 npm run dev
 ```
 
-Then open `http://localhost:3000`.
+Open `http://localhost:3000`.
