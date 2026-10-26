@@ -114,6 +114,73 @@ export async function GET() {
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#projects .reviewed-banner{transition:none}}
   </style>`;
   html = html.replace("</head>", '<meta name="robots" content="noindex,nofollow"/>' + css + "</head>");
+
+  // Compact presentation-only appearance switch. Artwork is intentionally unchanged.
+  const themeCss = `<style id="apex-theme-toggle">
+    :root{color-scheme:dark}
+    html[data-apx-theme="light"]{color-scheme:light;--apx-bg:#f5f2ec;--apx-surface:#fffefa;--apx-fg:#252722;--apx-muted:#565c55;--apx-accent:#995e3f;--apx-hairline:rgba(38,39,33,.17)}
+    html[data-apx-theme="light"] body,
+    html[data-apx-theme="light"] .intro,
+    html[data-apx-theme="light"] #projects,
+    html[data-apx-theme="light"] .site-footer{background:var(--apx-bg)!important;color:var(--apx-fg)!important}
+    html[data-apx-theme="light"] .site-header,
+    html[data-apx-theme="light"] header{background-color:var(--apx-bg)!important;color:var(--apx-fg)!important}
+    html[data-apx-theme="light"] .hero{background-color:#e9e4da;color:var(--apx-fg)}
+    html[data-apx-theme="light"] .hero #hero-title,
+    html[data-apx-theme="light"] .hero .reviewed-hero-line,
+    html[data-apx-theme="light"] .intro h2,
+    html[data-apx-theme="light"] .section-heading h2,
+    html[data-apx-theme="light"] #projects .reviewed-copy h3{color:var(--apx-fg)!important}
+    html[data-apx-theme="light"] .intro p,
+    html[data-apx-theme="light"] #projects .reviewed-copy p,
+    html[data-apx-theme="light"] .site-footer .footer-contact>p:last-child{color:var(--apx-muted)!important}
+    html[data-apx-theme="light"] #projects .reviewed-venture{background:var(--apx-surface)!important;border-color:var(--apx-hairline)!important}
+    html[data-apx-theme="light"] #projects .reviewed-link{color:var(--apx-fg)}
+    html[data-apx-theme="light"] .site-footer a,
+    html[data-apx-theme="light"] .site-header a{color:var(--apx-fg)}
+    html[data-apx-theme="light"] .hero::before{opacity:.2}
+    #apx-theme-switch{appearance:none;display:inline-grid;place-items:center;flex:none;width:30px;height:30px;padding:0;margin:0 0 0 14px;border:1px solid currentColor;border-radius:50%;background:transparent;color:inherit;opacity:.78;cursor:pointer;vertical-align:middle}
+    #apx-theme-switch:hover,#apx-theme-switch:focus-visible{opacity:1;outline-offset:3px}
+    #apx-theme-switch svg{display:block;width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+    @media(max-width:600px){#apx-theme-switch{width:28px;height:28px;margin-left:8px}}
+  </style>`;
+  const themeScript = `<script id="apex-theme-behavior">
+    (function(){
+      var key='apex-review-theme';
+      function setTheme(theme){
+        document.documentElement.setAttribute('data-apx-theme',theme);
+        var button=document.getElementById('apx-theme-switch');
+        if(button){
+          button.setAttribute('aria-label',theme==='dark'?'Switch to light appearance':'Switch to dark appearance');
+          button.setAttribute('title',theme==='dark'?'Light appearance':'Dark appearance');
+          button.setAttribute('aria-pressed',String(theme==='light'));
+          button.innerHTML=theme==='dark'
+            ? '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path></svg>'
+            : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg>';
+        }
+      }
+      var theme='dark';try{theme=localStorage.getItem(key)==='light'?'light':'dark'}catch(e){}
+      setTheme(theme);
+      function mount(){
+        if(document.getElementById('apx-theme-switch'))return;
+        var header=document.querySelector('.site-header')||document.querySelector('header');
+        if(!header)return;
+        var destination=header.querySelector('nav')||header.querySelector('.header-actions')||header;
+        var button=document.createElement('button');
+        button.type='button';button.id='apx-theme-switch';
+        destination.appendChild(button);
+        button.addEventListener('click',function(){
+          theme=document.documentElement.getAttribute('data-apx-theme')==='light'?'dark':'light';
+          setTheme(theme);try{localStorage.setItem(key,theme)}catch(e){}
+        });
+        setTheme(theme);
+      }
+      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);
+      else mount();
+    })();
+  </script>`;
+  html = html.replace("</head>", themeCss + "</head>");
+  html = html.replace("</body>", themeScript + "</body>");
   return new Response(html, {
     headers: {
       "Content-Type": "text/html; charset=utf-8",
