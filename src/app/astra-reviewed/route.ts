@@ -54,7 +54,7 @@ export async function GET() {
     .replace(/<link rel="canonical"[^>]*>/gi, "");
   // The registered company name is the sole page-level heading.
   // Keep Astra's original phrase as a quieter editorial subtitle.
-  html = html.replace(/<h1 id="hero-title">[\\s\\S]*?<\\/h1>/, '<h1 id="hero-title">APEX <span>INNOVATE</span></h1><p class="reviewed-hero-line">Ideas with forward intent.</p>');
+  html = html.replace(/<h1 id="hero-title">[\s\S]*?<\/h1>/, '<h1 id="hero-title">APEX <span>INNOVATE</span></h1><p class="reviewed-hero-line">Ideas with forward intent.</p>');
   const css = `<style id="apex-reviewed-layout">
     :root{--review-bg:#111318;--review-line:rgba(233,238,241,.14);--review-copy:#dadfe3;--review-muted:#acb2ba;--review-copper:#d1a07b}
     .hero #hero-title{max-width:900px;font-size:clamp(3.4rem,9vw,8rem);font-weight:650;letter-spacing:-.055em;line-height:.99}
