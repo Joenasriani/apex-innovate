@@ -60,27 +60,61 @@ export async function GET() {
     '<p>Have an idea, concept, or project to discuss? Contact Apex Innovate to explore the possibilities.</p>'
   );
   const css = `<style id="apex-reviewed-layout">
-    .site-footer .footer-contact>a{font-size:clamp(2.9rem,5.5vw,5.8rem)!important;line-height:1.04;letter-spacing:-.045em;max-width:850px}
-    .site-footer .footer-contact>p:last-child{font-size:clamp(.92rem,1.3vw,1.06rem);line-height:1.65;max-width:540px;color:#c6c9be;margin-top:24px}
-    .site-footer .footer-contact{padding-bottom:clamp(46px,7vw,76px)}
-    @media(max-width:700px){.site-footer .footer-contact>a{font-size:clamp(2.45rem,10vw,3.8rem)!important;max-width:100%}.site-footer .footer-contact>p:last-child{font-size:.95rem}}
-    :root{--review-bg:#111318;--review-line:rgba(233,238,241,.14);--review-copy:#dadfe3;--review-muted:#acb2ba;--review-copper:#d1a07b}
-    .hero #hero-title{max-width:900px;font-size:clamp(3.4rem,9vw,8rem);font-weight:650;letter-spacing:-.055em;line-height:.99}
-    .hero #hero-title span{color:var(--review-copper)}
-    .hero .reviewed-hero-line{font-size:clamp(1rem,1.6vw,1.3rem);line-height:1.5;color:var(--review-copy);margin-top:clamp(18px,2vw,28px);font-weight:400;letter-spacing:.005em}
-    #projects .section-heading{margin-bottom:clamp(22px,3vw,42px)}
-    #projects .reviewed-venture{display:block!important;width:100%;min-width:0;position:relative;background:var(--review-bg)!important;border:1px solid var(--review-line)!important;border-radius:4px;padding:clamp(20px,3vw,42px)!important;margin-bottom:clamp(22px,3vw,38px);box-sizing:border-box}
-    #projects .reviewed-info{display:flex;justify-content:space-between;align-items:end;gap:20px;min-width:0;margin-bottom:clamp(20px,2.8vw,34px)}
-    #projects .reviewed-copy{min-width:0;max-width:680px}
-    #projects .reviewed-copy h3{font-size:clamp(1.6rem,3.2vw,2.8rem);font-weight:600;letter-spacing:-.035em;line-height:1.15;margin:0 0 12px;color:#f5f4f0}
-    #projects .reviewed-copy p{font-size:clamp(.93rem,1.2vw,1.12rem);font-weight:400;line-height:1.6;color:var(--review-muted);margin:0;max-width:56ch}
-    #projects .reviewed-link{display:inline-flex;flex-shrink:0;gap:.7em;align-items:center;color:var(--review-copy);font-size:.9rem;text-decoration:none;letter-spacing:.01em;border-bottom:1px solid var(--review-copper);padding-bottom:7px}
-    #projects .reviewed-link:hover{color:#fff}
-    #projects .reviewed-banner{display:block;width:100%;max-width:100%;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:2px;background:#111;text-decoration:none;transition:border-color .2s ease}
-    #projects .reviewed-banner:hover{border-color:rgba(255,255,255,.4)}
+    /* JoBranch review: coherent Apex typography, spacing and surface scale. */
+    :root {
+      --apx-bg:#121412;
+      --apx-surface:#1e231e;
+      --apx-fg:#eeeae1;
+      --apx-muted:#b6b9b1;
+      --apx-accent:#d6a17a;
+      --apx-hairline:rgba(238,234,225,.14);
+      --apx-gutter:clamp(20px,4vw,64px);
+      --apx-content:1180px;
+      --apx-section:clamp(68px,9vw,120px);
+      --apx-card-gap:clamp(20px,3vw,36px);
+      --apx-font:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--apx-bg);color:var(--apx-fg);font-family:var(--apx-font);-webkit-font-smoothing:antialiased}
+    .page-width{width:min(var(--apx-content),calc(100% - 2 * var(--apx-gutter)));margin-inline:auto;box-sizing:border-box}
+    .hero{min-height:min(740px,87svh);box-sizing:border-box}
+    .hero #hero-title{max-width:1000px;font-size:clamp(3rem,8vw,7rem);font-weight:600;letter-spacing:-.053em;line-height:1.02;color:var(--apx-fg)}
+    .hero #hero-title span{color:var(--apx-accent)}
+    .hero .reviewed-hero-line{font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.6;color:var(--apx-muted);margin-top:24px;font-weight:400;letter-spacing:0}
+    .intro,.ventures-section,#projects,.site-footer{box-sizing:border-box}
+    .intro{padding-block:var(--apx-section)}
+    .intro h2,.section-heading h2{font-size:clamp(2rem,4vw,3.5rem);line-height:1.13;letter-spacing:-.035em;font-weight:600}
+    .intro p,.intro .intro-copy{font-size:clamp(.98rem,1.2vw,1.1rem);line-height:1.65;color:var(--apx-muted)}
+    #projects .section-heading{margin-bottom:clamp(28px,4vw,48px)}
+    #projects .reviewed-venture{display:block!important;position:relative;box-sizing:border-box;width:100%;min-width:0;background:var(--apx-surface)!important;color:var(--apx-fg)!important;border:1px solid var(--apx-hairline)!important;border-radius:3px;padding:clamp(20px,3vw,40px)!important;margin:0 0 var(--apx-card-gap)}
+    #projects .reviewed-venture:last-child{margin-bottom:0}
+    #projects .reviewed-info{display:flex;align-items:end;justify-content:space-between;gap:24px;min-width:0;margin:0 0 clamp(24px,3vw,36px)}
+    #projects .reviewed-copy{min-width:0;max-width:690px}
+    #projects .reviewed-copy h3{font-size:clamp(1.65rem,3vw,2.5rem);font-weight:600;letter-spacing:-.035em;line-height:1.15;color:var(--apx-fg);margin:0 0 12px}
+    #projects .reviewed-copy p{font-size:clamp(.96rem,1.15vw,1.07rem);font-weight:400;line-height:1.65;color:var(--apx-muted);margin:0;max-width:56ch}
+    #projects .reviewed-link{display:inline-flex;flex-shrink:0;align-items:center;gap:.6em;padding-bottom:7px;border-bottom:1px solid var(--apx-accent);color:var(--apx-fg);font-size:.92rem;font-weight:500;line-height:1.4;letter-spacing:0;text-decoration:none}
+    #projects .reviewed-link:hover,#projects .reviewed-link:focus-visible{color:var(--apx-accent)}
+    #projects .reviewed-banner{display:block;width:100%;max-width:100%;overflow:hidden;border:1px solid var(--apx-hairline);border-radius:2px;background:#101417;text-decoration:none;transition:border-color .18s ease}
+    #projects .reviewed-banner:hover{border-color:rgba(238,234,225,.42)}
     #projects .reviewed-banner img{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:3/1;object-fit:contain}
-    @media(max-width:700px){#projects .reviewed-venture{padding:clamp(12px,3.5vw,22px)!important}#projects .reviewed-info{display:block}#projects .reviewed-link{margin-top:18px}#projects .reviewed-banner{overflow:hidden}#projects .reviewed-banner img{width:100%;min-width:0;max-width:100%;height:auto;object-fit:contain}}
-    @media(prefers-reduced-motion:reduce){#projects .reviewed-banner{transition:none}}
+    .site-footer .footer-contact{padding-bottom:clamp(48px,7vw,78px)}
+    .site-footer .footer-contact>a{font-size:clamp(2.8rem,5.2vw,4.2rem)!important;line-height:1.08;letter-spacing:-.04em;font-weight:600;max-width:850px}
+    .site-footer .footer-contact>p:last-child{font-size:clamp(.98rem,1.18vw,1.06rem);line-height:1.65;max-width:540px;color:var(--apx-muted);margin-top:24px}
+    @media(max-width:800px){
+      .hero{min-height:unset;padding-block:clamp(95px,15vw,150px)}
+      .intro{grid-template-columns:1fr;gap:28px}
+      #projects .reviewed-info{align-items:start;flex-direction:column;gap:16px}
+    }
+    @media(max-width:600px){
+      :root{--apx-gutter:20px;--apx-section:64px}
+      .hero #hero-title{font-size:clamp(2.8rem,12vw,4.1rem)}
+      #projects .reviewed-venture{padding:16px!important}
+      #projects .reviewed-info{margin-bottom:20px}
+      #projects .reviewed-copy h3{font-size:clamp(1.55rem,7vw,2rem)}
+      #projects .reviewed-banner img{min-width:0;max-width:100%;width:100%}
+      .site-footer .footer-contact>a{font-size:clamp(2.4rem,10vw,3.3rem)!important}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#projects .reviewed-banner{transition:none}}
   </style>`;
   html = html.replace("</head>", '<meta name="robots" content="noindex,nofollow"/>' + css + "</head>");
   return new Response(html, {
