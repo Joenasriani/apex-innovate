@@ -47,6 +47,12 @@ export async function GET() {
     html = html.slice(0, start) + article + html.slice(end + "</article>".length);
   }
 
+  // Keep legal navigation inside this review deployment; never send
+  // reviewers to the older production policies.
+  html = html
+    .replace(/href="https:\/\/apexinnovate\.ae\/privacy"/g, 'href="/privacy"')
+    .replace(/href="https:\/\/apexinnovate\.ae\/terms"/g, 'href="/terms"')
+    .replace('Apex Innovate <small>FZE LLC</small><span>United Arab Emirates</span>', 'Apex Innovate <small>FZE LLC</small><span>Ajman NuVentures Centre Free Zone · United Arab Emirates</span>');
   // A private review preview must not compete with the public company site.
   html = html
     .replace(/<meta name="robots"[^>]*>/gi, "")
