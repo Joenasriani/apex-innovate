@@ -56,7 +56,7 @@ export async function GET() {
   // Replace out-of-date prose in the Astra source while retaining its composition.
   html = html.replace(
     'Apex Innovate supports selected digital ventures and creative technology initiatives. Our projects explore robotics, event creation and visual thinking.',
-    'Apex Innovate develops and manages its own digital projects, bringing together applications in robotics, event planning, and visual communication.'
+    'Apex Innovate FZE LLC is a UAE-registered company with licensed activities in e-commerce and marketing management. Alongside these activities, the company develops its own digital projects across robotics, event concepts, and visual thinking. Explore our projects below.'
   );
   // Typeface trial: render the logo with the same actual font as header and hero. Original vector assets remain unchanged.
   html = html.replace(
