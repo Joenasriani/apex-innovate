@@ -77,10 +77,9 @@ export async function GET() {
     html{scroll-behavior:smooth}
     body{background:var(--apx-bg);color:var(--apx-fg);font-family:var(--apx-font);-webkit-font-smoothing:antialiased}
     .page-width{width:min(var(--apx-content),calc(100% - 2 * var(--apx-gutter)));margin-inline:auto;box-sizing:border-box}
-    .hero{min-height:min(740px,87svh);box-sizing:border-box}
-    .hero #hero-title{max-width:1000px;font-size:clamp(3rem,8vw,7rem);font-weight:600;letter-spacing:-.053em;line-height:1.02;color:var(--apx-fg)}
+    .hero #hero-title{max-width:900px;font-size:clamp(3.4rem,9vw,8rem);font-weight:650;letter-spacing:-.055em;line-height:.99;color:var(--apx-fg)}
     .hero #hero-title span{color:var(--apx-accent)}
-    .hero .reviewed-hero-line{font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.6;color:var(--apx-muted);margin-top:24px;font-weight:400;letter-spacing:0}
+    .hero .reviewed-hero-line{font-size:clamp(1rem,1.6vw,1.3rem);line-height:1.5;color:var(--apx-fg);margin-top:clamp(18px,2vw,28px);font-weight:400;letter-spacing:.005em}
     .intro,.ventures-section,#projects,.site-footer{box-sizing:border-box}
     .intro{padding-block:var(--apx-section)}
     .intro h2,.section-heading h2{font-size:clamp(2rem,4vw,3.5rem);line-height:1.13;letter-spacing:-.035em;font-weight:600}
@@ -101,13 +100,11 @@ export async function GET() {
     .site-footer .footer-contact>a{font-size:clamp(2.8rem,5.2vw,4.2rem)!important;line-height:1.08;letter-spacing:-.04em;font-weight:600;max-width:850px}
     .site-footer .footer-contact>p:last-child{font-size:clamp(.98rem,1.18vw,1.06rem);line-height:1.65;max-width:540px;color:var(--apx-muted);margin-top:24px}
     @media(max-width:800px){
-      .hero{min-height:unset;padding-block:clamp(95px,15vw,150px)}
       .intro{grid-template-columns:1fr;gap:28px}
       #projects .reviewed-info{align-items:start;flex-direction:column;gap:16px}
     }
     @media(max-width:600px){
       :root{--apx-gutter:20px;--apx-section:64px}
-      .hero #hero-title{font-size:clamp(2.8rem,12vw,4.1rem)}
       #projects .reviewed-venture{padding:16px!important}
       #projects .reviewed-info{margin-bottom:20px}
       #projects .reviewed-copy h3{font-size:clamp(1.55rem,7vw,2rem)}
