@@ -130,6 +130,8 @@ export async function GET() {
     .site-header{height:clamp(82px,9vw,108px);background:transparent!important;color:var(--apx-fg);position:relative;z-index:4}
     .site-header nav{align-items:center;gap:clamp(12px,2vw,30px)}
     .site-header a{color:inherit}
+    .site-header .brand-name,.site-header .brand-text,.site-header .wordmark{font-family:"Arial Rounded MT Bold","Nunito Sans",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
+    .site-header a:has(.apex-logo-mark){font-family:"Arial Rounded MT Bold","Nunito Sans",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
     .apex-logo-mark{display:inline-flex;align-items:center;width:clamp(62px,8vw,90px);height:auto;flex:none}
     .apex-logo-mark img{display:block;width:100%;height:auto}
     .apex-logo-mark .apex-logo-light{display:none}
@@ -169,7 +171,7 @@ export async function GET() {
     .footer-legal{border-color:var(--apx-line);color:var(--apx-muted)}
     .site-footer a{color:inherit}
     @media(max-width:800px){.intro.page-width{grid-template-columns:1fr;gap:22px}.intro>.eyebrow{padding-top:0}}
-    @media(max-width:640px){:root{--apx-gutter:20px;--apx-space:48px}.hero #hero-title{font-size:clamp(3rem,12.5vw,4.9rem)}.hero .reviewed-hero-line{font-size:1rem}.intro h2{font-size:clamp(1.8rem,7.8vw,2.4rem);margin-bottom:14px}.intro div>p{font-size:.96rem;line-height:1.58}#projects .section-heading{padding:18px 0 23px}#projects .section-heading h2{font-size:clamp(1.3rem,5vw,1.6rem)}#projects .reviewed-info{align-items:start;flex-direction:column;gap:10px;margin-bottom:15px}#projects .reviewed-copy h3{font-size:clamp(1.45rem,6vw,1.85rem);margin-bottom:6px}#projects .reviewed-copy p{font-size:.91rem;line-height:1.5}#projects .reviewed-link{font-size:.82rem}#projects .reviewed-banner{width:min(88%,360px);max-width:100%;margin-inline:auto}#projects .reviewed-banner img{display:block;width:100%;min-width:0;max-width:100%;height:auto;aspect-ratio:3/1;object-fit:contain}#projects .reviewed-venture{margin-bottom:28px}.site-footer .footer-contact>a{font-size:clamp(2.65rem,10vw,3.7rem)!important}}
+    @media(max-width:640px){:root{--apx-gutter:20px;--apx-space:48px}.hero #hero-title{font-size:clamp(3rem,11.5vw,5.4rem)}.hero .reviewed-hero-line{font-size:1rem}.intro h2{font-size:clamp(1.8rem,7.8vw,2.4rem);margin-bottom:14px}.intro div>p{font-size:.96rem;line-height:1.58}#projects .section-heading{padding:18px 0 23px}#projects .section-heading h2{font-size:clamp(1.3rem,5vw,1.6rem)}#projects .reviewed-info{align-items:start;flex-direction:column;gap:10px;margin-bottom:15px}#projects .reviewed-copy h3{font-size:clamp(1.45rem,6vw,1.85rem);margin-bottom:6px}#projects .reviewed-copy p{font-size:.91rem;line-height:1.5}#projects .reviewed-link{font-size:.82rem}#projects .reviewed-banner{width:min(88%,360px);max-width:100%;margin-inline:auto}#projects .reviewed-banner img{display:block;width:100%;min-width:0;max-width:100%;height:auto;aspect-ratio:3/1;object-fit:contain}#projects .reviewed-venture{margin-bottom:28px}.site-footer .footer-contact>a{font-size:clamp(2.65rem,10vw,3.7rem)!important}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>`;
   html = html.replace("</head>", '<meta name="robots" content="noindex,nofollow"/>' + css + "</head>");
