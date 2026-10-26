@@ -112,7 +112,7 @@ export async function GET() {
     .replace(/<link rel="canonical"[^>]*>/gi, "");
   // The registered company name is the sole page-level heading.
   // Keep Astra's original phrase as a quieter editorial subtitle.
-  html = html.replace(/<h1 id="hero-title">[\s\S]*?<\/h1>/, '<h1 id="hero-title">APEX <span>INNOVATE</span></h1><p class="reviewed-hero-line">Ideas with forward intent.</p>');
+  html = html.replace(/<h1 id="hero-title">[\s\S]*?<\/h1>/, '<h1 id="hero-title">apex <span>innovate</span></h1><p class="reviewed-hero-line">Ideas with forward intent.</p>');
   html = html.replace(
     '<p>Business enquiries &amp; project conversations.</p>',
     '<p>Have an idea, concept, or project to discuss? Contact Apex Innovate to explore the possibilities.</p>'
@@ -137,7 +137,7 @@ export async function GET() {
     .hero-art{object-fit:cover;object-position:60% center}
     .hero-shade{background:linear-gradient(90deg,rgba(8,10,9,.70),rgba(8,10,9,.04) 85%),linear-gradient(0deg,rgba(8,10,9,.54),transparent 56%);position:absolute;inset:0}
     .hero-content{padding-top:clamp(36px,6vw,70px)}
-    .hero #hero-title{max-width:900px;font-size:clamp(3.4rem,9vw,8rem);font-weight:650;letter-spacing:-.055em;line-height:.99;color:var(--apx-fg)}
+    .hero #hero-title{text-transform:none!important;max-width:900px;font-size:clamp(3.4rem,9vw,8rem);font-weight:650;letter-spacing:-.055em;line-height:.99;color:var(--apx-fg)}
     .hero #hero-title span{color:#d6a17a}
     .hero .reviewed-hero-line{font-size:clamp(1rem,1.6vw,1.3rem);line-height:1.5;color:var(--apx-fg);margin:20px 0 0;font-weight:400}
     .hero .eyebrow,.hero .hero-bottom,.hero .hero-bottom p,.hero .hero-caption{color:#e4e1d8}
