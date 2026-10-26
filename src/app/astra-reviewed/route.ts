@@ -58,6 +58,11 @@ export async function GET() {
     'Apex Innovate supports selected digital ventures and creative technology initiatives. Our projects explore robotics, event creation and visual thinking.',
     'Apex Innovate develops and manages its own digital projects, bringing together applications in robotics, event planning, and visual communication.'
   );
+  // Reuse the approved single logo asset on the company site without changing project artwork.
+  html = html.replace(
+    '<span class="apex-symbol" aria-hidden="true">A<span>i</span></span>',
+    '<picture class="apex-logo-mark" aria-hidden="true"><img class="apex-logo-light" src="/apex-logo.svg" alt="" width="918" height="345"/><img class="apex-logo-dark" src="/apex-logo-dark.svg" alt="" width="918" height="345"/></picture>'
+  );
   // Server-rendered entity relationships; project links are references,
   // not claims of separate legal incorporation or launch status.
   const linkedData = {
@@ -117,6 +122,12 @@ export async function GET() {
     .site-header{height:clamp(82px,9vw,108px);background:transparent!important;color:var(--apx-fg);position:relative;z-index:4}
     .site-header nav{align-items:center;gap:clamp(12px,2vw,30px)}
     .site-header a{color:inherit}
+    .apex-logo-mark{display:inline-flex;align-items:center;width:clamp(62px,8vw,90px);height:auto;flex:none}
+    .apex-logo-mark img{display:block;width:100%;height:auto}
+    .apex-logo-mark .apex-logo-light{display:none}
+    .apex-logo-mark .apex-logo-dark{display:block}
+    html[data-apx-theme="light"] .apex-logo-mark .apex-logo-light{display:block}
+    html[data-apx-theme="light"] .apex-logo-mark .apex-logo-dark{display:none}
     .hero{background:#101110;position:relative}
     .hero-art{object-fit:cover;object-position:60% center}
     .hero-shade{background:linear-gradient(90deg,rgba(8,10,9,.70),rgba(8,10,9,.04) 85%),linear-gradient(0deg,rgba(8,10,9,.54),transparent 56%);position:absolute;inset:0}
