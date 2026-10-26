@@ -211,6 +211,24 @@ export async function GET() {
       var theme='dark';try{theme=localStorage.getItem(key)==='light'?'light':'dark'}catch(e){}
       setTheme(theme);
       function mount(){
+        var header=document.querySelector('.site-header')||document.querySelector('header');
+        if(header){
+          var walker=document.createTreeWalker(header,NodeFilter.SHOW_TEXT);
+          var nodes=[];var node;
+          while((node=walker.nextNode())){
+            if(/\\bAPEX\\b|\\bINNOVATE\\b/.test(node.nodeValue||''))nodes.push(node);
+          }
+          nodes.forEach(function(n){
+            var original=n.nodeValue||'';
+            var updated=original.replace(/\\bAPEX\\b/g,'apex').replace(/\\bINNOVATE\\b/g,'innovate');
+            if(updated!==original){
+              var span=document.createElement('span');
+              span.textContent=updated;
+              span.style.setProperty('text-transform','none','important');
+              n.parentNode.replaceChild(span,n);
+            }
+          });
+        }
         if(document.getElementById('apx-theme-switch'))return;
         var header=document.querySelector('.site-header')||document.querySelector('header');
         if(!header)return;
