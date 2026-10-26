@@ -63,6 +63,9 @@ export async function GET() {
     '<span class="apex-symbol" aria-hidden="true">A<span>i</span></span>',
     '<picture class="apex-logo-mark" aria-hidden="true"><img class="apex-logo-light" src="/apex-logo.svg" alt="" width="918" height="345"/><img class="apex-logo-dark" src="/apex-logo-dark.svg" alt="" width="918" height="345"/></picture>'
   );
+  // The approved logo is custom artwork, not a distributable typeface.
+  // Outfit is a geometrically related text font for the hero only.
+  html = html.replace("</head>", '<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700&display=swap" rel="stylesheet"/></head>');
   // Header-only wordmark treatment. Preserve legal name, metadata and hero.
   html = html.replace(
     /(<header[\s\S]*?<\/header>)/i,
@@ -137,7 +140,7 @@ export async function GET() {
     .hero-art{object-fit:cover;object-position:60% center}
     .hero-shade{background:linear-gradient(90deg,rgba(8,10,9,.70),rgba(8,10,9,.04) 85%),linear-gradient(0deg,rgba(8,10,9,.54),transparent 56%);position:absolute;inset:0}
     .hero-content{padding-top:clamp(36px,6vw,70px)}
-    .hero #hero-title{text-transform:none!important;max-width:900px;font-size:clamp(3.4rem,9vw,8rem);font-weight:650;letter-spacing:-.055em;line-height:.99;color:var(--apx-fg)}
+    .hero #hero-title{text-transform:none!important;font-family:"Outfit",Inter,system-ui,sans-serif;font-optical-sizing:auto;max-width:900px;font-size:clamp(3.4rem,9vw,8rem);font-weight:650;letter-spacing:-.055em;line-height:.99;color:var(--apx-fg)}
     .hero #hero-title span{color:#d6a17a}
     .hero .reviewed-hero-line{font-size:clamp(1rem,1.6vw,1.3rem);line-height:1.5;color:var(--apx-fg);margin:20px 0 0;font-weight:400}
     .hero .eyebrow,.hero .hero-bottom,.hero .hero-bottom p,.hero .hero-caption{color:#e4e1d8}
