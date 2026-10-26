@@ -23,7 +23,7 @@ export const viewport: Viewport = {
 };
 
 const companyDescription =
-  "Apex Innovate FZE LLC is an Ajman, UAE free-zone company presenting its digital initiatives: RoboMarket, IdeaVent and Visual Framework.";
+  "Apex Innovate FZE LLC is a UAE-based company developing and managing digital projects across robotics, event planning, and visual technologies.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://apexinnovate.ae"),
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.svg" }],
   },
   openGraph: {
-    title: "Apex Innovate FZE LLC | Digital Products & Immersive Technology",
+    title: "Apex Innovate FZE LLC | Projects & Digital Ventures",
     description: companyDescription,
     url: "https://apexinnovate.ae/",
     siteName: "Apex Innovate",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Apex Innovate FZE LLC | Digital Products & Immersive Technology",
+    title: "Apex Innovate FZE LLC | Projects & Digital Ventures",
     description: companyDescription,
   },
 };
