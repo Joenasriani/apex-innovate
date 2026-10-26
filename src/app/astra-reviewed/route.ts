@@ -68,10 +68,10 @@ export async function GET() {
     #projects .reviewed-copy p{font-size:clamp(.93rem,1.2vw,1.12rem);font-weight:400;line-height:1.6;color:var(--review-muted);margin:0;max-width:56ch}
     #projects .reviewed-link{display:inline-flex;flex-shrink:0;gap:.7em;align-items:center;color:var(--review-copy);font-size:.9rem;text-decoration:none;letter-spacing:.01em;border-bottom:1px solid var(--review-copper);padding-bottom:7px}
     #projects .reviewed-link:hover{color:#fff}
-    #projects .reviewed-banner{display:block;width:100%;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:2px;background:#111;text-decoration:none;transition:border-color .2s ease}
+    #projects .reviewed-banner{display:block;width:100%;max-width:100%;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:2px;background:#111;text-decoration:none;transition:border-color .2s ease}
     #projects .reviewed-banner:hover{border-color:rgba(255,255,255,.4)}
-    #projects .reviewed-banner img{display:block;width:100%;height:auto;aspect-ratio:3/1;object-fit:contain}
-    @media(max-width:700px){#projects .reviewed-info{display:block}#projects .reviewed-link{margin-top:18px}#projects .reviewed-banner{overflow-x:auto}#projects .reviewed-banner img{min-width:580px;max-width:none}}
+    #projects .reviewed-banner img{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:3/1;object-fit:contain}
+    @media(max-width:700px){#projects .reviewed-venture{padding:clamp(12px,3.5vw,22px)!important}#projects .reviewed-info{display:block}#projects .reviewed-link{margin-top:18px}#projects .reviewed-banner{overflow:hidden}#projects .reviewed-banner img{width:100%;min-width:0;max-width:100%;height:auto;object-fit:contain}}
     @media(prefers-reduced-motion:reduce){#projects .reviewed-banner{transition:none}}
   </style>`;
   html = html.replace("</head>", '<meta name="robots" content="noindex,nofollow"/>' + css + "</head>");
