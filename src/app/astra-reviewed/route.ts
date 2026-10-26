@@ -63,10 +63,10 @@ export async function GET() {
     '<span class="apex-symbol" aria-hidden="true">A<span>i</span></span>',
     '<picture class="apex-logo-mark" aria-hidden="true"><img class="apex-logo-light" src="/apex-logo.svg" alt="" width="918" height="345"/><img class="apex-logo-dark" src="/apex-logo-dark.svg" alt="" width="918" height="345"/></picture>'
   );
-  // Header-only wordmark treatment. Preserve the legal name, metadata and hero.
+  // Header-only wordmark treatment. Preserve legal name, metadata and hero.
   html = html.replace(
-    /(<header[\\s\\S]*?<\\/header>)/i,
-    (header) => header.replace(/APEX\\s+INNOVATE/g, "apex innovate")
+    /(<header[\s\S]*?<\/header>)/i,
+    (header) => header.replace(/APEX\s+INNOVATE/g, "apex innovate")
   );
   // Server-rendered entity relationships; project links are references,
   // not claims of separate legal incorporation or launch status.
