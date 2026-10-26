@@ -181,6 +181,35 @@ export async function GET() {
     html[data-apx-theme="light"] #projects .reviewed-link{color:var(--apx-fg)}
     html[data-apx-theme="light"] .site-footer a,
     html[data-apx-theme="light"] .site-header a{color:var(--apx-fg)}
+    /* Apply light mode to every original Astra section, not just the header. */
+    html[data-apx-theme="light"] .hero{background:#f0ece3!important;color:var(--apx-fg)!important}
+    html[data-apx-theme="light"] .hero-art{opacity:.24;filter:grayscale(.15)}
+    html[data-apx-theme="light"] .hero-shade{background:linear-gradient(90deg,rgba(249,246,240,.94),rgba(249,246,240,.3) 90%),linear-gradient(0deg,rgba(249,246,240,.65),transparent 65%)!important}
+    html[data-apx-theme="light"] .hero-content,
+    html[data-apx-theme="light"] .hero-content p,
+    html[data-apx-theme="light"] .hero-content a,
+    html[data-apx-theme="light"] .hero .eyebrow{color:var(--apx-fg)!important}
+    html[data-apx-theme="light"] .hero .hero-bottom,
+    html[data-apx-theme="light"] .hero .hero-bottom span{color:var(--apx-muted)!important}
+    html[data-apx-theme="light"] .intro,
+    html[data-apx-theme="light"] .ventures,
+    html[data-apx-theme="light"] .site-footer{background-color:var(--apx-bg)!important}
+    html[data-apx-theme="light"] .intro .eyebrow,
+    html[data-apx-theme="light"] .ventures .eyebrow{color:var(--apx-accent)!important}
+    html[data-apx-theme="light"] .intro h2 span{color:#777d73!important}
+    html[data-apx-theme="light"] .intro div>p,
+    html[data-apx-theme="light"] .ventures p,
+    html[data-apx-theme="light"] .site-footer p,
+    html[data-apx-theme="light"] .site-footer .eyebrow{color:var(--apx-muted)!important}
+    html[data-apx-theme="light"] .ventures h2,
+    html[data-apx-theme="light"] .site-footer .footer-contact>a,
+    html[data-apx-theme="light"] .site-footer .footer-contact>a span{color:var(--apx-fg)!important}
+    html[data-apx-theme="light"] .site-footer,
+    html[data-apx-theme="light"] .site-footer .footer-bottom,
+    html[data-apx-theme="light"] .intro{border-color:var(--apx-hairline)!important}
+    html[data-apx-theme="light"] .site-header svg,
+    html[data-apx-theme="light"] .site-header svg path{color:var(--apx-fg)}
+    html[data-apx-theme="light"] #projects .reviewed-banner{background:#15191a!important}
     html[data-apx-theme="light"] .hero::before{opacity:.2}
     #apx-theme-switch{appearance:none;display:inline-grid;place-items:center;flex:none;width:30px;height:30px;padding:0;margin:0 0 0 14px;border:1px solid currentColor;border-radius:50%;background:transparent;color:inherit;opacity:.78;cursor:pointer;vertical-align:middle}
     #apx-theme-switch:hover,#apx-theme-switch:focus-visible{opacity:1;outline-offset:3px}
