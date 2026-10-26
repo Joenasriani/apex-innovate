@@ -55,7 +55,15 @@ export async function GET() {
   // The registered company name is the sole page-level heading.
   // Keep Astra's original phrase as a quieter editorial subtitle.
   html = html.replace(/<h1 id="hero-title">[\s\S]*?<\/h1>/, '<h1 id="hero-title">APEX <span>INNOVATE</span></h1><p class="reviewed-hero-line">Ideas with forward intent.</p>');
+  html = html.replace(
+    '<p>Business enquiries &amp; project conversations.</p>',
+    '<p>Have an idea, concept, or project to discuss? Contact Apex Innovate to explore the possibilities.</p>'
+  );
   const css = `<style id="apex-reviewed-layout">
+    .site-footer .footer-contact>a{font-size:clamp(2.9rem,5.5vw,5.8rem)!important;line-height:1.04;letter-spacing:-.045em;max-width:850px}
+    .site-footer .footer-contact>p:last-child{font-size:clamp(.92rem,1.3vw,1.06rem);line-height:1.65;max-width:540px;color:#c6c9be;margin-top:24px}
+    .site-footer .footer-contact{padding-bottom:clamp(46px,7vw,76px)}
+    @media(max-width:700px){.site-footer .footer-contact>a{font-size:clamp(2.45rem,10vw,3.8rem)!important;max-width:100%}.site-footer .footer-contact>p:last-child{font-size:.95rem}}
     :root{--review-bg:#111318;--review-line:rgba(233,238,241,.14);--review-copy:#dadfe3;--review-muted:#acb2ba;--review-copper:#d1a07b}
     .hero #hero-title{max-width:900px;font-size:clamp(3.4rem,9vw,8rem);font-weight:650;letter-spacing:-.055em;line-height:.99}
     .hero #hero-title span{color:var(--review-copper)}
