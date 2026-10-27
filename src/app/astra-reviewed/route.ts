@@ -130,7 +130,7 @@ export async function GET() {
     .site-header{height:clamp(82px,9vw,108px);background:transparent!important;color:var(--apx-fg);position:relative;z-index:4}
     .site-header nav{align-items:center;gap:clamp(12px,2vw,30px)}
     .site-header a{color:inherit}
-    .apx-type-logo{display:inline-flex;align-items:baseline;white-space:nowrap;font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-size:clamp(29px,3.3vw,43px);font-weight:800;letter-spacing:-.12em;line-height:1;color:var(--apx-fg)}
+    .apx-type-logo{display:inline-flex;align-items:baseline;white-space:nowrap;font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-size:clamp(29px,3.3vw,43px);font-weight:600;letter-spacing:-.075em;line-height:1;color:var(--apx-fg)}
     .apx-type-logo .apx-ai{color:#d6a17a;letter-spacing:-.075em}
     .apx-type-logo .apx-code{color:var(--apx-fg)}
     .site-header .brand-name,.site-header .brand-text,.site-header .wordmark,.site-header a:has(.apx-type-logo){font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
@@ -199,81 +199,6 @@ export async function GET() {
 
   // Compact presentation-only appearance switch. Artwork is intentionally unchanged.
   // Theme variables change globally: no local light rectangles or image opacity hacks.
-  const themeCss = `<style id="apex-theme-toggle">
-    html[data-apx-theme="light"]{color-scheme:light;--apx-bg:#f5f2ec;--apx-surface:#e9e5db;--apx-fg:#242622;--apx-muted:#5b6058;--apx-accent:#a56748;--apx-line:rgba(36,38,34,.21)}
-    html[data-apx-theme="light"] body,html[data-apx-theme="light"] .intro,html[data-apx-theme="light"] #projects{background:var(--apx-bg)!important;color:var(--apx-fg)!important}
-    html[data-apx-theme="light"] .site-header{color:var(--apx-fg)!important;background:transparent!important}
-    html[data-apx-theme="light"] .hero{background:#ebe6dc!important;color:var(--apx-fg)!important}
-    html[data-apx-theme="light"] .hero-art{opacity:1;filter:none}
-    html[data-apx-theme="light"] .hero-shade{background:linear-gradient(90deg,rgba(249,247,241,.91),rgba(249,247,241,.66) 42%,rgba(249,247,241,.11) 95%),linear-gradient(0deg,rgba(244,241,234,.43),transparent 44%)!important}
-    html[data-apx-theme="light"] .hero #hero-title{color:#242622!important}
-    html[data-apx-theme="light"] .hero #hero-title span{color:#a56748!important}
-    html[data-apx-theme="light"] .hero .eyebrow,html[data-apx-theme="light"] .hero .hero-bottom p,html[data-apx-theme="light"] .hero .hero-bottom a,html[data-apx-theme="light"] .hero .hero-caption,html[data-apx-theme="light"] .hero .reviewed-hero-line{color:#282b26!important}
-    html[data-apx-theme="light"] .hero .circle{border-color:rgba(36,38,34,.6)}
-    html[data-apx-theme="light"] .site-footer{background:var(--apx-surface)!important;color:var(--apx-fg)!important}
-    html[data-apx-theme="light"] .site-footer .footer-contact>a,html[data-apx-theme="light"] .site-footer nav a{color:var(--apx-fg)!important}
-    html[data-apx-theme="light"] .site-footer .footer-contact>a>span:first-child{color:#65715e!important}
-    html[data-apx-theme="light"] .footer-legal{border-color:var(--apx-line)!important;color:var(--apx-muted)!important}
-    #apx-theme-switch{appearance:none;display:grid;place-items:center;flex:none;width:30px;height:30px;margin-left:12px;padding:0;border:1px solid currentColor;border-radius:50%;background:transparent;color:inherit;cursor:pointer}
-    #apx-theme-switch svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-    #apx-theme-switch:focus-visible{outline:2px solid var(--apx-accent);outline-offset:3px}
-    @media(max-width:640px){#apx-theme-switch{width:28px;height:28px;margin-left:5px}}
-  </style>`;
-  const themeScript = `<script id="apex-theme-behavior">
-    (function(){
-      var key='apex-review-theme';
-      function setTheme(theme){
-        document.documentElement.setAttribute('data-apx-theme',theme);
-        var button=document.getElementById('apx-theme-switch');
-        if(button){
-          button.setAttribute('aria-label',theme==='dark'?'Switch to light appearance':'Switch to dark appearance');
-          button.setAttribute('title',theme==='dark'?'Light appearance':'Dark appearance');
-          button.setAttribute('aria-pressed',String(theme==='light'));
-          button.innerHTML=theme==='dark'
-            ? '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path></svg>'
-            : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg>';
-        }
-      }
-      var theme='dark';try{theme=localStorage.getItem(key)==='light'?'light':'dark'}catch(e){}
-      setTheme(theme);
-      function mount(){
-        var header=document.querySelector('.site-header')||document.querySelector('header');
-        if(header){
-          var walker=document.createTreeWalker(header,NodeFilter.SHOW_TEXT);
-          var nodes=[];var node;
-          while((node=walker.nextNode())){
-            if(/\\bAPEX\\b|\\bINNOVATE\\b/.test(node.nodeValue||''))nodes.push(node);
-          }
-          nodes.forEach(function(n){
-            var original=n.nodeValue||'';
-            var updated=original.replace(/\\bAPEX\\b/g,'apex').replace(/\\bINNOVATE\\b/g,'innovate');
-            if(updated!==original){
-              var span=document.createElement('span');
-              span.textContent=updated;
-              span.style.setProperty('text-transform','none','important');
-              n.parentNode.replaceChild(span,n);
-            }
-          });
-        }
-        if(document.getElementById('apx-theme-switch'))return;
-        var header=document.querySelector('.site-header')||document.querySelector('header');
-        if(!header)return;
-        var destination=header.querySelector('nav')||header.querySelector('.header-actions')||header;
-        var button=document.createElement('button');
-        button.type='button';button.id='apx-theme-switch';
-        destination.appendChild(button);
-        button.addEventListener('click',function(){
-          theme=document.documentElement.getAttribute('data-apx-theme')==='light'?'dark':'light';
-          setTheme(theme);try{localStorage.setItem(key,theme)}catch(e){}
-        });
-        setTheme(theme);
-      }
-      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);
-      else mount();
-    })();
-  </script>`;
-  html = html.replace("</head>", themeCss + "</head>");
-  html = html.replace("</body>", themeScript + "</body>");
   return new Response(html, {
     headers: {
       "Content-Type": "text/html; charset=utf-8",
