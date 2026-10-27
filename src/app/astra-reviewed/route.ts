@@ -122,32 +122,32 @@ export async function GET() {
   // One layout scale and one surface system, shared by both appearances.
   const css = `<style id="apex-reviewed-layout">
     @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700;800&display=swap');
-    :root{--apx-bg:#121412;--apx-surface:#1e231e;--apx-fg:#eeeae1;--apx-muted:#b6b9b1;--apx-accent:#d6a17a;--apx-line:rgba(238,234,225,.17);--apx-content:1180px;--apx-gutter:clamp(20px,4vw,56px);--apx-space:clamp(64px,8vw,110px);color-scheme:dark}
+    :root{--apx-bg:#f6f3ed;--apx-surface:#f6f3ed;--apx-fg:#272923;--apx-muted:#5c615a;--apx-accent:#966343;--apx-line:rgba(39,41,35,.16);--apx-content:1180px;--apx-gutter:clamp(20px,4vw,56px);--apx-space:clamp(64px,8vw,110px);color-scheme:light}
     *,*::before,*::after{box-sizing:border-box}
     html{background:var(--apx-bg)}
     body{margin:0;min-width:0;background:var(--apx-bg)!important;color:var(--apx-fg);font-family:Inter,system-ui,sans-serif;overflow-x:clip}
     .page-width{width:min(var(--apx-content),calc(100% - 2 * var(--apx-gutter)));max-width:none;margin-inline:auto}
-    .site-header{height:clamp(82px,9vw,108px);background:transparent!important;color:var(--apx-fg);position:relative;z-index:4}
+    .site-header{height:clamp(82px,9vw,108px);background:var(--apx-bg)!important;color:var(--apx-fg);position:relative;z-index:4}
     .site-header nav{align-items:center;gap:clamp(12px,2vw,30px)}
     .site-header a{color:inherit}
     .apx-type-logo{display:inline-flex;align-items:baseline;white-space:nowrap;font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-size:clamp(29px,3.3vw,43px);font-weight:600;letter-spacing:-.075em;line-height:1;color:var(--apx-fg)}
-    .apx-type-logo .apx-ai{color:#d6a17a;letter-spacing:-.075em}
+    .apx-type-logo .apx-ai{color:var(--apx-accent);letter-spacing:-.075em}
     .apx-type-logo .apx-code{color:var(--apx-fg)}
     .site-header .brand-name,.site-header .brand-text,.site-header .wordmark,.site-header a:has(.apx-type-logo){font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
     .site-header .brand-name,.site-header .brand-text,.site-header .wordmark{font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
     .site-header a:has(.apx-type-logo){font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
     .apex-logo-mark{display:inline-flex;align-items:center;width:clamp(62px,8vw,90px);height:auto;flex:none}
     .apex-logo-mark img{display:block;width:100%;height:auto}
-    .apex-logo-mark .apex-logo-light{display:none}
-    .apex-logo-mark .apex-logo-dark{display:block}
-    .hero{background:#101110;position:relative}
-    .hero-art{object-fit:cover;object-position:60% center}
-    .hero-shade{background:linear-gradient(90deg,rgba(8,10,9,.70),rgba(8,10,9,.04) 85%),linear-gradient(0deg,rgba(8,10,9,.54),transparent 56%);position:absolute;inset:0}
+    .apex-logo-mark .apex-logo-light{display:block}
+    .apex-logo-mark .apex-logo-dark{display:none}
+    .hero{background:var(--apx-bg)!important;position:relative;color:var(--apx-fg)!important;min-height:clamp(500px,68vh,740px)}
+    .hero-art{display:none!important}
+    .hero-shade{display:none!important}
     .hero-content{padding-top:clamp(36px,6vw,70px)}
     .hero #hero-title{text-transform:none!important;font-family:"Oxanium",Inter,system-ui,sans-serif!important;max-width:1100px;font-size:clamp(3.4rem,10vw,9rem);font-weight:700;letter-spacing:-.045em;line-height:1.01;color:var(--apx-fg)}
-    .hero #hero-title span{color:#d6a17a}
+    .hero #hero-title span{color:var(--apx-accent)}
     .hero .reviewed-hero-line{font-size:clamp(1rem,1.6vw,1.3rem);line-height:1.5;color:var(--apx-fg);margin:20px 0 0;font-weight:400}
-    .hero .eyebrow,.hero .hero-bottom,.hero .hero-bottom p,.hero .hero-caption{color:#e4e1d8}
+    .hero .eyebrow,.hero .hero-bottom,.hero .hero-bottom p,.hero .hero-caption{color:var(--apx-muted)!important}
     .intro.page-width{background:transparent!important;color:var(--apx-fg);padding-block:var(--apx-space);display:grid;grid-template-columns:minmax(130px,1fr) minmax(0,2fr);gap:clamp(28px,5vw,72px)}
     .intro>.eyebrow{color:var(--apx-accent)}
     .intro h2{font-size:clamp(2rem,4vw,3.65rem);line-height:1.12;font-weight:500;letter-spacing:-.047em;margin:0 0 25px;color:var(--apx-fg)}
@@ -182,6 +182,12 @@ export async function GET() {
       .hero #hero-title span{display:block}
       .hero-content{max-width:100%;min-width:0}
     }
+
+    /* Single quiet surface; all original project banner artwork is preserved. */
+    .hero .hero-content,.hero .hero-bottom{color:var(--apx-fg)!important}
+    .hero .hero-bottom a,.hero a,.hero .circle{color:var(--apx-fg)!important;border-color:var(--apx-line)!important}
+    .hero .reviewed-hero-line{color:var(--apx-muted)!important}
+    #projects .reviewed-banner{background:#171c20;border-color:var(--apx-line)}
   </style>`;
   html = html.replace("</head>", '<meta name="robots" content="noindex,nofollow"/>' + css + "</head>");
 
