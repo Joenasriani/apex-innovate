@@ -16,7 +16,7 @@ const descriptions: Record<string, { name: string; detail: string }> = {
  * HTML artifact and renders it directly inside the three project articles.
  * Main and the original review artifact remain unchanged.
  */
-export async function GET() {
+export async function GET(request: Request) {
   const original = await readFile(join(process.cwd(), "public", "astra-preview.html"), "utf8");
   const match = original.match(/const banners=(\[[\s\S]*?\]);\s*function apply\(/);
   if (!match) {
@@ -274,10 +274,13 @@ export async function GET() {
   </script>`;
   html = html.replace("</head>", themeCss + "</head>");
   html = html.replace("</body>", themeScript + "</body>");
+  // Index only the two verified corporate domains; keep preview deployments private to crawlers.
+  const publicHost = new URL(request.url).hostname.toLowerCase();
+  const isCorporateDomain = publicHost === "apexinnovate.ae" || publicHost === "www.apexinnovate.ae";
   return new Response(html, {
     headers: {
       "Content-Type": "text/html; charset=utf-8",
-      "X-Robots-Tag": "noindex, nofollow, noarchive",
+      "X-Robots-Tag": isCorporateDomain ? "index, follow" : "noindex, nofollow, noarchive",
       "Cache-Control": "no-store",
     },
   });
