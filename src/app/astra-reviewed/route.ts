@@ -124,8 +124,14 @@ export async function GET() {
     @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700;800&display=swap');
     :root{--apx-bg:#f6f3ed;--apx-surface:#f6f3ed;--apx-fg:#272923;--apx-muted:#5c615a;--apx-accent:#966343;--apx-line:rgba(39,41,35,.16);--apx-content:1180px;--apx-gutter:clamp(20px,4vw,56px);--apx-space:clamp(64px,8vw,110px);color-scheme:light}
     *,*::before,*::after{box-sizing:border-box}
-    html{background:var(--apx-bg)}
-    body{margin:0;min-width:0;background:var(--apx-bg)!important;color:var(--apx-fg);font-family:Inter,system-ui,sans-serif;overflow-x:clip}
+    html{background:var(--apx-bg)!important}
+    body{margin:0;min-width:0;background:var(--apx-bg)!important;color:var(--apx-fg)!important;font-family:Inter,system-ui,sans-serif;overflow-x:clip}
+    /* Ensure inherited dark surfaces cannot override the reviewed light presentation. */
+    #main,.hero,.intro.page-width,#projects.page-width{background-color:var(--apx-bg)!important;color:var(--apx-fg)!important}
+    .intro.page-width h2,.intro.page-width h2 span,#projects .section-heading h2,#projects .reviewed-copy h3{color:var(--apx-fg)!important}
+    .intro.page-width div>p,#projects .reviewed-copy p,#projects .section-heading>span{color:var(--apx-muted)!important}
+    #projects .reviewed-link{color:var(--apx-fg)!important}
+    .intro.page-width .eyebrow{color:var(--apx-accent)!important}
     .page-width{width:min(var(--apx-content),calc(100% - 2 * var(--apx-gutter)));max-width:none;margin-inline:auto}
     .site-header{height:clamp(82px,9vw,108px);background:var(--apx-bg)!important;color:var(--apx-fg);position:relative;z-index:4}
     .site-header nav{align-items:center;gap:clamp(12px,2vw,30px)}
