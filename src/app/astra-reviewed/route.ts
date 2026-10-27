@@ -113,7 +113,11 @@ export async function GET(request: Request) {
     .replace(/<meta name="robots"[^>]*>/gi, "")
     .replace(/<meta name="googlebot"[^>]*>/gi, "")
     .replace(/<link rel="canonical"[^>]*>/gi, "");
-  html = html.replace("</head>", '<link rel="canonical" href="https://apexinnovate.ae/astra-reviewed"/></head>');
+  // Only the public domains declare the canonical; preview hosts remain non-indexable.
+  const canonicalHost = new URL(request.url).hostname.toLowerCase();
+  if (canonicalHost === "apexinnovate.ae" || canonicalHost === "www.apexinnovate.ae") {
+    html = html.replace("</head>", '<link rel="canonical" href="https://apexinnovate.ae/astra-reviewed"/></head>');
+  }
   // The registered company name is the sole page-level heading.
   // Keep Astra's original phrase as a quieter editorial subtitle.
   html = html.replace(/<h1 id="hero-title">[\s\S]*?<\/h1>/, '<h1 id="hero-title">apex <span>innovate</span></h1><p class="reviewed-hero-line">Ideas with forward intent.</p>');
