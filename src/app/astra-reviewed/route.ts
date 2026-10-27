@@ -140,8 +140,6 @@ export async function GET() {
     .apex-logo-mark img{display:block;width:100%;height:auto}
     .apex-logo-mark .apex-logo-light{display:none}
     .apex-logo-mark .apex-logo-dark{display:block}
-    html[data-apx-theme="light"] .apex-logo-mark .apex-logo-light{display:block}
-    html[data-apx-theme="light"] .apex-logo-mark .apex-logo-dark{display:none}
     .hero{background:#101110;position:relative}
     .hero-art{object-fit:cover;object-position:60% center}
     .hero-shade{background:linear-gradient(90deg,rgba(8,10,9,.70),rgba(8,10,9,.04) 85%),linear-gradient(0deg,rgba(8,10,9,.54),transparent 56%);position:absolute;inset:0}
@@ -177,17 +175,7 @@ export async function GET() {
     @media(max-width:800px){.intro.page-width{grid-template-columns:1fr;gap:22px}.intro>.eyebrow{padding-top:0}}
     @media(max-width:640px){:root{--apx-gutter:20px;--apx-space:48px}.hero #hero-title{font-size:clamp(3rem,11.5vw,5.4rem)}.hero .reviewed-hero-line{font-size:1rem}.intro h2{font-size:clamp(1.8rem,7.8vw,2.4rem);margin-bottom:14px}.intro div>p{font-size:.96rem;line-height:1.58}#projects .section-heading{padding:18px 0 23px}#projects .section-heading h2{font-size:clamp(1.3rem,5vw,1.6rem)}#projects .reviewed-info{align-items:start;flex-direction:column;gap:10px;margin-bottom:15px}#projects .reviewed-copy h3{font-size:clamp(1.45rem,6vw,1.85rem);margin-bottom:6px}#projects .reviewed-copy p{font-size:.91rem;line-height:1.5}#projects .reviewed-link{font-size:.82rem}#projects .reviewed-banner{width:min(88%,360px);max-width:100%;margin-inline:auto}#projects .reviewed-banner img{display:block;width:100%;min-width:0;max-width:100%;height:auto;aspect-ratio:3/1;object-fit:contain}#projects .reviewed-venture{margin-bottom:28px}.site-footer .footer-contact>a{font-size:clamp(2.65rem,10vw,3.7rem)!important}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-    /* Preview QA corrections: accessible light header, safe mobile title wrapping. */
-    html[data-apx-theme="light"] .site-header{background:#f5f2ec!important;color:#242622!important}
-    html[data-apx-theme="light"] .site-header a,
-    html[data-apx-theme="light"] .site-header nav,
-    html[data-apx-theme="light"] .site-header .apx-code,
-    html[data-apx-theme="light"] .site-header .apx-type-logo,
-    html[data-apx-theme="light"] .site-header .brand-name,
-    html[data-apx-theme="light"] .site-header .brand-text,
-    html[data-apx-theme="light"] .site-header .wordmark,
-    html[data-apx-theme="light"] #apx-theme-switch{color:#242622!important}
-    html[data-apx-theme="light"] .site-header .apx-ai{color:#a56748!important}
+    /* Keep mobile title wrapping from the preview QA pass. */
     .hero #hero-title{overflow-wrap:normal;max-width:100%;text-wrap:balance}
     @media(max-width:700px){
       .hero #hero-title{font-size:clamp(3rem,12vw,5rem)!important;line-height:1.04;letter-spacing:-.045em}
@@ -197,8 +185,6 @@ export async function GET() {
   </style>`;
   html = html.replace("</head>", '<meta name="robots" content="noindex,nofollow"/>' + css + "</head>");
 
-  // Compact presentation-only appearance switch. Artwork is intentionally unchanged.
-  // Theme variables change globally: no local light rectangles or image opacity hacks.
   return new Response(html, {
     headers: {
       "Content-Type": "text/html; charset=utf-8",
