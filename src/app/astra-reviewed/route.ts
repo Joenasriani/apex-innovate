@@ -6,8 +6,8 @@ export const dynamic = "force-dynamic";
 type Banner = { cls: string; src: string; href: string; alt: string };
 const descriptions: Record<string, { name: string; detail: string }> = {
   "robot-venture": { name: "RoboMarket", detail: "A publicly accessible robotics marketplace website for discovering robots, related products, and suppliers." },
-  "event-venture": { name: "IdeaVent", detail: "An event concept and planning platform in development. Public release and commercial availability are not yet verified." },
-  "framework-venture": { name: "Visual Framework", detail: "An interactive application for organizing and connecting ideas. A working implementation exists; release acceptance is ongoing." },
+  "event-venture": { name: "IdeaVent", detail: "A platform for developing event concepts, planning experiences, and organizing production requirements." },
+  "framework-venture": { name: "Visual Framework", detail: "An interactive visual framework for academic psychology and behavioral analysis, supporting the organization of concepts, mapping of relationships, and exploration of behavioral patterns." },
 };
 
 /**
