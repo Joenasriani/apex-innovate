@@ -158,7 +158,7 @@ export async function GET() {
     .intro>.eyebrow{color:var(--apx-accent)}
     .intro h2{font-size:clamp(2rem,4vw,3.65rem);line-height:1.12;font-weight:500;letter-spacing:-.047em;margin:0 0 25px;color:var(--apx-fg)}
     .intro h2 span{color:var(--apx-muted)}
-    .intro div>p{font-size:clamp(.96rem,1.25vw,1.1rem);line-height:1.68;color:var(--apx-muted);max-width:570px;margin:0}
+    .intro div>p{font-size:clamp(.96rem,1.25vw,1.1rem);line-height:1.48;color:var(--apx-muted);max-width:570px;margin:0}
     #projects.page-width{background:transparent!important;color:var(--apx-fg);padding-bottom:clamp(36px,5vw,70px)}
     #projects .section-heading{padding:20px 0 35px;border-top:1px solid var(--apx-line);margin:0}
     #projects .section-heading h2{font-size:clamp(1.35rem,2.35vw,2rem);line-height:1.2;font-weight:500;letter-spacing:-.035em;color:var(--apx-fg)}
@@ -167,7 +167,7 @@ export async function GET() {
     #projects .reviewed-info{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:clamp(16px,2vw,25px)}
     #projects .reviewed-copy{max-width:650px;min-width:0}
     #projects .reviewed-copy h3{margin:0 0 8px;font-size:clamp(1.65rem,3vw,2.55rem);font-weight:550;letter-spacing:-.038em;line-height:1.16;color:var(--apx-fg)}
-    #projects .reviewed-copy p{max-width:60ch;margin:0;font-size:clamp(.96rem,1.2vw,1.07rem);line-height:1.64;color:var(--apx-muted)}
+    #projects .reviewed-copy p{max-width:60ch;margin:0;font-size:clamp(.96rem,1.2vw,1.07rem);line-height:1.48;color:var(--apx-muted)}
     #projects .reviewed-link{flex:none;display:inline-flex;gap:.65em;align-items:center;color:var(--apx-fg);font-size:.87rem;font-weight:500;border-bottom:1px solid var(--apx-accent);padding-bottom:6px;text-decoration:none}
     #projects .reviewed-banner{display:block;width:100%;overflow:hidden;background:#12191c;border:1px solid var(--apx-line);border-radius:3px}
     #projects .reviewed-banner img{display:block;width:100%;height:auto;aspect-ratio:3/1;object-fit:contain}
@@ -175,11 +175,11 @@ export async function GET() {
     .site-footer .footer-contact{padding-bottom:clamp(50px,7vw,84px)}
     .site-footer .footer-contact>a{font-size:clamp(2.8rem,5.2vw,4.5rem)!important;letter-spacing:-.045em;line-height:1.08;color:var(--apx-fg)}
     .site-footer .footer-contact>a>span:first-child{color:var(--apx-muted)}
-    .site-footer .footer-contact>p:last-child{color:var(--apx-muted);font-size:clamp(.94rem,1.15vw,1.08rem);line-height:1.65;max-width:540px;margin-top:24px}
+    .site-footer .footer-contact>p:last-child{color:var(--apx-muted);font-size:clamp(.94rem,1.15vw,1.08rem);line-height:1.5;max-width:540px;margin-top:24px}
     .footer-legal{border-color:var(--apx-line);color:var(--apx-muted)}
     .site-footer a{color:inherit}
     @media(max-width:800px){.intro.page-width{grid-template-columns:1fr;gap:22px}.intro>.eyebrow{padding-top:0}}
-    @media(max-width:640px){:root{--apx-gutter:20px;--apx-space:48px}.hero #hero-title{font-size:clamp(3rem,11.5vw,5.4rem)}.hero .reviewed-hero-line{font-size:1rem}.intro h2{font-size:clamp(1.8rem,7.8vw,2.4rem);margin-bottom:14px}.intro div>p{font-size:.96rem;line-height:1.58}#projects .section-heading{padding:18px 0 23px}#projects .section-heading h2{font-size:clamp(1.3rem,5vw,1.6rem)}#projects .reviewed-info{align-items:start;flex-direction:column;gap:10px;margin-bottom:15px}#projects .reviewed-copy h3{font-size:clamp(1.45rem,6vw,1.85rem);margin-bottom:6px}#projects .reviewed-copy p{font-size:.91rem;line-height:1.5}#projects .reviewed-link{font-size:.82rem}#projects .reviewed-banner{width:min(88%,360px);max-width:100%;margin-inline:auto}#projects .reviewed-banner img{display:block;width:100%;min-width:0;max-width:100%;height:auto;aspect-ratio:3/1;object-fit:contain}#projects .reviewed-venture{margin-bottom:28px}.site-footer .footer-contact>a{font-size:clamp(2.65rem,10vw,3.7rem)!important}}
+    @media(max-width:640px){:root{--apx-gutter:20px;--apx-space:48px}.hero #hero-title{font-size:clamp(3rem,11.5vw,5.4rem)}.hero .reviewed-hero-line{font-size:1rem}.intro h2{font-size:clamp(1.8rem,7.8vw,2.4rem);margin-bottom:14px}.intro div>p{font-size:.96rem;line-height:1.45}#projects .section-heading{padding:18px 0 23px}#projects .section-heading h2{font-size:clamp(1.3rem,5vw,1.6rem)}#projects .reviewed-info{align-items:start;flex-direction:column;gap:10px;margin-bottom:15px}#projects .reviewed-copy h3{font-size:clamp(1.45rem,6vw,1.85rem);margin-bottom:6px}#projects .reviewed-copy p{font-size:.91rem;line-height:1.5}#projects .reviewed-link{font-size:.82rem}#projects .reviewed-banner{width:min(88%,360px);max-width:100%;margin-inline:auto}#projects .reviewed-banner img{display:block;width:100%;min-width:0;max-width:100%;height:auto;aspect-ratio:3/1;object-fit:contain}#projects .reviewed-venture{margin-bottom:28px}.site-footer .footer-contact>a{font-size:clamp(2.65rem,10vw,3.7rem)!important}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
     /* Keep mobile title wrapping from the preview QA pass. */
     .hero #hero-title{overflow-wrap:normal;max-width:100%;text-wrap:balance}
