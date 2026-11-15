@@ -3,6 +3,12 @@ import { join } from "node:path";
 import { companyPositioning } from "@/data/config";
 export const dynamic = "force-dynamic";
 type Banner = {cls:string;src:string;href:string;alt:string};
+/** Approved project click destinations. Artwork is extracted from the archived HTML without altering it. */
+const projectDestinations: Record<string, string> = {
+  "robot-venture": "https://robomarket.ae",
+  "event-venture": "https://ideavent.ae",
+  "framework-venture": "https://visual-framework-system.vercel.app",
+};
 const descriptions:Record<string,{name:string;detail:string;category:string}>={
 "robot-venture":{name:"RoboMarket",detail:"A publicly accessible robotics marketplace website for discovering robots, related products, and suppliers.",category:"ROBOTICS & COMMERCE"},
 "event-venture":{name:"IdeaVent",detail:"A platform for developing event concepts, planning experiences, and organizing production requirements.",category:"EVENT CONCEPTS"},
@@ -21,7 +27,7 @@ export async function GET(request:Request){
  try{banners=JSON.parse(match[1]) as Banner[]}catch{return new Response("Banner data invalid",{status:500})}
  if(banners.length!==3||banners.some(b=>!descriptions[b.cls]||!b.src.startsWith("data:image/")||!b.href.startsWith("https://")))return new Response("Incomplete approved banner data",{status:500});
  const ventures=banners.map((b,i)=>{
- const p=descriptions[b.cls];const href=esc(b.href);
+ const p=descriptions[b.cls];const href=esc(projectDestinations[b.cls]);
  return '<article class="venture"><div class="venture-top"><div><div class="venture-kicker">0'+(i+1)+' / '+p.category+'</div><h3>'+p.name+'</h3><p>'+p.detail+'</p></div><a class="venture-link" target="_blank" rel="noopener noreferrer" href="'+href+'" aria-label="Visit '+p.name+'">Visit project <span aria-hidden="true">↗</span></a></div><a class="venture-art" href="'+href+'" target="_blank" rel="noopener noreferrer" aria-label="Explore '+p.name+'"><img src="'+b.src+'" alt="'+esc(b.alt)+'" width="1536" height="512" loading="lazy" decoding="async"/></a></article>';
  }).join("");
  const routeUrl=new URL(request.url);
@@ -44,7 +50,7 @@ export async function GET(request:Request){
       name: "Selected digital ventures",
       itemListElement: banners.map((b, index) => ({
         "@type": "ListItem", position: index + 1,
-        name: descriptions[b.cls].name, description: descriptions[b.cls].detail, url: b.href
+        name: descriptions[b.cls].name, description: descriptions[b.cls].detail, url: projectDestinations[b.cls]
       })) }
   ]
  };
