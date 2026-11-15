@@ -42,14 +42,14 @@ The hosting project has been identified: Vercel **RoboMarket team**, project **`
 | Route | Implementation | State in current GitHub source |
 | --- | --- | --- |
 | `/` | `src/app/(main)/route.ts` → `src/app/astra-reviewed/route.ts` | Approved corporate homepage, directly served (no extra redirect) |
-| `/contact` | `src/app/(main)/contact/page.tsx` | WhatsApp and professional LinkedIn; no contact form |
+| `/contact` | `src/app/(main)/contact/page.tsx` | Direct WhatsApp messages: UAE `+971 58 674 9577` and Lebanon `+961 76 713 497`; no personal LinkedIn profile |
 | `/privacy` | `src/app/(main)/privacy/page.tsx` | Corporate privacy notice |
 | `/terms` | `src/app/(main)/terms/page.tsx` | Corporate website terms |
 | `/astra-reviewed` | Alternate entry to same renderer | Preview compatibility; `noindex`, not in sitemap |
 
 Legacy `/studio`, `/software`, `/academy`, `/vr`, and `/robomarket` redirect to `/#projects`. Their historical page components, `src/data/navigation.ts`, `index.html`, and older branding assets are **not the approved live homepage**. Preserve them as historical source until separately authorized for removal. They must not be used to reconstruct the public design.
 
-The working design source is `src/app/astra-reviewed/route.ts`; corporate copy is centralized in `src/data/config.ts` (`companyPositioning`). Secondary-page typography and layout live in `src/app/globals.css`, `src/components/layout/*`. Sitemap, metadata, redirects and proxy rules are separate and must remain consistent.
+The public site uses a company-only Organization schema (no personal-profile entity) and customer-facing Privacy/Terms language. Both contact cards open direct WhatsApp chats using `wa.me` links. The working design source is `src/app/astra-reviewed/route.ts`; corporate copy is centralized in `src/data/config.ts` (`companyPositioning`). Secondary-page typography and layout live in `src/app/globals.css`, `src/components/layout/*`. Sitemap, metadata, redirects and proxy rules are separate and must remain consistent.
 
 ## Governance
 

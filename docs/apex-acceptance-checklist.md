@@ -50,9 +50,9 @@ Do not convert a code-level PASS into a live-production PASS.
 
 ## 5. Contact, Terms and Privacy
 
-- [x] **PASS – source:** Contact page exposes WhatsApp and professional LinkedIn without implying an active contact form.
-- [x] **PASS – source:** Privacy notice no longer describes a retired theme-switch localStorage preference; it discloses hosting logs and external font requests.
-- [x] **PASS – source:** corporate Terms distinguish their scope from separate project/platform contracts and data practices.
+- [x] **PASS – updated source:** Contact page exposes direct UAE (+971 58 674 9577) and Lebanon (+961 76 713 497) WhatsApp links, with personal LinkedIn and front-facing form disclaimers removed. Actual WhatsApp opening remains NOT RECHECKED until live browser testing.
+- [x] **PASS – updated source:** Privacy notice uses public-facing language concerning WhatsApp enquiries, hosting logs and external font requests, without developer instructions or obsolete theme-switch references.
+- [x] **PASS – updated source:** corporate Terms retain project/platform limitations and are written for visitors rather than internal developers.
 - [ ] **NOT RECHECKED:** legal sufficiency and exact commercial/technical practices after production release; external messaging/LinkedIn link behavior.
 
 ## 6. Documentation and archival source

@@ -81,8 +81,8 @@ No claim is made here that project payments, release acceptance, legal ownership
 
 ## 6. Policy and SEO consistency
 
-- The corporate site has **no on-site account registration or contact form**; Contact directs to published WhatsApp and professional LinkedIn.
-- Privacy Notice recognizes web-server request data and third-party font requests. Do not reinsert the old light/dark localStorage claim; the current site has no theme switch.
+- The corporate site has **no on-site account registration or contact form**. Its Contact page offers two company-facing direct WhatsApp chat links: **UAE** `https://wa.me/971586749577` (`+971 58 674 9577`) and **Lebanon** `https://wa.me/96176713497` (`+961 76 713 497`). Do not restore the personal LinkedIn card or user-facing implementation notes.
+- The shared React metadata includes the company Organization entity only, not the director's personal profile. Privacy Notice recognizes web-server request data, WhatsApp correspondence and third-party font requests. Do not reinsert the old light/dark localStorage claim; the current site has no theme switch.
 - Corporate policies do not automatically govern separate project transactions or data processing.
 - Home canonical: `https://apexinnovate.ae/`; alternate `/astra-reviewed` is noindex.
 - Secondary canonical pages: `/contact`, `/privacy`, `/terms`.
