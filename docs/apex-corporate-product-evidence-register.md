@@ -1,7 +1,7 @@
 # Apex Innovate – Corporate and Project Evidence Register
 
 **Current reconciliation:** 15 November 2026  
-**Current release state:** GitHub source approved/updated; production domain still on older Vercel deployment.  
+**Current release state:** Approved November application deployed to both production aliases (Vercel metadata verified); rendered-page/browser QA NOT RECHECKED.  
 **Historical record:** the October 2026 register is preserved below with its original audit status and evidence limitations.
 
 ## Current verified correction to the 25 October production assessment
@@ -13,14 +13,14 @@ The previous register said that the production project/account/commit were **UNK
 | Vercel team | RoboMarket – `team_aK7orsaNw316c1bdLjjKFVMy` |
 | Production project | `apex-innovate` – `prj_orU3BILg3A4TqZgK4ePPzHmcOnYs` |
 | Connected repository/branch | `Joenasriani/apex-innovate`, `main` |
-| Confirmed live alias deployment | `dpl_5K9RcxDxBcEyTpTuNsrxxCH9jCfM`, Vercel state READY |
-| Confirmed production commit | `a92d3e0e134e90702766030fa75a000714a7405b` |
-| Date that production deployment was created | 27 October 2026 |
-| GitHub approved-source baseline before 15 Nov reconciliation | `5f9a015597db056a8342c07c1c08d93640319216` |
-| Production permission | **403 Forbidden** when attempting authorized API deploy under the available connection |
+| Confirmed live alias deployment | `dpl_J7LE5saV1WAEtMNL4tsFHTYdmRuP`, Vercel state READY; apex and www aliases assigned |
+| Confirmed production commit | `b9f1a8adef7d218d61200d8c1c8c933583b7d41f` (approved November design) |
+| Date that production deployment was created | 15 November 2026 |
+| GitHub approved application source deployed | `b9f1a8a` (documentation-only updates may follow without application-code changes) |
+| Production permission | Developer API access returned 403, but authorized RoboMarket Owner published via Vercel CLI; deployment now READY |
 | Direct live webpage/rendered visual inspection | **NOT RECHECKED:** website-fetch/browser sources were inaccessible; Vercel metadata verifies deployment identity, not pixel appearance |
 
-**Interpretation:** code, preview and production are distinct. The approved light website and official pages were merged to GitHub `main`, but the official domain still maps to older compiled source. Do not claim the visual or pages are live until the domain deployment SHA advances and HTTP/browser tests pass.
+**Interpretation:** production and approved GitHub application source now agree by exact commit SHA. This proves release provenance, not pixel-perfect rendering, link behavior, or accessible HTTP routes. These browser-level checks remain NOT RECHECKED.
 
 ### Company positioning update
 
@@ -52,7 +52,7 @@ The earlier primary-document record lists **licence expiry 2 December 2026**; as
 
 ---
 
-## Archived snapshot – 25 October 2026
+## Archived snapshot – 25 October 2026 (HISTORICAL ONLY; NOT CURRENT PRODUCTION STATUS)
 
 *The text below preserves the original assessment as of its historical audit date. Its production-access, design-review and URL statements are not necessarily current. Where the entries conflict with the 15 November reconciliation above, the later verified update prevails.*
 
@@ -74,7 +74,7 @@ The earlier primary-document record lists **licence expiry 2 December 2026**; as
 - **Registration is not independent proof that every proposed service is licensed or commercially operational.**
 - **Source:** private APEXINNOVATE_REGISTRAR.md, reviewed from company documents 2026-10-03. Identifiers and private paperwork must not be published.
 
-## Production-source reconciliation — OPEN BLOCKER
+## Production-source reconciliation – historical October blocker (resolved in November by metadata)
 
 - Public https://www.apexinnovate.ae/ currently renders an older page headed **APEX INNOVATE LLC**, offering enterprise AI services. This is inconsistent with licensed identity and approved current project website.
 - DNS configuration for apexinnovate.ae: external Tasjeel name servers ns3.tasjeel.ae / ns4.tasjeel.ae and A record 76.76.21.21 (Vercel-facing). Verified from connected Vercel domain-config endpoint 2026-10-25.
@@ -123,7 +123,7 @@ The earlier primary-document record lists **licence expiry 2 December 2026**; as
 
 ## Release blockers
 
-1. Identify production project's owner, deployment SHA, domain alias and source repo.
+1. **RESOLVED 15 Nov 2026:** production project, owner, deployment SHA, domain aliases and source repository identified; deployed application SHA matches GitHub.
 2. Confirm RoboMarket contractual operator and marketplace functions.
 3. Verify IdeaVent public state and any partner agreements before claims.
 4. Verify Visual Framework current build and release state.
