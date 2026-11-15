@@ -1,4 +1,61 @@
-# Apex Innovate — Corporate and Project Evidence Register
+# Apex Innovate – Corporate and Project Evidence Register
+
+**Current reconciliation:** 15 November 2026  
+**Current release state:** GitHub source approved/updated; production domain still on older Vercel deployment.  
+**Historical record:** the October 2026 register is preserved below with its original audit status and evidence limitations.
+
+## Current verified correction to the 25 October production assessment
+
+The previous register said that the production project/account/commit were **UNKNOWN** because access was unavailable in October. That finding was historically valid for that date but **has now been superseded** by connected Vercel metadata:
+
+| Field | 15 November verified state |
+| --- | --- |
+| Vercel team | RoboMarket – `team_aK7orsaNw316c1bdLjjKFVMy` |
+| Production project | `apex-innovate` – `prj_orU3BILg3A4TqZgK4ePPzHmcOnYs` |
+| Connected repository/branch | `Joenasriani/apex-innovate`, `main` |
+| Confirmed live alias deployment | `dpl_5K9RcxDxBcEyTpTuNsrxxCH9jCfM`, Vercel state READY |
+| Confirmed production commit | `a92d3e0e134e90702766030fa75a000714a7405b` |
+| Date that production deployment was created | 27 October 2026 |
+| GitHub approved-source baseline before 15 Nov reconciliation | `5f9a015597db056a8342c07c1c08d93640319216` |
+| Production permission | **403 Forbidden** when attempting authorized API deploy under the available connection |
+| Direct live webpage/rendered visual inspection | **NOT RECHECKED:** website-fetch/browser sources were inaccessible; Vercel metadata verifies deployment identity, not pixel appearance |
+
+**Interpretation:** code, preview and production are distinct. The approved light website and official pages were merged to GitHub `main`, but the official domain still maps to older compiled source. Do not claim the visual or pages are live until the domain deployment SHA advances and HTTP/browser tests pass.
+
+### Company positioning update
+
+The approved current hero presents:
+- E-commerce & marketing management · United Arab Emirates.
+- “Ideas with forward intent.”
+- “Developing and managing businesses, digital platforms, and new ventures.”
+
+This describes **Apex Innovate FZE LLC**, a UAE-registered company, independently of the current three examples on the website. RoboMarket, IdeaVent and Visual Framework are showcased projects, not exclusive business categories or independently proven subsidiaries. Do not include a life-coaching description on the site.
+
+### Live click destinations in current source (not an endpoint-availability guarantee)
+
+- RoboMarket: `https://robomarket.ae`
+- IdeaVent: `https://ideavent.ae` – user-specified, **HTTP response NOT VERIFIED**. Historical banner metadata inside `public/astra-preview.html` instead references `https://ideavent.ai`; the rendered route overrides it through `projectDestinations`.
+- Visual Framework: `https://visual-framework-system.vercel.app`
+
+Visual Framework's present description expressly mentions **academic psychology and behavioral analysis**. Whether releases, integrations, payments or other project functions are active requires independent review of each project source and actual site.
+
+### Remaining legal and product limitations
+
+The earlier primary-document record lists **licence expiry 2 December 2026**; as of 15 November 2026, renewal/continuing standing has **not been rechecked**. This register does not publish private registrar documents or personal identifying details. Company-project relationships, merchant-of-record, commercial release states, contractual rights, and third-party site operation remain limited by the evidence explicitly recorded below and require fresh verification.
+
+### Evidence provenance
+
+- Connected Vercel project and deployment details read 15 November 2026.
+- Connected GitHub `main`, standalone renderer, Next.js routing and private preview project source inspected 15 November 2026.
+- Prior corporate licence and project rights information derives from the dated historical register below; not newly revalidated by a regulator.
+- Network/browser inability to reach the actual domain is explicitly NOT a 404 finding and NOT proof of correct rendering.
+
+---
+
+## Archived snapshot – 25 October 2026
+
+*The text below preserves the original assessment as of its historical audit date. Its production-access, design-review and URL statements are not necessarily current. Where the entries conflict with the 15 November reconciliation above, the later verified update prevails.*
+
 
 **Audit date:** 2026-10-25  
 **Status:** REVIEW / evidence-linked / not a claim of product launch  
