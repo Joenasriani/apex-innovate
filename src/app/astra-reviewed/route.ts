@@ -279,6 +279,48 @@ export async function GET(request: Request) {
     })();
   </script>`;
   html = html.replace("</head>", themeCss + "</head>");
+  // November 2026 presentation-only refinement. Retain original artwork, copy, theme choice and project destinations.
+  const refinementCss = `<style id="apex-typographic-refinement">
+    /* Editorial rhythm: compact spacing without losing deliberate negative space. */
+    :root{--apx-space:clamp(48px,6.5vw,82px)}
+    .hero{min-height:clamp(470px,65vh,660px)}
+    .hero-content{padding-top:clamp(30px,4.5vw,58px)}
+    .hero #hero-title{line-height:.97;letter-spacing:-.048em}
+    .hero .reviewed-hero-line{margin-top:clamp(12px,1.6vw,19px);line-height:1.35}
+    .intro.page-width{gap:clamp(24px,4vw,56px)}
+    .intro h2{margin-bottom:clamp(12px,1.7vw,21px);line-height:1.09}
+    .intro div>p{line-height:1.5}
+    #projects .section-heading{padding:19px 0 25px}
+    #projects .reviewed-venture{margin-bottom:clamp(27px,3.4vw,42px)}
+    #projects .reviewed-info{margin-bottom:clamp(12px,1.6vw,19px);align-items:end}
+    #projects .reviewed-copy h3{margin-bottom:6px;line-height:1.11}
+    #projects .reviewed-copy p{line-height:1.48}
+    #projects .reviewed-link{border-bottom:0!important;text-decoration:none!important;padding-bottom:3px;transition:opacity .2s ease}
+    #projects .reviewed-link:hover{opacity:.65}
+    .site-header nav a,.site-header a{text-decoration:none!important;text-decoration-line:none!important}
+    .site-header nav a{border-bottom:0!important;transition:opacity .2s ease}
+    .site-header nav a:hover{opacity:.68}
+    .site-footer .footer-contact{padding-bottom:clamp(38px,5vw,64px)}
+    .site-footer .footer-contact>p:last-child{margin-top:clamp(14px,2vw,20px);line-height:1.48}
+    @media(max-width:700px){
+      :root{--apx-space:44px}
+      .hero{min-height:clamp(440px,63svh,590px)}
+      .hero-content{padding-top:28px}
+      .hero #hero-title{line-height:1.01!important}
+      .hero .reviewed-hero-line{margin-top:13px;line-height:1.4}
+      .intro.page-width{gap:16px}
+      .intro h2{margin-bottom:12px;line-height:1.12}
+      .intro div>p{line-height:1.47}
+      #projects .section-heading{padding:16px 0 21px}
+      #projects .reviewed-info{gap:9px;margin-bottom:13px}
+      #projects .reviewed-copy p{line-height:1.45}
+      #projects .reviewed-banner{width:100%;max-width:100%;margin-inline:0}
+      #projects .reviewed-venture{margin-bottom:27px}
+      .site-footer .footer-contact>p:last-child{line-height:1.47}
+    }
+    @media(prefers-reduced-motion:reduce){#projects .reviewed-link,.site-header nav a{transition:none}}
+  </style>`;
+  html = html.replace("</head>", refinementCss + "</head>");
   html = html.replace("</body>", themeScript + "</body>");
   // Index only the two verified corporate domains; keep preview deployments private to crawlers.
   const publicHost = new URL(request.url).hostname.toLowerCase();
