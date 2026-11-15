@@ -44,9 +44,16 @@ export async function GET(
   if (!image) return new Response("Unsupported artwork", { status: 500 });
 
   const bytes = Buffer.from(image[2], "base64");
+  // Embedded source labels are not always accurate (some JPEGs say image/png).
+  // Detect the real format without modifying or recompressing the image.
+  const isJpeg = bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
+  const isPng = bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+  const isWebp = bytes.toString("ascii", 0, 4) === "RIFF" && bytes.toString("ascii", 8, 12) === "WEBP";
+  const isAvif = bytes.toString("ascii", 4, 12).includes("ftypavif") || bytes.toString("ascii", 4, 12).includes("ftypavis");
+  const contentType = isJpeg ? "image/jpeg" : isPng ? "image/png" : isWebp ? "image/webp" : isAvif ? "image/avif" : image[1];
   return new Response(new Uint8Array(bytes), {
     headers: {
-      "Content-Type": image[1],
+      "Content-Type": contentType,
       "Content-Length": String(bytes.length),
       "Cache-Control": "public, max-age=86400, s-maxage=86400",
       "X-Content-Type-Options": "nosniff",
