@@ -1,7 +1,7 @@
 # Apex Innovate – Corporate and Project Evidence Register
 
 **Current reconciliation:** 15 November 2026  
-**Current release state:** Approved November application deployed to both production aliases (Vercel metadata verified); rendered-page/browser QA NOT RECHECKED.  
+**Current release state:** November base at production `b9f1a8a`; latest corrected Contact/legal application `7f551ac` merged to GitHub but **NOT YET LIVE**. Vercel metadata checked; user screenshot confirms outdated Contact page.  
 **Historical record:** the October 2026 register is preserved below with its original audit status and evidence limitations.
 
 ## Current verified correction to the 25 October production assessment
@@ -20,7 +20,7 @@ The previous register said that the production project/account/commit were **UNK
 | Production permission | Developer API access returned 403, but authorized RoboMarket Owner published via Vercel CLI; deployment now READY |
 | Direct live webpage/rendered visual inspection | **NOT RECHECKED:** website-fetch/browser sources were inaccessible; Vercel metadata verifies deployment identity, not pixel appearance |
 
-**Interpretation:** production and approved GitHub application source now agree by exact commit SHA. This proves release provenance, not pixel-perfect rendering, link behavior, or accessible HTTP routes. These browser-level checks remain NOT RECHECKED.
+**Updated interpretation (15 November 2026, after Contact merge):** the November base deployment is verified, but production no longer matches current approved GitHub application source. The later `7f551ac` commit removes the personal LinkedIn Contact card and adds UAE/Lebanon WhatsApp contacts; it remains **NOT YET LIVE**. User-supplied mobile screenshot of the old card corroborates the mismatch. Direct HTTP/browser testing still requires a separate pass.
 
 ### Company positioning update
 
