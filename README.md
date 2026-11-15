@@ -1,35 +1,45 @@
 # Apex Innovate FZE LLC
 
-Apex Innovate is a UAE-based company developing and managing digital projects across robotics, event planning, and visual technologies.
+Apex Innovate is a UAE-based company developing and managing selected digital ventures.
 
 **Legal name:** Apex Innovate FZE LLC  
-**Registered jurisdiction:** Ajman NuVentures Centre Free Zone, Ajman, United Arab Emirates  
+**Jurisdiction:** Ajman NuVentures Centre Free Zone, Ajman, United Arab Emirates  
 **Incorporated:** 3 December 2025  
-**Website:** https://apexinnovate.ae/
+**Production:** https://apexinnovate.ae/  
+**Repository:** `Joenasriani/apex-innovate` (default branch `main`)
 
-## Selected projects
+## Approved public scope
 
-- **RoboMarket** — An online marketplace connecting buyers with robots, robotics products, and suppliers.
-- **IdeaVent** — A digital platform for developing event concepts, planning requirements, and exploring production possibilities.
-- **Visual Framework** — A visual framework for structuring ideas, mapping relationships, and communicating complex information.
+A concise, light corporate website presenting exactly three ventures:
 
-These descriptions identify the purpose of each project; they do not represent that every planned function is publicly available, independently incorporated, or separately licensed. Applicable commercial terms and project-specific disclosures are maintained by the respective platforms.
+1. **RoboMarket** – robotics marketplace and supplier discovery.
+2. **IdeaVent** – event concept development and planning.
+3. **Visual Framework** – academic psychology and behavioral analysis concept-mapping.
 
-## Website
+Project descriptions are informational; project platforms retain their own commercial conditions, availability and privacy disclosures.
 
-The corporate website is a concise company presence built with Next.js and deployed through Vercel. The approved Astra design and three project banners are under review on `JoBranch`. The production branch (`main`) is not modified by review changes.
+## Official routes
 
-Previous design backups are preserved in the repository.
+- `/` – direct corporate homepage rendered by `src/app/(main)/route.ts` from the approved `src/app/astra-reviewed/route.ts` renderer.
+- `/contact` – published business communication channels (WhatsApp and professional LinkedIn).
+- `/privacy` – corporate website Privacy Notice.
+- `/terms` – corporate Website Terms.
+- `/astra-reviewed` – retained for review compatibility but excluded from indexing and the sitemap.
 
-## Editorial standards
+Legacy `/studio`, `/software`, `/academy`, `/vr` and `/robomarket` URLs redirect to `/#projects`.
 
-Describe the company and each project in direct, verifiable language. Distinguish concepts and planned features from released functionality; avoid unsupported performance, market-leadership, licensing, and client-delivery claims.
+The original copper sculptural hero image and all three approved venture banners are sourced unchanged from `public/astra-preview.html`. The wordmark `apex innovate` and `ai` code symbol use a uniform Oxanium font and matching font size at each breakpoint.
 
-## Development
+The shared company Contact, Privacy and Terms pages use consistent responsive typography, gutters, navigation and footer. The public sitemap comprises `/`, `/contact`, `/privacy`, and `/terms`.
+
+## Operational rules
+
+A GitHub merge is not confirmation of production deployment. Check the actual Vercel production alias and verify site routes, destinations and responsiveness after deployment. Legal pages must be updated when site behavior or data practices change.
+
+## Local development
 
 ```bash
 npm install
+npm run build
 npm run dev
 ```
-
-Open `http://localhost:3000`.
