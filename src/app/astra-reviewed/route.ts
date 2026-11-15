@@ -28,7 +28,28 @@ export async function GET(request:Request){
  const primary=official&&routeUrl.pathname==="/";
  const robots=primary?"index,follow":"noindex,nofollow,noarchive";
  const canonical=official?'<link rel="canonical" href="https://apexinnovate.ae/"/>':"";
- const html='<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="'+robots+'"/><meta name="theme-color" content="#f8f8f5"/><title>Apex Innovate | Ideas with forward intent.</title><meta name="description" content="Apex Innovate FZE LLC develops digital ventures across robotics, event concepts, and visual thinking." />'+canonical+'<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700;800&display=swap" rel="stylesheet"/><style id="apex-design-system">'+designCss+'</style></head><body>'+
+ const linkedData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": "https://apexinnovate.ae/#organization",
+      name: "Apex Innovate", legalName: "Apex Innovate FZE LLC",
+      url: "https://apexinnovate.ae/",
+      address: { "@type": "PostalAddress", addressLocality: "Ajman", addressCountry: "AE" },
+      description: "A UAE company developing digital projects across robotics, event concepts and visual thinking." },
+    { "@type": "WebSite", "@id": "https://apexinnovate.ae/#website",
+      name: "Apex Innovate", url: "https://apexinnovate.ae/",
+      publisher: { "@id": "https://apexinnovate.ae/#organization" } },
+    { "@type": "ItemList", "@id": "https://apexinnovate.ae/#projects",
+      name: "Selected digital ventures",
+      itemListElement: banners.map((b, index) => ({
+        "@type": "ListItem", position: index + 1,
+        name: descriptions[b.cls].name, description: descriptions[b.cls].detail, url: b.href
+      })) }
+  ]
+ };
+ const structuredData = '<script type="application/ld+json">' +
+  JSON.stringify(linkedData).replace(/</g, "\\u003c") + '</script>';
+ const html='<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="'+robots+'"/><meta name="theme-color" content="#f8f8f5"/><title>Apex Innovate | Ideas with forward intent.</title><meta name="description" content="Apex Innovate FZE LLC develops digital ventures across robotics, event concepts, and visual thinking." />'+canonical+structuredData+'<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700;800&display=swap" rel="stylesheet"/><style id="apex-design-system">'+designCss+'</style></head><body>'+
  '<header class="header"><div class="shell header-inner"><a class="brand" href="/" aria-label="Apex Innovate home"><span class="brand-mark" aria-hidden="true"><span class="code-left">&lt;/</span><span class="code-ai">ai</span><span class="code-right">&gt;</span></span><span class="brand-name">apex innovate</span></a><nav class="nav" aria-label="Main"><a href="#projects">Projects</a><a href="#company">Company</a><a class="contact-nav" href="/contact">Contact</a></nav></div></header>'+
  '<main><section class="hero" aria-labelledby="hero-title"><img class="original-hero-art" src="'+heroSrc+'" alt="" aria-hidden="true"/><div class="hero-wash" aria-hidden="true"></div><div class="shell hero-inner"><div><div class="eyebrow">Independent digital ventures · United Arab Emirates</div><h1 id="hero-title">Ideas with<br/>forward intent.</h1><p class="hero-subtitle">Digital ventures &amp; creative technology.</p></div><div class="hero-bottom"><a href="#projects" class="jump">Explore our projects <span aria-hidden="true">↓</span></a><span>Apex Innovate FZE LLC</span></div></div></section>'+
  '<section class="intro shell" id="company"><div class="eyebrow">A focused perspective</div><div><h2>Different disciplines.<br/><span>One drive to create.</span></h2><p>Apex Innovate FZE LLC is a UAE-registered company with licensed activities in e-commerce and marketing management. Alongside these activities, the company develops its own digital projects across robotics, event concepts, and visual thinking.</p></div></section>'+
