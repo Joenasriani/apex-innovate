@@ -99,20 +99,8 @@ const organizationSchema = {
         { "@type": "Place", name: "Gulf Cooperation Council" },
       ],
       knowsAbout: ["E-commerce", "Marketing management", "Digital platforms", "Business development", "Digital ventures", "Robotics marketplaces", "Event ideation", "Visual thinking"],
+    },
 
-    },
-    {
-      "@type": "Person",
-      "@id": "https://joe-nasr-signals.vercel.app/#joe-nasr",
-      name: "Joe Nasr",
-      alternateName: ["Joe Ribal Nasr", "Joseph Ribal Nasr"],
-      url: "https://joe-nasr-signals.vercel.app/",
-      jobTitle: "Creative Director",
-      sameAs: [
-        "https://github.com/Joenasriani",
-        "https://www.linkedin.com/in/joenasrprofile",
-      ],
-    },
   ],
 };
 
