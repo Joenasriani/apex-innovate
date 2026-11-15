@@ -1,293 +1,36 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-
 export const dynamic = "force-dynamic";
-
-type Banner = { cls: string; src: string; href: string; alt: string };
-const descriptions: Record<string, { name: string; detail: string }> = {
-  "robot-venture": { name: "RoboMarket", detail: "A publicly accessible robotics marketplace website for discovering robots, related products, and suppliers." },
-  "event-venture": { name: "IdeaVent", detail: "A platform for developing event concepts, planning experiences, and organizing production requirements." },
-  "framework-venture": { name: "Visual Framework", detail: "An interactive visual framework for academic psychology and behavioral analysis, supporting the organization of concepts, mapping of relationships, and exploration of behavioral patterns." },
+type Banner = {cls:string;src:string;href:string;alt:string};
+const descriptions:Record<string,{name:string;detail:string;category:string}>={
+"robot-venture":{name:"RoboMarket",detail:"A publicly accessible robotics marketplace website for discovering robots, related products, and suppliers.",category:"ROBOTICS & COMMERCE"},
+"event-venture":{name:"IdeaVent",detail:"A platform for developing event concepts, planning experiences, and organizing production requirements.",category:"EVENT CONCEPTS"},
+"framework-venture":{name:"Visual Framework",detail:"An interactive visual framework for academic psychology and behavioral analysis, supporting the organization of concepts, mapping of relationships, and exploration of behavioral patterns.",category:"VISUAL THINKING"},
 };
-
-/**
- * JoBranch-only reviewed presentation of the original Astra design.
- * Extracts the approved pixel-identical banner data from the October 25
- * HTML artifact and renders it directly inside the three project articles.
- * Main and the original review artifact remain unchanged.
- */
-export async function GET(request: Request) {
-  const original = await readFile(join(process.cwd(), "public", "astra-preview.html"), "utf8");
-  const match = original.match(/const banners=(\[[\s\S]*?\]);\s*function apply\(/);
-  if (!match) {
-    return new Response("Astra banner assets are missing", { status: 500, headers: { "X-Robots-Tag": "noindex, nofollow" } });
-  }
-
-  let banners: Banner[];
-  try {
-    banners = JSON.parse(match[1]) as Banner[];
-  } catch {
-    return new Response("Invalid banner assets", { status: 500, headers: { "X-Robots-Tag": "noindex, nofollow" } });
-  }
-  if (banners.length !== 3 || banners.some(b => !descriptions[b.cls] || !b.src.startsWith("data:image/"))) {
-    return new Response("Incomplete project artwork", { status: 500, headers: { "X-Robots-Tag": "noindex, nofollow" } });
-  }
-
-  let html = original
-    .replace(/<style id="apex-curated-banners">[\s\S]*?<\/style>/, "")
-    .replace(/<script id="apex-curated-banner-script">[\s\S]*?<\/script>/, "");
-
-  for (const b of banners) {
-    const project = descriptions[b.cls];
-    const start = html.indexOf('<article class="venture ' + b.cls + '">');
-    if (start < 0) return new Response("Missing project section", { status: 500, headers: { "X-Robots-Tag": "noindex, nofollow" } });
-    const end = html.indexOf("</article>", start);
-    if (end < 0) return new Response("Invalid project section", { status: 500, headers: { "X-Robots-Tag": "noindex, nofollow" } });
-    const article = '<article class="venture ' + b.cls + ' reviewed-venture"><div class="reviewed-info"><div class="reviewed-copy"><h3>' + project.name + '</h3><p>' + project.detail + '</p></div><a class="reviewed-link" href="' + b.href + '" target="_blank" rel="noopener noreferrer" aria-label="Visit ' + project.name + ' (opens in new tab)">Visit project <span aria-hidden="true">↗</span></a></div><a class="reviewed-banner" href="' + b.href + '" target="_blank" rel="noopener noreferrer" aria-label="Explore ' + project.name + ' (opens in new tab)"><img src="' + b.src + '" alt="' + b.alt + '" loading="lazy" decoding="async" width="1536" height="512"/></a></article>';
-    html = html.slice(0, start) + article + html.slice(end + "</article>".length);
-  }
-
-  // Keep legal navigation inside this review deployment; never send
-  // reviewers to the older production policies.
-  html = html
-    .replace(/href="https:\/\/apexinnovate\.ae\/privacy"/g, 'href="/privacy"')
-    .replace(/href="https:\/\/apexinnovate\.ae\/terms"/g, 'href="/terms"')
-    .replace('Apex Innovate <small>FZE LLC</small><span>United Arab Emirates</span>', 'Apex Innovate <small>FZE LLC</small><span>Ajman NuVentures Centre Free Zone · United Arab Emirates</span>');
-  // Replace out-of-date prose in the Astra source while retaining its composition.
-  html = html.replace(
-    'Apex Innovate supports selected digital ventures and creative technology initiatives. Our projects explore robotics, event creation and visual thinking.',
-    'Apex Innovate FZE LLC is a UAE-registered company with licensed activities in e-commerce and marketing management. Alongside these activities, the company develops its own digital projects across robotics, event concepts, and visual thinking. Explore our projects below.'
-  );
-  // Typeface trial: render the logo with the same actual font as header and hero. Original vector assets remain unchanged.
-  html = html.replace(
-    '<span class="apex-symbol" aria-hidden="true">A<span>i</span></span>',
-    '<span class="apx-type-logo" aria-hidden="true"><span class="apx-code">&lt;/</span><span class="apx-ai">ai</span><span class="apx-code">&gt;</span></span>'
-  );
-  // Load one real typeface for the monogram, header wordmark and hero.
-  html = html.replace("</head>", '<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700;800&display=swap" rel="stylesheet"/></head>');
-  // Header-only wordmark treatment. Preserve legal name, metadata and hero.
-  html = html.replace(
-    /(<header[\s\S]*?<\/header>)/i,
-    (header) => header.replace(/APEX\s+INNOVATE/g, "apex innovate")
-  );
-  // Server-rendered entity relationships; project links are references,
-  // not claims of separate legal incorporation or launch status.
-  const linkedData = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://apexinnovate.ae/#organization",
-        "name": "Apex Innovate",
-        "legalName": "Apex Innovate FZE LLC",
-        "url": "https://apexinnovate.ae/",
-        "address": {"@type": "PostalAddress", "addressLocality": "Ajman", "addressCountry": "AE"},
-        "description": "A UAE-based company developing and managing digital projects across robotics, event planning, and visual technologies."
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://apexinnovate.ae/#website",
-        "url": "https://apexinnovate.ae/",
-        "name": "Apex Innovate",
-        "publisher": {"@id": "https://apexinnovate.ae/#organization"}
-      },
-      {
-        "@type": "ItemList",
-        "@id": "https://apexinnovate.ae/#projects",
-        "name": "Selected projects",
-        "itemListElement": banners.map((b, index) => ({
-          "@type": "ListItem",
-          "position": index + 1,
-          "name": descriptions[b.cls].name,
-          "description": descriptions[b.cls].detail,
-          "url": b.href
-        }))
-      }
-    ]
-  };
-  html = html.replace("</head>",
-    '<script type="application/ld+json">' + JSON.stringify(linkedData).replace(/</g, "\\u003c") + '</script></head>');
-  // Declare the final public route as canonical; the root redirects here.
-  // Remove stale canonical elements before inserting exactly one canonical tag.
-  html = html
-    .replace(/<meta name="robots"[^>]*>/gi, "")
-    .replace(/<meta name="googlebot"[^>]*>/gi, "")
-    .replace(/<link rel="canonical"[^>]*>/gi, "");
-  // Only the public domains declare the canonical; preview hosts remain non-indexable.
-  const canonicalHost = new URL(request.url).hostname.toLowerCase();
-  if (canonicalHost === "apexinnovate.ae" || canonicalHost === "www.apexinnovate.ae") {
-    html = html.replace("</head>", '<link rel="canonical" href="https://apexinnovate.ae/astra-reviewed"/></head>');
-  }
-  // The registered company name is the sole page-level heading.
-  // Keep Astra's original phrase as a quieter editorial subtitle.
-  html = html.replace(/<h1 id="hero-title">[\s\S]*?<\/h1>/, '<h1 id="hero-title">apex <span>innovate</span></h1><p class="reviewed-hero-line">Ideas with forward intent.</p>');
-  html = html.replace(
-    '<p>Business enquiries &amp; project conversations.</p>',
-    '<p>Have an idea, concept, or project to discuss? Contact Apex Innovate to explore the possibilities.</p>'
-  );
-  // One layout scale and one surface system, shared by both appearances.
-  const css = `<style id="apex-reviewed-layout">
-    @import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700;800&display=swap');
-    :root{--apx-bg:#121412;--apx-surface:#1e231e;--apx-fg:#eeeae1;--apx-muted:#b6b9b1;--apx-accent:#d6a17a;--apx-line:rgba(238,234,225,.17);--apx-content:1180px;--apx-gutter:clamp(20px,4vw,56px);--apx-space:clamp(64px,8vw,110px);color-scheme:dark}
-    *,*::before,*::after{box-sizing:border-box}
-    html{background:var(--apx-bg)}
-    body{margin:0;min-width:0;background:var(--apx-bg)!important;color:var(--apx-fg);font-family:Inter,system-ui,sans-serif;overflow-x:clip}
-    .page-width{width:min(var(--apx-content),calc(100% - 2 * var(--apx-gutter)));max-width:none;margin-inline:auto}
-    .site-header{height:clamp(82px,9vw,108px);background:transparent!important;color:var(--apx-fg);position:relative;z-index:4}
-    .site-header nav{align-items:center;gap:clamp(12px,2vw,30px)}
-    .site-header a{color:inherit}
-    .apx-type-logo{display:inline-flex;align-items:baseline;white-space:nowrap;font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-size:clamp(29px,3.3vw,43px);font-weight:800;letter-spacing:-.12em;line-height:1;color:var(--apx-fg)}
-    .apx-type-logo .apx-ai{color:#d6a17a;letter-spacing:-.075em}
-    .apx-type-logo .apx-code{color:var(--apx-fg)}
-    .site-header .brand-name,.site-header .brand-text,.site-header .wordmark,.site-header a:has(.apx-type-logo){font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
-    .site-header .brand-name,.site-header .brand-text,.site-header .wordmark{font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
-    .site-header a:has(.apx-type-logo){font-family:"Oxanium",Inter,system-ui,sans-serif!important;font-weight:700;letter-spacing:-.045em;text-transform:none!important}
-    .apex-logo-mark{display:inline-flex;align-items:center;width:clamp(62px,8vw,90px);height:auto;flex:none}
-    .apex-logo-mark img{display:block;width:100%;height:auto}
-    .apex-logo-mark .apex-logo-light{display:none}
-    .apex-logo-mark .apex-logo-dark{display:block}
-    html[data-apx-theme="light"] .apex-logo-mark .apex-logo-light{display:block}
-    html[data-apx-theme="light"] .apex-logo-mark .apex-logo-dark{display:none}
-    .hero{background:#101110;position:relative}
-    .hero-art{object-fit:cover;object-position:60% center}
-    .hero-shade{background:linear-gradient(90deg,rgba(8,10,9,.70),rgba(8,10,9,.04) 85%),linear-gradient(0deg,rgba(8,10,9,.54),transparent 56%);position:absolute;inset:0}
-    .hero-content{padding-top:clamp(36px,6vw,70px)}
-    .hero #hero-title{text-transform:none!important;font-family:"Oxanium",Inter,system-ui,sans-serif!important;max-width:1100px;font-size:clamp(3.4rem,10vw,9rem);font-weight:700;letter-spacing:-.045em;line-height:1.01;color:var(--apx-fg)}
-    .hero #hero-title span{color:#d6a17a}
-    .hero .reviewed-hero-line{font-size:clamp(1rem,1.6vw,1.3rem);line-height:1.5;color:var(--apx-fg);margin:20px 0 0;font-weight:400}
-    .hero .eyebrow,.hero .hero-bottom,.hero .hero-bottom p,.hero .hero-caption{color:#e4e1d8}
-    .intro.page-width{background:transparent!important;color:var(--apx-fg);padding-block:var(--apx-space);display:grid;grid-template-columns:minmax(130px,1fr) minmax(0,2fr);gap:clamp(28px,5vw,72px)}
-    .intro>.eyebrow{color:var(--apx-accent)}
-    .intro h2{font-size:clamp(2rem,4vw,3.65rem);line-height:1.12;font-weight:500;letter-spacing:-.047em;margin:0 0 25px;color:var(--apx-fg)}
-    .intro h2 span{color:var(--apx-muted)}
-    .intro div>p{font-size:clamp(.96rem,1.25vw,1.1rem);line-height:1.68;color:var(--apx-muted);max-width:570px;margin:0}
-    #projects.page-width{background:transparent!important;color:var(--apx-fg);padding-bottom:clamp(36px,5vw,70px)}
-    #projects .section-heading{padding:20px 0 35px;border-top:1px solid var(--apx-line);margin:0}
-    #projects .section-heading h2{font-size:clamp(1.35rem,2.35vw,2rem);line-height:1.2;font-weight:500;letter-spacing:-.035em;color:var(--apx-fg)}
-    #projects .section-heading>span{font-size:.7rem;color:var(--apx-muted)}
-    #projects .reviewed-venture{display:block!important;position:relative;width:100%;margin:0 0 clamp(30px,4vw,50px);padding:0!important;border:0!important;background:transparent!important;color:var(--apx-fg)}
-    #projects .reviewed-info{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:clamp(16px,2vw,25px)}
-    #projects .reviewed-copy{max-width:650px;min-width:0}
-    #projects .reviewed-copy h3{margin:0 0 8px;font-size:clamp(1.65rem,3vw,2.55rem);font-weight:550;letter-spacing:-.038em;line-height:1.16;color:var(--apx-fg)}
-    #projects .reviewed-copy p{max-width:60ch;margin:0;font-size:clamp(.96rem,1.2vw,1.07rem);line-height:1.64;color:var(--apx-muted)}
-    #projects .reviewed-link{flex:none;display:inline-flex;gap:.65em;align-items:center;color:var(--apx-fg);font-size:.87rem;font-weight:500;border-bottom:1px solid var(--apx-accent);padding-bottom:6px;text-decoration:none}
-    #projects .reviewed-banner{display:block;width:100%;overflow:hidden;background:#12191c;border:1px solid var(--apx-line);border-radius:3px}
-    #projects .reviewed-banner img{display:block;width:100%;height:auto;aspect-ratio:3/1;object-fit:contain}
-    .site-footer{background:var(--apx-surface)!important;color:var(--apx-fg)!important;margin-top:0;padding-top:clamp(48px,6vw,75px)}
-    .site-footer .footer-contact{padding-bottom:clamp(50px,7vw,84px)}
-    .site-footer .footer-contact>a{font-size:clamp(2.8rem,5.2vw,4.5rem)!important;letter-spacing:-.045em;line-height:1.08;color:var(--apx-fg)}
-    .site-footer .footer-contact>a>span:first-child{color:var(--apx-muted)}
-    .site-footer .footer-contact>p:last-child{color:var(--apx-muted);font-size:clamp(.94rem,1.15vw,1.08rem);line-height:1.65;max-width:540px;margin-top:24px}
-    .footer-legal{border-color:var(--apx-line);color:var(--apx-muted)}
-    .site-footer a{color:inherit}
-    @media(max-width:800px){.intro.page-width{grid-template-columns:1fr;gap:22px}.intro>.eyebrow{padding-top:0}}
-    @media(max-width:640px){:root{--apx-gutter:20px;--apx-space:48px}.hero #hero-title{font-size:clamp(3rem,11.5vw,5.4rem)}.hero .reviewed-hero-line{font-size:1rem}.intro h2{font-size:clamp(1.8rem,7.8vw,2.4rem);margin-bottom:14px}.intro div>p{font-size:.96rem;line-height:1.58}#projects .section-heading{padding:18px 0 23px}#projects .section-heading h2{font-size:clamp(1.3rem,5vw,1.6rem)}#projects .reviewed-info{align-items:start;flex-direction:column;gap:10px;margin-bottom:15px}#projects .reviewed-copy h3{font-size:clamp(1.45rem,6vw,1.85rem);margin-bottom:6px}#projects .reviewed-copy p{font-size:.91rem;line-height:1.5}#projects .reviewed-link{font-size:.82rem}#projects .reviewed-banner{width:min(88%,360px);max-width:100%;margin-inline:auto}#projects .reviewed-banner img{display:block;width:100%;min-width:0;max-width:100%;height:auto;aspect-ratio:3/1;object-fit:contain}#projects .reviewed-venture{margin-bottom:28px}.site-footer .footer-contact>a{font-size:clamp(2.65rem,10vw,3.7rem)!important}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-    /* Preview QA corrections: accessible light header, safe mobile title wrapping. */
-    html[data-apx-theme="light"] .site-header{background:#f5f2ec!important;color:#242622!important}
-    html[data-apx-theme="light"] .site-header a,
-    html[data-apx-theme="light"] .site-header nav,
-    html[data-apx-theme="light"] .site-header .apx-code,
-    html[data-apx-theme="light"] .site-header .apx-type-logo,
-    html[data-apx-theme="light"] .site-header .brand-name,
-    html[data-apx-theme="light"] .site-header .brand-text,
-    html[data-apx-theme="light"] .site-header .wordmark,
-    html[data-apx-theme="light"] #apx-theme-switch{color:#242622!important}
-    html[data-apx-theme="light"] .site-header .apx-ai{color:#a56748!important}
-    .hero #hero-title{overflow-wrap:normal;max-width:100%;text-wrap:balance}
-    @media(max-width:700px){
-      .hero #hero-title{font-size:clamp(3rem,12vw,5rem)!important;line-height:1.04;letter-spacing:-.045em}
-      .hero #hero-title span{display:block}
-      .hero-content{max-width:100%;min-width:0}
-    }
-  </style>`;
-  html = html.replace("</head>", '<meta name="robots" content="noindex,nofollow"/>' + css + "</head>");
-
-  // Compact presentation-only appearance switch. Artwork is intentionally unchanged.
-  // Theme variables change globally: no local light rectangles or image opacity hacks.
-  const themeCss = `<style id="apex-theme-toggle">
-    html[data-apx-theme="light"]{color-scheme:light;--apx-bg:#f5f2ec;--apx-surface:#e9e5db;--apx-fg:#242622;--apx-muted:#5b6058;--apx-accent:#a56748;--apx-line:rgba(36,38,34,.21)}
-    html[data-apx-theme="light"] body,html[data-apx-theme="light"] .intro,html[data-apx-theme="light"] #projects{background:var(--apx-bg)!important;color:var(--apx-fg)!important}
-    html[data-apx-theme="light"] .site-header{color:var(--apx-fg)!important;background:transparent!important}
-    html[data-apx-theme="light"] .hero{background:#ebe6dc!important;color:var(--apx-fg)!important}
-    html[data-apx-theme="light"] .hero-art{opacity:1;filter:none}
-    html[data-apx-theme="light"] .hero-shade{background:linear-gradient(90deg,rgba(249,247,241,.91),rgba(249,247,241,.66) 42%,rgba(249,247,241,.11) 95%),linear-gradient(0deg,rgba(244,241,234,.43),transparent 44%)!important}
-    html[data-apx-theme="light"] .hero #hero-title{color:#242622!important}
-    html[data-apx-theme="light"] .hero #hero-title span{color:#a56748!important}
-    html[data-apx-theme="light"] .hero .eyebrow,html[data-apx-theme="light"] .hero .hero-bottom p,html[data-apx-theme="light"] .hero .hero-bottom a,html[data-apx-theme="light"] .hero .hero-caption,html[data-apx-theme="light"] .hero .reviewed-hero-line{color:#282b26!important}
-    html[data-apx-theme="light"] .hero .circle{border-color:rgba(36,38,34,.6)}
-    html[data-apx-theme="light"] .site-footer{background:var(--apx-surface)!important;color:var(--apx-fg)!important}
-    html[data-apx-theme="light"] .site-footer .footer-contact>a,html[data-apx-theme="light"] .site-footer nav a{color:var(--apx-fg)!important}
-    html[data-apx-theme="light"] .site-footer .footer-contact>a>span:first-child{color:#65715e!important}
-    html[data-apx-theme="light"] .footer-legal{border-color:var(--apx-line)!important;color:var(--apx-muted)!important}
-    #apx-theme-switch{appearance:none;display:grid;place-items:center;flex:none;width:30px;height:30px;margin-left:12px;padding:0;border:1px solid currentColor;border-radius:50%;background:transparent;color:inherit;cursor:pointer}
-    #apx-theme-switch svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-    #apx-theme-switch:focus-visible{outline:2px solid var(--apx-accent);outline-offset:3px}
-    @media(max-width:640px){#apx-theme-switch{width:28px;height:28px;margin-left:5px}}
-  </style>`;
-  const themeScript = `<script id="apex-theme-behavior">
-    (function(){
-      var key='apex-review-theme';
-      function setTheme(theme){
-        document.documentElement.setAttribute('data-apx-theme',theme);
-        var button=document.getElementById('apx-theme-switch');
-        if(button){
-          button.setAttribute('aria-label',theme==='dark'?'Switch to light appearance':'Switch to dark appearance');
-          button.setAttribute('title',theme==='dark'?'Light appearance':'Dark appearance');
-          button.setAttribute('aria-pressed',String(theme==='light'));
-          button.innerHTML=theme==='dark'
-            ? '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"></path></svg>'
-            : '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z"></path></svg>';
-        }
-      }
-      var theme='dark';try{theme=localStorage.getItem(key)==='light'?'light':'dark'}catch(e){}
-      setTheme(theme);
-      function mount(){
-        var header=document.querySelector('.site-header')||document.querySelector('header');
-        if(header){
-          var walker=document.createTreeWalker(header,NodeFilter.SHOW_TEXT);
-          var nodes=[];var node;
-          while((node=walker.nextNode())){
-            if(/\\bAPEX\\b|\\bINNOVATE\\b/.test(node.nodeValue||''))nodes.push(node);
-          }
-          nodes.forEach(function(n){
-            var original=n.nodeValue||'';
-            var updated=original.replace(/\\bAPEX\\b/g,'apex').replace(/\\bINNOVATE\\b/g,'innovate');
-            if(updated!==original){
-              var span=document.createElement('span');
-              span.textContent=updated;
-              span.style.setProperty('text-transform','none','important');
-              n.parentNode.replaceChild(span,n);
-            }
-          });
-        }
-        if(document.getElementById('apx-theme-switch'))return;
-        var header=document.querySelector('.site-header')||document.querySelector('header');
-        if(!header)return;
-        var destination=header.querySelector('nav')||header.querySelector('.header-actions')||header;
-        var button=document.createElement('button');
-        button.type='button';button.id='apx-theme-switch';
-        destination.appendChild(button);
-        button.addEventListener('click',function(){
-          theme=document.documentElement.getAttribute('data-apx-theme')==='light'?'dark':'light';
-          setTheme(theme);try{localStorage.setItem(key,theme)}catch(e){}
-        });
-        setTheme(theme);
-      }
-      if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);
-      else mount();
-    })();
-  </script>`;
-  html = html.replace("</head>", themeCss + "</head>");
-  html = html.replace("</body>", themeScript + "</body>");
-  // Index only the two verified corporate domains; keep preview deployments private to crawlers.
-  const publicHost = new URL(request.url).hostname.toLowerCase();
-  const isCorporateDomain = publicHost === "apexinnovate.ae" || publicHost === "www.apexinnovate.ae";
-  return new Response(html, {
-    headers: {
-      "Content-Type": "text/html; charset=utf-8",
-      "X-Robots-Tag": isCorporateDomain ? "index, follow" : "noindex, nofollow, noarchive",
-      "Cache-Control": "no-store",
-    },
-  });
+const esc=(v:string)=>v.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const designCss="\n:root {\n color-scheme:light;\n --paper:#f8f8f5;--ink:#232622;--muted:#5e625c;--line:#d9dbd5;--accent:#94735e;\n --container:1160px;--gutter:clamp(20px,5vw,68px);\n --unit:8px;--gap:clamp(16px,2.4vw,32px);--space:clamp(56px,7vw,88px);\n}\n*,*::before,*::after{box-sizing:border-box}\nhtml{scroll-behavior:smooth;scroll-padding-top:32px}\nbody{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}\na{color:inherit;text-decoration:none}a:hover{color:var(--accent)}a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}\n.shell{width:min(var(--container),calc(100% - 2 * var(--gutter)));margin-inline:auto}\n.header{border-bottom:1px solid var(--line)}\n.header-inner{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:32px}\n.brand{min-width:0;display:inline-flex;align-items:baseline;gap:10px;flex-shrink:0}\n.brand-mark{display:inline-flex;align-items:baseline;white-space:nowrap;flex:none;font-family:\"Oxanium\",Arial,sans-serif;font-size:clamp(16px,1.7vw,21px);font-weight:700;letter-spacing:-.075em;line-height:1;color:var(--ink)}\n.brand-mark .code-ai{color:#c88760;letter-spacing:-.055em}\n.brand-name{display:block;white-space:nowrap;font-family:\"Oxanium\",Arial,sans-serif;font-size:clamp(16px,1.7vw,21px);font-weight:700;letter-spacing:-.045em;line-height:1.05;text-transform:none}\n.nav{display:flex;align-items:center;gap:clamp(16px,3vw,36px);flex-wrap:wrap}\n.nav a{font-size:12px;font-weight:600;border:0;text-decoration:none;line-height:1.4}\n.hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:1px solid var(--line)}\n.original-hero-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:63% center;opacity:.58;filter:brightness(1.7) saturate(.66);pointer-events:none;z-index:-2}\n.hero-wash{position:absolute;inset:0;background:linear-gradient(90deg,#f8f8f5 0%,rgba(248,248,245,.96) 27%,rgba(248,248,245,.76) 50%,rgba(248,248,245,.16) 100%),linear-gradient(0deg,rgba(248,248,245,.35),transparent 32%);pointer-events:none;z-index:-1}\n.hero-inner{min-height:clamp(490px,67svh,675px);display:flex;flex-direction:column;justify-content:space-between;padding-block:clamp(64px,8vw,112px) 24px}\n.eyebrow{color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.17em;line-height:1.5;text-transform:uppercase}\nh1{font-size:clamp(3.8rem,8.5vw,8rem);line-height:1.005;letter-spacing:-.066em;font-weight:700;margin:32px 0 20px;text-wrap:balance}\n.hero-subtitle{max-width:500px;color:var(--muted);font-size:clamp(17px,1.55vw,21px);line-height:1.48;margin:0}\n.hero-bottom{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:var(--gap);margin-top:48px;min-height:40px}\n.hero-bottom>span{font-size:10px;line-height:1.4;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;text-align:right}\n.jump{display:inline-flex;align-items:center;justify-self:start;gap:16px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:1.4}\n.jump span{border:1px solid currentColor;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:19px;line-height:1}\n.intro{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);padding-block:var(--space);align-items:start}\n.intro>.eyebrow{grid-column:1/span 3;padding-top:8px}\n.intro>div:last-child{grid-column:4/-1;min-width:0}\n.intro h2{font-size:clamp(2rem,4vw,3.65rem);line-height:1.12;letter-spacing:-.052em;font-weight:600;margin:0 0 16px;max-width:740px}\n.intro h2 span{color:#8d918b}\n.intro p{max-width:64ch;color:var(--muted);font-size:clamp(15px,1.3vw,17px);line-height:1.5;margin:0}\n.projects{padding-bottom:var(--space)}\n.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:1px solid var(--line);padding-block:24px}\n.section-head h2{font-size:clamp(22px,2.3vw,29px);font-weight:600;letter-spacing:-.04em;line-height:1.2;margin:0}\n.section-head>span{font-size:11px;line-height:1.3;color:var(--muted);letter-spacing:.1em;white-space:nowrap}\n.venture{padding-block:24px 40px;border-bottom:1px solid var(--line)}\n.venture:last-child{border-bottom:0;padding-bottom:0}\n.venture-top{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:end;margin-bottom:24px}\n.venture-top>div:first-child{grid-column:1/span 9;min-width:0}\n.venture-top>.venture-link{grid-column:10/-1;justify-self:end}\n.venture-kicker{font-size:10px;line-height:1.5;font-weight:700;letter-spacing:.15em;color:var(--accent);margin:0 0 16px}\n.venture h3{font-size:clamp(29px,3.1vw,42px);line-height:1.12;letter-spacing:-.047em;font-weight:600;margin:0 0 8px}\n.venture p{max-width:64ch;color:var(--muted);font-size:clamp(15px,1.3vw,17px);line-height:1.5;margin:0}\n.venture-link{white-space:nowrap;font-size:12px;line-height:1.3;font-weight:600;display:inline-flex;align-items:center;gap:8px;padding-bottom:4px}\n.venture-link span{font-size:19px;line-height:1}\n.venture-art{display:block;width:100%;background:#131a1e;overflow:hidden;border:1px solid var(--line)}\n.venture-art img{display:block;width:100%;height:auto;aspect-ratio:3/1;object-fit:cover}\n.footer{border-top:1px solid var(--line);background:#eff0eb;padding:var(--space) 0 24px}\n.footer-title{font-size:clamp(2.6rem,5vw,4.8rem);line-height:1.1;letter-spacing:-.056em;font-weight:600;display:inline-block;margin-top:16px}\n.footer-note{font-size:15px;line-height:1.5;color:var(--muted);max-width:60ch;margin:16px 0 48px}\n.footer-bottom{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:11px;line-height:1.5}\n.footer-links{display:flex;gap:24px}\n@media(max-width:760px){\n :root{--gap:16px;--space:48px}\n .header-inner{min-height:72px;gap:16px}\n .brand{gap:8px}\n .brand-mark{font-size:16px}\n .brand-name{font-size:16px}\n .nav{gap:16px}.nav a{font-size:11px}\n .original-hero-art{object-position:65% center;opacity:.46}\n .hero-wash{background:linear-gradient(90deg,rgba(248,248,245,.98) 0%,rgba(248,248,245,.94) 36%,rgba(248,248,245,.58) 68%,rgba(248,248,245,.18) 100%)}\n .hero-inner{min-height:clamp(420px,60svh,560px);padding-block:72px 24px}\n .hero h1{font-size:clamp(3.2rem,12vw,5.5rem);margin:24px 0 16px}\n .intro{grid-template-columns:1fr;gap:16px}\n .intro>.eyebrow,.intro>div:last-child{grid-column:1;min-width:0}\n .intro>.eyebrow{padding-top:0}\n .intro h2{margin-bottom:16px}\n .section-head{padding-block:20px}\n .venture{padding-block:24px 32px}\n .venture-top{grid-template-columns:1fr;gap:16px;margin-bottom:16px}\n .venture-top>div:first-child,.venture-top>.venture-link{grid-column:1;justify-self:start}\n .venture-kicker{margin-bottom:12px}\n .venture-art img{width:100%;aspect-ratio:3/1}\n}\n@media(max-width:420px){\n .brand-name{font-size:15px}.brand-mark{font-size:15px}.nav{gap:12px}.nav .contact-nav{display:none}\n .hero h1{font-size:clamp(3rem,12vw,4.4rem)}\n .hero-bottom{grid-template-columns:1fr auto;gap:8px}\n .hero-bottom>span{font-size:9px;max-width:120px}\n}\n@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}\n";
+export async function GET(request:Request){
+ const original=await readFile(join(process.cwd(),"public","astra-preview.html"),"utf8");
+ const heroMatch=original.match(/<img\b[^>]*class="hero-art"[^>]*src="(data:image\/[^"]+)"/i);
+ if(!heroMatch)return new Response("Original Apex sculptural hero image missing",{status:500});
+ const heroSrc=heroMatch[1];
+ const match=original.match(/const banners=(\[[\s\S]*?\]);\s*function apply\(/);
+ if(!match)return new Response("Approved banners missing",{status:500});
+ let banners:Banner[];
+ try{banners=JSON.parse(match[1]) as Banner[]}catch{return new Response("Banner data invalid",{status:500})}
+ if(banners.length!==3||banners.some(b=>!descriptions[b.cls]||!b.src.startsWith("data:image/")||!b.href.startsWith("https://")))return new Response("Incomplete approved banner data",{status:500});
+ const ventures=banners.map((b,i)=>{
+ const p=descriptions[b.cls];const href=esc(b.href);
+ return '<article class="venture"><div class="venture-top"><div><div class="venture-kicker">0'+(i+1)+' / '+p.category+'</div><h3>'+p.name+'</h3><p>'+p.detail+'</p></div><a class="venture-link" target="_blank" rel="noopener noreferrer" href="'+href+'" aria-label="Visit '+p.name+'">Visit project <span aria-hidden="true">↗</span></a></div><a class="venture-art" href="'+href+'" target="_blank" rel="noopener noreferrer" aria-label="Explore '+p.name+'"><img src="'+b.src+'" alt="'+esc(b.alt)+'" width="1536" height="512" loading="lazy" decoding="async"/></a></article>';
+ }).join("");
+ const host=new URL(request.url).hostname.toLowerCase();const official=host==="apexinnovate.ae"||host==="www.apexinnovate.ae";
+ const robots=official?"index,follow":"noindex,nofollow,noarchive";
+ const canonical=official?'<link rel="canonical" href="https://apexinnovate.ae/astra-reviewed"/>':"";
+ const html='<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="'+robots+'"/><meta name="theme-color" content="#f8f8f5"/><title>Apex Innovate | Ideas with forward intent.</title><meta name="description" content="Apex Innovate FZE LLC develops digital ventures across robotics, event concepts, and visual thinking." />'+canonical+'<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700;800&display=swap" rel="stylesheet"/><style id="apex-design-system">'+designCss+'</style></head><body>'+
+ '<header class="header"><div class="shell header-inner"><a class="brand" href="/" aria-label="Apex Innovate home"><span class="brand-mark" aria-hidden="true"><span class="code-left">&lt;/</span><span class="code-ai">ai</span><span class="code-right">&gt;</span></span><span class="brand-name">apex innovate</span></a><nav class="nav" aria-label="Main"><a href="#projects">Projects</a><a href="#company">Company</a><a class="contact-nav" href="#contact">Contact</a></nav></div></header>'+
+ '<main><section class="hero" aria-labelledby="hero-title"><img class="original-hero-art" src="'+heroSrc+'" alt="" aria-hidden="true"/><div class="hero-wash" aria-hidden="true"></div><div class="shell hero-inner"><div><div class="eyebrow">Independent digital ventures · United Arab Emirates</div><h1 id="hero-title">Ideas with<br/>forward intent.</h1><p class="hero-subtitle">Digital ventures &amp; creative technology.</p></div><div class="hero-bottom"><a href="#projects" class="jump">Explore our projects <span aria-hidden="true">↓</span></a><span>Apex Innovate FZE LLC</span></div></div></section>'+
+ '<section class="intro shell" id="company"><div class="eyebrow">A focused perspective</div><div><h2>Different disciplines.<br/><span>One drive to create.</span></h2><p>Apex Innovate FZE LLC is a UAE-registered company with licensed activities in e-commerce and marketing management. Alongside these activities, the company develops its own digital projects across robotics, event concepts, and visual thinking.</p></div></section>'+
+ '<section class="projects shell" id="projects"><div class="section-head"><h2>Selected ventures</h2><span>01 – 03</span></div>'+ventures+'</section></main>'+
+ '<footer class="footer" id="contact"><div class="shell"><div class="eyebrow">Start a conversation</div><a class="footer-title" href="/contact">Get in touch ↗</a><p class="footer-note">Have an idea, concept, or project to discuss? Contact Apex Innovate to explore the possibilities.</p><div class="footer-bottom"><span>Apex Innovate FZE LLC · Ajman NuVentures Centre Free Zone, United Arab Emirates</span><nav class="footer-links" aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav></div></div></footer></body></html>';
+ return new Response(html,{headers:{"Content-Type":"text/html; charset=utf-8","X-Robots-Tag":robots,"Cache-Control":"no-store"}});
 }
