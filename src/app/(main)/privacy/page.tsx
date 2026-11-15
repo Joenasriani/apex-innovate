@@ -4,14 +4,14 @@ import { ContentPanel } from "@/components/layout/content-panel";
 export const metadata: Metadata = {
   title: "Privacy Notice | Apex Innovate",
   description: "How the Apex Innovate corporate website handles information.",
-  robots: { index: false, follow: false },
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {
   return (
     <ContentPanel sectionId="privacy" title="Privacy Notice">
-      <div className="space-y-8 text-sm leading-7 text-[var(--muted-ink)]">
-        <p>Last updated: 25 October 2026</p>
+      <div className="apx-legal">
+        <p>Last updated: 15 November 2026</p>
         <section>
           <h2 className="legal-heading">Who operates this website</h2>
           <p className="mt-2">This notice describes the corporate website operated by <strong>Apex Innovate FZE LLC</strong>, incorporated in Ajman, UAE, under Ajman NuVentures Centre Free Zone. Separate linked project platforms may process information under their own privacy notices.</p>
@@ -22,7 +22,7 @@ export default function PrivacyPage() {
         </section>
         <section>
           <h2 className="legal-heading">Technical information and preferences</h2>
-          <p className="mt-2">Hosting and delivery providers may process technical request information such as IP addresses, request times, browser data and diagnostic logs to serve, maintain and secure the site. The appearance switch stores a light/dark preference in your browser's local storage under the key <code>apex-review-theme</code>; it is not an advertising cookie.</p>
+          <p className="mt-2">Hosting and delivery providers may process technical request information such as IP addresses, request times, browser data and diagnostic logs to serve, maintain and secure the site. The current light corporate website does not store a site-specific light/dark theme preference. Pages may request typefaces from an external font provider, which can receive technical request information when those fonts are loaded.</p>
         </section>
         <section>
           <h2 className="legal-heading">Analytics and marketing</h2>
