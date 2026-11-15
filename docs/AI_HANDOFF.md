@@ -1,7 +1,7 @@
 # APEX INNOVATE – AI HANDOFF / CONTINUITY CONTRACT
 
 **Updated:** 15 November 2026  
-**Status:** GitHub source reconciled to the approved November design; official domain still runs the older October deployment until authorized production release.  
+**Status:** Approved November application is deployed on both official aliases (commit `b9f1a8a`); rendered-page/browser acceptance is still NOT RECHECKED.  
 **Repository:** `Joenasriani/apex-innovate` · `main`  
 **Do not confuse with:** `Joenasriani/apex-innovate-website` (separate historical repository).
 
@@ -26,16 +26,16 @@ Use the shared `companyPositioning` object in `src/data/config.ts` for these thr
 | Production domain | `apexinnovate.ae` and `www.apexinnovate.ae` |
 | Vercel team | `RoboMarket` – `team_aK7orsaNw316c1bdLjjKFVMy` |
 | Production project | `apex-innovate` – `prj_orU3BILg3A4TqZgK4ePPzHmcOnYs` |
-| Last confirmed production deployment | `dpl_5K9RcxDxBcEyTpTuNsrxxCH9jCfM` – READY |
-| Commit actually on production alias at audit | `a92d3e0e134e90702766030fa75a000714a7405b` |
-| Production deployment created | 27 October 2026 |
-| Approved design/official-page source baseline in `main` | `5f9a015597db056a8342c07c1c08d93640319216` prior to this document-sync change |
+| Last confirmed production deployment | `dpl_J7LE5saV1WAEtMNL4tsFHTYdmRuP` – READY; both official aliases assigned |
+| Commit actually on production alias at audit | `b9f1a8adef7d218d61200d8c1c8c933583b7d41f` |
+| Production deployment created | 15 November 2026 |
+| Approved design/official-page source baseline | `b9f1a8a` – deployed application; later docs-only changes do not alter its rendered files |
 | Preview Vercel project | `apex-innovate-jo-branch-preview` – `prj_0XDwqILI3nzNQGmsGEbWmPIj6pzv` |
-| Production publishing access | **BLOCKED:** most recent direct Vercel production deploy API returned HTTP 403 (permission denied). GitHub merges do NOT auto-publish to this production alias in the observed history. |
+| Production publishing access | Connected Developer identity still receives 403 on direct production API deployment; authorized RoboMarket Owner CLI deployment succeeded. GitHub merges alone do not prove a live release. |
 
-This mapping supersedes 25 October evidence stating the production project or deployed commit was unknown. The remote webpage could not be opened directly by the available browser/web network sources during this reconciliation. The production **identity and SHA were verified using Vercel deployment metadata**, whereas rendered-page/browser QA remains **NOT RECHECKED**. Never equate these evidence types.
+This mapping supersedes earlier 25 October and pre-release 15 November evidence that production was unidentified or on an October commit. The remote webpage could not be opened directly by the available browser/web network sources during this reconciliation. The production **identity and SHA were verified using Vercel deployment metadata**, whereas rendered-page/browser QA remains **NOT RECHECKED**. Never equate these evidence types.
 
-The manually dispatched GitHub workflow is `.github/workflows/deploy-production.yml`, with `VERCEL_ORG_ID`/`VERCEL_PROJECT_ID` aimed at the above project; it requires the Vercel token secret and owner-authorized execution. Do not silently redirect the domain to the separate preview project, disable deployment protection, change DNS, or attempt unauthorized workaround.
+The optional manually dispatched GitHub workflow is `.github/workflows/deploy-production.yml` (NOT required for the verified Owner CLI production release), with `VERCEL_ORG_ID`/`VERCEL_PROJECT_ID` aimed at the above project; it requires the Vercel token secret and owner-authorized execution. Do not silently redirect the domain to the separate preview project, disable deployment protection, change DNS, or attempt unauthorized workaround.
 
 ## 3. Approved visual specification
 
