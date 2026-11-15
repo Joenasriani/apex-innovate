@@ -1,3 +1,25 @@
 import Link from "next/link";
-const links=[{label:"Company",href:"/#company"},{label:"Projects",href:"/#projects"},{label:"Work",href:"/#work"},{label:"Contact",href:"/#contact"}];
-export function Header(){return <header className="sticky top-0 z-40 border-b border-[#aaa99f] bg-[#f5f4f0]/95 backdrop-blur-sm"><div className="mx-auto flex max-w-[1440px] items-center justify-between gap-5 px-5 py-5 sm:px-10 lg:px-16"><Link href="/" className="text-[15px] font-bold tracking-[-.04em] text-[#212722]" aria-label="Apex Innovate FZE LLC home">APEX INNOVATE <span className="font-medium text-[#777d72]">/ FZE LLC</span></Link><nav aria-label="Primary navigation" className="hidden items-center gap-9 md:flex">{links.map(l=><Link key={l.label} href={l.href} className="text-sm font-medium text-[#4c534b] hover:text-[#161d17]">{l.label}</Link>)}</nav><Link href="/#contact" className="text-sm font-semibold underline underline-offset-4 md:hidden">Contact</Link></div><nav aria-label="Mobile navigation" className="flex gap-7 overflow-x-auto border-t border-[#d4d4cd] px-5 py-3 text-xs md:hidden">{links.slice(0,3).map(l=><Link key={l.label} href={l.href} className="shrink-0">{l.label}</Link>)}</nav></header>}
+
+const navigation = [
+  { label: "Projects", href: "/#projects" },
+  { label: "Company", href: "/#company" },
+  { label: "Contact", href: "/contact" },
+];
+
+export function Header() {
+  return (
+    <header className="apx-header">
+      <div className="apx-shell apx-header-inner">
+        <Link href="/" className="apx-brand" aria-label="Apex Innovate homepage">
+          <span className="apx-mark" aria-hidden="true">
+            <span>{"</"}</span><span className="apx-mark-ai">ai</span><span>{">"}</span>
+          </span>
+          <span className="apx-wordmark">apex innovate</span>
+        </Link>
+        <nav className="apx-nav" aria-label="Main navigation">
+          {navigation.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+        </nav>
+      </div>
+    </header>
+  );
+}
