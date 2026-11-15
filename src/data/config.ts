@@ -23,6 +23,7 @@ export const companyConfig: CompanyConfig = {
     linkedin: "https://www.linkedin.com/in/joenasrprofile/",
     github: "https://github.com/Joenasriani",
     whatsapp: "https://wa.me/971586749577",
+    whatsappLebanon: "https://wa.me/96176713497",
     robomarket: "https://robomarket.ae",
     robomarketLinkedin: "https://www.linkedin.com/company/robomarket-uae/",
     robomarketX: "https://x.com/robomarketAE",
