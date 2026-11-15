@@ -1,10 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700;800&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @theme inline { --color-background: var(--paper); --color-foreground: var(--ink); --font-sans: var(--font-inter); --font-mono: var(--font-jetbrains-mono); }
-:root { --paper:#f5f4f0; --paper-2:#eeeee8; --ink:#212722; --muted-ink:#555b51; --line:#aaa99f; --accent:#343d34; --accent-soft:#dcded6; }
+:root { --paper:#f8f8f5; --paper-2:#eff0eb; --ink:#232622; --muted-ink:#5e625c; --line:#d9dbd5; --accent:#94735e; --accent-soft:#eee6de; }
 @layer base { *{box-sizing:border-box} html{scroll-behavior:smooth;background:var(--paper)} body{margin:0;overflow-x:hidden;background:var(--paper);color:var(--ink);text-rendering:optimizeLegibility} a{text-decoration:none} }
 ::selection{background:#212722;color:#fff}
 :focus-visible{outline:2px solid #212722;outline-offset:3px}
 .apex-code{font-family:var(--font-jetbrains-mono),monospace;font-size:11px;letter-spacing:.08em;font-weight:600;color:#60665b}
 .legal-heading{font-size:.8rem;font-weight:700}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Corporate secondary pages – shared with the approved homepage visual system. */
+.apx-secondary-site{min-height:100vh;display:flex;flex-direction:column;background:var(--paper);color:var(--ink)}
+.apx-shell{width:min(1160px,calc(100% - 2 * clamp(20px,5vw,68px)));margin-inline:auto}
+.apx-header{border-bottom:1px solid var(--line);background:var(--paper)}
+.apx-header-inner{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.apx-brand{display:inline-flex;align-items:baseline;gap:10px;flex-shrink:0;color:var(--ink);text-decoration:none;white-space:nowrap}
+.apx-mark,.apx-wordmark{font-family:"Oxanium",Arial,sans-serif;font-size:clamp(16px,1.7vw,21px);font-weight:700;line-height:1.05}
+.apx-mark{display:inline-flex;align-items:baseline;letter-spacing:-.075em}
+.apx-mark-ai{color:#c88760}
+.apx-wordmark{letter-spacing:-.045em}
+.apx-nav{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(16px,3vw,36px)}
+.apx-nav a{font-size:12px;font-weight:600;line-height:1.4;color:var(--ink);text-decoration:none;border:0}
+.apx-nav a:hover,.apx-brand:hover{color:var(--accent)}
+.apx-page{padding-top:clamp(72px,9vw,120px);padding-bottom:clamp(64px,8vw,104px);flex:1}
+.apx-kicker{color:var(--accent);font-size:10px;font-weight:700;line-height:1.5;letter-spacing:.17em;text-transform:uppercase;margin:0}
+.apx-page-title{font-size:clamp(3rem,6.5vw,6.1rem);font-weight:600;line-height:1.04;letter-spacing:-.065em;margin:24px 0 clamp(32px,4vw,56px)}
+.apx-page-body{border-top:1px solid var(--line);padding-top:clamp(24px,3.5vw,48px);max-width:880px}
+.apx-legal{font-size:clamp(15px,1.3vw,17px);color:var(--muted-ink);line-height:1.65}
+.apx-legal>p:first-child{font-size:12px;letter-spacing:.02em;margin:0 0 32px}
+.apx-legal section{margin-top:32px}
+.apx-legal section:first-of-type{margin-top:0}
+.apx-legal .legal-heading{font-size:clamp(18px,1.8vw,22px);font-weight:600;letter-spacing:-.025em;line-height:1.35;color:var(--ink);margin:0 0 8px}
+.apx-legal section p{margin:0 0 12px}
+.apx-legal section p:last-child{margin-bottom:0}
+.apx-legal strong{color:var(--ink);font-weight:600}
+.apx-legal code{font-size:.85em;color:var(--ink)}
+.apx-contact-intro{max-width:62ch;font-size:clamp(17px,1.65vw,21px);line-height:1.55;color:var(--muted-ink);margin:0 0 40px}
+.apx-contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.apx-contact-card{display:flex;flex-direction:column;gap:12px;min-height:180px;border-top:1px solid var(--line);padding-top:24px;text-decoration:none}
+.apx-contact-card:hover .apx-contact-action{color:var(--accent)}
+.apx-contact-label{color:var(--accent);font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+.apx-contact-name{font-size:clamp(24px,2.4vw,32px);font-weight:600;letter-spacing:-.04em;line-height:1.18;color:var(--ink)}
+.apx-contact-detail{font-size:14px;line-height:1.5;color:var(--muted-ink)}
+.apx-contact-action{font-size:13px;font-weight:600;color:var(--ink);margin-top:auto;padding-top:12px}
+.apx-contact-note{font-size:13px;line-height:1.55;color:var(--muted-ink);max-width:62ch;margin-top:32px}
+.apx-footer{background:var(--paper-2);border-top:1px solid var(--line);padding:clamp(56px,7vw,88px) 0 24px}
+.apx-footer-contact{display:inline-flex;align-items:center;gap:10px;margin-top:16px;font-size:clamp(2.6rem,5vw,4.8rem);font-weight:600;line-height:1.1;letter-spacing:-.056em;color:var(--ink)}
+.apx-footer-summary{font-size:15px;line-height:1.5;color:var(--muted-ink);margin:16px 0 48px}
+.apx-footer-bottom{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px;color:var(--muted-ink);font-size:11px;line-height:1.5}
+.apx-footer-bottom nav{display:flex;flex-wrap:wrap;gap:24px}
+.apx-footer-bottom a{color:inherit}
+.apx-footer-bottom a:hover{color:var(--accent)}
+@media(max-width:760px){
+ .apx-header-inner{min-height:72px;gap:16px}
+ .apx-brand{gap:8px}
+ .apx-mark,.apx-wordmark{font-size:16px}
+ .apx-nav{gap:16px}
+ .apx-nav a{font-size:11px}
+ .apx-page{padding-top:64px;padding-bottom:64px}
+ .apx-page-title{margin-bottom:32px}
+ .apx-contact-grid{grid-template-columns:1fr;gap:16px}
+ .apx-contact-card{min-height:144px}
+}
+@media(max-width:420px){
+ .apx-mark,.apx-wordmark{font-size:15px}
+ .apx-nav{gap:12px}
+ .apx-nav a:last-child{display:none}
+}
