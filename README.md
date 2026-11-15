@@ -10,19 +10,19 @@
 
 ## Important: source vs live deployment
 
-**As verified on 15 November 2026, these are NOT synchronized.**
+**Verified 15 November 2026:** both production aliases serve the approved November application source at GitHub commit `b9f1a8a`. Later documentation-only commits do not change the rendered application.
 
 | Source | Verified state |
 | --- | --- |
 | GitHub `main` | Approved light editorial redesign, new official pages, broadened corporate hero copy |
 | Vercel preview project | Builds of the approved design have reached `READY`; visual/browser interaction acceptance remains open |
-| Live `apexinnovate.ae` / `www` | Still assigned to older production deployment `dpl_5K9RcxDxBcEyTpTuNsrxxCH9jCfM`, GitHub commit `a92d3e0e134e90702766030fa75a000714a7405b` (27 October 2026) |
-| Latest approved source baseline | GitHub `main` merge `5f9a015597db056a8342c07c1c08d93640319216` before this reconciliation |
-| Production access | The connected account received **403 Forbidden** when attempting to create a Production Deployment on the RoboMarket team. Do not claim release success from a merge or preview build |
+| Live `apexinnovate.ae` / `www` | Production deployment `dpl_J7LE5saV1WAEtMNL4tsFHTYdmRuP`, READY, commit `b9f1a8adef7d218d61200d8c1c8c933583b7d41f`, both aliases assigned (15 November 2026) |
+| Approved application source | `b9f1a8a` is deployed; subsequent documentation-only commits must not be mistaken for visual divergence |
+| Production access | The connected Developer account still lacks direct production deploy permission (403); an authorized RoboMarket Owner CLI deployment successfully published the approved code |
 
 The hosting project has been identified: Vercel **RoboMarket team**, project **`apex-innovate`** (`prj_orU3BILg3A4TqZgK4ePPzHmcOnYs`). The old register's assertion that production ownership/source was unknown is now superseded.
 
-**Deployment is an open operational blocker**, not a code or design approval. Revalidate the live alias SHA after an authorized production deployment. See [AI handoff](docs/AI_HANDOFF.md) and [release checklist](docs/apex-acceptance-checklist.md).
+**Deployment identity and commit alignment have been verified via Vercel. Live rendered-page/browser QA is still NOT RECHECKED because page-fetch attempts were unsuccessful. See [AI handoff](docs/AI_HANDOFF.md) and [release checklist](docs/apex-acceptance-checklist.md).
 
 ## Approved presentation and scope
 
