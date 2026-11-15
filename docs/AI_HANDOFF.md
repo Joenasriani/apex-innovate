@@ -101,6 +101,13 @@ Homepage performance implementation now uses `src/app/apex-art/[asset]/route.ts`
 
 **Live comparison:** always record (a) latest approved GitHub application SHA, (b) current Vercel production alias SHA and (c) separately verified HTTP/browser outcomes. Publish with approved production credentials, then test actual URLs, layout, buttons, contact actions, sitemap and robots. Without publication, report **MERGED / NOT YET LIVE**, even when README and handoff have been updated.
 
+## Verified Google index recovery and focused homepage SEO (15 November 2026)
+
+- **PASS – first-party Search Console via OpenSEO:** `https://apexinnovate.ae/` is now **Submitted and indexed**, with `INDEXING_ALLOWED`, `ALLOWED` robots and successful mobile Google crawl at `2026-11-15T18:06:17Z`. Both Google's canonical and page-declared canonical are `https://apexinnovate.ae/`; Google associates the page with `https://apexinnovate.ae/sitemap.xml`. This supersedes the historical 11 November `noindex` report.
+- **Narrow SEO source adjustment (NOT YET LIVE):** the standalone homepage HTML document title is updated to `Apex Innovate FZE LLC | Digital Ventures in the UAE`. The on-page H1, approved hero copy, brand mark, venture descriptions, imagery and site routes are unchanged. The title aligns with verified company identity and positioning, not an unsupported new service.
+- **Keyword evidence:** UAE-English research showed very low search volumes for specific generic terms; no claim of improved rankings or performance is made. Prioritize branded/company identity, accurate page descriptors and indexing over keyword stuffing. No change to sitemap or robots was required.
+- **Release distinction:** this metadata-only change is a GitHub branch change until a preview build passes, merge is complete, and the official Vercel production alias is verified at the correct deployment SHA. The indexed status refers to Google's prior crawl of the actual live site, not to the new title.
+
 ## 8. Editing and release procedure
 
 1. Inspect **live Vercel alias + deployment SHA** first, then active GitHub `main`; compare with the latest approved preview and earlier user design screenshots.
