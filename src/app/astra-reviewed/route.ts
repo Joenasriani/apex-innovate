@@ -279,49 +279,64 @@ export async function GET(request: Request) {
     })();
   </script>`;
   html = html.replace("</head>", themeCss + "</head>");
-  // November 2026 presentation-only refinement. Retain original artwork, copy, theme choice and project destinations.
-  const refinementCss = `<style id="apex-typographic-refinement">
-    /* Editorial rhythm: compact spacing without losing deliberate negative space. */
-    :root{--apx-space:clamp(48px,6.5vw,82px)}
-    .hero{min-height:clamp(470px,65vh,660px)}
-    .hero-content{padding-top:clamp(30px,4.5vw,58px)}
-    .hero #hero-title{line-height:.97;letter-spacing:-.048em}
-    .hero .reviewed-hero-line{margin-top:clamp(12px,1.6vw,19px);line-height:1.35}
-    .intro.page-width{gap:clamp(24px,4vw,56px)}
-    .intro h2{margin-bottom:clamp(12px,1.7vw,21px);line-height:1.09}
-    .intro div>p{line-height:1.5}
-    #projects .section-heading{padding:19px 0 25px}
-    #projects .reviewed-venture{margin-bottom:clamp(27px,3.4vw,42px)}
-    #projects .reviewed-info{margin-bottom:clamp(12px,1.6vw,19px);align-items:end}
-    #projects .reviewed-copy h3{margin-bottom:6px;line-height:1.11}
-    #projects .reviewed-copy p{line-height:1.48}
-    #projects .reviewed-link{border-bottom:0!important;text-decoration:none!important;padding-bottom:3px;transition:opacity .2s ease}
-    #projects .reviewed-link:hover{opacity:.65}
-    .site-header nav a,.site-header a{text-decoration:none!important;text-decoration-line:none!important}
-    .site-header nav a{border-bottom:0!important;transition:opacity .2s ease}
-    .site-header nav a:hover{opacity:.68}
-    .site-footer .footer-contact{padding-bottom:clamp(38px,5vw,64px)}
-    .site-footer .footer-contact>p:last-child{margin-top:clamp(14px,2vw,20px);line-height:1.48}
-    @media(max-width:700px){
-      :root{--apx-space:44px}
-      .hero{min-height:clamp(440px,63svh,590px)}
-      .hero-content{padding-top:28px}
-      .hero #hero-title{line-height:1.01!important}
-      .hero .reviewed-hero-line{margin-top:13px;line-height:1.4}
-      .intro.page-width{gap:16px}
-      .intro h2{margin-bottom:12px;line-height:1.12}
-      .intro div>p{line-height:1.47}
-      #projects .section-heading{padding:16px 0 21px}
-      #projects .reviewed-info{gap:9px;margin-bottom:13px}
-      #projects .reviewed-copy p{line-height:1.45}
-      #projects .reviewed-banner{width:100%;max-width:100%;margin-inline:0}
-      #projects .reviewed-venture{margin-bottom:27px}
-      .site-footer .footer-contact>p:last-child{line-height:1.47}
-    }
-    @media(prefers-reduced-motion:reduce){#projects .reviewed-link,.site-header nav a{transition:none}}
-  </style>`;
-  html = html.replace("</head>", refinementCss + "</head>");
   html = html.replace("</body>", themeScript + "</body>");
+  // Restore a predictable cascade for the curated Astra page. The embedded
+  // legacy CSS was authored with high-priority declarations which prevented
+  // subsequent responsive improvements from applying. Remove those declaration
+  // locks from stylesheet rules (never alter image or banner data).
+  html = html.replace(/<style\\b[^>]*>[\\s\\S]*?<\\/style>/gi, (style) =>
+    style.replace(/\\s*!important\\b/gi, "")
+  );
+
+  // Single authoritative presentation stylesheet, loaded after the original,
+  // reviewed layout, and light/dark theme. Project assets and content remain intact.
+  const editorialCss = `<style id="apex-editorial-system">
+    :root{--apx-space:clamp(45px,6vw,78px);--apx-gutter:clamp(20px,4vw,56px)}
+    html body{font-family:Inter,system-ui,sans-serif}
+    html body .site-header{height:auto;min-height:78px}
+    html body .site-header nav a,
+    html body .site-header a{border-bottom:0;text-decoration:none;text-decoration-line:none;box-shadow:none}
+    html body .site-header nav{gap:clamp(16px,2vw,30px)}
+    html body .hero{min-height:clamp(410px,58svh,630px)}
+    html body .hero-content{padding-top:clamp(29px,4.6vw,55px)}
+    html body .hero #hero-title{font-family:Oxanium,Inter,system-ui,sans-serif;font-size:clamp(3.3rem,9vw,8.5rem);font-weight:700;letter-spacing:-.05em;line-height:1.015;margin-bottom:0}
+    html body .hero .reviewed-hero-line{margin-top:13px;font-size:clamp(1rem,1.5vw,1.23rem);line-height:1.34}
+    html body .intro.page-width{padding-block:var(--apx-space);gap:clamp(22px,4vw,56px)}
+    html body .intro h2{font-size:clamp(2rem,3.8vw,3.4rem);line-height:1.12;margin:0 0 16px}
+    html body .intro div>p{font-size:clamp(.96rem,1.18vw,1.08rem);line-height:1.5}
+    html body #projects .section-heading{padding:18px 0 24px}
+    html body #projects .reviewed-venture{margin-bottom:clamp(29px,3.5vw,44px)}
+    html body #projects .reviewed-info{margin-bottom:16px;gap:19px}
+    html body #projects .reviewed-copy h3{line-height:1.13;margin-bottom:7px}
+    html body #projects .reviewed-copy p{line-height:1.5}
+    html body #projects .reviewed-link{border:0;text-decoration:none;padding-bottom:3px;transition:opacity .2s ease}
+    html body #projects .reviewed-link:hover{opacity:.68}
+    html body #projects .reviewed-banner{width:100%;max-width:100%}
+    html body .site-footer{padding-top:clamp(42px,5vw,65px)}
+    html body .site-footer .footer-contact{padding-bottom:clamp(40px,5.5vw,65px)}
+    html body .site-footer .footer-contact>p:last-child{margin-top:18px;line-height:1.5}
+    @media(max-width:700px){
+      :root{--apx-space:42px;--apx-gutter:20px}
+      html body .site-header{min-height:0;height:auto}
+      html body .hero{min-height:clamp(370px,54svh,510px)}
+      html body .hero-content{padding-top:25px}
+      html body .hero #hero-title{font-size:clamp(2.85rem,11vw,4.8rem);line-height:1.03;letter-spacing:-.046em}
+      html body .hero #hero-title span{display:block}
+      html body .hero .reviewed-hero-line{margin-top:12px;line-height:1.4}
+      html body .intro.page-width{grid-template-columns:1fr;gap:15px}
+      html body .intro h2{font-size:clamp(1.8rem,7.4vw,2.35rem);line-height:1.12;margin-bottom:12px}
+      html body .intro div>p{font-size:.96rem;line-height:1.47}
+      html body #projects .section-heading{padding:16px 0 19px}
+      html body #projects .reviewed-info{flex-direction:column;align-items:start;gap:10px;margin-bottom:13px}
+      html body #projects .reviewed-copy h3{margin-bottom:6px}
+      html body #projects .reviewed-copy p{font-size:.92rem;line-height:1.46}
+      html body #projects .reviewed-banner{width:100%;max-width:100%;margin-inline:0}
+      html body #projects .reviewed-venture{margin-bottom:27px}
+      html body .site-footer .footer-contact>p:last-child{line-height:1.46}
+    }
+    @media(prefers-reduced-motion:reduce){html body #projects .reviewed-link{transition:none}}
+  </style>`;
+  html = html.replace("</head>", editorialCss + "</head>");
   // Index only the two verified corporate domains; keep preview deployments private to crawlers.
   const publicHost = new URL(request.url).hostname.toLowerCase();
   const isCorporateDomain = publicHost === "apexinnovate.ae" || publicHost === "www.apexinnovate.ae";
