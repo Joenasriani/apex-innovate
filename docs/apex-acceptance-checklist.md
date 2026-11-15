@@ -1,8 +1,8 @@
 # Apex Innovate – Production acceptance and reconciliation checklist
 
 **Reviewed:** 15 November 2026  
-**Release decision:** **HOLD / NOT LIVE-CONFIRMED**  
-**Approved UI:** Light editorial corporate site in GitHub `main`; site metadata proves the official domain still points to an older Vercel production deployment.
+**Release decision:** **DEPLOYED (metadata verified) / VISUAL QA OPEN**  
+**Approved UI:** Light editorial corporate site released to the official production aliases at commit `b9f1a8a`; visual/browser interaction acceptance remains NOT RECHECKED.
 
 ## Evidence levels
 
@@ -16,11 +16,11 @@ Do not convert a code-level PASS into a live-production PASS.
 ## 1. Identity, provenance and deployment
 
 - [x] **PASS – Vercel metadata:** production project identified as `RoboMarket / apex-innovate`, project `prj_orU3BILg3A4TqZgK4ePPzHmcOnYs`.
-- [x] **PASS – Vercel metadata:** `apexinnovate.ae` and `www.apexinnovate.ae` are assigned to that project; last confirmed production deployment is `dpl_5K9RcxDxBcEyTpTuNsrxxCH9jCfM` at commit `a92d3e0e134e90702766030fa75a000714a7405b` (27 October 2026).
+- [x] **PASS – Vercel metadata:** both official aliases are assigned to `dpl_J7LE5saV1WAEtMNL4tsFHTYdmRuP` (READY), commit `b9f1a8adef7d218d61200d8c1c8c933583b7d41f` (15 November 2026).
 - [x] **PASS – GitHub source:** approved November light design, official pages and broad corporate positioning are merged into `Joenasriani/apex-innovate` `main`.
-- [ ] **BLOCKED – publish:** direct Vercel API attempt to deploy `main` to production returned HTTP 403 (permission denied). Authorized account or already configured manual CI workflow is needed.
+- [x] **PASS – production publishing:** the authorized RoboMarket Owner account deployed the approved code using Vercel CLI. The connected Developer account still cannot publish directly (historical 403), but that is not an outstanding deployment blocker.
 - [ ] **NOT RECHECKED:** current DNS registrar ownership, domain certificate, live HTTP page responses, and production rollback mechanism.
-- [ ] **NOT RECHECKED:** demonstrate that the production domain is serving the newly merged commit after an authorized deployment.
+- [x] **PASS – deployment metadata:** Vercel's current `apexinnovate.ae` lookup resolves to the approved `b9f1a8a` commit, with `www` also assigned as an alias. This does not substitute for direct browser/HTTP validation.
 
 ## 2. Legal and company positioning
 
@@ -57,11 +57,11 @@ Do not convert a code-level PASS into a live-production PASS.
 
 ## 6. Documentation and archival source
 
-- [x] **PASS – repository:** `README.md` and `docs/AI_HANDOFF.md` document both approved code and the actual older production deployment.
+- [x] **PASS – repository:** `README.md` and `docs/AI_HANDOFF.md` now record the actual November production deployment and explicitly preserve the older October state as historical.
 - [x] **PASS – repository:** evidence register retains October provenance as historical, corrected by a November dated reconciliation.
 - [x] **PASS – source:** obsolete `src/data/navigation.ts`, old service-page modules and historic HTML are not mistaken for the approved public visual.
 - [ ] **NOT RECHECKED:** authenticated production CI workflow/token permissions and full interactive browser regression tests.
 
 ## Next release action
 
-An authorized Vercel production deploy must target **the existing RoboMarket-team `apex-innovate` project**, using the reviewed GitHub `main` commit. It must then be verified against **both** actual aliases and all public routes. Do not change DNS, migrate the domain to a different Vercel project or disable protection as a workaround. Record the verified deployment SHA, date, test widths and outcomes here before marking this checklist accepted.
+**Deployment is complete** on the existing RoboMarket-team `apex-innovate` project. Next: verify rendered behavior against **both** actual aliases and all public routes using a working browser or HTTP client. Do not change DNS, migrate the domain to a different Vercel project or disable protection as a workaround. Record the verified deployment SHA, date, test widths and outcomes here before marking this checklist accepted.
