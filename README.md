@@ -51,6 +51,12 @@ Legacy `/studio`, `/software`, `/academy`, `/vr`, and `/robomarket` redirect to 
 
 The public site uses a company-only Organization schema (no personal-profile entity) and customer-facing Privacy/Terms language. Both contact cards open direct WhatsApp chats using `wa.me` links. The working design source is `src/app/astra-reviewed/route.ts`; corporate copy is centralized in `src/data/config.ts` (`companyPositioning`). Secondary-page typography and layout live in `src/app/globals.css`, `src/components/layout/*`. Sitemap, metadata, redirects and proxy rules are separate and must remain consistent.
 
+## Low-risk image delivery optimization (pending production)
+
+The approved homepage now serves **short HTML** with original image bytes requested separately from `/apex-art/hero`, `/apex-art/robot-venture`, `/apex-art/event-venture` and `/apex-art/framework-venture`. `src/app/apex-art/[asset]/route.ts` decodes the **unchanged original embedded data**, identifies the actual image MIME type, and permits a one-day browser/CDN cache. The visible image URLs are implementation details and are **not sitemap entries**. The sculptural hero retains its approved display CSS and receives high fetch priority; venture images remain lazy-loaded. The HTML renderer caches its original source read within a warm server instance.
+
+This is a performance code change, **NOT YET LIVE** until an authorized production deploy includes the merged change. The Vercel preview returned HTTP 200 for homepage and all four artwork endpoints; each image reported `image/jpeg`, with a one-day cache header. The preview homepage HTML was approximately **14 KB** and contained no `data:image/` payload. Real mobile/desktop appearance, first-load timings and production delivery remain NOT RECHECKED. No image was resized or recompressed.
+
 ## Every-edit synchronization requirement
 
 For any future edit, review the **sitemap and robots rules, canonicals, public structured data, README, AI handoff, agent instructions, acceptance checklist and evidence register** against both the edited source and the actual production deployment. Update only surfaces genuinely affected and include the check in the same PR. A new GitHub commit is **not live** until the correct Vercel production deployment is confirmed. Avoid putting private AI handoff data into publicly crawlable files. The authoritative checklist is [AGENTS.md](AGENTS.md).

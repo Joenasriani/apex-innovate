@@ -4,6 +4,15 @@
 **Current release state:** November base at production `b9f1a8a`; latest corrected Contact/legal application `7f551ac` merged to GitHub but **NOT YET LIVE**. Vercel metadata checked; user screenshot confirms outdated Contact page.  
 **Historical record:** the October 2026 register is preserved below with its original audit status and evidence limitations.
 
+## 15 November 2026 – Low-risk homepage delivery evidence (NOT YET LIVE)
+
+- Source inspection of the approved `public/astra-preview.html` found four embedded image data URIs (hero plus RoboMarket, IdeaVent and Visual Framework banners), totaling approximately **822 KB of base64 characters**. This is source-derived size, **not a live network timing or compression measurement**.
+- New GitHub code serves those **unchanged original image bytes** from dedicated `/apex-art/*` media endpoints with one-day cache headers, removing the base64 data from the returned homepage HTML.
+- All four source images carry JPEG byte prefixes, although three original data URIs are labelled `image/png`. The new endpoint detects actual binary MIME without recompression or modification.
+- New optimized image routes compiled in a READY preview build. Vercel preview HTTP check: homepage returned 200 and ~14,058-character HTML; all four original-artwork endpoints returned 200, `image/jpeg`, and one-day cache headers (hero 194,650 bytes; RoboMarket 138,944; IdeaVent 169,622; Visual Framework 113,216). **Actual rendered image appearance, production HTTP, LCP and responsive performance remain NOT RECHECKED.**
+- The canonical page route list remains `/`, `/contact`, `/privacy`, `/terms`; media endpoints do not appear in sitemap. No changes to robots, canonical URLs or public structured-data claims were necessary.
+- Production still serves old application commit `b9f1a8a` as of this recorded comparison. Performance source is not live until a new Vercel production deployment is confirmed.
+
 ## Current verified correction to the 25 October production assessment
 
 The previous register said that the production project/account/commit were **UNKNOWN** because access was unavailable in October. That finding was historically valid for that date but **has now been superseded** by connected Vercel metadata:

@@ -62,6 +62,15 @@ Do not convert a code-level PASS into a live-production PASS.
 - [x] **PASS – source:** obsolete `src/data/navigation.ts`, old service-page modules and historic HTML are not mistaken for the approved public visual.
 - [ ] **NOT RECHECKED:** authenticated production CI workflow/token permissions and full interactive browser regression tests.
 
+## Performance change – separate approved-artwork delivery (review pending)
+
+- [x] **PASS – source:** approved original artwork retained; homepage HTML no longer includes four large base64 image sources.
+- [x] **PASS – source:** `/apex-art/hero` and three banner media routes deliver the same original binary images with true detected MIME and one-day cache headers.
+- [x] **PASS – preview HTTP:** homepage HTML ≈14,058 characters with 4 external artwork URLs and no inline `data:image/` payload; hero and three banners each returned HTTP 200 with `image/jpeg` and cache headers. Image content-length bytes: hero 194,650; RoboMarket 138,944; IdeaVent 169,622; Visual Framework 113,216.
+- [ ] **NOT RECHECKED:** production HTTP/headers, real mobile/desktop screenshots, actual image appearance, load performance/LCP and repeat-visit behavior.
+- [ ] **NOT LIVE:** newer performance source has not been published to the official production alias. Do not misinterpret a successful build as a production performance result.
+- [x] **PASS – SEO source:** original four canonical sitemap entries remain unchanged; media URLs need no sitemap entries; robots, canonical and JSON-LD entity claims remain unchanged.
+
 ## Mandatory future-edit synchronization check
 
 Every website/content/legal/link change must check sitemap, robots, canonicals, structured data, README, AI handoff/AGENTS, acceptance checklist and dated evidence register **in the same PR**. Update changed claims and record any intentionally unchanged files. Never call a merged commit “live” without matching Vercel production provenance and, where available, browser/HTTP verification. Public AI retrieval content must match visible pages; do not expose internal handoff as a public SEO file.

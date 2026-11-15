@@ -89,6 +89,10 @@ No claim is made here that project payments, release acceptance, legal ownership
 - Sitemap lists exactly those four canonical pages. `www` redirects to bare hostname through `src/proxy.ts` on deployed code.
 - Root metadata is used for React-rendered secondary pages; the HTML route owns homepage metadata. Confirm any SEO changes in **both** implementations before merging.
 
+## Safe performance changes (original artwork, no visual redesign)
+
+Homepage performance implementation now uses `src/app/apex-art/[asset]/route.ts` to return the original hero and three banners as **unaltered, separately cacheable binary images**. Homepage HTML refers to `/apex-art/hero` and the three venture identifiers rather than embedding four large data URIs. The original `public/astra-preview.html` remains canonical artwork; a decoded response must use true image MIME (some original embedded labels are inaccurate). The hero remains eager/high priority; banners are lazy. This is a new source change and is **not live** until the production deployment SHA is advanced. Do not falsely report a byte-size improvement measured from a live browser without an actual measurement. All four image endpoints returned HTTP 200 and `image/jpeg` in a Vercel preview; homepage and Contact also returned HTTP 200. Visual inspection, actual LCP, production availability and mobile responsiveness remain NOT RECHECKED. These asset endpoints are not canonical content pages and are not listed in the sitemap.
+
 ## 7. Mandatory every-edit sitemap, README and AI-retrieval synchronization
 
 **This is a standing requirement, not a one-time cleanup.** In every feature/fix PR, inspect the active route inventory, `src/app/sitemap.ts`, `src/app/robots.ts`, canonical and noindex rules, HTML metadata, Organization/ItemList JSON-LD, `README.md`, `AGENTS.md`, this `AI_HANDOFF.md`, the acceptance checklist, and dated evidence register. If a route, identity, CTA, public URL or behavior changes, update affected records **in that same PR**. If a file remains correct, leave it unchanged and state that it was checked.
