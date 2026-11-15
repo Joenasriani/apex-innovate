@@ -1,58 +1,67 @@
-# Apex Innovate — Pre-release acceptance checklist
+# Apex Innovate – Production acceptance and reconciliation checklist
 
-**Prepared:** 2026-10-25. **Status:** PRE-RELEASE / NOT ACCEPTED.
+**Reviewed:** 15 November 2026  
+**Release decision:** **HOLD / NOT LIVE-CONFIRMED**  
+**Approved UI:** Light editorial corporate site in GitHub `main`; site metadata proves the official domain still points to an older Vercel production deployment.
 
-## 1. Production provenance (BLOCKED)
+## Evidence levels
 
-- [ ] DNS owner and hosting administrator identify the production project associated with `www.apexinnovate.ae` and `apexinnovate.ae`.
-- [ ] Record production provider/account, project ID, Git repository, branch, commit SHA, deployment URL, and custom domain/alias.
-- [ ] Check external registrar DNS and Vercel domain assignment match that production project.
-- [ ] Verify old public `APEX INNOVATE LLC` page's actual source; no assumption that JoBranch serves the domain.
-- [ ] Confirm rollback path for the actual live deployment. **Never deploy solely to resolve a provenance question.**
+- **PASS – repository/source:** inspected in GitHub and corroborated by build output where available.
+- **PASS – deployment metadata:** verified directly from connected Vercel API, *not* a browser rendering.
+- **NOT RECHECKED:** requires a working live browser, external endpoint response or fresh regulator/operational evidence.
+- **BLOCKED:** cannot proceed with current authorization.
 
-## 2. Legal identity (DOCUMENT VERIFIED; LIVE FIX BLOCKED)
+Do not convert a code-level PASS into a live-production PASS.
 
-- [x] Registrar verified legal name Apex Innovate FZE LLC.
-- [x] Registrar verified Ajman NuVentures Centre Free Zone, Ajman UAE.
-- [x] Registrar verified manager/shareholder Joseph Nasr.
-- [ ] Production copy and footer show correct legal name and actual authority.
-- [ ] Check licence term/current standing and applicable commercial activities when release is approved.
-- [ ] Obtain expert review for any activities requiring additional permissions.
+## 1. Identity, provenance and deployment
 
-## 3. Product attribution (PARTIAL)
+- [x] **PASS – Vercel metadata:** production project identified as `RoboMarket / apex-innovate`, project `prj_orU3BILg3A4TqZgK4ePPzHmcOnYs`.
+- [x] **PASS – Vercel metadata:** `apexinnovate.ae` and `www.apexinnovate.ae` are assigned to that project; last confirmed production deployment is `dpl_5K9RcxDxBcEyTpTuNsrxxCH9jCfM` at commit `a92d3e0e134e90702766030fa75a000714a7405b` (27 October 2026).
+- [x] **PASS – GitHub source:** approved November light design, official pages and broad corporate positioning are merged into `Joenasriani/apex-innovate` `main`.
+- [ ] **BLOCKED – publish:** direct Vercel API attempt to deploy `main` to production returned HTTP 403 (permission denied). Authorized account or already configured manual CI workflow is needed.
+- [ ] **NOT RECHECKED:** current DNS registrar ownership, domain certificate, live HTTP page responses, and production rollback mechanism.
+- [ ] **NOT RECHECKED:** demonstrate that the production domain is serving the newly merged commit after an authorized deployment.
 
-- [x] Selected list restricted to RoboMarket, IdeaVent, Visual Framework.
-- [x] Public copy distinguishes public website, developing platform and working implementation.
-- [ ] Verify legal operator/merchant of record of RoboMarket; demonstrate actually working functions.
-- [ ] Verify current IdeaVent release state, publicly available features, ownership and any executed agreements before making stronger claims.
-- [ ] Compare Visual Framework `/api/build-info`, Help > About, main SHA; verify human release acceptance.
-- [ ] Confirm Apex's contractual role and IP rights before adding `owns`, `operates`, `subsidiary` or `parentOrganization` structured-data claims.
-- [ ] All three project URLs resolve to intended official sites (no stale preview).
+## 2. Legal and company positioning
 
-## 4. SEO / AI retrieval
+- [x] **PASS – source/evidence register:** public legal name is `Apex Innovate FZE LLC`; Ajman NuVentures Centre Free Zone is the recorded authority.
+- [x] **PASS – source:** company positioning cites e-commerce and marketing management, with capacity to develop and manage businesses, digital platforms and new ventures. No life-coaching line.
+- [x] **PASS – source:** RoboMarket, IdeaVent and Visual Framework are listed as current **selected ventures**, not the company’s exhaustive scope.
+- [ ] **NOT RECHECKED:** licence renewal/validity (historic evidence register states expiry 2 December 2026) and qualifications for any additional regulated activity.
+- [ ] **NOT RECHECKED:** project-specific operating entity, ownership/IP assignments and commercial availability; avoid unsupported subsidiary/merchant claims.
 
-- [x] JoBranch page has machine-readable project titles/descriptions and stable Organization identity.
-- [ ] Remove duplicated/conflicting JSON-LD Organization nodes or reconcile all properties once final rendering is established.
-- [ ] Only index production canonical domain; preview stays `noindex` and excluded from canonical sitemap.
-- [ ] Per-page canonical for Terms and Privacy; no homepage canonical inherited by legal pages.
-- [ ] Ensure visible title, description, OG/Twitter tags, JSON-LD and README use same current identities and release statuses.
-- [ ] Check `robots.txt`, sitemap XML, response code, rendered DOM and structured data on actual production host.
-- [ ] Do not use `sameAs` to equate Apex, Joe, or three products.
+## 3. Approved visual and assets
 
-## 5. Legal / privacy and consumer status
+- [x] **PASS – source:** original copper sculptural image and all three historic banner images remain extracted from `public/astra-preview.html` without replacement.
+- [x] **PASS – source:** lowercase `ai` code mark and `apex innovate` wordmark both use Oxanium at the same font size across breakpoints.
+- [x] **PASS – source:** light/off-white editorial palette, shared content gutters, consistent secondary-page header/footer, no dark mode/theme switch.
+- [ ] **NOT RECHECKED:** actual desktop and mobile renderings at 360, 390, 768, 1024, 1440 px; baseline alignment, overflow, typography legibility, image sharpness, hover/focus and keyboard use.
+- [ ] **NOT RECHECKED:** favicon/icon alignment with the current text-rendered brand mark; old SVG assets remain as source.
+- [ ] **NOT RECHECKED:** all external destinations by clicking the rendered banners and CTAs, including the user-approved IdeaVent `ideavent.ae` link.
 
-- [ ] Confirm live Terms and Privacy match working site: contact method, cookies/local storage, analytics/logging and linked project handling.
-- [ ] Do not present corporate policy as substitutes for marketplace, SaaS or software project-specific policies.
-- [ ] Confirm checkout/payments, refund/warranty and supplier responsibility in relevant project's policies before making claims.
+## 4. Site structure and SEO
 
-## 6. UI / accessibility / mobile
+- [x] **PASS – source:** `/` directly serves the approved corporate route; `/contact`, `/privacy`, `/terms` have independent page components.
+- [x] **PASS – source:** retired service routes redirect to `/#projects`; `/contact` is no longer redirected.
+- [x] **PASS – source:** homepage canonical is `https://apexinnovate.ae/`, preview `/astra-reviewed` is `noindex` and is absent from the sitemap.
+- [x] **PASS – source:** public sitemap lists `/`, `/contact`, `/privacy`, `/terms`; secondary pages have corresponding canonical metadata.
+- [x] **PASS – source:** homepage embeds Organization, WebSite and three ItemList entries with links drawn from the approved `projectDestinations` map.
+- [ ] **NOT RECHECKED:** live `robots.txt`, sitemap XML, OG/Twitter tags, index/noindex headers, 308 `www` redirect, canonical HTML, rendered structured data and search-engine indexing after deployment.
 
-- [ ] Test 360, 390, 768, 1024, 1440 px widths on actual rendered deployment.
-- [ ] Heading hierarchy H1 company, sensible section headings and project modules.
-- [ ] Each approved banner displays without clipping, stretching or horizontal overflow and has meaningful text outside image.
-- [ ] Keyboard focus, contrast, reduced-motion preferences, light/dark toggle and links tested.
-- [ ] Verify working homepage and policy routes; avoid shadow legacy pages that disagree with production.
+## 5. Contact, Terms and Privacy
 
-## Release decision
+- [x] **PASS – source:** Contact page exposes WhatsApp and professional LinkedIn without implying an active contact form.
+- [x] **PASS – source:** Privacy notice no longer describes a retired theme-switch localStorage preference; it discloses hosting logs and external font requests.
+- [x] **PASS – source:** corporate Terms distinguish their scope from separate project/platform contracts and data practices.
+- [ ] **NOT RECHECKED:** legal sufficiency and exact commercial/technical practices after production release; external messaging/LinkedIn link behavior.
 
-**HOLD** while production hosting access, project operating rights and applicable legal confirmations remain open. The preview can be reviewed without publishing. Approval requires reviewer name, test date, commit SHA, evidence of all critical checks and explicit production authorization.
+## 6. Documentation and archival source
+
+- [x] **PASS – repository:** `README.md` and `docs/AI_HANDOFF.md` document both approved code and the actual older production deployment.
+- [x] **PASS – repository:** evidence register retains October provenance as historical, corrected by a November dated reconciliation.
+- [x] **PASS – source:** obsolete `src/data/navigation.ts`, old service-page modules and historic HTML are not mistaken for the approved public visual.
+- [ ] **NOT RECHECKED:** authenticated production CI workflow/token permissions and full interactive browser regression tests.
+
+## Next release action
+
+An authorized Vercel production deploy must target **the existing RoboMarket-team `apex-innovate` project**, using the reviewed GitHub `main` commit. It must then be verified against **both** actual aliases and all public routes. Do not change DNS, migrate the domain to a different Vercel project or disable protection as a workaround. Record the verified deployment SHA, date, test widths and outcomes here before marking this checklist accepted.
