@@ -1,7 +1,7 @@
 # APEX INNOVATE – AI HANDOFF / CONTINUITY CONTRACT
 
 **Updated:** 15 November 2026  
-**Status:** Approved November application is deployed on both official aliases (commit `b9f1a8a`); rendered-page/browser acceptance is still NOT RECHECKED.  
+**Status:** Production currently serves `b9f1a8a`, but GitHub `main` contains later application changes merged as `7f551ac`. Contact/Privacy/Terms and shared homepage copy are **MERGED / NOT YET LIVE**; user mobile screenshot shows the old LinkedIn Contact card. Browser/HTTP acceptance remains NOT RECHECKED.  
 **Repository:** `Joenasriani/apex-innovate` · `main`  
 **Do not confuse with:** `Joenasriani/apex-innovate-website` (separate historical repository).
 
@@ -29,7 +29,7 @@ Use the shared `companyPositioning` object in `src/data/config.ts` for these thr
 | Last confirmed production deployment | `dpl_J7LE5saV1WAEtMNL4tsFHTYdmRuP` – READY; both official aliases assigned |
 | Commit actually on production alias at audit | `b9f1a8adef7d218d61200d8c1c8c933583b7d41f` |
 | Production deployment created | 15 November 2026 |
-| Approved design/official-page source baseline | `b9f1a8a` – deployed application; later docs-only changes do not alter its rendered files |
+| Approved app source baseline | Production `b9f1a8a`; latest public application changes merged as `7f551ac` are **NOT YET LIVE**; later documentation commits do not change this distinction |
 | Preview Vercel project | `apex-innovate-jo-branch-preview` – `prj_0XDwqILI3nzNQGmsGEbWmPIj6pzv` |
 | Production publishing access | Connected Developer identity still receives 403 on direct production API deployment; authorized RoboMarket Owner CLI deployment succeeded. GitHub merges alone do not prove a live release. |
 
@@ -89,7 +89,15 @@ No claim is made here that project payments, release acceptance, legal ownership
 - Sitemap lists exactly those four canonical pages. `www` redirects to bare hostname through `src/proxy.ts` on deployed code.
 - Root metadata is used for React-rendered secondary pages; the HTML route owns homepage metadata. Confirm any SEO changes in **both** implementations before merging.
 
-## 7. Editing and release procedure
+## 7. Mandatory every-edit sitemap, README and AI-retrieval synchronization
+
+**This is a standing requirement, not a one-time cleanup.** In every feature/fix PR, inspect the active route inventory, `src/app/sitemap.ts`, `src/app/robots.ts`, canonical and noindex rules, HTML metadata, Organization/ItemList JSON-LD, `README.md`, `AGENTS.md`, this `AI_HANDOFF.md`, the acceptance checklist, and dated evidence register. If a route, identity, CTA, public URL or behavior changes, update affected records **in that same PR**. If a file remains correct, leave it unchanged and state that it was checked.
+
+**AI retrieval discipline:** public machine-readable claims must match visible company copy and only verified venture descriptions. The internal handoff and evidence register are GitHub documents for maintaining work, **not public AI-crawler landing pages**. No public `llms.txt` currently exists; it is optional and cannot replace canonical indexable content and structured data. Never publish internal permission details, speculative rights/launch states or personal records as crawler content.
+
+**Live comparison:** always record (a) latest approved GitHub application SHA, (b) current Vercel production alias SHA and (c) separately verified HTTP/browser outcomes. Publish with approved production credentials, then test actual URLs, layout, buttons, contact actions, sitemap and robots. Without publication, report **MERGED / NOT YET LIVE**, even when README and handoff have been updated.
+
+## 8. Editing and release procedure
 
 1. Inspect **live Vercel alias + deployment SHA** first, then active GitHub `main`; compare with the latest approved preview and earlier user design screenshots.
 2. Review this handoff, `README.md`, current evidence register and acceptance checklist; preserve previously approved design, copy and assets.
@@ -101,7 +109,7 @@ No claim is made here that project payments, release acceptance, legal ownership
 
 ### Current unresolved items
 
-- Production publishing permissions for the RoboMarket team remain insufficient; authorized owner/token deployment is required.
+- Current application release **PENDING**: GitHub app commit `7f551ac` includes UAE + Lebanon WhatsApp and removal of personal LinkedIn; official domain still serves `b9f1a8a`. Direct Developer deployment permission remains insufficient; an authorized Owner CLI deployment was previously successful.
 - Actual browser-based live UX, device screenshots, and URL click-through were inaccessible in this audit.
 - Independent IdeaVent `.ae` endpoint response and project launch states require current cross-check.
 - The original icon/legacy SVG assets remain preserved but are not proof of the currently rendered Oxanium code mark; review favicon consistency separately before replacing asset files.

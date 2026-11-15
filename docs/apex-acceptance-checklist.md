@@ -1,8 +1,8 @@
 # Apex Innovate – Production acceptance and reconciliation checklist
 
 **Reviewed:** 15 November 2026  
-**Release decision:** **DEPLOYED (metadata verified) / VISUAL QA OPEN**  
-**Approved UI:** Light editorial corporate site released to the official production aliases at commit `b9f1a8a`; visual/browser interaction acceptance remains NOT RECHECKED.
+**Release decision:** **MOST RECENT PUBLIC APP FIX MERGED / NOT YET LIVE; LIVE QA OPEN**  
+**Approved UI:** Light editorial corporate site at production commit `b9f1a8a`; newer Contact/legal copy commit `7f551ac` is merged to GitHub but not yet published. User screenshot shows the old Contact page.
 
 ## Evidence levels
 
@@ -16,11 +16,11 @@ Do not convert a code-level PASS into a live-production PASS.
 ## 1. Identity, provenance and deployment
 
 - [x] **PASS – Vercel metadata:** production project identified as `RoboMarket / apex-innovate`, project `prj_orU3BILg3A4TqZgK4ePPzHmcOnYs`.
-- [x] **PASS – Vercel metadata:** both official aliases are assigned to `dpl_J7LE5saV1WAEtMNL4tsFHTYdmRuP` (READY), commit `b9f1a8adef7d218d61200d8c1c8c933583b7d41f` (15 November 2026).
+- [x] **PASS – Vercel metadata:** both official aliases are assigned to `dpl_J7LE5saV1WAEtMNL4tsFHTYdmRuP` (READY), commit `b9f1a8adef7d218d61200d8c1c8c933583b7d41f` (15 November 2026). **Newer GitHub application commit `7f551ac` not yet deployed.**
 - [x] **PASS – GitHub source:** approved November light design, official pages and broad corporate positioning are merged into `Joenasriani/apex-innovate` `main`.
 - [x] **PASS – production publishing:** the authorized RoboMarket Owner account deployed the approved code using Vercel CLI. The connected Developer account still cannot publish directly (historical 403), but that is not an outstanding deployment blocker.
 - [ ] **NOT RECHECKED:** current DNS registrar ownership, domain certificate, live HTTP page responses, and production rollback mechanism.
-- [x] **PASS – deployment metadata:** Vercel's current `apexinnovate.ae` lookup resolves to the approved `b9f1a8a` commit, with `www` also assigned as an alias. This does not substitute for direct browser/HTTP validation.
+- [ ] **PENDING – newest application deployment:** Vercel's current `apexinnovate.ae` lookup resolves to older `b9f1a8a` with `www` also assigned. Deploy the newer approved `7f551ac` Contact/legal changes before treating them as live.
 
 ## 2. Legal and company positioning
 
@@ -50,10 +50,10 @@ Do not convert a code-level PASS into a live-production PASS.
 
 ## 5. Contact, Terms and Privacy
 
-- [x] **PASS – updated source:** Contact page exposes direct UAE (+971 58 674 9577) and Lebanon (+961 76 713 497) WhatsApp links, with personal LinkedIn and front-facing form disclaimers removed. Actual WhatsApp opening remains NOT RECHECKED until live browser testing.
+- [x] **PASS – GitHub source ONLY:** latest Contact code has direct UAE (+971 58 674 9577) and Lebanon (+961 76 713 497) WhatsApp links, with personal LinkedIn and form disclaimer removed. **FAIL – production currency:** user screenshot still shows old LinkedIn card. Live WhatsApp behavior NOT RECHECKED.
 - [x] **PASS – updated source:** Privacy notice uses public-facing language concerning WhatsApp enquiries, hosting logs and external font requests, without developer instructions or obsolete theme-switch references.
 - [x] **PASS – updated source:** corporate Terms retain project/platform limitations and are written for visitors rather than internal developers.
-- [ ] **NOT RECHECKED:** legal sufficiency and exact commercial/technical practices after production release; external messaging/LinkedIn link behavior.
+- [ ] **NOT RECHECKED:** legal sufficiency and exact commercial/technical practices after production release; both WhatsApp direct-link behaviors.
 
 ## 6. Documentation and archival source
 
@@ -62,6 +62,12 @@ Do not convert a code-level PASS into a live-production PASS.
 - [x] **PASS – source:** obsolete `src/data/navigation.ts`, old service-page modules and historic HTML are not mistaken for the approved public visual.
 - [ ] **NOT RECHECKED:** authenticated production CI workflow/token permissions and full interactive browser regression tests.
 
+## Mandatory future-edit synchronization check
+
+Every website/content/legal/link change must check sitemap, robots, canonicals, structured data, README, AI handoff/AGENTS, acceptance checklist and dated evidence register **in the same PR**. Update changed claims and record any intentionally unchanged files. Never call a merged commit “live” without matching Vercel production provenance and, where available, browser/HTTP verification. Public AI retrieval content must match visible pages; do not expose internal handoff as a public SEO file.
+
+**Checked this pass:** The sitemap still correctly lists only `/`, `/contact`, `/privacy`, `/terms`, so no sitemap edit is warranted. `robots.ts` still references the canonical sitemap. No public `llms.txt` is configured, and none was silently created.
+
 ## Next release action
 
-**Deployment is complete** on the existing RoboMarket-team `apex-innovate` project. Next: verify rendered behavior against **both** actual aliases and all public routes using a working browser or HTTP client. Do not change DNS, migrate the domain to a different Vercel project or disable protection as a workaround. Record the verified deployment SHA, date, test widths and outcomes here before marking this checklist accepted.
+**The latest application change is NOT deployed.** Use an authorized release to publish current approved GitHub source to the existing RoboMarket-team `apex-innovate` project. Then verify rendered behavior against **both** official aliases and all public routes using a working browser or HTTP client. Do not change DNS, migrate the domain to a different Vercel project or disable protection as a workaround. Record the verified deployment SHA, date, test widths and outcomes here before marking this checklist accepted.

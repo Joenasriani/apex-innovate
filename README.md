@@ -10,19 +10,19 @@
 
 ## Important: source vs live deployment
 
-**Verified 15 November 2026:** both production aliases serve the approved November application source at GitHub commit `b9f1a8a`. Later documentation-only commits do not change the rendered application.
+**Production/source reconciliation checked 15 November 2026:** the official aliases still serve application commit `b9f1a8a`. GitHub `main` has advanced to application commit `7f551ac` with the two WhatsApp contact cards and revised corporate copy. Those changes are **MERGED / NOT YET LIVE**. Later documentation-only commits do not change the rendered application.
 
 | Source | Verified state |
 | --- | --- |
-| GitHub `main` | Approved light editorial redesign, new official pages, broadened corporate hero copy |
+| GitHub `main` | Includes corrected company Contact page (UAE and Lebanon WhatsApp), no personal LinkedIn card, and revised Privacy/Terms – merged as `7f551ac`, **not deployed** |
 | Vercel preview project | Builds of the approved design have reached `READY`; visual/browser interaction acceptance remains open |
 | Live `apexinnovate.ae` / `www` | Production deployment `dpl_J7LE5saV1WAEtMNL4tsFHTYdmRuP`, READY, commit `b9f1a8adef7d218d61200d8c1c8c933583b7d41f`, both aliases assigned (15 November 2026) |
-| Approved application source | `b9f1a8a` is deployed; subsequent documentation-only commits must not be mistaken for visual divergence |
+| Application source status | Production `b9f1a8a`; newer application `7f551ac` remains pending production publication. These are different visual/copy states |
 | Production access | The connected Developer account still lacks direct production deploy permission (403); an authorized RoboMarket Owner CLI deployment successfully published the approved code |
 
 The hosting project has been identified: Vercel **RoboMarket team**, project **`apex-innovate`** (`prj_orU3BILg3A4TqZgK4ePPzHmcOnYs`). The old register's assertion that production ownership/source was unknown is now superseded.
 
-**Deployment identity and commit alignment have been verified via Vercel. Live rendered-page/browser QA is still NOT RECHECKED because page-fetch attempts were unsuccessful. See [AI handoff](docs/AI_HANDOFF.md) and [release checklist](docs/apex-acceptance-checklist.md).
+**Production identity is verified via Vercel, but deployment is behind the latest application source. The old Contact page on production is independently illustrated by a user-supplied mobile screenshot. Direct browser/HTTP regression testing remains NOT RECHECKED. See [AI handoff](docs/AI_HANDOFF.md) and [release checklist](docs/apex-acceptance-checklist.md).
 
 ## Approved presentation and scope
 
@@ -42,7 +42,7 @@ The hosting project has been identified: Vercel **RoboMarket team**, project **`
 | Route | Implementation | State in current GitHub source |
 | --- | --- | --- |
 | `/` | `src/app/(main)/route.ts` → `src/app/astra-reviewed/route.ts` | Approved corporate homepage, directly served (no extra redirect) |
-| `/contact` | `src/app/(main)/contact/page.tsx` | Direct WhatsApp messages: UAE `+971 58 674 9577` and Lebanon `+961 76 713 497`; no personal LinkedIn profile |
+| `/contact` | `src/app/(main)/contact/page.tsx` | **GitHub `main` only / NOT YET LIVE:** UAE WhatsApp `+971 58 674 9577`, Lebanon WhatsApp `+961 76 713 497`, no personal LinkedIn. The deployed older version still has the LinkedIn card |
 | `/privacy` | `src/app/(main)/privacy/page.tsx` | Corporate privacy notice |
 | `/terms` | `src/app/(main)/terms/page.tsx` | Corporate website terms |
 | `/astra-reviewed` | Alternate entry to same renderer | Preview compatibility; `noindex`, not in sitemap |
@@ -50,6 +50,12 @@ The hosting project has been identified: Vercel **RoboMarket team**, project **`
 Legacy `/studio`, `/software`, `/academy`, `/vr`, and `/robomarket` redirect to `/#projects`. Their historical page components, `src/data/navigation.ts`, `index.html`, and older branding assets are **not the approved live homepage**. Preserve them as historical source until separately authorized for removal. They must not be used to reconstruct the public design.
 
 The public site uses a company-only Organization schema (no personal-profile entity) and customer-facing Privacy/Terms language. Both contact cards open direct WhatsApp chats using `wa.me` links. The working design source is `src/app/astra-reviewed/route.ts`; corporate copy is centralized in `src/data/config.ts` (`companyPositioning`). Secondary-page typography and layout live in `src/app/globals.css`, `src/components/layout/*`. Sitemap, metadata, redirects and proxy rules are separate and must remain consistent.
+
+## Every-edit synchronization requirement
+
+For any future edit, review the **sitemap and robots rules, canonicals, public structured data, README, AI handoff, agent instructions, acceptance checklist and evidence register** against both the edited source and the actual production deployment. Update only surfaces genuinely affected and include the check in the same PR. A new GitHub commit is **not live** until the correct Vercel production deployment is confirmed. Avoid putting private AI handoff data into publicly crawlable files. The authoritative checklist is [AGENTS.md](AGENTS.md).
+
+**Current release gate:** publish the reviewed `7f551ac` application source (or its later exact approved application successor) to the existing RoboMarket-team Apex Vercel production project; then verify the live Contact page, both direct WhatsApp URLs and removal of LinkedIn.
 
 ## Governance
 
