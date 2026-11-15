@@ -284,8 +284,8 @@ export async function GET(request: Request) {
   // legacy CSS was authored with high-priority declarations which prevented
   // subsequent responsive improvements from applying. Remove those declaration
   // locks from stylesheet rules (never alter image or banner data).
-  html = html.replace(/<style\\b[^>]*>[\\s\\S]*?<\\/style>/gi, (style) =>
-    style.replace(/\\s*!important\\b/gi, "")
+  html = html.replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, (style) =>
+    style.replace(/\s*!important\b/gi, "")
   );
 
   // Single authoritative presentation stylesheet, loaded after the original,
