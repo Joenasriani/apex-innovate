@@ -1,17 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  images: {
-    formats: ["image/avif", "image/webp"],
-  },
+  images: { formats: ["image/avif", "image/webp"] },
   async redirects() {
     return [
-      { source: "/studio", destination: "/#areas", permanent: false },
-      { source: "/software", destination: "/#areas", permanent: false },
-      { source: "/academy", destination: "/#areas", permanent: false },
-      { source: "/vr", destination: "/#areas", permanent: false },
+      { source: "/studio", destination: "/#projects", permanent: false },
+      { source: "/software", destination: "/#projects", permanent: false },
+      { source: "/academy", destination: "/#projects", permanent: false },
+      { source: "/vr", destination: "/#projects", permanent: false },
       { source: "/robomarket", destination: "/#projects", permanent: false },
-      { source: "/contact", destination: "/#contact", permanent: false },
     ];
   },
 };

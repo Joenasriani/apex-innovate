@@ -3,15 +3,10 @@ import type { MetadataRoute } from "next";
 const baseUrl = "https://apexinnovate.ae";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    { path: "/astra-reviewed", priority: 1 },
-    { path: "/privacy", priority: 0.3 },
-    { path: "/terms", priority: 0.3 },
+  return [
+    { url: baseUrl + "/", changeFrequency: "monthly", priority: 1 },
+    { url: baseUrl + "/contact", changeFrequency: "monthly", priority: 0.6 },
+    { url: baseUrl + "/privacy", changeFrequency: "yearly", priority: 0.3 },
+    { url: baseUrl + "/terms", changeFrequency: "yearly", priority: 0.3 },
   ];
-
-  return routes.map(({ path, priority }) => ({
-    url: `${baseUrl}${path}`,
-    changeFrequency: "monthly" as const,
-    priority,
-  }));
 }

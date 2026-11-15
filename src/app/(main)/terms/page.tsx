@@ -4,13 +4,13 @@ import { ContentPanel } from "@/components/layout/content-panel";
 export const metadata: Metadata = {
   title: "Website Terms | Apex Innovate",
   description: "Terms governing use of the Apex Innovate corporate website.",
-  robots: { index: false, follow: false },
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {
   return (
     <ContentPanel sectionId="terms" title="Website Terms">
-      <div className="space-y-8 text-sm leading-7 text-[var(--muted-ink)]">
+      <div className="apx-legal">
         <p>Last updated: 25 October 2026</p>
         <section>
           <h2 className="legal-heading">Company and scope</h2>

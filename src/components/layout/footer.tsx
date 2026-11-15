@@ -1,2 +1,24 @@
 import Link from "next/link";
-export function Footer(){return <footer className="bg-[#f5f4f0] text-[#3f4840]"><div className="mx-auto flex max-w-[1440px] flex-col justify-between gap-7 px-5 py-10 text-sm sm:px-10 md:flex-row md:items-center lg:px-16"><p className="font-semibold">Apex Innovate FZE LLC <span className="font-normal text-[#697066]">/ UAE</span></p><nav aria-label="Footer navigation" className="flex gap-8"><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link><Link href="/#contact">Contact</Link></nav></div></footer>}
+
+export function Footer() {
+  return (
+    <footer className="apx-footer">
+      <div className="apx-shell">
+        <div className="apx-footer-top">
+          <p className="apx-kicker">Apex Innovate FZE LLC</p>
+          <Link className="apx-footer-contact" href="/contact">Get in touch <span aria-hidden="true">↗</span></Link>
+          <p className="apx-footer-summary">Independent digital ventures · United Arab Emirates</p>
+        </div>
+        <div className="apx-footer-bottom">
+          <span>Apex Innovate FZE LLC · Ajman NuVentures Centre Free Zone, United Arab Emirates</span>
+          <nav aria-label="Footer navigation">
+            <Link href="/">Home</Link>
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
+            <Link href="/contact">Contact</Link>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  );
+}

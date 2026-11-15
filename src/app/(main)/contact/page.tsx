@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
-import { MessageSquare, Linkedin } from "lucide-react";
 import { ContentPanel } from "@/components/layout/content-panel";
 import { companyConfig } from "@/data/config";
 
 export const metadata: Metadata = {
-  title: "Let’s Talk",
-  description:
-    "Get in touch with Apex Innovate for partnerships, projects, and inquiries.",
+  title: "Contact | Apex Innovate",
+  description: "Contact Apex Innovate FZE LLC about digital ventures, business enquiries and project conversations.",
   alternates: { canonical: "/contact" },
   openGraph: {
     title: "Contact | Apex Innovate",
-    description:
-      "Contact Apex Innovate about projects, partnerships and creative-technology work.",
+    description: "Get in touch with Apex Innovate for business enquiries and project conversations.",
     url: "https://apexinnovate.ae/contact",
     type: "website",
   },
@@ -19,41 +16,27 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <ContentPanel sectionId="about" title="LET&apos;S TALK">
-      <div className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <a
-            href={companyConfig.links.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-5 border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 transition-all flex flex-col items-center gap-3"
-          >
-            <MessageSquare className="text-emerald-500 w-6 h-6" />
-            <div className="text-center">
-              <p className="text-xs font-bold text-white uppercase">
-                Direct WhatsApp
-              </p>
-              <p className="text-[9px] font-mono text-gray-500 tracking-widest">
-                +971 58 674 9577
-              </p>
-            </div>
-          </a>
-          <a
-            href={companyConfig.links.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-5 border border-white/10 bg-white/5 hover:bg-white/10 transition-all flex flex-col items-center gap-3"
-          >
-            <Linkedin className="text-white w-6 h-6" />
-            <div className="text-center">
-              <p className="text-xs font-bold text-white uppercase">LinkedIn</p>
-              <p className="text-[9px] font-mono text-gray-500 tracking-widest">
-                Connect with our MD
-              </p>
-            </div>
-          </a>
-        </div>
+    <ContentPanel sectionId="contact" title="Get in touch.">
+      <p className="apx-contact-intro">
+        Have a business enquiry or a project to discuss? Connect with Apex Innovate through the published channels below.
+      </p>
+      <div className="apx-contact-grid">
+        <a className="apx-contact-card" href={companyConfig.links.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Contact Apex Innovate on WhatsApp in a new tab">
+          <span className="apx-contact-label">Direct enquiries</span>
+          <span className="apx-contact-name">WhatsApp</span>
+          <span className="apx-contact-detail">+971 58 674 9577</span>
+          <span className="apx-contact-action">Start a conversation <span aria-hidden="true">↗</span></span>
+        </a>
+        <a className="apx-contact-card" href={companyConfig.links.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Connect through LinkedIn in a new tab">
+          <span className="apx-contact-label">Professional contact</span>
+          <span className="apx-contact-name">LinkedIn</span>
+          <span className="apx-contact-detail">Connect through the published professional profile.</span>
+          <span className="apx-contact-action">View profile <span aria-hidden="true">↗</span></span>
+        </a>
       </div>
+      <p className="apx-contact-note">
+        This corporate website does not currently offer an on-site contact form. Separate venture platforms may provide their own support and enquiry channels.
+      </p>
     </ContentPanel>
   );
 }
