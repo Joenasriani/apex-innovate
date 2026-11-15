@@ -1,7 +1,14 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { companyPositioning } from "@/data/config";
 export const dynamic = "force-dynamic";
 type Banner = {cls:string;src:string;href:string;alt:string};
+/** Approved project click destinations. Artwork is extracted from the archived HTML without altering it. */
+const projectDestinations: Record<string, string> = {
+  "robot-venture": "https://robomarket.ae",
+  "event-venture": "https://ideavent.ae",
+  "framework-venture": "https://visual-framework-system.vercel.app",
+};
 const descriptions:Record<string,{name:string;detail:string;category:string}>={
 "robot-venture":{name:"RoboMarket",detail:"A publicly accessible robotics marketplace website for discovering robots, related products, and suppliers.",category:"ROBOTICS & COMMERCE"},
 "event-venture":{name:"IdeaVent",detail:"A platform for developing event concepts, planning experiences, and organizing production requirements.",category:"EVENT CONCEPTS"},
@@ -20,7 +27,7 @@ export async function GET(request:Request){
  try{banners=JSON.parse(match[1]) as Banner[]}catch{return new Response("Banner data invalid",{status:500})}
  if(banners.length!==3||banners.some(b=>!descriptions[b.cls]||!b.src.startsWith("data:image/")||!b.href.startsWith("https://")))return new Response("Incomplete approved banner data",{status:500});
  const ventures=banners.map((b,i)=>{
- const p=descriptions[b.cls];const href=esc(b.href);
+ const p=descriptions[b.cls];const href=esc(projectDestinations[b.cls]);
  return '<article class="venture"><div class="venture-top"><div><div class="venture-kicker">0'+(i+1)+' / '+p.category+'</div><h3>'+p.name+'</h3><p>'+p.detail+'</p></div><a class="venture-link" target="_blank" rel="noopener noreferrer" href="'+href+'" aria-label="Visit '+p.name+'">Visit project <span aria-hidden="true">↗</span></a></div><a class="venture-art" href="'+href+'" target="_blank" rel="noopener noreferrer" aria-label="Explore '+p.name+'"><img src="'+b.src+'" alt="'+esc(b.alt)+'" width="1536" height="512" loading="lazy" decoding="async"/></a></article>';
  }).join("");
  const routeUrl=new URL(request.url);
@@ -35,7 +42,7 @@ export async function GET(request:Request){
       name: "Apex Innovate", legalName: "Apex Innovate FZE LLC",
       url: "https://apexinnovate.ae/",
       address: { "@type": "PostalAddress", addressLocality: "Ajman", addressCountry: "AE" },
-      description: "A UAE company developing digital projects across robotics, event concepts and visual thinking." },
+      description: companyPositioning.description },
     { "@type": "WebSite", "@id": "https://apexinnovate.ae/#website",
       name: "Apex Innovate", url: "https://apexinnovate.ae/",
       publisher: { "@id": "https://apexinnovate.ae/#organization" } },
@@ -43,15 +50,15 @@ export async function GET(request:Request){
       name: "Selected digital ventures",
       itemListElement: banners.map((b, index) => ({
         "@type": "ListItem", position: index + 1,
-        name: descriptions[b.cls].name, description: descriptions[b.cls].detail, url: b.href
+        name: descriptions[b.cls].name, description: descriptions[b.cls].detail, url: projectDestinations[b.cls]
       })) }
   ]
  };
  const structuredData = '<script type="application/ld+json">' +
   JSON.stringify(linkedData).replace(/</g, "\\u003c") + '</script>';
- const html='<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="'+robots+'"/><meta name="theme-color" content="#f8f8f5"/><title>Apex Innovate | Ideas with forward intent.</title><meta name="description" content="Apex Innovate FZE LLC develops digital ventures across robotics, event concepts, and visual thinking." />'+canonical+structuredData+'<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700;800&display=swap" rel="stylesheet"/><style id="apex-design-system">'+designCss+'</style></head><body>'+
+ const html='<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="robots" content="'+robots+'"/><meta name="theme-color" content="#f8f8f5"/><title>Apex Innovate | Ideas with forward intent.</title><meta name="description" content="'+esc(companyPositioning.description)+'" />'+canonical+structuredData+'<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/><link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700;800&display=swap" rel="stylesheet"/><style id="apex-design-system">'+designCss+'</style></head><body>'+
  '<header class="header"><div class="shell header-inner"><a class="brand" href="/" aria-label="Apex Innovate home"><span class="brand-mark" aria-hidden="true"><span class="code-left">&lt;/</span><span class="code-ai">ai</span><span class="code-right">&gt;</span></span><span class="brand-name">apex innovate</span></a><nav class="nav" aria-label="Main"><a href="#projects">Projects</a><a href="#company">Company</a><a class="contact-nav" href="/contact">Contact</a></nav></div></header>'+
- '<main><section class="hero" aria-labelledby="hero-title"><img class="original-hero-art" src="'+heroSrc+'" alt="" aria-hidden="true"/><div class="hero-wash" aria-hidden="true"></div><div class="shell hero-inner"><div><div class="eyebrow">E-COMMERCE &amp; MARKETING MANAGEMENT · UNITED ARAB EMIRATES</div><h1 id="hero-title">Ideas with<br/>forward intent.</h1><p class="hero-subtitle">Developing and managing businesses, digital platforms, and new ventures.</p></div><div class="hero-bottom"><a href="#projects" class="jump">Explore our projects <span aria-hidden="true">↓</span></a><span>Apex Innovate FZE LLC</span></div></div></section>'+
+ '<main><section class="hero" aria-labelledby="hero-title"><img class="original-hero-art" src="'+heroSrc+'" alt="" aria-hidden="true"/><div class="hero-wash" aria-hidden="true"></div><div class="shell hero-inner"><div><div class="eyebrow">'+esc(companyPositioning.heroEyebrow)+'</div><h1 id="hero-title">Ideas with<br/>forward intent.</h1><p class="hero-subtitle">'+esc(companyPositioning.heroSubtitle)+'</p></div><div class="hero-bottom"><a href="#projects" class="jump">Explore our projects <span aria-hidden="true">↓</span></a><span>Apex Innovate FZE LLC</span></div></div></section>'+
  '<section class="intro shell" id="company"><div class="eyebrow">A focused perspective</div><div><h2>Different disciplines.<br/><span>One drive to create.</span></h2><p>Apex Innovate FZE LLC is a UAE-registered company with licensed activities in e-commerce and marketing management. Alongside these activities, the company develops its own digital projects across robotics, event concepts, and visual thinking.</p></div></section>'+
  '<section class="projects shell" id="projects"><div class="section-head"><h2>Selected ventures</h2><span>01 – 03</span></div>'+ventures+'</section></main>'+
  '<footer class="footer" id="contact"><div class="shell"><div class="eyebrow">Start a conversation</div><a class="footer-title" href="/contact">Get in touch ↗</a><p class="footer-note">Have an idea, concept, or project to discuss? Contact Apex Innovate to explore the possibilities.</p><div class="footer-bottom"><span>Apex Innovate FZE LLC · Ajman NuVentures Centre Free Zone, United Arab Emirates</span><nav class="footer-links" aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav></div></div></footer></body></html>';

@@ -1,5 +1,13 @@
 import type { NavSection } from "@/types";
 
+/**
+ * LEGACY NAVIGATION DATA. Retained for historical components only.
+ * The approved public site uses its own three-link corporate header
+ * in src/components/layout/header.tsx (or the homepage route renderer).
+ * /studio, /software, /academy, /vr and /robomarket now redirect to /#projects.
+ * Do not treat this export as the public navigation source of truth.
+ */
+
 export const navSections: NavSection[] = [
   {
     id: "company",

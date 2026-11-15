@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { companyPositioning } from "@/data/config";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,11 +20,10 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   viewportFit: "cover",
-  themeColor: "#f4f1ea",
+  themeColor: "#f8f8f5",
 };
 
-const companyDescription =
-  "Apex Innovate FZE LLC is a UAE-based company developing and managing digital projects across robotics, event planning, and visual technologies.";
+const companyDescription = companyPositioning.description;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://apexinnovate.ae"),
@@ -39,6 +39,10 @@ export const metadata: Metadata = {
     "RoboMarket",
     "IdeaVent",
     "Visual Framework",
+    "e-commerce",
+    "marketing management",
+    "digital platforms",
+    "business ventures",
     "robotics marketplace",
     "digital event ideation",
     "visual thinking",
@@ -94,7 +98,7 @@ const organizationSchema = {
         { "@type": "Country", name: "United Arab Emirates" },
         { "@type": "Place", name: "Gulf Cooperation Council" },
       ],
-      knowsAbout: ["E-commerce", "Digital ventures", "Robotics marketplaces", "Event ideation", "Visual thinking"],
+      knowsAbout: ["E-commerce", "Marketing management", "Digital platforms", "Business development", "Digital ventures", "Robotics marketplaces", "Event ideation", "Visual thinking"],
 
     },
     {
