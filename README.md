@@ -55,7 +55,7 @@ The public site uses a company-only Organization schema (no personal-profile ent
 
 The approved homepage now serves **short HTML** with original image bytes requested separately from `/apex-art/hero`, `/apex-art/robot-venture`, `/apex-art/event-venture` and `/apex-art/framework-venture`. `src/app/apex-art/[asset]/route.ts` decodes the **unchanged original embedded data**, identifies the actual image MIME type, and permits a one-day browser/CDN cache. The visible image URLs are implementation details and are **not sitemap entries**. The sculptural hero retains its approved display CSS and receives high fetch priority; venture images remain lazy-loaded. The HTML renderer caches its original source read within a warm server instance.
 
-This is a performance code change, **NOT YET LIVE** until an authorized production deploy includes the merged change. Build success alone is not image-response or user-experience validation; verify all four image endpoints, dimensions, mobile crop, and transfer/performance metrics in the actual deployed build. No image was resized or recompressed.
+This is a performance code change, **NOT YET LIVE** until an authorized production deploy includes the merged change. The Vercel preview returned HTTP 200 for homepage and all four artwork endpoints; each image reported `image/jpeg`, with a one-day cache header. The preview homepage HTML was approximately **14 KB** and contained no `data:image/` payload. Real mobile/desktop appearance, first-load timings and production delivery remain NOT RECHECKED. No image was resized or recompressed.
 
 ## Every-edit synchronization requirement
 
