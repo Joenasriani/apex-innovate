@@ -13,6 +13,13 @@
 - The canonical page route list remains `/`, `/contact`, `/privacy`, `/terms`; media endpoints do not appear in sitemap. No changes to robots, canonical URLs or public structured-data claims were necessary.
 - Production still serves old application commit `b9f1a8a` as of this recorded comparison. Performance source is not live until a new Vercel production deployment is confirmed.
 
+## Verified Google index recovery and focused homepage SEO (15 November 2026)
+
+- **PASS – first-party Search Console via OpenSEO:** `https://apexinnovate.ae/` is now **Submitted and indexed**, with `INDEXING_ALLOWED`, `ALLOWED` robots and successful mobile Google crawl at `2026-11-15T18:06:17Z`. Both Google's canonical and page-declared canonical are `https://apexinnovate.ae/`; Google associates the page with `https://apexinnovate.ae/sitemap.xml`. This supersedes the historical 11 November `noindex` report.
+- **Narrow SEO source adjustment (NOT YET LIVE):** the standalone homepage HTML document title is updated to `Apex Innovate FZE LLC | Digital Ventures in the UAE`. The on-page H1, approved hero copy, brand mark, venture descriptions, imagery and site routes are unchanged. The title aligns with verified company identity and positioning, not an unsupported new service.
+- **Keyword evidence:** UAE-English research showed very low search volumes for specific generic terms; no claim of improved rankings or performance is made. Prioritize branded/company identity, accurate page descriptors and indexing over keyword stuffing. No change to sitemap or robots was required.
+- **Release distinction:** this metadata-only change is a GitHub branch change until a preview build passes, merge is complete, and the official Vercel production alias is verified at the correct deployment SHA. The indexed status refers to Google's prior crawl of the actual live site, not to the new title.
+
 ## Current verified correction to the 25 October production assessment
 
 The previous register said that the production project/account/commit were **UNKNOWN** because access was unavailable in October. That finding was historically valid for that date but **has now been superseded** by connected Vercel metadata:

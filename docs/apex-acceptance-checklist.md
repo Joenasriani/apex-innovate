@@ -77,6 +77,13 @@ Every website/content/legal/link change must check sitemap, robots, canonicals, 
 
 **Checked this pass:** The sitemap still correctly lists only `/`, `/contact`, `/privacy`, `/terms`, so no sitemap edit is warranted. `robots.ts` still references the canonical sitemap. No public `llms.txt` is configured, and none was silently created.
 
+## Verified Google index recovery and focused homepage SEO (15 November 2026)
+
+- **PASS – first-party Search Console via OpenSEO:** `https://apexinnovate.ae/` is now **Submitted and indexed**, with `INDEXING_ALLOWED`, `ALLOWED` robots and successful mobile Google crawl at `2026-11-15T18:06:17Z`. Both Google's canonical and page-declared canonical are `https://apexinnovate.ae/`; Google associates the page with `https://apexinnovate.ae/sitemap.xml`. This supersedes the historical 11 November `noindex` report.
+- **Narrow SEO source adjustment (NOT YET LIVE):** the standalone homepage HTML document title is updated to `Apex Innovate FZE LLC | Digital Ventures in the UAE`. The on-page H1, approved hero copy, brand mark, venture descriptions, imagery and site routes are unchanged. The title aligns with verified company identity and positioning, not an unsupported new service.
+- **Keyword evidence:** UAE-English research showed very low search volumes for specific generic terms; no claim of improved rankings or performance is made. Prioritize branded/company identity, accurate page descriptors and indexing over keyword stuffing. No change to sitemap or robots was required.
+- **Release distinction:** this metadata-only change is a GitHub branch change until a preview build passes, merge is complete, and the official Vercel production alias is verified at the correct deployment SHA. The indexed status refers to Google's prior crawl of the actual live site, not to the new title.
+
 ## Next release action
 
 **The latest application change is NOT deployed.** Use an authorized release to publish current approved GitHub source to the existing RoboMarket-team `apex-innovate` project. Then verify rendered behavior against **both** official aliases and all public routes using a working browser or HTTP client. Do not change DNS, migrate the domain to a different Vercel project or disable protection as a workaround. Record the verified deployment SHA, date, test widths and outcomes here before marking this checklist accepted.
