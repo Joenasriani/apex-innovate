@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { ContentPanel } from "@/components/layout/content-panel";
 
 export const metadata: Metadata = {
-  title: "Website Terms | Apex Innovate",
-  description: "Terms governing use of the Apex Innovate corporate website.",
+  title: "Website Terms",
+  description: "Read the terms governing the Apex Innovate FZE LLC corporate website, including its content, linked projects and use of information.",
   alternates: { canonical: "/terms" },
 };
 
