@@ -6,7 +6,7 @@ type Banner = {cls:string;src:string;href:string;alt:string};
 /** Approved project click destinations. Artwork is extracted from the archived HTML without altering it. */
 const projectDestinations: Record<string, string> = {
   "robot-venture": "https://robomarket.ae",
-  "event-venture": "https://ideavent.ae",
+  "event-venture": "https://ideavent.ai",
   "framework-venture": "https://visual-framework-system.vercel.app",
 };
 const descriptions:Record<string,{name:string;detail:string;category:string}>={
