@@ -14,12 +14,7 @@ function getIcon(name: string): LucideIcon {
 
 /** Shorter labels for the bottom tab bar */
 const shortLabels: Record<string, string> = {
-  identity: "Identity",
-  studio: "Media",
-  software: "Software",
-  academy: "Academy",
-  vr: "VR/AR",
-  robomarket: "Robomarket",
+  company: "Company",
   contact: "Contact",
 };
 
