@@ -1,5 +1,10 @@
 # Apex Innovate – Corporate and Project Evidence Register
 
+## IdeaVent destination correction – 21 November 2026
+
+**CURRENT APPROVED TARGET:** `https://ideavent.ai` for the Apex IdeaVent card, banner and venture ItemList URL. The previously approved `https://ideavent.ae` failed external DNS resolution during the same-day verification. `https://ideavent.ai/` was independently fetched successfully (HTTP 200) and the user explicitly approved replacing the destination. The embedded historical `public/astra-preview.html` banner source remains untouched; the live HTML renderer determines the outbound link and structured data. No claim is made about full commercial availability or subscriptions on IdeaVent. **Release gate:** source change is not live until preview passes, PR merges and production deploy SHA plus actual homepage links are verified. Historical statements below describe prior audit dates and must not be used as current destination claims.
+
+
 **Current reconciliation:** 15 November 2026  
 **Current release state:** November base at production `b9f1a8a`; latest corrected Contact/legal application `7f551ac` merged to GitHub but **NOT YET LIVE**. Vercel metadata checked; user screenshot confirms outdated Contact page.  
 **Historical record:** the October 2026 register is preserved below with its original audit status and evidence limitations.
