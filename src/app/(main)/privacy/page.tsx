@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { ContentPanel } from "@/components/layout/content-panel";
 
 export const metadata: Metadata = {
-  title: "Privacy Notice | Apex Innovate",
-  description: "How the Apex Innovate corporate website handles information.",
+  title: "Privacy Notice",
+  description: "Learn how Apex Innovate FZE LLC handles enquiries, technical information and privacy on its corporate website.",
   alternates: { canonical: "/privacy" },
 };
 
