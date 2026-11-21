@@ -3,7 +3,7 @@ import { ContentPanel } from "@/components/layout/content-panel";
 import { companyConfig } from "@/data/config";
 
 export const metadata: Metadata = {
-  title: "Contact | Apex Innovate",
+  title: "Contact",
   description: "Contact Apex Innovate FZE LLC for business enquiries, partnerships and new ventures via WhatsApp in the UAE or Lebanon.",
   alternates: { canonical: "/contact" },
   openGraph: {
