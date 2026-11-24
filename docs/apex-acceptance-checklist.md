@@ -1,5 +1,26 @@
 # Apex Innovate – Production acceptance and reconciliation checklist
 
+## Technical hardening – 24 November 2026 (PR OPEN · NOT MERGED · NOT YET LIVE)
+
+Branch `fix/technical-audit-hardening`, based on `f6a2587d6ecceb1bd070d410a32a6d6751f1519e` (the commit the owner reported as the READY Vercel production deployment `dpl_FBxReocrfNJ9NyHCP9iFU6UBMeXy`, team RoboMarket, project `apex-innovate`; that deployment state is **user-reported and could not be confirmed through the Vercel API from this session**). Change this heading to **MERGED / NOT YET LIVE** only when the PR is merged, and to live only after an owner-authorized production deployment is independently verified.
+
+**Changed (verified on a local production build, `next build` + `next start`):**
+- Homepage now emits canonical-host `og:*` / `twitter:*` tags, icon links and a 1200×630 social image `public/apex-og.jpg`. The image is a **derived composition** (original unmodified hero crop + the site's left wash, Oxanium `</ai>` mark and wordmark, and the existing line "Ideas with forward intent."), rendered from the real artwork; no new artwork was generated. `public/favicon.ico` (16/32/48) is rasterised from the existing `public/icon.svg`.
+- Contact / Privacy / Terms use `pageMetadata()` in `src/lib/seo.ts`: canonical, `og:url`, `siteName`, image and `summary_large_image` card on every page. Titles and descriptions are unchanged.
+- Pinch-zoom restriction removed (`maximum-scale=1` deleted from the viewport).
+- Security headers in `next.config.ts`: CSP (`unsafe-inline` for script/style is deliberate, see the comment there), `X-Content-Type-Options`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy`, and `X-Robots-Tag: noindex` on legacy `/images/*`. **HSTS is intentionally untouched** (Vercel already sends `max-age=63072000`); `includeSubDomains` / `preload` are an owner decision.
+- Structured data consolidated: `src/lib/seo.ts` builds one Organization + WebSite node (stable `@id`s) used by every page; the homepage adds the venture `ItemList` from `src/data/ventures.ts`. Only properties already supported by `companyPositioning` / `companyConfig` are emitted.
+- Venture names, descriptions and destinations now live **only** in `src/data/ventures.ts` (replaces `projectDestinations` / `descriptions` in the homepage route).
+- Internal source assets moved from `public/` to `source-assets/` (`astra-preview.html`, `astra-assets/`). `/astra-preview.html` and `/astra-assets/*` now return 404 locally. They are read server-side by `src/lib/original-art.ts`, which parses the 2.6 MB file once per instance instead of per request. Served artwork bytes are **byte-identical** to the pre-change build (SHA-256 prefixes hero `eff36b5ed6f5cc99`, robot `164420514b8c8a2b`, event `d17314d53a3c8ec7`, framework `2bed60ce44020dd9`), and the file is present in each route's Next file trace.
+- Accessibility (axe-core, WCAG 2.2 AA + best-practice, 4 pages × 1280/375/320): all prior violations fixed except the logo `ai` mark (#c88760, 2.78:1), which is deliberately left as brand/logotype and is the only remaining finding. Fixes: darker `--accent-text` (#7f5f4a) for small accent text, accessible names that contain their visible text (label-in-name), invisible hit-area expansion for small links, a skip link and `#main` target on every page, and the Contact link is no longer hidden on mobile. No horizontal overflow at 320/375.
+- Removed 21 source files proven unreachable (no importer, not a route) and 8 dependencies used only by them (`three`, `@types/three`, `framer-motion`, `lucide-react`, `radix-ui`, `class-variance-authority`, `clsx`, `tailwind-merge`). This also fixes `npm ci`, which failed on the old lockfile. Kept: `shadcn` / `tw-animate-css` / `components.json`, root `index.html`, `public/apex-logo*.svg`, legacy `/images/*` (not provably unused).
+- `deploy-production.yml`: `actions/checkout` and `actions/setup-node` pinned to full commit SHAs (both v4.4.0). Trigger, permissions and deploy steps are untouched.
+- Homepage caching: `no-store` replaced by `public, max-age=0, s-maxage=300, stale-while-revalidate=86400`. **Local timing showed no meaningful difference (≈5 ms either way); the live ~2× gap versus static pages is a network/serverless effect that cannot be measured before deployment.** Treat this as unproven until the post-deploy check below; revert the single header if `x-vercel-cache` never reports HIT or stale content appears.
+
+**Unchanged by scope (checked):** sitemap (4 routes) and robots responses are byte-identical to the baseline; the five retired paths still return 410; `www` redirect, positioning copy, venture descriptions, contact details and visual identity untouched.
+
+**Not verifiable before deployment (post-deploy checks):** live headers incl. CSP with real Google Fonts; no CSP console violations on the live site; `x-vercel-cache` behaviour; OG/Twitter rendering in a sharing debugger; Search Console recrawl. Test-harness notes: axe's own stylesheet fetch is blocked by `connect-src` and the sandbox font mock produces three font 404s on subpages; both are test artefacts, not site defects, and should be absent live.
+
 ## IdeaVent destination correction – 21 November 2026
 
 **CURRENT APPROVED TARGET:** `https://ideavent.ai` for the Apex IdeaVent card, banner and venture ItemList URL. The previously approved `https://ideavent.ae` failed external DNS resolution during the same-day verification. `https://ideavent.ai/` was independently fetched successfully (HTTP 200) and the user explicitly approved replacing the destination. The embedded historical `public/astra-preview.html` banner source remains untouched; the live HTML renderer determines the outbound link and structured data. No claim is made about full commercial availability or subscriptions on IdeaVent. **Release gate:** source change is not live until preview passes, PR merges and production deploy SHA plus actual homepage links are verified. Historical statements below describe prior audit dates and must not be used as current destination claims.
@@ -54,11 +75,11 @@ Do not convert a code-level PASS into a live-production PASS.
 
 ## 3. Approved visual and assets
 
-- [x] **PASS – source:** original copper sculptural image and all three historic banner images remain extracted from `public/astra-preview.html` without replacement.
+- [x] **PASS – source:** original copper sculptural image and all three historic banner images remain extracted from `source-assets/astra-preview.html` (moved from `public/`, 24 Nov 2026) without replacement.
 - [x] **PASS – source:** lowercase `ai` code mark and `apex innovate` wordmark both use Oxanium at the same font size across breakpoints.
 - [x] **PASS – source:** light/off-white editorial palette, shared content gutters, consistent secondary-page header/footer, no dark mode/theme switch.
 - [ ] **NOT RECHECKED:** actual desktop and mobile renderings at 360, 390, 768, 1024, 1440 px; baseline alignment, overflow, typography legibility, image sharpness, hover/focus and keyboard use.
-- [ ] **NOT RECHECKED:** favicon/icon alignment with the current text-rendered brand mark; old SVG assets remain as source.
+- [x] **PASS – local build (24 Nov 2026, PR open):** favicon links and `favicon.ico` present on all four pages. [ ] **NOT RECHECKED live:** appearance in a real browser tab.
 - [ ] **NOT RECHECKED:** all external destinations by clicking the rendered banners and CTAs, including the user-approved IdeaVent `ideavent.ae` link.
 
 ## 4. Site structure and SEO
@@ -67,7 +88,7 @@ Do not convert a code-level PASS into a live-production PASS.
 - [x] **PASS – source:** retired service routes redirect to `/#projects`; `/contact` is no longer redirected.
 - [x] **PASS – source:** homepage canonical is `https://apexinnovate.ae/`, preview `/astra-reviewed` is `noindex` and is absent from the sitemap.
 - [x] **PASS – source:** public sitemap lists `/`, `/contact`, `/privacy`, `/terms`; secondary pages have corresponding canonical metadata.
-- [x] **PASS – source:** homepage embeds Organization, WebSite and three ItemList entries with links drawn from the approved `projectDestinations` map.
+- [x] **PASS – source:** homepage embeds Organization, WebSite and three ItemList entries with links drawn from the approved `src/data/ventures.ts` map.
 - [ ] **NOT RECHECKED:** live `robots.txt`, sitemap XML, OG/Twitter tags, index/noindex headers, 308 `www` redirect, canonical HTML, rendered structured data and search-engine indexing after deployment.
 
 ## 5. Contact, Terms and Privacy

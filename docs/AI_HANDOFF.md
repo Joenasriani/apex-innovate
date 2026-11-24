@@ -1,5 +1,26 @@
 # APEX INNOVATE – AI HANDOFF / CONTINUITY CONTRACT
 
+## Technical hardening – 24 November 2026 (PR OPEN · NOT MERGED · NOT YET LIVE)
+
+Branch `fix/technical-audit-hardening`, based on `f6a2587d6ecceb1bd070d410a32a6d6751f1519e` (the commit the owner reported as the READY Vercel production deployment `dpl_FBxReocrfNJ9NyHCP9iFU6UBMeXy`, team RoboMarket, project `apex-innovate`; that deployment state is **user-reported and could not be confirmed through the Vercel API from this session**). Change this heading to **MERGED / NOT YET LIVE** only when the PR is merged, and to live only after an owner-authorized production deployment is independently verified.
+
+**Changed (verified on a local production build, `next build` + `next start`):**
+- Homepage now emits canonical-host `og:*` / `twitter:*` tags, icon links and a 1200×630 social image `public/apex-og.jpg`. The image is a **derived composition** (original unmodified hero crop + the site's left wash, Oxanium `</ai>` mark and wordmark, and the existing line "Ideas with forward intent."), rendered from the real artwork; no new artwork was generated. `public/favicon.ico` (16/32/48) is rasterised from the existing `public/icon.svg`.
+- Contact / Privacy / Terms use `pageMetadata()` in `src/lib/seo.ts`: canonical, `og:url`, `siteName`, image and `summary_large_image` card on every page. Titles and descriptions are unchanged.
+- Pinch-zoom restriction removed (`maximum-scale=1` deleted from the viewport).
+- Security headers in `next.config.ts`: CSP (`unsafe-inline` for script/style is deliberate, see the comment there), `X-Content-Type-Options`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy`, and `X-Robots-Tag: noindex` on legacy `/images/*`. **HSTS is intentionally untouched** (Vercel already sends `max-age=63072000`); `includeSubDomains` / `preload` are an owner decision.
+- Structured data consolidated: `src/lib/seo.ts` builds one Organization + WebSite node (stable `@id`s) used by every page; the homepage adds the venture `ItemList` from `src/data/ventures.ts`. Only properties already supported by `companyPositioning` / `companyConfig` are emitted.
+- Venture names, descriptions and destinations now live **only** in `src/data/ventures.ts` (replaces `projectDestinations` / `descriptions` in the homepage route).
+- Internal source assets moved from `public/` to `source-assets/` (`astra-preview.html`, `astra-assets/`). `/astra-preview.html` and `/astra-assets/*` now return 404 locally. They are read server-side by `src/lib/original-art.ts`, which parses the 2.6 MB file once per instance instead of per request. Served artwork bytes are **byte-identical** to the pre-change build (SHA-256 prefixes hero `eff36b5ed6f5cc99`, robot `164420514b8c8a2b`, event `d17314d53a3c8ec7`, framework `2bed60ce44020dd9`), and the file is present in each route's Next file trace.
+- Accessibility (axe-core, WCAG 2.2 AA + best-practice, 4 pages × 1280/375/320): all prior violations fixed except the logo `ai` mark (#c88760, 2.78:1), which is deliberately left as brand/logotype and is the only remaining finding. Fixes: darker `--accent-text` (#7f5f4a) for small accent text, accessible names that contain their visible text (label-in-name), invisible hit-area expansion for small links, a skip link and `#main` target on every page, and the Contact link is no longer hidden on mobile. No horizontal overflow at 320/375.
+- Removed 21 source files proven unreachable (no importer, not a route) and 8 dependencies used only by them (`three`, `@types/three`, `framer-motion`, `lucide-react`, `radix-ui`, `class-variance-authority`, `clsx`, `tailwind-merge`). This also fixes `npm ci`, which failed on the old lockfile. Kept: `shadcn` / `tw-animate-css` / `components.json`, root `index.html`, `public/apex-logo*.svg`, legacy `/images/*` (not provably unused).
+- `deploy-production.yml`: `actions/checkout` and `actions/setup-node` pinned to full commit SHAs (both v4.4.0). Trigger, permissions and deploy steps are untouched.
+- Homepage caching: `no-store` replaced by `public, max-age=0, s-maxage=300, stale-while-revalidate=86400`. **Local timing showed no meaningful difference (≈5 ms either way); the live ~2× gap versus static pages is a network/serverless effect that cannot be measured before deployment.** Treat this as unproven until the post-deploy check below; revert the single header if `x-vercel-cache` never reports HIT or stale content appears.
+
+**Unchanged by scope (checked):** sitemap (4 routes) and robots responses are byte-identical to the baseline; the five retired paths still return 410; `www` redirect, positioning copy, venture descriptions, contact details and visual identity untouched.
+
+**Not verifiable before deployment (post-deploy checks):** live headers incl. CSP with real Google Fonts; no CSP console violations on the live site; `x-vercel-cache` behaviour; OG/Twitter rendering in a sharing debugger; Search Console recrawl. Test-harness notes: axe's own stylesheet fetch is blocked by `connect-src` and the sandbox font mock produces three font 404s on subpages; both are test artefacts, not site defects, and should be absent live.
+
 ## IdeaVent destination correction – 21 November 2026
 
 **CURRENT APPROVED TARGET:** `https://ideavent.ai` for the Apex IdeaVent card, banner and venture ItemList URL. The previously approved `https://ideavent.ae` failed external DNS resolution during the same-day verification. `https://ideavent.ai/` was independently fetched successfully (HTTP 200) and the user explicitly approved replacing the destination. The embedded historical `public/astra-preview.html` banner source remains untouched; the live HTML renderer determines the outbound link and structured data. No claim is made about full commercial availability or subscriptions on IdeaVent. **Release gate:** source change is not live until preview passes, PR merges and production deploy SHA plus actual homepage links are verified. Historical statements below describe prior audit dates and must not be used as current destination claims.
@@ -63,7 +84,7 @@ The optional manually dispatched GitHub workflow is `.github/workflows/deploy-pr
 
 - Light/off-white background; restrained copper/brown accents, dark text, generous but mathematically consistent spacing and content gutters.
 - Header: an **AI code mark** and lowercase **`apex innovate`**, both using **Oxanium** with identical font-size and weight per breakpoint. Never splice vector letters into a font word or mix letterform types within one word.
-- Hero: preserve the **exact existing sculptural copper-apex image** from `public/astra-preview.html`; washed/soft treatment on right. Never replace or generate a new image as a substitute.
+- Hero: preserve the **exact existing sculptural copper-apex image** from `source-assets/astra-preview.html`; washed/soft treatment on right. Never replace or generate a new image as a substitute.
 - Venture cards: the three approved original banner images from the same file, displayed full width, preserving artwork and aspect ratio.
 - Footer and Contact/Privacy/Terms use the same light editorial tone, horizontal grid and branding.
 - Mobile and desktop need browser QA at 360 / 390 / 768 / 1024 / 1440 px. Previous screenshots are visual feedback, **not** evidence of a completed QA pass on the latest deployment.
@@ -85,8 +106,8 @@ Supporting files:
 - `src/data/config.ts` – common company positioning, contact and external links.
 - `src/app/globals.css` and `src/components/layout/{header,footer,content-panel}.tsx` – secondary-page design system.
 - `src/app/layout.tsx`, `src/app/sitemap.ts`, `src/app/robots.ts`, `src/proxy.ts` – SEO/metadata, sitemap, canonical host redirect and preview noindex.
-- `public/astra-preview.html` – **active original asset library**, even though it is a historical design artifact; the route extracts the full-size hero and three banner data URIs. Do **not** delete or compress casually.
-- `index.html`, `src/data/navigation.ts`, retired service page/components and `public/apex-logo*.svg` – older or alternative implementations; do not assume these currently define the approved on-page visual.
+- `source-assets/astra-preview.html` – **active original asset library** (moved from `public/` on 24 Nov 2026 so it is no longer publicly served), even though it is a historical design artifact; `src/lib/original-art.ts` loads it once and the routes extract the full-size hero and three banner data URIs. Do **not** delete or compress casually.
+- `index.html` and `public/apex-logo*.svg` – older or alternative implementations; do not assume these currently define the approved on-page visual.
 - `.github/workflows/deploy-production.yml` – manual authorized production release route.
 
 ## 5. Venture links and assertions
@@ -97,7 +118,7 @@ The current app renders **RoboMarket**, **IdeaVent**, **Visual Framework** as se
 - IdeaVent: `https://ideavent.ae` (**user-approved destination**; cannot independently confirm HTTP availability in this audit). The archived `public/astra-preview.html` banner metadata still contains `ideavent.ai`; rendering now overrides the destination in `projectDestinations` without touching image data.
 - Visual Framework: `https://visual-framework-system.vercel.app`.
 
-The route's `projectDestinations` determines both rendered links and `ItemList` structured-data URLs. Do not take legacy embedded banner hrefs as the current target. All three image assets remain as originally embedded.
+`src/data/ventures.ts` determines both rendered links and `ItemList` structured-data URLs. Do not take legacy embedded banner hrefs as the current target. All three image assets remain as originally embedded.
 
 No claim is made here that project payments, release acceptance, legal ownership or licensing are fully verified. Visual Framework is associated with academic psychology and behavioral analysis; do not generically describe it as a productivity brainstorming app.
 
@@ -145,7 +166,7 @@ Homepage performance implementation now uses `src/app/apex-art/[asset]/route.ts`
 - Current application release **PENDING**: GitHub app commit `7f551ac` includes UAE + Lebanon WhatsApp and removal of personal LinkedIn; official domain still serves `b9f1a8a`. Direct Developer deployment permission remains insufficient; an authorized Owner CLI deployment was previously successful.
 - Actual browser-based live UX, device screenshots, and URL click-through were inaccessible in this audit.
 - Independent IdeaVent `.ae` endpoint response and project launch states require current cross-check.
-- The original icon/legacy SVG assets remain preserved but are not proof of the currently rendered Oxanium code mark; review favicon consistency separately before replacing asset files.
+- Favicon: `public/icon.svg` / `apple-icon.svg` and a derived `favicon.ico` are now wired on every page (24 Nov 2026, PR open); confirm in a live browser tab after deployment.
 - Review licence renewal/validity before its documented 2 December 2026 expiry and legal/privacy text before making expanded regulatory or operational claims.
 
 **Source priority:** verified live production metadata → exact approved GitHub source → current Vercel preview → historical register and screenshots. If sources conflict, report the discrepancy with dates and SHAs. Do not invent a successful deployment.

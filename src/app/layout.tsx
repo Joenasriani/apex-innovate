@@ -2,6 +2,15 @@ import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { companyPositioning } from "@/data/config";
+import {
+  HOME_TITLE,
+  SITE_NAME,
+  SITE_URL,
+  SOCIAL_IMAGE,
+  jsonLd,
+  organizationNode,
+  websiteNode,
+} from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -15,10 +24,10 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "700"],
 });
 
+// No maximumScale / userScalable: visitors must be able to pinch-zoom (WCAG 1.4.4).
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
   viewportFit: "cover",
   themeColor: "#f8f8f5",
 };
@@ -26,10 +35,10 @@ export const viewport: Viewport = {
 const companyDescription = companyPositioning.description;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://apexinnovate.ae"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Apex Innovate FZE LLC | Projects & Digital Ventures",
-    template: "%s | Apex Innovate",
+    default: HOME_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
   description: companyDescription,
   keywords: [
@@ -47,8 +56,8 @@ export const metadata: Metadata = {
     "digital event ideation",
     "visual thinking",
   ],
-  authors: [{ name: "Apex Innovate" }],
-  creator: "Apex Innovate",
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
   publisher: "Apex Innovate FZE LLC",
   alternates: {
     canonical: "/",
@@ -69,39 +78,19 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-icon.svg" }],
   },
   openGraph: {
-    title: "Apex Innovate FZE LLC | Projects & Digital Ventures",
+    title: HOME_TITLE,
     description: companyDescription,
-    url: "https://apexinnovate.ae/",
-    siteName: "Apex Innovate",
+    url: `${SITE_URL}/`,
+    siteName: SITE_NAME,
     type: "website",
+    images: [SOCIAL_IMAGE],
   },
   twitter: {
-    card: "summary",
-    title: "Apex Innovate FZE LLC | Projects & Digital Ventures",
+    card: "summary_large_image",
+    title: HOME_TITLE,
     description: companyDescription,
+    images: [{ url: SOCIAL_IMAGE.url, alt: SOCIAL_IMAGE.alt }],
   },
-};
-
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://apexinnovate.ae/#organization",
-      name: "Apex Innovate",
-      legalName: "Apex Innovate FZE LLC",
-      alternateName: "Apex Innovate FZE LLC",
-      url: "https://apexinnovate.ae/",
-      description: companyDescription,
-      address: { "@type": "PostalAddress", addressLocality: "Ajman", addressCountry: "AE" },
-      areaServed: [
-        { "@type": "Country", name: "United Arab Emirates" },
-        { "@type": "Place", name: "Gulf Cooperation Council" },
-      ],
-      knowsAbout: ["E-commerce", "Marketing management", "Digital platforms", "Business development", "Digital ventures", "Robotics marketplaces", "Event ideation", "Visual thinking"],
-    },
-
-  ],
 };
 
 export default function RootLayout({
@@ -116,7 +105,7 @@ export default function RootLayout({
       >
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd([organizationNode, websiteNode]) }}
         />
         {children}
       </body>
