@@ -10,7 +10,7 @@ export function Header() {
   return (
     <header className="apx-header">
       <div className="apx-shell apx-header-inner">
-        <Link href="/" className="apx-brand" aria-label="Apex Innovate homepage">
+        <Link href="/" className="apx-brand">
           <span className="apx-mark" aria-hidden="true">
             <span>{"</"}</span><span className="apx-mark-ai">ai</span><span>{">"}</span>
           </span>

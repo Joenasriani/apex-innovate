@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ContentPanel } from "@/components/layout/content-panel";
 import { companyConfig } from "@/data/config";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description: "Contact Apex Innovate FZE LLC for business enquiries, partnerships and new ventures via WhatsApp in the UAE or Lebanon.",
-  alternates: { canonical: "/contact" },
-  openGraph: {
-    title: "Contact | Apex Innovate",
-    description: "Contact Apex Innovate FZE LLC for business enquiries, partnerships and new ventures.",
-    url: "https://apexinnovate.ae/contact",
-    type: "website",
-  },
-};
+  path: "/contact",
+});
 
 const contacts = [
   {
@@ -41,7 +36,6 @@ export default function ContactPage() {
             href={contact.href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Message Apex Innovate in ${contact.location} on WhatsApp (opens in a new tab)`}
           >
             <span className="apx-contact-label">{contact.location}</span>
             <span className="apx-contact-name">WhatsApp</span>
@@ -49,6 +43,7 @@ export default function ContactPage() {
             <span className="apx-contact-action">
               Send a message <span aria-hidden="true">↗</span>
             </span>
+            <span className="sr-only"> (opens in a new tab)</span>
           </a>
         ))}
       </div>
