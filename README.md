@@ -11,3 +11,8 @@ Next.js corporate site with four canonical pages: Home, Contact, Privacy and Ter
 Development: `npm ci`, `npm run build`.
 
 Current release and acceptance evidence: [acceptance register](docs/apex-acceptance-checklist.md). Contributor continuity: [AGENTS.md](AGENTS.md).
+
+
+## newwebsite – licence-gated development (25 November 2026)
+
+User-approved direction: advertise exactly six proposed ANCFZ activities (6201015, 620118ANC, 6202099, 6202011, 4790001, 6209015); no training. Proposed marketing copy is centralized in `src/data/capabilities.ts` and company positioning in `src/data/config.ts`. Preserve original artwork, venture links and contacts. This branch is not authorized for production until the issued licence and service scope are verified. Existing release evidence refers to main only. Build, rendered QA and deployment protection must be verified before acceptance. No new analytics, form, email, or privacy practices introduced.
