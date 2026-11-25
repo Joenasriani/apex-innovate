@@ -19,11 +19,11 @@ export default function TermsPage() {
         </section>
         <section>
           <h2 className="legal-heading">About the projects</h2>
-          <p className="mt-2">The projects featured on this website represent selected ventures and initiatives. Their services, availability and commercial arrangements may differ and are subject to information and terms published on their respective platforms.</p>
+          <p className="mt-2">The projects featured on this website represent selected ventures and initiatives. Each platform publishes its service information and commercial terms.</p>
           <p className="mt-2"><strong>RoboMarket</strong> is a UAE-first robotics marketplace connecting manufacturers and authorized suppliers with businesses and consumers through a curated robotics store, industry news and a classifieds platform. Product availability, seller obligations, purchase conditions, warranties, returns, and payments — where applicable — are governed by the relevant marketplace terms and transaction documents.</p>
           <p className="mt-2"><strong>IdeaVent</strong> supports event concept development, experience planning and production organization. Event delivery remains subject to necessary professional approvals, permits, insurance and service-provider agreements.</p>
-          <p className="mt-2"><strong>Visual Framework</strong> supports academic psychology and behavioral analysis through visual organization of concepts, relationships and behavioral patterns. It is an informational tool rather than a substitute for regulated professional advice or certification, and individual outcomes vary.</p>
-          <p className="mt-2">Corporate affiliations, partnerships and contractual relationships are established by their respective agreements, rather than by references on this website.</p>
+          <p className="mt-2"><strong>Visual Framework</strong> supports academic psychology and behavioral analysis through visual organization of concepts, relationships and behavioral patterns. Its purpose is academic and informational. Regulated professional advice and certification remain the responsibility of qualified professionals.</p>
+          <p className="mt-2">Corporate affiliations, partnerships and contractual relationships are defined in their respective agreements.</p>
         </section>
         <section>
           <h2 className="legal-heading">Licensing and regulatory scope</h2>
@@ -35,7 +35,7 @@ export default function TermsPage() {
         </section>
         <section>
           <h2 className="legal-heading">Intellectual property</h2>
-          <p className="mt-2">Company branding and original content are protected by applicable intellectual-property rights. Referenced third-party trademarks, logos, and material remain the property of their respective rights holders. No licence to reproduce or commercially exploit content is granted merely by viewing this website.</p>
+          <p className="mt-2">Company branding and original content are protected by applicable intellectual-property rights. Referenced third-party trademarks, logos, and material remain the property of their respective rights holders. Reproduction and commercial use of protected content require permission from the relevant rights holder.</p>
         </section>
         <section>
           <h2 className="legal-heading">External sites and links</h2>
@@ -43,7 +43,7 @@ export default function TermsPage() {
         </section>
         <section>
           <h2 className="legal-heading">Liability and applicable rights</h2>
-          <p className="mt-2">Apex Innovate aims to maintain accurate, reliable and accessible website content. Availability and accuracy may be affected by technical or operational circumstances; uninterrupted or error-free service is not guaranteed. Nothing in these website terms excludes or restricts statutory consumer rights, liability, or obligations where the law does not permit such exclusion. Applicable UAE law and mandatory legal protections continue to apply.</p>
+          <p className="mt-2">Apex Innovate aims to maintain accurate, reliable and accessible website content. Website availability and accuracy are subject to technical and operational conditions. All mandatory statutory consumer rights, liabilities and obligations remain in full effect under applicable UAE law.</p>
         </section>
         <section>
           <h2 className="legal-heading">Questions</h2>
