@@ -19,3 +19,6 @@ Original interactive media exhibition with real project imagery, not decorative 
 
 ## 3 Verify and release
 Visual and functional QA, accessibility, security, legal, SEO and AI discovery; performance targets LCP <=2.5s, INP <=200ms, CLS <=0.1. Verify issued licence and obtain final preview approval before merging into main and deploying existing Vercel production. Verify live domain and commit. No unauthorized paid services.
+
+## Approved sequencing amendment – 25 November 2026
+User explicitly authorizes beginning homepage design before collecting additional project media. Phase 1 design foundation accepted for proceeding; outstanding asset, rights, live interaction and integration checks remain open and must be resolved before final release. Phase 2 first deliverable is a properly designed index with six services, original brand, existing approved venture assets and meaningful interactive presentation. Add additional projects after homepage design review. No invented imagery or claims. Production remains gated.
