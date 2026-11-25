@@ -22,7 +22,7 @@ export const ventures: Record<VentureId, Venture> = {
   "robot-venture": {
     id: "robot-venture",
     name: "RoboMarket",
-    detail: "A publicly accessible robotics marketplace website for discovering robots, related products, and suppliers.",
+    detail: "A UAE-first robotics marketplace connecting manufacturers and authorized suppliers with businesses and consumers through a curated robotics store, industry news and a classifieds platform.",
     category: "ROBOTICS & COMMERCE",
     url: "https://robomarket.ae",
   },

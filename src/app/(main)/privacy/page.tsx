@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <ContentPanel sectionId="privacy" title="Privacy Notice">
       <div className="apx-legal">
-        <p>Last updated: 15 November 2026</p>
+        <p>Last updated: 25 November 2026</p>
         <section>
           <h2 className="legal-heading">Who operates this website</h2>
           <p className="mt-2">This notice describes the corporate website operated by <strong>Apex Innovate FZE LLC</strong>, incorporated in Ajman, UAE, under Ajman NuVentures Centre Free Zone. Separate linked project platforms may process information under their own privacy notices.</p>
@@ -35,7 +35,7 @@ export default function PrivacyPage() {
         </section>
         <section>
           <h2 className="legal-heading">Retention, security, and requests</h2>
-          <p className="mt-2">We retain correspondence and technical records only as reasonably necessary for business purposes and applicable legal obligations. We take appropriate measures to protect information, although no online service can guarantee complete security. To enquire about personal information you have shared with Apex Innovate, or to request correction or deletion where applicable, please contact us through our published contact channels.</p>
+          <p className="mt-2">We retain correspondence and technical records only as reasonably necessary for business purposes and applicable legal obligations. We take appropriate measures to protect information, although no online service can guarantee complete security. Under applicable data protection law, including UAE Federal Decree-Law No. 45 of 2021 concerning personal data protection where applicable, you may have rights to obtain information about your personal data, request access, correction or deletion, restrict or object to processing, and withdraw consent where processing relies on consent. To exercise applicable rights or raise a privacy enquiry, use our <a href="/contact">published contact channels</a>.</p>
         </section>
         <section>
           <h2 className="legal-heading">Linked project websites</h2>

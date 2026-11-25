@@ -1,6 +1,11 @@
 # APEX INNOVATE – AI HANDOFF / CONTINUITY CONTRACT
 
-## Technical hardening – 24 November 2026 (PR OPEN · NOT MERGED · NOT YET LIVE)
+## Current release reconciliation – 25 November 2026
+
+**PR #18 MERGED / PRODUCTION DEPLOYMENT VERIFIED (metadata).** GitHub main and the Vercel production deployment resolve to application commit `a74a18c15c4dab55ac31e471381f4688732720ff`, deployment `dpl_BLbv7enazC1xDpZCs6JQmRy8f994`, READY, project `apex-innovate`, RoboMarket team; both `apexinnovate.ae` and `www.apexinnovate.ae` are assigned. This supersedes all earlier pending-publication statements below, including the November 15 Contact mismatch and November 24 open-PR status. Earlier audit entries are historical evidence, not present release state. Live HTTP, browser QA, search indexing and privacy compliance remain separately unverified. The proposed Contact footer correction is not included in that deployed commit.
+
+
+## Technical hardening – 24 November 2026 (historical pre-release audit; see current reconciliation above)
 
 Branch `fix/technical-audit-hardening`, based on `f6a2587d6ecceb1bd070d410a32a6d6751f1519e` (the commit the owner reported as the READY Vercel production deployment `dpl_FBxReocrfNJ9NyHCP9iFU6UBMeXy`, team RoboMarket, project `apex-innovate`; that deployment state is **user-reported and could not be confirmed through the Vercel API from this session**). Change this heading to **MERGED / NOT YET LIVE** only when the PR is merged, and to live only after an owner-authorized production deployment is independently verified.
 
