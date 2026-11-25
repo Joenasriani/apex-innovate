@@ -1,0 +1,54 @@
+{
+  "research": [
+    {
+      "title": "Reasoning & Logic",
+      "description": "Digital publications exploring reasoning, logic and structured knowledge.",
+      "url": "https://reasoning-and-logic.vercel.app/"
+    }
+  ],
+  "interactive": [
+    {
+      "title": "RoboSim",
+      "description": "Program a robot and navigate interactive 3D environments.",
+      "url": "https://joenasr.itch.io/robosim",
+      "source": "Joenasriani/robo-web-sim"
+    },
+    {
+      "title": "Brick XR Builder",
+      "description": "Build, edit and explore digital brick structures in 3D.",
+      "url": "https://legocraftvr.vercel.app/",
+      "source": "Joenasriani/legocraft"
+    },
+    {
+      "title": "DIORAMA",
+      "description": "Guide a robot through miniature worlds using bridges, lifts and switches.",
+      "url": "https://diorama-game.vercel.app/",
+      "source": "Joenasriani/diorama-game"
+    },
+    {
+      "title": "ASCENSION",
+      "description": "Rotate architecture and connect paths in a 3D spatial puzzle.",
+      "url": "https://joenasriani.github.io/ascension-opt/",
+      "source": "Joenasriani/ascension-opt"
+    }
+  ],
+  "production": [
+    {
+      "title": "ELIE SAAB × EMAAR",
+      "credit": "Live direction and post-production",
+      "videoId": "9MpVWuh_A4c"
+    },
+    {
+      "title": "Etihad Airways – Choose Well",
+      "credit": "Campaign editing",
+      "videoId": "CI8mbXLaJ30"
+    },
+    {
+      "title": "Pepsi Arabia",
+      "credit": "Post-production",
+      "videoId": "i6ScASwPlvU"
+    }
+  ],
+  "productionAttribution": "Selected professional work by founder Joe Nasr.",
+  "sourceArchive": "https://joe-nasr-signals.vercel.app/video-campaigns/"
+}
