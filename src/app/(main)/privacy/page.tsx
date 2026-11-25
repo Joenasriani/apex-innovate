@@ -27,7 +27,7 @@ export default function PrivacyPage() {
         </section>
         <section>
           <h2 className="legal-heading">Analytics and marketing</h2>
-          <p className="mt-2">The Apex Innovate website does not currently use advertising or behavioural-tracking tools. Hosting providers may maintain operational logs, while external sites and communication services follow their own privacy practices.</p>
+          <p className="mt-2">Website measurement is limited to hosting providers’ operational logs. External sites and communication services follow their own privacy practices.</p>
         </section>
         <section>
           <h2 className="legal-heading">Purposes and sharing</h2>
