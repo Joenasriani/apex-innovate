@@ -1,6 +1,6 @@
 # Apex Innovate – Continuity guide
 
-Apex Innovate FZE LLC is a UAE-registered company active in e-commerce and marketing management, developing and managing businesses, digital platforms and new ventures. Preserve the approved light editorial design, original copper hero and three original venture banners, lowercase Oxanium brand, and both WhatsApp contact channels. The selected ventures are RoboMarket (https://robomarket.ae), IdeaVent (https://ideavent.ai), and Visual Framework (https://visual-framework-system.vercel.app).
+Apex Innovate FZE LLC is a UAE-registered company. The newwebsite branch prepares its expanded corporate website around six proposed activities: AI development, software development, social media marketing, digital content, e-commerce, and AI research and innovation consultancy. Preserve the approved light editorial design, original copper hero and three original venture banners, lowercase Oxanium brand, and both WhatsApp contact channels. The selected ventures are RoboMarket (https://robomarket.ae), IdeaVent (https://ideavent.ai), and Visual Framework (https://visual-framework-system.vercel.app).
 
 ## Approved source map
 
