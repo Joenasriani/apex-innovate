@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { capabilities } from "@/data/capabilities";
 import { companyPositioning } from "@/data/config";
 import { ventures, type VentureId } from "@/data/ventures";
 
@@ -10,9 +11,9 @@ export const SITE_URL = "https://apexinnovate.ae";
 export const SITE_NAME = "Apex Innovate";
 
 /** Approved homepage title and meta description (do not diverge between meta, Open Graph and Twitter). */
-export const HOME_TITLE = "Apex Innovate FZE LLC | Digital Ventures in the UAE";
+export const HOME_TITLE = "Apex Innovate | AI, Technology & Digital Ventures UAE";
 export const HOME_DESCRIPTION =
-  "Apex Innovate FZE LLC develops and manages businesses, digital platforms and new ventures in the UAE, with e-commerce and marketing management activities.";
+  companyPositioning.description;
 
 /** Branded sharing card: 1200x630, composed from the approved hero artwork and the Oxanium wordmark. */
 export const SOCIAL_IMAGE = {
@@ -68,16 +69,7 @@ export const organizationNode = {
     { "@type": "Country", name: "United Arab Emirates" },
     { "@type": "Place", name: "Gulf Cooperation Council" },
   ],
-  knowsAbout: [
-    "E-commerce",
-    "Marketing management",
-    "Digital platforms",
-    "Business development",
-    "Digital ventures",
-    "Robotics marketplaces",
-    "Event ideation",
-    "Visual thinking",
-  ],
+  knowsAbout: [...capabilities.map(c => c.title), "Digital ventures"],
 };
 
 export const websiteNode = {
