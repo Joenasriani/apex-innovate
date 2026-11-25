@@ -2,9 +2,9 @@ import type { CompanyConfig } from "@/types";
 
 /** Approved corporate copy shared by the homepage, SEO and handoff. Do not narrow the company to its current three showcased ventures. */
 export const companyPositioning = {
-  heroEyebrow: "E-COMMERCE & MARKETING MANAGEMENT · UNITED ARAB EMIRATES",
-  heroSubtitle: "Developing and managing businesses, digital platforms, and new ventures.",
-  description: "Apex Innovate FZE LLC is a UAE-registered company working in e-commerce and marketing management while developing and managing businesses, digital platforms, and new ventures.",
+  heroEyebrow: "AI · TECHNOLOGY · INNOVATION · UNITED ARAB EMIRATES",
+  heroSubtitle: "Intelligent solutions, digital products and creative experiences for businesses with ambition.",
+  description: "Apex Innovate FZE LLC is a UAE-based technology and innovation company specializing in AI development, software development, social media marketing, digital content, e-commerce and AI research and innovation consultancy.",
 } as const;
 
 export const siteConfig = {
