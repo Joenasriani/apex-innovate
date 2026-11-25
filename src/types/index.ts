@@ -1,7 +1,5 @@
 export interface CompanyConfig {
-  name: string;
   company: string;
-  role: string;
   links: Record<string, string>;
 }
 
