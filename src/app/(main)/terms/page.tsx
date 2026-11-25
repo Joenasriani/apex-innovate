@@ -12,26 +12,26 @@ export default function TermsPage() {
   return (
     <ContentPanel sectionId="terms" title="Website Terms">
       <div className="apx-legal">
-        <p>Last updated: 25 October 2026</p>
+        <p>Last updated: 25 November 2026</p>
         <section>
           <h2 className="legal-heading">Company and scope</h2>
-          <p className="mt-2">This corporate website is presented by <strong>Apex Innovate FZE LLC</strong>, a free-zone entity incorporated in Ajman, United Arab Emirates, under <strong>Ajman NuVentures Centre Free Zone</strong>. This page governs use of the Apex Innovate corporate website only. It does not replace the terms, privacy notices, contracts, or policies of any separate product or project website.</p>
+          <p className="mt-2">This corporate website is presented by <strong>Apex Innovate FZE LLC</strong>, a free-zone entity incorporated in Ajman, United Arab Emirates, under <strong>Ajman NuVentures Centre Free Zone</strong>. These terms govern use of the Apex Innovate corporate website. Each separate product or project website is governed by its own applicable terms, privacy notices, contracts and policies.</p>
         </section>
         <section>
           <h2 className="legal-heading">About the projects</h2>
           <p className="mt-2">The projects featured on this website represent selected ventures and initiatives. Their services, availability and commercial arrangements may differ and are subject to information and terms published on their respective platforms.</p>
-          <p className="mt-2"><strong>RoboMarket</strong> concerns an online robotics marketplace and related digital initiatives. Product availability, seller obligations, purchase conditions, warranties, returns, and payments — where applicable — are governed by the relevant marketplace terms and transaction documents.</p>
-          <p className="mt-2"><strong>IdeaVent</strong> concerns digital event ideation and planning. Information about event concepts and planning does not replace any necessary professional approvals, permits, insurance or agreements with event service providers.</p>
-          <p className="mt-2"><strong>Visual Framework</strong> concerns visual structures for organizing concepts and information. Its content does not constitute regulated professional advice, certification, or a guarantee of any particular result.</p>
-          <p className="mt-2">References to projects or third parties do not, by themselves, establish a corporate affiliation, partnership or contractual relationship.</p>
+          <p className="mt-2"><strong>RoboMarket</strong> is a UAE-first robotics marketplace connecting manufacturers and authorized suppliers with businesses and consumers through a curated robotics store, industry news and a classifieds platform. Product availability, seller obligations, purchase conditions, warranties, returns, and payments — where applicable — are governed by the relevant marketplace terms and transaction documents.</p>
+          <p className="mt-2"><strong>IdeaVent</strong> supports event concept development, experience planning and production organization. Event delivery remains subject to necessary professional approvals, permits, insurance and service-provider agreements.</p>
+          <p className="mt-2"><strong>Visual Framework</strong> supports academic psychology and behavioral analysis through visual organization of concepts, relationships and behavioral patterns. It is an informational tool rather than a substitute for regulated professional advice or certification, and individual outcomes vary.</p>
+          <p className="mt-2">Corporate affiliations, partnerships and contractual relationships are established by their respective agreements, rather than by references on this website.</p>
         </section>
         <section>
           <h2 className="legal-heading">Licensing and regulatory scope</h2>
-          <p className="mt-2">Apex Innovate operates subject to its applicable UAE free-zone licence and relevant regulatory requirements. Information on this website does not constitute proof of licensing or regulatory approval for any activity requiring separate authorization.</p>
+          <p className="mt-2">Apex Innovate operates subject to its applicable UAE free-zone licence and relevant regulatory requirements. Activities requiring separate authorization are subject to the relevant licensing and regulatory approval requirements; authorization is established by the applicable official records.</p>
         </section>
         <section>
-          <h2 className="legal-heading">Informational content, no offer</h2>
-          <p className="mt-2">The information presented on this website is for general reference and may change. It does not constitute a binding offer, quotation or commitment to supply a product or service. Any commercial arrangement requires separate agreement.</p>
+          <h2 className="legal-heading">Commercial arrangements</h2>
+          <p className="mt-2">Website information is provided for general reference and may be updated. Binding offers, quotations and commitments to supply products or services are established through separate commercial agreements.</p>
         </section>
         <section>
           <h2 className="legal-heading">Intellectual property</h2>
@@ -39,11 +39,11 @@ export default function TermsPage() {
         </section>
         <section>
           <h2 className="legal-heading">External sites and links</h2>
-          <p className="mt-2">Links may lead to project platforms or external services with their own operators, terms, and data practices. Review those terms before registering, transacting, or submitting information. A link does not necessarily imply endorsement or a contractual relationship.</p>
+          <p className="mt-2">Links may lead to project platforms or external services with their own operators, terms, and data practices. Review those terms before registering, transacting, or submitting information. Endorsements and contractual relationships are established separately from website links.</p>
         </section>
         <section>
           <h2 className="legal-heading">Liability and applicable rights</h2>
-          <p className="mt-2">Although Apex Innovate aims to keep this site accurate, availability and content are not guaranteed to be uninterrupted or error-free. Nothing in these website terms excludes or restricts statutory consumer rights, liability, or obligations where the law does not permit such exclusion. Applicable UAE law and mandatory legal protections continue to apply.</p>
+          <p className="mt-2">Apex Innovate aims to maintain accurate, reliable and accessible website content. Availability and accuracy may be affected by technical or operational circumstances; uninterrupted or error-free service is not guaranteed. Nothing in these website terms excludes or restricts statutory consumer rights, liability, or obligations where the law does not permit such exclusion. Applicable UAE law and mandatory legal protections continue to apply.</p>
         </section>
         <section>
           <h2 className="legal-heading">Questions</h2>
