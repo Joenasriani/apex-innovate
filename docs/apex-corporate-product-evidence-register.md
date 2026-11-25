@@ -12,3 +12,8 @@ Release baseline: PR #19, commit `0745f45d6f6979c79511fb6677d60f983396451a`, pro
 For current decisions and open verification evidence, use the [acceptance register](apex-acceptance-checklist.md).
 
 Historical engineering and evidence records are retained in the Git revision `0745f45d6f6979c79511fb6677d60f983396451a` of these documents. Historical observations describe their respective dates, not current operating conditions.
+
+
+## newwebsite – licence-gated development (25 November 2026)
+
+User-approved direction: advertise exactly six proposed ANCFZ activities (6201015, 620118ANC, 6202099, 6202011, 4790001, 6209015); no training. Proposed marketing copy is centralized in `src/data/capabilities.ts` and company positioning in `src/data/config.ts`. Preserve original artwork, venture links and contacts. This branch is not authorized for production until the issued licence and service scope are verified. Existing release evidence refers to main only. Build, rendered QA and deployment protection must be verified before acceptance. No new analytics, form, email, or privacy practices introduced.
