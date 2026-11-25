@@ -5,41 +5,41 @@ export const capabilities = [
     "code": "6201015",
     "title": "AI Development",
     "headline": "AI applications and automation.",
-    "description": "We develop AI applications, assistants and workflow automation."
+    "description": "Custom AI applications, intelligent assistants and business process automation."
   },
   {
     "id": "software-development",
     "code": "620118ANC",
     "title": "Software Development",
     "headline": "Custom software and applications.",
-    "description": "We develop web and mobile applications, platforms and prototypes."
+    "description": "Web and mobile applications, custom software and digital platforms."
   },
   {
     "id": "social-media-marketing",
     "code": "6202099",
     "title": "Social Media Marketing",
     "headline": "Social media campaigns.",
-    "description": "We plan campaigns, create social media content and coordinate advertising."
+    "description": "Social media strategy, campaign development and advertising."
   },
   {
     "id": "digital-content",
     "code": "6202011",
     "title": "Digital Content",
     "headline": "Digital media production.",
-    "description": "We create visuals, animation, video and 3D content."
+    "description": "Video, animation, 3D visualization and digital creative production."
   },
   {
     "id": "e-commerce",
     "code": "4790001",
     "title": "E-Commerce",
     "headline": "Online commerce.",
-    "description": "We develop online stores and e-commerce platforms."
+    "description": "Online stores, digital marketplaces and online retail."
   },
   {
     "id": "innovation-consultancy",
     "code": "6209015",
     "title": "AI Research & Innovation Consultancy",
     "headline": "AI research and advisory.",
-    "description": "We research AI applications, assess technology options and advise on innovation projects."
+    "description": "AI research, technology assessment and innovation strategy."
   }
 ] as const;
