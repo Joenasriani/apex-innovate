@@ -3,7 +3,7 @@ import type { CompanyConfig } from "@/types";
 /** Approved corporate copy shared by the homepage, SEO and handoff. Do not narrow the company to its current three showcased ventures. */
 export const companyPositioning = {
   heroEyebrow: "AI · TECHNOLOGY · INNOVATION · UNITED ARAB EMIRATES",
-  heroSubtitle: "Intelligent solutions, digital products and creative experiences for businesses with ambition.",
+  heroSubtitle: "Intelligent solutions, digital products and creative experiences for businesses.",
   description: "Apex Innovate FZE LLC is a UAE-based technology and innovation company specializing in AI development, software development, social media marketing, digital content, e-commerce and AI research and innovation consultancy.",
 } as const;
 
