@@ -1,0 +1,134 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>Apex Innovate | Design preview</title><link rel="icon" href="./public/icon.svg"><link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600;700;800&display=swap" rel="stylesheet"><style>
+:root {
+ color-scheme:light;
+ --paper:#f8f8f5;--ink:#232622;--muted:#5e625c;--line:#d9dbd5;--accent:#94735e;--accent-text:#7f5f4a;
+ --container:1160px;--gutter:clamp(20px,5vw,68px);
+ --unit:8px;--gap:clamp(16px,2.4vw,32px);--space:clamp(56px,7vw,88px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:32px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}a:hover{color:var(--accent-text)}a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.shell{width:min(var(--container),calc(100% - 2 * var(--gutter)));margin-inline:auto}
+.header{border-bottom:1px solid var(--line)}
+.header-inner{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.brand{min-width:0;display:inline-flex;align-items:baseline;gap:10px;flex-shrink:0}
+.brand-mark{display:inline-flex;align-items:baseline;white-space:nowrap;flex:none;font-family:"Oxanium",Arial,sans-serif;font-size:clamp(16px,1.7vw,21px);font-weight:700;letter-spacing:-.075em;line-height:1;color:var(--ink)}
+.brand-mark .code-ai{color:#c88760;letter-spacing:-.055em}
+.brand-name{display:block;white-space:nowrap;font-family:"Oxanium",Arial,sans-serif;font-size:clamp(16px,1.7vw,21px);font-weight:700;letter-spacing:-.045em;line-height:1.05;text-transform:none}
+.nav{display:flex;align-items:center;gap:clamp(16px,3vw,36px);flex-wrap:wrap}
+.nav a{font-size:12px;font-weight:600;border:0;text-decoration:none;line-height:1.4}
+.hero{position:relative;isolation:isolate;overflow:hidden;border-bottom:1px solid var(--line)}
+.original-hero-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:63% center;opacity:.58;filter:brightness(1.7) saturate(.66);pointer-events:none;z-index:-2}
+.hero-wash{position:absolute;inset:0;background:linear-gradient(90deg,#f8f8f5 0%,rgba(248,248,245,.96) 27%,rgba(248,248,245,.76) 50%,rgba(248,248,245,.16) 100%),linear-gradient(0deg,rgba(248,248,245,.35),transparent 32%);pointer-events:none;z-index:-1}
+.hero-inner{min-height:clamp(490px,67svh,675px);display:flex;flex-direction:column;justify-content:space-between;padding-block:clamp(64px,8vw,112px) 24px}
+.eyebrow{color:var(--accent-text);font-size:10px;font-weight:700;letter-spacing:.17em;line-height:1.5;text-transform:uppercase}
+h1{font-size:clamp(3.8rem,8.5vw,8rem);line-height:1.005;letter-spacing:-.066em;font-weight:700;margin:32px 0 20px;text-wrap:balance}
+.hero-subtitle{max-width:500px;color:var(--muted);font-size:clamp(17px,1.55vw,21px);line-height:1.48;margin:0}
+.hero-bottom{display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:var(--gap);margin-top:48px;min-height:40px}
+.hero-bottom>span{font-size:10px;line-height:1.4;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;text-align:right}
+.jump{display:inline-flex;align-items:center;justify-self:start;gap:16px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;line-height:1.4}
+.jump span{border:1px solid currentColor;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:19px;line-height:1}
+.intro{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--gap);padding-block:var(--space);align-items:start}
+.intro>.eyebrow{grid-column:1/span 3;padding-top:8px}
+.intro>div:last-child{grid-column:4/-1;min-width:0}
+.intro h2{font-size:clamp(2rem,4vw,3.65rem);line-height:1.12;letter-spacing:-.052em;font-weight:600;margin:0 0 16px;max-width:740px}
+.intro h2 span{color:#8d918b}
+.intro p{max-width:64ch;color:var(--muted);font-size:clamp(15px,1.3vw,17px);line-height:1.5;margin:0}
+.projects{padding-bottom:var(--space)}
+.section-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:1px solid var(--line);padding-block:24px}
+.section-head h2{font-size:clamp(22px,2.3vw,29px);font-weight:600;letter-spacing:-.04em;line-height:1.2;margin:0}
+.section-head>span{font-size:11px;line-height:1.3;color:var(--muted);letter-spacing:.1em;white-space:nowrap}
+.venture{padding-block:24px 40px;border-bottom:1px solid var(--line)}
+.venture:last-child{border-bottom:0;padding-bottom:0}
+.venture-top{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:end;margin-bottom:24px}
+.venture-top>div:first-child{grid-column:1/span 9;min-width:0}
+.venture-top>.venture-link{grid-column:10/-1;justify-self:end}
+.venture-kicker{font-size:10px;line-height:1.5;font-weight:700;letter-spacing:.15em;color:var(--accent-text);margin:0 0 16px}
+.venture h3{font-size:clamp(29px,3.1vw,42px);line-height:1.12;letter-spacing:-.047em;font-weight:600;margin:0 0 8px}
+.venture p{max-width:64ch;color:var(--muted);font-size:clamp(15px,1.3vw,17px);line-height:1.5;margin:0}
+.venture-link{white-space:nowrap;font-size:12px;line-height:1.3;font-weight:600;display:inline-flex;align-items:center;gap:8px;padding-bottom:4px}
+.venture-link span{font-size:19px;line-height:1}
+.venture-art{display:block;width:100%;background:#131a1e;overflow:hidden;border:1px solid var(--line)}
+.venture-art img{display:block;width:100%;height:auto;aspect-ratio:3/1;object-fit:cover}
+.footer{border-top:1px solid var(--line);background:#eff0eb;padding:var(--space) 0 24px}
+.footer-title{font-size:clamp(2.6rem,5vw,4.8rem);line-height:1.1;letter-spacing:-.056em;font-weight:600;display:inline-block;margin-top:16px}
+.footer-note{font-size:15px;line-height:1.5;color:var(--muted);max-width:60ch;margin:16px 0 48px}
+.footer-bottom{display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:11px;line-height:1.5}
+.footer-links{display:flex;gap:24px}
+.brand,.nav a,.jump,.venture-link,.footer-links a{position:relative}
+.brand::after,.nav a::after,.jump::after,.venture-link::after,.footer-links a::after{content:"";position:absolute;inset:-14px -6px}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:16px;top:-120px;z-index:100;padding:12px 18px;background:var(--ink);color:var(--paper);font-size:14px;font-weight:600;line-height:1.3}
+.skip-link:focus{top:16px}.skip-link:hover{color:var(--paper)}
+main:focus{outline:none}
+@media(max-width:760px){
+ :root{--gap:16px;--space:48px}
+ .header-inner{min-height:72px;gap:16px}
+ .brand{gap:8px}
+ .brand-mark{font-size:16px}
+ .brand-name{font-size:16px}
+ .nav{gap:16px}.nav a{font-size:11px}
+ .original-hero-art{object-position:65% center;opacity:.46}
+ .hero-wash{background:linear-gradient(90deg,rgba(248,248,245,.98) 0%,rgba(248,248,245,.94) 36%,rgba(248,248,245,.58) 68%,rgba(248,248,245,.18) 100%)}
+ .hero-inner{min-height:clamp(420px,60svh,560px);padding-block:72px 24px}
+ .hero h1{font-size:clamp(3.2rem,12vw,5.5rem);margin:24px 0 16px}
+ .intro{grid-template-columns:1fr;gap:16px}
+ .intro>.eyebrow,.intro>div:last-child{grid-column:1;min-width:0}
+ .intro>.eyebrow{padding-top:0}
+ .intro h2{margin-bottom:16px}
+ .section-head{padding-block:20px}
+ .venture{padding-block:24px 32px}
+ .venture-top{grid-template-columns:1fr;gap:16px;margin-bottom:16px}
+ .venture-top>div:first-child,.venture-top>.venture-link{grid-column:1;justify-self:start}
+ .venture-kicker{margin-bottom:12px}
+ .venture-art img{width:100%;aspect-ratio:3/1}
+}
+@media(max-width:420px){
+ .brand-name{font-size:15px}.brand-mark{font-size:15px}.nav{gap:12px}
+ .hero h1{font-size:clamp(3rem,12vw,4.4rem)}
+ .hero-bottom{grid-template-columns:1fr auto;gap:8px}
+ .hero-bottom>span{font-size:10px;max-width:120px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+.capabilities{padding-bottom:var(--space)}.cap-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line)}.cap{min-width:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(20px,3vw,36px);display:flex;flex-direction:column;align-items:flex-start;gap:12px}.cap-index{font:600 12px Oxanium,Arial,sans-serif;color:var(--accent-text);letter-spacing:.12em}.cap h3{font-size:clamp(19px,2vw,25px);line-height:1.16;letter-spacing:-.035em;margin:4px 0 0}.cap-lead{font-size:15px;font-weight:600;margin:0;line-height:1.35}.cap p:not(.cap-lead){font-size:15px;line-height:1.5;color:var(--muted);margin:0 0 12px}.cap a{margin-top:auto;font-size:12px;font-weight:700;padding-block:10px}.cap a span{color:var(--accent-text)}.cap-heading{max-width:60ch;color:var(--muted);line-height:1.5;margin:0 0 24px}.hero-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:24px}.primary-cta{display:inline-flex;background:var(--ink);color:var(--paper);padding:14px 20px;font-weight:600;font-size:13px}.primary-cta:hover{background:var(--accent-text);color:white}@media(max-width:900px){.cap-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:600px){.cap-grid{grid-template-columns:1fr}.header-inner{flex-wrap:wrap;gap:8px;padding-block:16px}.nav{width:100%;gap:18px}.hero-actions{gap:12px}.hero-bottom>span{display:none}.hero-bottom{grid-template-columns:1fr}}
+.preview-contact{padding-block:36px}.preview-contact a{display:inline-block;margin:8px 24px 8px 0;padding:12px 0;font-weight:600}.preview-legal{padding-block:var(--space);max-width:75ch}.preview-legal h1{font-size:clamp(32px,5vw,56px)}.preview-legal h2{font-size:20px;margin-top:30px}.preview-legal p{line-height:1.6}</style></head><body><a class="skip-link" href="#main">Skip to main content</a><header class="header"><div class="shell header-inner"><a class="brand" href="./index.html"><span class="brand-mark" aria-hidden="true">&lt;/<span class="code-ai">ai</span>&gt;</span><span class="brand-name">apex innovate</span></a><nav class="nav" aria-label="Main"><a href="./index.html#company">Company</a><a href="./index.html#capabilities">Capabilities</a><a href="./index.html#projects">Ventures</a><a href="./index.html#contact">Contact</a></nav></div></header><main id="main" class="shell preview-legal"><h1>Website Terms</h1>
+        <p>Last updated: 25 November 2026</p>
+        <section>
+          <h2 class="legal-heading">Company and scope</h2>
+          <p class="mt-2">This corporate website is presented by <strong>Apex Innovate FZE LLC</strong>, a free-zone entity incorporated in Ajman, United Arab Emirates, under <strong>Ajman NuVentures Centre Free Zone</strong>. These terms govern use of the Apex Innovate corporate website. Each separate product or project website is governed by its own applicable terms, privacy notices, contracts and policies.</p>
+        </section>
+        <section>
+          <h2 class="legal-heading">About the projects</h2>
+          <p class="mt-2">The projects featured on this website represent selected ventures and initiatives. Each platform publishes its service information and commercial terms.</p>
+          <p class="mt-2"><strong>RoboMarket</strong> is a UAE-first robotics marketplace connecting manufacturers and authorized suppliers with businesses and consumers through a curated robotics store, industry news and a classifieds platform. Product availability, seller obligations, purchase conditions, warranties, returns, and payments — where applicable — are governed by the relevant marketplace terms and transaction documents.</p>
+          <p class="mt-2"><strong>IdeaVent</strong> supports event concept development, experience planning and production organization. Event delivery remains subject to necessary professional approvals, permits, insurance and service-provider agreements.</p>
+          <p class="mt-2"><strong>Visual Framework</strong> supports academic psychology and behavioral analysis through visual organization of concepts, relationships and behavioral patterns. Its purpose is academic and informational. Regulated professional advice and certification remain the responsibility of qualified professionals.</p>
+          <p class="mt-2">Corporate affiliations, partnerships and contractual relationships are defined in their respective agreements.</p>
+        </section>
+        <section>
+          <h2 class="legal-heading">Licensing and regulatory scope</h2>
+          <p class="mt-2">Apex Innovate operates subject to its applicable UAE free-zone licence and relevant regulatory requirements. Activities requiring separate authorization are subject to the relevant licensing and regulatory approval requirements; authorization is established by the applicable official records.</p>
+        </section>
+        <section>
+          <h2 class="legal-heading">Commercial arrangements</h2>
+          <p class="mt-2">Website information is provided for general reference and may be updated. Binding offers, quotations and commitments to supply products or services are established through separate commercial agreements.</p>
+        </section>
+        <section>
+          <h2 class="legal-heading">Intellectual property</h2>
+          <p class="mt-2">Company branding and original content are protected by applicable intellectual-property rights. Referenced third-party trademarks, logos, and material remain the property of their respective rights holders. Reproduction and commercial use of protected content require permission from the relevant rights holder.</p>
+        </section>
+        <section>
+          <h2 class="legal-heading">External sites and links</h2>
+          <p class="mt-2">Links may lead to project platforms or external services with their own operators, terms, and data practices. Review those terms before registering, transacting, or submitting information. Endorsements and contractual relationships are established separately from website links.</p>
+        </section>
+        <section>
+          <h2 class="legal-heading">Liability and applicable rights</h2>
+          <p class="mt-2">Apex Innovate aims to maintain accurate, reliable and accessible website content. Website availability and accuracy are subject to technical and operational conditions. All mandatory statutory consumer rights, liabilities and obligations remain in full effect under applicable UAE law.</p>
+        </section>
+        <section>
+          <h2 class="legal-heading">Questions</h2>
+          <p class="mt-2">For enquiries concerning Apex Innovate or this website, please use our Contact page. For a particular project or platform, please use its published contact or support channels.</p>
+        </section>
+      </main><footer class="footer"><div class="shell"><div class="footer-bottom"><span>© 2026 Apex Innovate FZE LLC · Ajman NuVentures Centre Free Zone, United Arab Emirates</span><nav class="footer-links" aria-label="Legal"><a href="./privacy.html">Privacy</a><a href="./terms.html">Terms</a></nav></div></div></footer></body></html>
