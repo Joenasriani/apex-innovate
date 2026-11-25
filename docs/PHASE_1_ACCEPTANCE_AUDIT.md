@@ -1,0 +1,8 @@
+# Phase 1 acceptance audit – 25 November 2026
+Decision: HOLD Phase 2. Frozen scope preserved.
+PASS: six unique activity codes, three approved ventures, four canonical interactive projects, one research catalogue, three attributed founder productions. Selected work JSON parsed and source IDs reconciled. Design specification committed; final rendered design is Phase 2.
+PASS (metadata only): npm three 0.187.0 MIT; gsap 3.15.1 standard no-charge. Sources https://www.npmjs.com/package/three and https://www.npmjs.com/package/gsap. No installation/build verified; local runtime cannot resolve github.com or npm registry.
+PASS (asset existence only): four source Git blobs with exact path, SHA and byte size in selected-work.json. RoboWebSim tree has no PNG/JPG/WebP assets; capture required. Brick screenshot 2.39 MB, optimize after inspection. Original venture artwork remains in Apex source assets. Media binaries not copied or visually inspected.
+PARTIAL: web retrieval returned RoboMarket newsroom and RoboSim listing (cached crawl, not fresh interaction). Other six project URLs could not be retrieved by this browser tool. No offline conclusion or gameplay verification.
+PARTIAL: founder credits documented in Signals video catalogue. Public links only until embedding and reuse permissions checked. No footage downloaded. E! News not selected due to missing exact record.
+OPEN: actual media inspection and capture, current live interactions, rights confirmation, dependency integration smoke test. No Phase 2 development or production changes. Do not mark Phase 1 complete until evidence exists or user explicitly amends acceptance criteria.

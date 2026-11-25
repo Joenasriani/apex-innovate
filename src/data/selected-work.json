@@ -3,7 +3,13 @@
     {
       "title": "Reasoning & Logic",
       "description": "Digital publications exploring reasoning, logic and structured knowledge.",
-      "url": "https://reasoning-and-logic.vercel.app/"
+      "url": "https://reasoning-and-logic.vercel.app/",
+      "source": "Joenasriani/reasoning-library",
+      "mediaSource": {
+        "path": "assets/DORKING_Cover_Web.webp",
+        "sha": "7f7187051a69e3f0bfdfc742b58e4283f59fce0b",
+        "bytes": 76700
+      }
     }
   ],
   "interactive": [
@@ -17,36 +23,54 @@
       "title": "Brick XR Builder",
       "description": "Build, edit and explore digital brick structures in 3D.",
       "url": "https://legocraftvr.vercel.app/",
-      "source": "Joenasriani/legocraft"
+      "source": "Joenasriani/legocraft",
+      "mediaSource": {
+        "path": "docs/screenshots/Brick XR Builder Game Showcase.png",
+        "sha": "ac1ed29807c2cbf47049c0b56a163fb5115ad820",
+        "bytes": 2390339
+      }
     },
     {
       "title": "DIORAMA",
       "description": "Guide a robot through miniature worlds using bridges, lifts and switches.",
       "url": "https://diorama-game.vercel.app/",
-      "source": "Joenasriani/diorama-game"
+      "source": "Joenasriani/diorama-game",
+      "mediaSource": {
+        "path": "assets/images/diorama-preview.jpg",
+        "sha": "b950b9dee7b6f773c8f6b6c1d993653ecd2bcd5a",
+        "bytes": 104609
+      }
     },
     {
       "title": "ASCENSION",
       "description": "Rotate architecture and connect paths in a 3D spatial puzzle.",
       "url": "https://joenasriani.github.io/ascension-opt/",
-      "source": "Joenasriani/ascension-opt"
+      "source": "Joenasriani/ascension-opt",
+      "mediaSource": {
+        "path": "docs/screenshots/ascension_mobile_screenshot (10).jpg",
+        "sha": "91664a4c358da0582be9f1e225f93b9f3ca911fd",
+        "bytes": 55519
+      }
     }
   ],
   "production": [
     {
       "title": "ELIE SAAB × EMAAR",
       "credit": "Live direction and post-production",
-      "videoId": "9MpVWuh_A4c"
+      "videoId": "9MpVWuh_A4c",
+      "url": "https://www.youtube.com/watch?v=9MpVWuh_A4c"
     },
     {
       "title": "Etihad Airways – Choose Well",
       "credit": "Campaign editing",
-      "videoId": "CI8mbXLaJ30"
+      "videoId": "CI8mbXLaJ30",
+      "url": "https://www.youtube.com/watch?v=CI8mbXLaJ30"
     },
     {
       "title": "Pepsi Arabia",
       "credit": "Post-production",
-      "videoId": "i6ScASwPlvU"
+      "videoId": "i6ScASwPlvU",
+      "url": "https://www.youtube.com/watch?v=i6ScASwPlvU"
     }
   ],
   "productionAttribution": "Selected professional work by founder Joe Nasr.",
