@@ -1,0 +1,55 @@
+name: Phase 1 evidence
+on:
+  push:
+    branches: [newwebsite]
+    paths: ['.github/workflows/phase1-evidence.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Dependency compatibility
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false --ignore-scripts three@0.187.0 gsap@3.15.1
+          node --input-type=module -e "import * as THREE from 'three'; import gsap from 'gsap'; console.log(THREE.REVISION, gsap.version); if (!THREE.Scene || !gsap.to) process.exit(1)"
+          npm run build
+      - name: Media provenance and destination checks
+        run: |
+          python - <<'PY'
+          import json, hashlib, urllib.request, urllib.parse
+          from pathlib import Path
+          d=json.load(open('src/data/selected-work.json'))
+          out=Path('phase1-evidence'); out.mkdir(exist_ok=True)
+          report=[]
+          for item in d['research']+d['interactive']+d['production']:
+              rec={'title':item['title']}
+              try:
+                  req=urllib.request.Request(item['url'],headers={'User-Agent':'Mozilla/5.0'})
+                  with urllib.request.urlopen(req,timeout=20) as r: rec['http']=r.status
+              except Exception as e: rec['http_error']=str(e)
+              m=item.get('mediaSource')
+              if m:
+                  try:
+                      url='https://raw.githubusercontent.com/'+item['source']+'/main/'+urllib.parse.quote(m['path'])
+                      with urllib.request.urlopen(url,timeout=30) as r: data=r.read()
+                      digest=hashlib.sha1(('blob '+str(len(data))+'\0').encode()+data).hexdigest()
+                      assert digest==m['sha'] and len(data)==m['bytes']
+                      (out/(item['title'].replace(' & ','-').replace(' ','-')+Path(m['path']).suffix)).write_bytes(data)
+                      rec['asset_verified']=True
+                  except Exception as e: rec['asset_error']=str(e)
+              report.append(rec)
+          print(json.dumps(report,indent=2))
+          (out/'report.json').write_text(json.dumps(report,indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase1-evidence
+          path: phase1-evidence/
